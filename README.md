@@ -48,7 +48,7 @@ Results were validated against NEMA and IOM field reports.
 > click **"Get Link"** (top-right of the editor toolbar) → copy the URL that appears.
 > Paste it here to replace this placeholder.
 
-🔗 **GEE link:** `https://code.earthengine.google.com/b9e59934a3fd84aa96f71e99cfea4556`
+🔗 **GEE link:** (https://code.earthengine.google.com/b9e59934a3fd84aa96f71e99cfea4556) 
 
 ### Output
 ![Flood extent map 2022](outputs/flood_extent_2022.png)
