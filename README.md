@@ -42,7 +42,7 @@ geospatial-rs-portfolio/
 
 **Script:** `sentinel1_flood_mapping.js`
 **GEE:** [Open in Earth Engine](https://code.earthengine.google.com/227bc81fde875996b884639d2f0d18af)
-**Full Report:** [[📄 Nasarawa_Flood_Impact_2022_2024.pdf]](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/c46d65ea69d8f0094203b2e08e68563bed59e516/Nasarawa_Flood_Impact_2022_2024.pdf)
+**Full Report:** [ Nasarawa_Flood_Impact_2022_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/c46d65ea69d8f0094203b2e08e68563bed59e516/Nasarawa_Flood_Impact_2022_2024.pdf)
 
 ### What this project does
 
