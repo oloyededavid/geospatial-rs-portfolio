@@ -20,7 +20,6 @@ of Prof. Anya Leenman.
 | `sentinel1_flood_mapping.js` | Google Earth Engine | SAR Otsu thresholding, flood extent delineation | Nasarawa State, Nigeria |
 | `lagos_uhi_classification.js` | Google Earth Engine | Random Forest LULC, LST retrieval, spectral indices | Lagos State, Nigeria |
 | `angola_coastline_dsas.js` | Google Earth Engine | NDWI water delineation, multi-temporal shoreline extraction | Angola coastline |
-| `geospatial_analysis.py` | Python | Raster processing, spatial analysis, visualisation | Various |
 
 ---
 
@@ -49,7 +48,7 @@ Results were validated against NEMA and IOM field reports.
 > click **"Get Link"** (top-right of the editor toolbar) → copy the URL that appears.
 > Paste it here to replace this placeholder.
 
-🔗 **GEE link:** `[PASTE YOUR GEE SHAREABLE LINK HERE]`
+🔗 **GEE link:** `https://code.earthengine.google.com/b9e59934a3fd84aa96f71e99cfea4556`
 
 ### Output
 ![Flood extent map 2022](outputs/flood_extent_2022.png)
