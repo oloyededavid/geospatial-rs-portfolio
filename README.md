@@ -77,7 +77,7 @@ For detailed statistics and inundation maps, see [📄 Nasarawa_Flood_Impact_202
 
 **Script:** `lagos_uhi_classification.js`
 **GEE:** [Open in Earth Engine](https://code.earthengine.google.com/b9e59934a3fd84aa96f71e99cfea4556)
-**Full Report:** [📄 Lagos_UHI_Analysis_2015_2024.pdf](reports/Lagos_UHI_Analysis_2015_2024.pdf)
+**Full Report:** [[Lagos_UHI_Analysis_2015_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/d20c73007fecf943dd2c7b6d8cfca723bf78fa5f/Lagos_UHI_Analysis_2015_2024.pdf)]
 
 ### What this project does
 
