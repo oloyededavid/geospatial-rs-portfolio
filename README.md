@@ -69,8 +69,7 @@ Flood extent was computed in hectares at Local Government Area (LGA) resolution 
 
 The 2022 event inundated substantially larger areas than 2024 across all analysed LGAs, with flood extent concentrated along the Benue River floodplain in **Doma, Keana, and Toto LGAs**. The reduction in 2024 inundation is contextualised in the full report.
 
-For detailed statistics and inundation maps, see [Nasarawa_Flood_Impact_2022_2024.pdf(https://github.com/oloyededavid/geospatial-rs-portfolio/blob/c46d65ea69d8f0094203b2e08e68563bed59e516/Nasarawa_Flood_Impact_2022_2024.pdf)]
-
+For detailed statistics and inundation maps, see [[Nasarawa_Flood_Impact_2022_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/bfb662a91f4daf97c4d4f8470386b82c6bf6d3b2/Nasarawa_Flood_Impact_2022_2024.pdf)]
 ---
 
 ## Project 02 — Lagos Urban Heat Island Analysis
