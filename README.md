@@ -69,7 +69,7 @@ Flood extent was computed in hectares at Local Government Area (LGA) resolution 
 
 The 2022 event inundated substantially larger areas than 2024 across all analysed LGAs, with flood extent concentrated along the Benue River floodplain in **Doma, Keana, and Toto LGAs**. The reduction in 2024 inundation is contextualised in the full report.
 
-For detailed statistics and inundation maps, see [[Nasarawa_Flood_Impact_2022_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/c46d65ea69d8f0094203b2e08e68563bed59e516/Nasarawa_Flood_Impact_2022_2024.pdf)]
+For detailed statistics and inundation maps, see [Nasarawa_Flood_Impact_2022_2024.pdf(https://github.com/oloyededavid/geospatial-rs-portfolio/blob/c46d65ea69d8f0094203b2e08e68563bed59e516/Nasarawa_Flood_Impact_2022_2024.pdf)]
 
 ---
 
@@ -106,7 +106,7 @@ The analysis reveals a strong negative relationship between vegetation cover and
 
 LULC classification accuracy: **89.2% overall accuracy, Kappa = 0.86.**
 
-For full trend analysis, LST maps by year, and LULC transition matrices, see [📄 [Lagos_UHI_Analysis_2015_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/d20c73007fecf943dd2c7b6d8cfca723bf78fa5f/Lagos_UHI_Analysis_2015_2024.pdf)]
+For full trend analysis, LST maps by year, and LULC transition matrices, see [Lagos_UHI_Analysis_2015_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/d20c73007fecf943dd2c7b6d8cfca723bf78fa5f/Lagos_UHI_Analysis_2015_2024.pdf)]
 ---
 
 ## Project 03 — Angola Coastline Shoreline Change
