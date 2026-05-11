@@ -1,7 +1,7 @@
 # Geospatial & Remote Sensing Portfolio
 
 **Oloyede David Oluwayinka**
-B.Tech Remote Sensing & GIS — First Class Honours · 
+B.Tech Remote Sensing & GIS — First Class Honours
 ---
 
 Three production ready Google Earth Engine scripts developed as an undergraduate research assistent at FUTA. 
@@ -152,6 +152,8 @@ All products were exported to Google Drive: flood masks and change rasters as Ge
 The 10-transect EPR analysis reveals spatially variable coastal behaviour along the Angola coastline, with mixed erosion and accretion patterns. Bathymetric analysis from ETOPO1 contextualises these dynamics relative to the shelf break geometry.
 
 For EPR values per transect, change magnitude maps, and shelf bathymetry profiles, see [Angola_Coastline_Shoreline_Change.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/9acabb356f6f8e1102476f5c53a13d4dc2742bf7/Angola_Coastline_Shoreline_Change.pdf)
+---
+
 ---
 
 ## Technical environment
