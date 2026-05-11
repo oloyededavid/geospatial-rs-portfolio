@@ -15,7 +15,7 @@ Three production-ready Google Earth Engine scripts developed during undergraduat
 | # | Project | Study Area | Core Method | Report |
 |---|---------|------------|-------------|--------|
 | 01 | SAR Flood Mapping | Nasarawa State, Nigeria | Sentinel-1 + Otsu thresholding | [Nasarawa_Flood_Impact_2022_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/c46d65ea69d8f0094203b2e08e68563bed59e516/Nasarawa_Flood_Impact_2022_2024.pdf) |
-| 02 | Urban Heat Island | Lagos State, Nigeria | Random Forest LULC + Mono-window LST |([Lagos_UHI_Analysis_2015_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/60bd6bb8a43426b208709e6dd320a8ded511fea6/Lagos_UHI_Analysis_2015_2024.pdf)] |
+| 02 | Urban Heat Island | Lagos State, Nigeria | Random Forest LULC + Mono-window LST |[Lagos_UHI_Analysis_2015_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/60bd6bb8a43426b208709e6dd320a8ded511fea6/Lagos_UHI_Analysis_2015_2024.pdf) |
 | 03 | Coastline Change | Angola Coastline | NDWI delineation + DSAS EPR | [Angola_Coastline_Shoreline_Change.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/da5f713c5d1f10058d2d8c3c70aa3bb05909cc96/Angola_Coastline_Shoreline_Change.pdf) |
 
 ---
