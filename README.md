@@ -1,5 +1,5 @@
 # Geospatial Remote Sensing Portfolio
-### Oloyede David Oluwayinka — B.Tech Remote Sensing & GIS, FUTA (First Class, 4.51/5.00)
+### Oloyede David Oluwayinka — B.Tech Remote Sensing & GIS
 
 This repository contains code samples demonstrating large-sample satellite image analysis,
 SAR-based water detection, multi-temporal LULC classification, and shoreline change analysis
@@ -33,7 +33,7 @@ of Prof. Anya Leenman.
 
 ### What it does
 Detects and delineates flood-inundated areas by comparing pre- and post-flood Sentinel-1 SAR
-backscatter. Uses Otsu thresholding — an automated histogram-based segmentation method — to
+backscatter. Uses Otsu thresholding, an automated histogram-based segmentation method, to
 separate water pixels from land. Outputs flood extent polygons with area quantified in hectares.
 Results were validated against NEMA and IOM field reports.
 
@@ -43,12 +43,10 @@ Results were validated against NEMA and IOM field reports.
 - SRTM DEM masking to exclude permanent water bodies and steep slopes
 - Flood area calculation and export to Google Drive
 
-### Run it in GEE
-> **To get your shareable link:** Open the script in the [GEE Code Editor](https://code.earthengine.google.com),
-> click **"Get Link"** (top-right of the editor toolbar) → copy the URL that appears.
-> Paste it here to replace this placeholder.
 
-🔗 **GEE link:** (https://code.earthengine.google.com/b9e59934a3fd84aa96f71e99cfea4556) 
+🔗 **GEE link:** (https://code.earthengine.google.com/227bc81fde875996b884639d2f0d18af)   
+
+
 
 ### Output
 ![Flood extent map 2022](outputs/flood_extent_2022.png)
@@ -88,11 +86,9 @@ impervious surfaces over the study period.
 - NDVI, NDWI, NDBI computation and correlation with LST
 - Multi-temporal change detection across 2015, 2018, 2021, and 2024
 
-### Run it in GEE
-> **To get your shareable link:** In the GEE Code Editor, click **"Get Link"** in the toolbar
-> and copy the URL.
 
-🔗 **GEE link:** `[PASTE YOUR GEE SHAREABLE LINK HERE]`
+
+🔗 **GEE link:** (https://code.earthengine.google.com/b9e59934a3fd84aa96f71e99cfea4556)
 
 ### Output
 ![LULC classification Lagos 2024](outputs/lagos_lulc_2024.png)
@@ -151,28 +147,6 @@ directly to quantifying river bank migration and channel width change from satel
 
 ---
 
-## Script 4 — Python geospatial analysis
-
-**File:** `geospatial_analysis.py`  
-**Language:** Python 3  
-**Key libraries:** `geopandas`, `rasterio`, `numpy`, `matplotlib`, `shapely`, `pandas`
-
-### What it does
-Demonstrates Python-based geospatial data processing including raster reading and band
-manipulation, vector spatial operations, and map-quality output generation. Includes
-workflows for clipping rasters to study area boundaries, computing zonal statistics,
-and producing publication-ready figures.
-
-### Setup and run
-
-```bash
-pip install geopandas rasterio numpy matplotlib shapely pandas
-python geospatial_analysis.py
-```
-
-### Output
-![Python output](outputs/python_output.png)
-*Example output from the Python geospatial analysis workflow.*
 
 ---
 
@@ -180,7 +154,7 @@ python geospatial_analysis.py
 
 | Tool | Version / Notes |
 |------|----------------|
-| Google Earth Engine | JavaScript API — free academic access via [signup](https://earthengine.google.com/signup/) |
+| Google Earth Engine | JavaScript API 
 | Python | 3.10+ |
 | QGIS | 3.x (post-processing and cartography) |
 | ArcGIS Pro | Overlay analysis and map production |
@@ -188,24 +162,7 @@ python geospatial_analysis.py
 
 ---
 
-## How to run the GEE scripts
-
-1. Sign in to [Google Earth Engine Code Editor](https://code.earthengine.google.com)
-2. Click any of the GEE shareable links above — the script opens directly in your browser
-3. Click **"Run"** — no setup, no installation required
-4. Results appear in the map panel and console output
-
-> **Note on boundary assets:** Some scripts reference study area boundary assets stored in
-> my personal GEE account (e.g., Nasarawa State shapefile). Where these are used, a comment
-> in the script indicates how to substitute the equivalent from public sources such as
-> FAO GAUL (`FAO/GAUL/2015/level1`) or OCHA CODs.
-
----
-
 ## Contact
 
 **Oloyede David Oluwayinka**  
-B.Tech Remote Sensing & GIS — Federal University of Technology Akure (FUTA), Nigeria  
 📧 oloyededavid10@gmail.com  
-📞 +234 706 730 1587  
-📄 Thesis preprint: *Spatio-Temporal Assessment of Urban Heat Island Dynamics in Lagos State, Nigeria (2015–2024)* — EarthArXiv [link pending]
