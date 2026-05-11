@@ -15,7 +15,7 @@ Three production-ready Google Earth Engine scripts developed during undergraduat
 | # | Project | Study Area | Core Method | Report |
 |---|---------|------------|-------------|--------|
 | 01 | SAR Flood Mapping | Nasarawa State, Nigeria | Sentinel-1 + Otsu thresholding | [📄 PDF][Nasarawa_Flood_Impact_2022_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/c46d65ea69d8f0094203b2e08e68563bed59e516/Nasarawa_Flood_Impact_2022_2024.pdf) |
-| 02 | Urban Heat Island | Lagos State, Nigeria | Random Forest LULC + Mono-window LST | [📄 PDF](reports/Lagos_UHI_Analysis_2015_2024.pdf) |
+| 02 | Urban Heat Island | Lagos State, Nigeria | Random Forest LULC + Mono-window LST | [📄 PDF][(reports/Lagos_UHI_Analysis_2015_2024.pdf)](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/cda6d662b2f79866373ff551a3af51a75880b50f/Lagos_UHI_Analysis_2015_2024.pdf) |
 | 03 | Coastline Change | Angola Coastline | NDWI delineation + DSAS EPR | [📄 PDF](reports/Angola_Coastline_Shoreline_Change.pdf) |
 
 ---
