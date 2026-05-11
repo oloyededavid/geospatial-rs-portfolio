@@ -154,67 +154,18 @@ The 10-transect EPR analysis reveals spatially variable coastal behaviour along 
 For EPR values per transect, change magnitude maps, and shelf bathymetry profiles, see [Angola_Coastline_Shoreline_Change.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/9acabb356f6f8e1102476f5c53a13d4dc2742bf7/Angola_Coastline_Shoreline_Change.pdf)
 ---
 
-## Technical Stack
+## Technical environment
 
-**Cloud platform:** Google Earth Engine (JavaScript API)
-**Post-processing:** QGIS 3.x · ArcGIS Pro
-**Primary satellite datasets:** Sentinel-1 IW GRD · Sentinel-2 SR Harmonised · Landsat 7/8/9 Collection 2 Level 2 · SRTM DEM · NOAA ETOPO1
-
----
-
-## How to Add the PDF Reports to This Repo
-
-The three PDF reports should be committed to the `reports/` folder at the root of the repository so the links in this README resolve correctly:
-
-```
-reports/
-├── Nasarawa_Flood_Impact_2022_2024.pdf
-├── Lagos_UHI_Analysis_2015_2024.pdf
-└── Angola_Coastline_Shoreline_Change.pdf
-```
-
-**Step-by-step:**
-
-```bash
-# From the root of your local clone
-mkdir reports
-
-# Copy your PDFs into the folder, then:
-git add reports/
-git commit -m "Add project reports"
-git push
-```
-
-GitHub renders PDF links as direct download/view links — anyone visiting your portfolio can open the full report from the README in one click.
+| Tool | Version / Notes |
+|------|----------------|
+| Google Earth Engine | JavaScript API 
+| Python | 3.10+ |
+| QGIS | 3.x (post-processing and cartography) |
+| ArcGIS Pro | Overlay analysis and map production |
+| Key satellite data | Sentinel-1 IW GRD, Sentinel-2 SR, Landsat 7/8/9 C2 L2, SRTM DEM, GEBCO |
 
 ---
 
-## Suggestions for Strengthening This Portfolio
-
-**1. Add a `figures/` folder with key output images**
-Export one representative map from each GEE script (as PNG) and embed it directly in the README using `![caption](figures/image.png)`. Visual outputs make the portfolio immediately compelling without requiring a PDF download.
-
-**2. Export and commit sample outputs**
-Add at least one exported CSV or GeoTIFF sample (small area, short time range) to the repo so reviewers can inspect real outputs without running the scripts themselves.
-
-**3. Add a `requirements` or environment note**
-Even though GEE is cloud-native, note the GEE account setup step and any Python/QGIS post-processing dependencies used to produce the reports.
-
-**4. Add a `CHANGELOG.md`**
-Document what changed between script versions. This signals code maintenance habits, which matters in research contexts.
-
-**5. GitHub Releases for large PDFs**
-If your PDFs are large (> 5 MB), use GitHub Releases to attach them rather than committing them to the main branch. Link to the release asset URL in the README instead of the `reports/` path.
-
-**6. Add a short methods diagram (SVG or PNG)**
-A simple flowchart showing the GEE pipeline for each project — input dataset → pre-processing → analysis → output — makes the methodology scannable at a glance and demonstrates systems thinking.
-
----
-
-## Contact
 
 **Oloyede David Oluwayinka**
-📧 oloyededavid10@gmail.com
-📞 +234 706 730 1587
-🎓 B.Tech Remote Sensing & GIS — First Class Honours, GPA 4.51/5.00
-🏫 Federal University of Technology Akure (FUTA), Nigeria
+🎓 B.Tech Remote Sensing & GIS — First Class Honors
