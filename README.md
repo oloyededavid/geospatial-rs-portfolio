@@ -44,8 +44,9 @@ Results were validated against NEMA and IOM field reports.
 - Flood area calculation and export to Google Drive
 
 
-🔗 **GEE link:** (https://code.earthengine.google.com/227bc81fde875996b884639d2f0d18af)   
+🔗 **GEE link:** (https://code.earthengine.google.com/227bc81fde875996b884639d2f0d18af)  
 
+🔗 **GEE link:** [Code Portfolio GEE](https://code.earthengine.google.com/227bc81fde875996b884639d2f0d18af)
 
 
 ### Output
