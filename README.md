@@ -72,6 +72,10 @@ The 2022 event inundated substantially larger areas than 2024 across all analyse
 For detailed statistics and inundation maps, see [Nasarawa_Flood_Impact_2022_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/bfb662a91f4daf97c4d4f8470386b82c6bf6d3b2/Nasarawa_Flood_Impact_2022_2024.pdf)
 ---
 
+
+
+
+
 ## Project 02 — Lagos Urban Heat Island Analysis
 
 **Script:** `lagos_uhi_classification.js`
@@ -107,6 +111,11 @@ LULC classification accuracy: **89.2% overall accuracy, Kappa = 0.86.**
 
 For full trend analysis, LST maps by year, and LULC transition matrices, see [Lagos_UHI_Analysis_2015_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/d20c73007fecf943dd2c7b6d8cfca723bf78fa5f/Lagos_UHI_Analysis_2015_2024.pdf)
 ---
+
+
+
+
+
 
 ## Project 03 — Angola Coastline Shoreline Change
 
