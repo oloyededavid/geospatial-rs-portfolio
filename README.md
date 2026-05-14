@@ -6,7 +6,7 @@ B.Tech Remote Sensing & GIS — First Class Honours
 
 Four production ready Google Earth Engine scripts developed as an undergraduate research assistant at FUTA.
 
-Each project addresses a distinct geomorphic domain — urban thermal dynamics, SAR flood hydrology, coastal shoreline change, and riverine flood vulnerability — using a shared pipeline of cloud-native remote sensing, multi-temporal change detection, and automated classification on the Google Earth Engine JavaScript API.
+Each project addresses a distinct geomorphic domain which includes urban thermal dynamics, SAR flood hydrology, coastal shoreline change, and riverine flood vulnerability, using a shared pipeline of cloud-native remote sensing, multi-temporal change detection, and automated classification on the Google Earth Engine JavaScript API.
 
 ---
 
