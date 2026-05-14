@@ -4,9 +4,9 @@
 B.Tech Remote Sensing & GIS — First Class Honours
 ---
 
-Three production ready Google Earth Engine scripts developed as an undergraduate research assistent at FUTA. 
+Four production ready Google Earth Engine scripts developed as an undergraduate research assistant at FUTA.
 
-Each project addresses a distinct geomorphic domain — urban thermal dynamics, SAR flood hydrology, and coastal shoreline change — using a shared pipeline of cloud-native remote sensing, multi-temporal change detection, and automated classification on the Google Earth Engine JavaScript API.
+Each project addresses a distinct geomorphic domain — urban thermal dynamics, SAR flood hydrology, coastal shoreline change, and riverine flood vulnerability — using a shared pipeline of cloud-native remote sensing, multi-temporal change detection, and automated classification on the Google Earth Engine JavaScript API.
 
 ---
 
@@ -26,13 +26,15 @@ Each project addresses a distinct geomorphic domain — urban thermal dynamics, 
 ```
 geospatial-rs-portfolio/
 ├── README.md
-├── sentinel1_flood_mapping.js        # Project 01 — SAR Otsu flood detection
-├── lagos_uhi_classification.js       # Project 02 — Random Forest LULC + LST
-├── angola_coastline_dsas.js          # Project 03 — NDWI shoreline extraction + EPR
+├── sentinel1_flood_mapping.js           # Project 01 — SAR Otsu flood detection
+├── lagos_uhi_classification.js          # Project 02 — Random Forest LULC + LST
+├── angola_coastline_dsas.js             # Project 03 — NDWI shoreline extraction + EPR
+├── ogbaru_flood_impact_vulnerability.js # Project 04 — SAR flood mapping + RF LULC + AHP-FVI
 └── reports/
     ├── Nasarawa_Flood_Impact_2022_2024.pdf
     ├── Lagos_UHI_Analysis_2015_2024.pdf
-    └── Angola_Coastline_Shoreline_Change.pdf
+    ├── Angola_Coastline_Shoreline_Change.pdf
+    └── Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf
 ```
 
 > **PDF reports** are stored in the `reports/` folder and linked throughout this README. Each report contains the full methodology, maps, and statistical outputs corresponding to its GEE script.
@@ -187,15 +189,17 @@ Average annual inundation of **2,158.68 ha** (~5.6% of Ogbaru's land area), peak
 LULC classification accuracy: **>85% overall accuracy, Kappa > 0.80.**
 
 For full flood extent maps by year, LULC transition matrices, impact tables by land cover class, and the FVI spatial map, see [Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/70794802bb8c7c4536dd457f18419cc1199a30ab/Ogbaru_Flood_Impact_Vulnerability.pdf)
+
+
 ## Technical environment
 
 | Tool | Version / Notes |
 |------|----------------|
-| Google Earth Engine | JavaScript API 
+| Google Earth Engine | JavaScript API |
 | Python | 3.10+ |
 | QGIS | 3.x (post-processing and cartography) |
 | ArcGIS Pro | Overlay analysis and map production |
-| Key satellite data | Sentinel-1 IW GRD, Sentinel-2 SR, Landsat 7/8/9 C2 L2, SRTM DEM, GEBCO |
+| Key satellite data | Sentinel-1 IW GRD, Sentinel-2 SR, Landsat 7/8/9 C2 L2, SRTM DEM, GEBCO, CHIRPS Rainfall, WorldPop |
 
 ---
 
