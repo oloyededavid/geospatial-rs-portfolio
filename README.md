@@ -17,8 +17,8 @@ Each project addresses a distinct geomorphic domain — urban thermal dynamics, 
 | 01 | SAR Flood Mapping | Nasarawa State, Nigeria | Sentinel-1 + Otsu thresholding | [Nasarawa_Flood_Impact_2022_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/c46d65ea69d8f0094203b2e08e68563bed59e516/Nasarawa_Flood_Impact_2022_2024.pdf) |
 | 02 | Urban Heat Island | Lagos State, Nigeria | Random Forest LULC + Mono-window LST | [Lagos_UHI_Analysis_2015_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/60bd6bb8a43426b208709e6dd320a8ded511fea6/Lagos_UHI_Analysis_2015_2024.pdf) |
 | 03 | Coastline Change | Angola Coastline | NDWI delineation + DSAS EPR | [Angola_Coastline_Shoreline_Change.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/da5f713c5d1f10058d2d8c3c70aa3bb05909cc96/Angola_Coastline_Shoreline_Change.pdf) |
-| 04 | Flood Impact & Vulnerability | Ogbaru LGA, Anambra State, Nigeria | Sentinel-1 SAR + RF LULC + AHP-FVI | [Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/reports/Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf) |
-
+| 04 | Flood Impact & Vulnerability | Ogbaru LGA, Anambra State, Nigeria | Sentinel-1 SAR + RF LULC + AHP-FVI | [[Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf]
+](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/70794802bb8c7c4536dd457f18419cc1199a30ab/Ogbaru_Flood_Impact_Vulnerability.pdf)
 
 ---
 
@@ -159,8 +159,7 @@ For EPR values per transect, change magnitude maps, and shelf bathymetry profile
 
 **Script:** `ogbaru_flood_impact_vulnerability.js`
 **GEE:** [[Open in Earth Engine]](https://code.earthengine.google.com/43f670fce32ea55affdfd4926880ffdd)
-**Full Report:** [Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/reports/Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf)
-
+**Full Report:** ](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/70794802bb8c7c4536dd457f18419cc1199a30ab/Ogbaru_Flood_Impact_Vulnerability.pdf)
 ### What this project does
 
 Multi-temporal geospatial assessment of flood impact and vulnerability in Ogbaru Local Government Area, Anambra State, Nigeria (2018–2023). Sentinel-1 SAR flood extents are mapped annually, overlaid against Sentinel-2 Random Forest LULC classifications to quantify sectoral damage, and integrated with elevation, population, and rainfall layers into a weighted Flood Vulnerability Index (FVI). Ogbaru sits at the confluence of the River Niger and Orashi River — a flat, low-lying floodplain where over 60% of its ~318,000 residents live in flood-exposed zones.
@@ -188,9 +187,7 @@ Average annual inundation of **2,158.68 ha** (~5.6% of Ogbaru's land area), peak
 
 LULC classification accuracy: **>85% overall accuracy, Kappa > 0.80.**
 
-For full flood extent maps by year, LULC transition matrices, impact tables by land cover class, and the FVI spatial map, see [Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/reports/Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf)
-
-
+For full flood extent maps by year, LULC transition matrices, impact tables by land cover class, and the FVI spatial map, see ](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/70794802bb8c7c4536dd457f18419cc1199a30ab/Ogbaru_Flood_Impact_Vulnerability.pdf)
 ---
 
 ## Technical environment
