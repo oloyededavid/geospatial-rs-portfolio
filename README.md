@@ -153,6 +153,38 @@ The 10-transect EPR analysis reveals spatially variable coastal behaviour along 
 
 For EPR values per transect, change magnitude maps, and shelf bathymetry profiles, see [Angola_Coastline_Shoreline_Change.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/9acabb356f6f8e1102476f5c53a13d4dc2742bf7/Angola_Coastline_Shoreline_Change.pdf)
 ---
+## Project 04 — Ogbaru LGA Flood Impact & Vulnerability Assessment
+
+**Script:** `ogbaru_flood_impact_vulnerability.js`
+
+**Full Report:** [Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/reports/Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf)
+
+### What this project does
+
+Comprehensive geospatial assessment of flood impact and vulnerability in Ogbaru Local Government Area, Anambra State, Nigeria, across four flood seasons from 2018 to 2023. The study integrates multi-temporal Sentinel-1 SAR flood mapping, Sentinel-2 Random Forest LULC classification, flood–LULC overlay impact analysis, and a multi-criteria Flood Vulnerability Index (FVI) built from five normalised spatial layers. Ogbaru is a low-lying riverine territory at the confluence of the River Niger and Orashi River, with over 60% of its ~318,000 residents living in flood-exposed zones.
+
+**Primary datasets:** `COPERNICUS/S1_GRD` (Sentinel-1 IW GRD, VV), `COPERNICUS/S2_SR_HARMONIZED`, `USGS/SRTMGL1_003` (SRTM DEM), `UCSB-CHG/CHIRPS/DAILY`, `WorldPop/GP/100m/pop`, `JRC/GSW1_4/GlobalSurfaceWater`
+**Analysis years:** 2018, 2020, 2022, 2023
+
+### Methodology
+
+**Flood Mapping (Sentinel-1 SAR)**
+VV-polarised IW GRD imagery was processed with a Refined Lee speckle filter and converted to decibels. Otsu's histogram-based thresholding (empirical fallback: −16 dB) separated open water from land in post-flood composites (August–October). SRTM slope masking (>5°) and JRC permanent water masking removed false positives; connected-component filtering eliminated isolated single pixels. Flood extent was quantified in hectares using `reduceRegion` with a `sum` reducer at 10 m resolution.
+
+**LULC Classification (Sentinel-2 Random Forest)**
+Cloud-masked Sentinel-2 SR Harmonised composites were built for dry-season pre-flood (January–March) and wet-season post-flood (August–October) periods for each analysis year. A supervised Random Forest classifier (100 trees, Gini impurity, 80/20 train–test split) was trained on manually digitised samples across five classes: Water, Vegetation, Built-up, Bareland, and Forest. Input features comprised six surface reflectance bands (B2, B3, B4, B8, B11, B12) plus NDVI, NDWI, NDBI, and MNDWI. Eight pre/post LULC maps were produced. Classification accuracy exceeded 85% overall with Kappa > 0.80.
+
+**Flood Impact Analysis**
+Flood binary masks were spatially overlaid with post-flood LULC maps to compute inundated area (ha) per land cover class for each event year. Agricultural impact was proxied by flooded Vegetation and Forest pixels. Infrastructure impact was assessed by buffering OSM road and settlement features at 50 m and intersecting with flood extents.
+
+**Flood Vulnerability Index (FVI)**
+Five spatial layers were min-max normalised to [0, 1] and combined via AHP-inspired weighted summation: elevation (30%, SRTM — lower elevation = higher score), flood history (25% — frequency raster from four stacked annual masks), population density (20%, WorldPop 2020), LULC class exposure score (15%), and slope (10%, SRTM-derived — flatter terrain = higher score). The continuous FVI was reclassified into three vulnerability zones: Low (<0.33), Moderate (0.33–0.66), and High (>0.66).
+
+### Key Findings
+
+Average annual inundation of **2,158.68 hectares** (~5.6% of Ogbaru's land area), peaking at **2,470.95 ha in 2018** and rebounding to **2,098.53 ha in 2023** after a relative trough in 2022 (1,818.53 ha). Flood extents showed a strong positive correlation (r = 0.65) with CHIRPS annual rainfall. Post-flood LULC shift analysis revealed a cumulative vegetation loss of approximately **20%** over the study period, with dominant conversions to water and bareland indicating inundation and erosion. Agricultural impacts (flooded vegetation/forest proxy) peaked at **460.68 ha in 2018**, with total agricultural land affected exceeding **750 ha** across the five-year period. Built-up flooding exceeded **300 ha in 2018** alone, with increasing built-up impact in 2022 signalling urban encroachment into floodplains. The FVI map identified approximately **40% of Ogbaru LGA** as highly vulnerable, encompassing ~60% of the population, concentrated in low-elevation riverine settlements: Atani, Odekpe, Ossomala, and Okpoko.
+
+For full flood extent maps by year, pre/post LULC transition matrices, flood impact tables, and the FVI spatial map, see [Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/reports/Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf)
 
 ---
 
