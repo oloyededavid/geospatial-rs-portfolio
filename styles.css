@@ -2,9 +2,7 @@
    DAVID OLOYEDE — GEOSPATIAL PORTFOLIO
    Editorial / Research Studio Direction
    ========================================================= */
-body {
-  background: red !important;
-}
+
 
 :root {
   --bg: #f4f2ed;
@@ -19,6 +17,10 @@ body {
 
   --serif: Georgia, "Times New Roman", serif;
   --sans: "Satoshi", Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: red !important;
 }
 
 * {
