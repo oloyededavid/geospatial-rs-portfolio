@@ -4,7 +4,7 @@
 B.Tech Remote Sensing & GIS — First Class Honours
 ---
 
-Four production ready Google Earth Engine scripts developed as an undergraduate research assistant at FUTA.
+Four applied remote-sensing studies developed as an undergraduate research assistant at FUTA. A responsive project landing page is available in `index.html` and is ready to publish with GitHub Pages.
 
 Each project addresses a distinct geomorphic domain which includes urban thermal dynamics, SAR flood hydrology, coastal shoreline change, and riverine flood vulnerability, using a shared pipeline of pre-processing, classification, and spatial analysis workflows.
 
@@ -14,31 +14,28 @@ Each project addresses a distinct geomorphic domain which includes urban thermal
 
 | # | Project | Study Area | Core Method | Report |
 |---|---------|------------|-------------|---------|
-| 01 | SAR Flood Mapping | Nasarawa State, Nigeria | Sentinel-1 + Otsu thresholding | [Nasarawa_Flood_Impact_2022_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/c46d65ea69d8f0094203b2e08e68563bed59e516/Nasarawa_Flood_Impact_2022_2024.pdf) |
-| 02 | Urban Heat Island | Lagos State, Nigeria | Random Forest LULC + Mono-window LST | [Lagos_UHI_Analysis_2015_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/d20c73007fecf943dd2c7b6d8cfca723bf78fa5f/Lagos_UHI_Analysis_2015_2024.pdf) |
-| 03 | Coastline Change | Angola Coastline | NDWI delineation + DSAS EPR | [Angola_Coastline_Shoreline_Change.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/9acabb356f6f8e1102476f5c53a13d4dc2742bf7/Angola_Coastline_Shoreline_Change.pdf) |
-| 04 | Flood Impact & Vulnerability | Ogbaru LGA, Anambra State, Nigeria | Sentinel-1 SAR + RF LULC + AHP-FVI | [Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/70794802bb8c7c4536dd457f18419cc1199a30ab/Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf) |
+| 01 | SAR Flood Mapping | Nasarawa State, Nigeria | Sentinel-1 + Otsu thresholding | [Nasarawa_Flood_Impact_2022_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Nasarawa_Flood_Impact_2022_2024.pdf) |
+| 02 | Urban Heat Island | Lagos State, Nigeria | Random Forest LULC + Mono-window LST | [Lagos_UHI_Analysis_2015_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Lagos_UHI_Analysis_2015_2024.pdf) |
+| 03 | Coastline Change | Angola Coastline | NDWI delineation + DSAS EPR | [Angola_Coastline_Shoreline_Change.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Angola_Coastline_Shoreline_Change.pdf) |
+| 04 | Flood Impact & Vulnerability | Ogbaru LGA, Anambra State, Nigeria | Sentinel-1 SAR + RF LULC + AHP-FVI | [Ogbaru_Flood_Impact_Vulnerability.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Ogbaru_Flood_Impact_Vulnerability.pdf) |
 
 ---
 
 ## Repository Structure
 
-```
+\`\`\`
 geospatial-rs-portfolio/
+├── index.html                             # Portfolio landing page (GitHub Pages-ready)
+├── styles.css                             # Landing-page styling
 ├── README.md
 ├── LICENSE
-├── sentinel1_flood_mapping.js           # Project 01 — SAR Otsu flood detection
-├── lagos_uhi_classification.js          # Project 02 — Random Forest LULC + LST
-├── angola_coastline_dsas.js             # Project 03 — NDWI shoreline extraction + EPR
-├── ogbaru_flood_impact_vulnerability.js # Project 04 — SAR flood mapping + RF LULC + AHP-FVI
-└── reports/
-    ├── Nasarawa_Flood_Impact_2022_2024.pdf
-    ├── Lagos_UHI_Analysis_2015_2024.pdf
-    ├── Angola_Coastline_Shoreline_Change.pdf
-    └── Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf
-```
+├── Nasarawa_Flood_Impact_2022_2024.pdf
+├── Lagos_UHI_Analysis_2015_2024.pdf
+├── Angola_Coastline_Shoreline_Change.pdf
+└── Ogbaru_Flood_Impact_Vulnerability.pdf
+\`\`\`
 
-> **PDF reports** are stored in the `reports/` folder and linked throughout this README. Each report contains the full methodology, maps, and statistical outputs corresponding to its GEE script.
+> **Note:** The project reports are stored at the repository root and linked throughout this README. The associated Google Earth Engine editors are linked in each project section.
 
 ---
 
@@ -46,7 +43,7 @@ geospatial-rs-portfolio/
 
 **Script:** `sentinel1_flood_mapping.js`
 **GEE:** [Open in Earth Engine](https://code.earthengine.google.com/227bc81fde875996b884639d2f0d18af)
-**Full Report:** [Nasarawa_Flood_Impact_2022_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/c46d65ea69d8f0094203b2e08e68563bed59e516/Nasarawa_Flood_Impact_2022_2024.pdf)
+**Full Report:** [Nasarawa_Flood_Impact_2022_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Nasarawa_Flood_Impact_2022_2024.pdf)
 
 ### What this project does
 
@@ -73,7 +70,7 @@ Flood extent was computed in hectares at Local Government Area (LGA) resolution 
 
 The 2022 event inundated substantially larger areas than 2024 across all analysed LGAs, with flood extent concentrated along the Benue River floodplain in **Doma, Keana, and Toto LGAs**. The reduced 2024 extent suggests improved hydrological management or climatic variation.
 
-For detailed statistics and inundation maps, see [Nasarawa_Flood_Impact_2022_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/bfb662a91f4daf97c4d4f8470386b82c6bf6d3b2/Nasarawa_Flood_Impact_2022_2024.pdf)
+For detailed statistics and inundation maps, see [Nasarawa_Flood_Impact_2022_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Nasarawa_Flood_Impact_2022_2024.pdf)
 ---
 
 
@@ -84,7 +81,7 @@ For detailed statistics and inundation maps, see [Nasarawa_Flood_Impact_2022_202
 
 **Script:** `lagos_uhi_classification.js`
 **GEE:** [Open in Earth Engine](https://code.earthengine.google.com/b9e59934a3fd84aa96f71e99cfea4556)
-**Full Report:** [Lagos_UHI_Analysis_2015_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/d20c73007fecf943dd2c7b6d8cfca723bf78fa5f/Lagos_UHI_Analysis_2015_2024.pdf)
+**Full Report:** [Lagos_UHI_Analysis_2015_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Lagos_UHI_Analysis_2015_2024.pdf)
 
 ### What this project does
 
@@ -113,7 +110,7 @@ The analysis reveals a strong negative relationship between vegetation cover and
 
 LULC classification accuracy: **89.2% overall accuracy, Kappa = 0.86.**
 
-For full trend analysis, LST maps by year, and LULC transition matrices, see [Lagos_UHI_Analysis_2015_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/d20c73007fecf943dd2c7b6d8cfca723bf78fa5f/Lagos_UHI_Analysis_2015_2024.pdf)
+For full trend analysis, LST maps by year, and LULC transition matrices, see [Lagos_UHI_Analysis_2015_2024.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Lagos_UHI_Analysis_2015_2024.pdf)
 ---
 
 
@@ -125,7 +122,7 @@ For full trend analysis, LST maps by year, and LULC transition matrices, see [La
 
 **Script:** `angola_coastline_dsas.js`
 **GEE:** [Open in Earth Engine](https://code.earthengine.google.com/c20be2146d3386884ddfcde9173b02e6)
-**Full Report:** [Angola_Coastline_Shoreline_Change.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/9acabb356f6f8e1102476f5c53a13d4dc2742bf7/Angola_Coastline_Shoreline_Change.pdf)
+**Full Report:** [Angola_Coastline_Shoreline_Change.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Angola_Coastline_Shoreline_Change.pdf)
 
 ### What this project does
 
@@ -155,13 +152,13 @@ All products were exported to Google Drive: flood masks and change rasters as Ge
 
 The 10-transect EPR analysis reveals spatially variable coastal behaviour along the Angola coastline, with mixed erosion and accretion patterns. Bathymetric analysis from ETOPO1 contextualises the shelf gradient and sediment transport dynamics.
 
-For EPR values per transect, change magnitude maps, and shelf bathymetry profiles, see [Angola_Coastline_Shoreline_Change.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/9acabb356f6f8e1102476f5c53a13d4dc2742bf7/Angola_Coastline_Shoreline_Change.pdf)
+For EPR values per transect, change magnitude maps, and shelf bathymetry profiles, see [Angola_Coastline_Shoreline_Change.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Angola_Coastline_Shoreline_Change.pdf)
 ---
 ## Project 04 — Ogbaru LGA Flood Impact & Vulnerability Assessment
 
 **Script:** `ogbaru_flood_impact_vulnerability.js`
 **GEE:** [Open in Earth Engine](https://code.earthengine.google.com/43f670fce32ea55affdfd4926880ffdd)
-**Full Report:** [Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/70794802bb8c7c4536dd457f18419cc1199a30ab/Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf)
+**Full Report:** [Ogbaru_Flood_Impact_Vulnerability.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Ogbaru_Flood_Impact_Vulnerability.pdf)
 ### What this project does
 
 Multi-temporal geospatial assessment of flood impact and vulnerability in Ogbaru Local Government Area, Anambra State, Nigeria (2018–2023). Sentinel-1 SAR flood extents are mapped annually, overlaid on Random Forest LULC classifications, and combined with population density and terrain data via Analytical Hierarchy Process (AHP) to derive a spatially-explicit Flood Vulnerability Index (FVI).
@@ -189,7 +186,7 @@ Average annual inundation of **2,158.68 ha** (~5.6% of Ogbaru's land area), peak
 
 LULC classification accuracy: **>85% overall accuracy, Kappa > 0.80.**
 
-For full flood extent maps by year, LULC transition matrices, impact tables by land cover class, and the FVI spatial map, see [Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/70794802bb8c7c4536dd457f18419cc1199a30ab/Ogbaru_Flood_Impact_Vulnerability_2018_2023.pdf)
+For full flood extent maps by year, LULC transition matrices, impact tables by land cover class, and the FVI spatial map, see [Ogbaru_Flood_Impact_Vulnerability.pdf](https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Ogbaru_Flood_Impact_Vulnerability.pdf)
 
 
 ## Technical environment
