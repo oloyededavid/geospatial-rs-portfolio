@@ -1,90 +1,10 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Geospatial and remote sensing portfolio of Oloyede David Oluwayinka: flood mapping, urban heat, shoreline change, and vulnerability analysis." />
-    <meta name="theme-color" content="#071a18" />
-    <title>Oloyede David — Geospatial & Remote Sensing</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <a class="skip-link" href="#work">Skip to work</a>
-    <header class="site-header">
-      <a class="wordmark" href="#top" aria-label="Home">OD<span>·</span>RS</a>
-      <nav aria-label="Primary navigation">
-        <a href="#work">Selected work</a>
-        <a href="#approach">Approach</a>
-        <a href="https://github.com/oloyededavid/geospatial-rs-portfolio" target="_blank" rel="noreferrer">GitHub ↗</a>
-      </nav>
-    </header>
-
-    <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <p class="eyebrow">Remote sensing · GIS · Earth observation</p>
-        <h1 id="hero-title">Making changing landscapes <em>legible.</em></h1>
-        <p class="hero-copy">I am Oloyede David Oluwayinka, a First Class Remote Sensing & GIS graduate. I use satellite data and reproducible spatial workflows to turn environmental change into evidence for action.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#work">Explore the portfolio <span aria-hidden="true">↓</span></a>
-          <a class="button button-quiet" href="https://github.com/oloyededavid/geospatial-rs-portfolio" target="_blank" rel="noreferrer">View repository ↗</a>
-        </div>
-        <dl class="signals" aria-label="Portfolio highlights">
-          <div><dt>04</dt><dd>Applied studies</dd></div>
-          <div><dt>2015–24</dt><dd>Time span analysed</dd></div>
-          <div><dt>3</dt><dd>Countries represented</dd></div>
-        </dl>
-      </section>
-
-      <section class="work" id="work" aria-labelledby="work-title">
-        <div class="section-heading"><p class="eyebrow">Selected work</p><h2 id="work-title">Environmental questions, spatial answers.</h2></div>
-        <div class="project-grid">
-          <article class="project-card featured">
-            <div class="card-meta"><span>01</span><span>Flood resilience</span></div>
-            <h3>SAR flood mapping across Nasarawa</h3>
-            <p>Sentinel-1 backscatter change detection and Otsu thresholding reveal inundation patterns across the Benue floodplain in 2022 and 2024.</p>
-            <div class="tags"><span>Sentinel-1</span><span>Otsu</span><span>SRTM</span></div>
-            <a href="https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Nasarawa_Flood_Impact_2022_2024.pdf" target="_blank" rel="noreferrer">Read the study <span aria-hidden="true">↗</span></a>
-          </article>
-          <article class="project-card warm">
-            <div class="card-meta"><span>02</span><span>Urban climate</span></div>
-            <h3>Lagos urban heat island</h3>
-            <p>A decade of land-cover and land-surface-temperature analysis connects urban growth with thermal exposure.</p>
-            <div class="tags"><span>Landsat</span><span>Random Forest</span><span>LST</span></div>
-            <a href="https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Lagos_UHI_Analysis_2015_2024.pdf" target="_blank" rel="noreferrer">Read the study <span aria-hidden="true">↗</span></a>
-          </article>
-          <article class="project-card coast">
-            <div class="card-meta"><span>03</span><span>Coastal change</span></div>
-            <h3>Angola shoreline dynamics</h3>
-            <p>Multi-sensor shoreline extraction traces erosion and accretion along the Angolan coast between 2018 and 2024.</p>
-            <div class="tags"><span>Sentinel-2</span><span>NDWI</span><span>EPR</span></div>
-            <a href="https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Angola_Coastline_Shoreline_Change.pdf" target="_blank" rel="noreferrer">Read the study <span aria-hidden="true">↗</span></a>
-          </article>
-          <article class="project-card river">
-            <div class="card-meta"><span>04</span><span>Risk analysis</span></div>
-            <h3>Ogbaru flood vulnerability</h3>
-            <p>SAR inundation, land-cover classification, and a multi-criteria vulnerability index identify where flood impacts compound.</p>
-            <div class="tags"><span>Sentinel-1</span><span>AHP-FVI</span><span>LULC</span></div>
-            <a href="https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Ogbaru_Flood_Impact_Vulnerability.pdf" target="_blank" rel="noreferrer">Read the study <span aria-hidden="true">↗</span></a>
-          </article>
-        </div>
-      </section>
-
-      <section class="approach" id="approach" aria-labelledby="approach-title">
-        <div><p class="eyebrow">How I work</p><h2 id="approach-title">From signal to decision.</h2></div>
-        <ol>
-          <li><span>01</span><div><h3>Frame the question</h3><p>Start with the environmental or planning decision—not the dataset.</p></div></li>
-          <li><span>02</span><div><h3>Build the evidence</h3><p>Combine fit-for-purpose imagery, transparent preprocessing, and validated analysis.</p></div></li>
-          <li><span>03</span><div><h3>Communicate clearly</h3><p>Deliver maps, metrics, and methods that hold up beyond the first viewing.</p></div></li>
-        </ol>
-      </section>
-    </main>
-    <footer>
-      <p>© <span id="year"></span> Oloyede David Oluwayinka</p>
-      <a href="https://github.com/oloyededavid" target="_blank" rel="noreferrer">GitHub ↗</a>
-    </footer>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  </body>
-</html>
+<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content="Oloyede David Oluwayinka — remote sensing and GIS portfolio." /><meta name="theme-color" content="#ffffff" /><title>Oloyede David Oluwayinka — Remote Sensing & GIS</title><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" /><link rel="stylesheet" href="styles.css" /></head>
+<body><a class="skip-link" href="#work">Skip to selected work</a><header class="site-header"><a class="name-mark" href="#top" aria-label="Oloyede David Oluwayinka, home"><span>Oloyede David</span><small>Oluwayinka</small></a><nav aria-label="Primary navigation"><a href="#work">Work</a><a href="#profile">Profile</a><a href="https://github.com/oloyededavid/geospatial-rs-portfolio" target="_blank" rel="noreferrer">Repository ↗</a></nav></header>
+<main id="top"><section class="hero" aria-labelledby="hero-title"><p class="kicker">Remote sensing · GIS · Earth observation</p><h1 id="hero-title">Evidence for a<br /><em>changing world.</em></h1><div class="hero-bottom"><p>First Class B.Tech graduate in Remote Sensing & GIS, translating satellite data into clear environmental evidence.</p><a class="arrow-link" href="#work">Selected work <span>↓</span></a></div></section>
+<section class="work" id="work" aria-labelledby="work-title"><div class="section-top"><p class="kicker">Selected research</p><h2 id="work-title">Four studies.<br />One spatial lens.</h2></div><div class="project-list">
+<article class="project"><div class="project-number">01</div><div class="project-map" aria-hidden="true"><svg viewBox="0 0 480 290"><path class="outline" d="M92 54l88-25 76 30 97-3 67 59-31 93-100 53-118-20-62-76z"/><path class="river" d="M34 196c61-58 99 21 145-21s88-34 126-2 75-31 141-11"/><circle cx="256" cy="140" r="7"/><path class="grid" d="M0 72h480M0 145h480M0 218h480M120 0v290M240 0v290M360 0v290"/></svg><span>Nasarawa, Nigeria</span></div><div class="project-copy"><p class="project-type">Flood resilience · 2022–24</p><h3>SAR flood mapping</h3><p>Sentinel-1 change detection to map inundation across the Benue floodplain.</p><a href="https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Nasarawa_Flood_Impact_2022_2024.pdf" target="_blank" rel="noreferrer">View study ↗</a></div></article>
+<article class="project"><div class="project-number">02</div><div class="project-map" aria-hidden="true"><svg viewBox="0 0 480 290"><path class="outline" d="M48 72c65-20 70 29 116 11 50-19 62 19 106 8 49-12 89 19 158-23v178H48z"/><path class="urban" d="M130 114h50v50h-50zm62-31h38v38h-38zm48 61h48v48h-48zm62-47h40v40h-40zm-78 106h50v50h-50z"/><path class="water" d="M0 232c90-48 161 22 245-5 91-29 159 26 235-13v76H0z"/><path class="grid" d="M0 72h480M0 145h480M0 218h480M120 0v290M240 0v290M360 0v290"/></svg><span>Lagos, Nigeria</span></div><div class="project-copy"><p class="project-type">Urban climate · 2015–24</p><h3>Urban heat island</h3><p>Land-cover and surface-temperature trends showing the climate cost of urban growth.</p><a href="https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Lagos_UHI_Analysis_2015_2024.pdf" target="_blank" rel="noreferrer">View study ↗</a></div></article>
+<article class="project"><div class="project-number">03</div><div class="project-map" aria-hidden="true"><svg viewBox="0 0 480 290"><path class="land" d="M68 0h242l-26 47 28 38-29 39 23 45-48 41 10 80H68z"/><path class="shore" d="M310 0c-23 54-22 86 2 124-28 52-28 95-2 166"/><path class="old-shore" d="M342 0c-23 53-22 87 2 124-28 52-28 94-2 166"/><path class="transects" d="M243 43h138M243 88h138M243 133h138M243 178h138M243 223h138"/><path class="grid" d="M0 72h480M0 145h480M0 218h480M120 0v290M240 0v290M360 0v290"/></svg><span>Angola coast</span></div><div class="project-copy"><p class="project-type">Coastal change · 2018–24</p><h3>Shoreline dynamics</h3><p>Multi-sensor shoreline extraction tracing erosion and accretion along Angola’s coast.</p><a href="https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Angola_Coastline_Shoreline_Change.pdf" target="_blank" rel="noreferrer">View study ↗</a></div></article>
+<article class="project"><div class="project-number">04</div><div class="project-map" aria-hidden="true"><svg viewBox="0 0 480 290"><path class="outline" d="M97 44l103-22 76 47 95-3 50 76-50 100-90-13-95 35-81-59z"/><path class="river" d="M-3 96c49 30 73 9 110 42s66 19 105 47 66 32 99-3 62-52 170-25"/><path class="risk" d="M164 78l69 11 31 49-20 52-72 16-38-56z"/><circle cx="207" cy="145" r="6"/><path class="grid" d="M0 72h480M0 145h480M0 218h480M120 0v290M240 0v290M360 0v290"/></svg><span>Ogbaru, Nigeria</span></div><div class="project-copy"><p class="project-type">Risk analysis · 2018–23</p><h3>Flood vulnerability</h3><p>Flood exposure, land cover, terrain, and population combined into a decision-ready index.</p><a href="https://github.com/oloyededavid/geospatial-rs-portfolio/blob/main/Ogbaru_Flood_Impact_Vulnerability.pdf" target="_blank" rel="noreferrer">View study ↗</a></div></article>
+</div></section><section class="profile" id="profile" aria-labelledby="profile-title"><p class="kicker">Profile</p><h2 id="profile-title">Rigour, clarity,<br /><em>and relevance.</em></h2><div class="profile-copy"><p>I work across flood risk, urban climate, coastal change, and land-cover analysis—using Google Earth Engine, GIS, and remote-sensing methods to make complex spatial questions easier to act on.</p><ul><li>Google Earth Engine</li><li>QGIS & ArcGIS Pro</li><li>Python for geospatial analysis</li><li>Sentinel & Landsat workflows</li></ul></div></section></main><footer><span>© <span id="year"></span> Oloyede David Oluwayinka</span><a href="https://github.com/oloyededavid" target="_blank" rel="noreferrer">GitHub ↗</a></footer><script>document.getElementById('year').textContent=new Date().getFullYear();</script></body></html>
