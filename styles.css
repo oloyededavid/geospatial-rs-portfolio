@@ -19,9 +19,6 @@
   --sans: "Satoshi", Arial, Helvetica, sans-serif;
 }
 
-body {
-  background: red !important;
-}
 
 * {
   box-sizing: border-box;
