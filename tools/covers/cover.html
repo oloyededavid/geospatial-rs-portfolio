@@ -45,10 +45,10 @@ const STUDIES = {
   },
   async oueme() {
     const d = await get('oueme.geojson'), col = { upper_oueme: '#a8661b', upper_ogun: '#1f5fae' };
-    map.fitBounds([[7.55, 1.2], [10.75, 4.2]]); base(); grat(0.5);
+    map.fitBounds(L.geoJSON(d).getBounds(), { padding: [34, 30] }); base(); grat(0.5);
     L.geoJSON(d, { style: f => ({ color: col[f.properties.basin_id], weight: 2, fillColor: col[f.properties.basin_id], fillOpacity: .06 }), interactive: false }).addTo(map);
     Object.entries(window.cellsets).forEach(([k, list]) => cells(list, .025, col[k]));
-    lab([10.3, 2.78], 'Upper Ouémé at Bétérou', 'area');
+    lab([10.05, 2.85], 'Upper Ouémé at Bétérou', 'area');
     lab([8.95, 3.6], 'Upper Ogun', 'area');
     L.marker([9.19867, 2.26794], { icon: L.divIcon({ className: 'gauge', html: '', iconSize: [10, 10] }), interactive: false }).addTo(map).getElement().style.setProperty('--c', '#a8661b');
     lab([9.19867, 2.26794], 'Bétérou gauge', 'town', 'left');
