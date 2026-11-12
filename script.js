@@ -20,8 +20,4 @@
         el.addEventListener('focusin', () => set(el.dataset.n || (el.closest('[data-n]') || {}).dataset?.n));
         el.addEventListener('focusout', () => set(null));
     });
-    sheet.querySelectorAll('.fp-link').forEach(a => {
-        const n = a.querySelector('.fp').dataset.n;
-        a.addEventListener('focus', () => set(n)); a.addEventListener('blur', () => set(null));
-    });
 })();
