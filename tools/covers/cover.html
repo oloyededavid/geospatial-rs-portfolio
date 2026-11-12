@@ -1,0 +1,76 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
+<link rel="stylesheet" href="leaflet-1.9.4/leaflet.css">
+<style>
+html,body{margin:0;background:#fff}
+#m{width:748px;height:561px;background:#e9e9e6;font-family:'Satoshi',system-ui,sans-serif}
+.leaflet-control-attribution,.leaflet-control-zoom{display:none}
+.grat{font-size:10.5px;color:#55554f;white-space:nowrap;text-shadow:0 0 3px #fff,0 0 3px #fff;pointer-events:none}
+.grat.lat{transform:translate(2px,-14px)}.grat.lon{transform:translate(3px,-18px)}
+.map-label{background:rgba(255,255,255,.94);border:0;box-shadow:none;font-size:12px;padding:1px 6px;border-radius:6px;font-family:'Satoshi',system-ui,sans-serif;color:#111}
+.map-label::before{display:none}
+.map-label.area{font-weight:700}
+.map-label.town{font-weight:400;color:#3c3c38;background:transparent;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff;padding:0 2px}
+.gauge{width:10px;height:10px;border-radius:50%;border:2px solid var(--c);background:#fff;box-sizing:border-box;margin:-5px 0 0 -5px}
+</style></head><body><div id="m"></div>
+<script src="leaflet-1.9.4/leaflet.js"></script><script src="extra.js"></script>
+<script>
+const q = new URLSearchParams(location.search), S = q.get('s');
+const map = L.map('m', { zoomControl: false, attributionControl: false, zoomSnap: 0.05, fadeAnimation: false });
+const get = u => fetch(u).then(r => r.json());
+const lab = (ll, t, cls, dir = 'right') => L.marker(ll, { opacity: 0, interactive: false, icon: L.divIcon({ className: '', iconSize: [0, 0] }) }).addTo(map).bindTooltip(t, { permanent: true, direction: dir, className: 'map-label ' + cls, offset: dir === 'left' ? [-6, 0] : [6, 0] });
+const town = (la, lo, n, dir) => { L.circleMarker([la, lo], { radius: 2.5, color: '#111', weight: 1, fillColor: '#fff', fillOpacity: 1, interactive: false }).addTo(map); lab([la, lo], n, 'town', dir); };
+function grat(step) {
+  for (let la = -10; la <= 30; la += step) L.polyline([[la, -20], [la, 30]], { color: '#8a8a86', weight: .6, opacity: .5, dashArray: '2 4', interactive: false }).addTo(map);
+  for (let lo = -20; lo <= 30; lo += step) L.polyline([[-10, lo], [30, lo]], { color: '#8a8a86', weight: .6, opacity: .5, dashArray: '2 4', interactive: false }).addTo(map);
+  const b = map.getBounds(), dy = (b.getNorth() - b.getSouth()) * .012, dx = (b.getEast() - b.getWest()) * .006;
+  const d = step < 1 ? 1 : 0, f = (v, p, n) => `${Math.abs(v).toFixed(d)}°${v >= 0 ? p : n}`;
+  const g = (ll, t, c) => L.marker(ll, { icon: L.divIcon({ className: 'grat ' + c, html: t, iconSize: null }), interactive: false }).addTo(map);
+  for (let la = Math.ceil(b.getSouth() / step) * step; la <= b.getNorth(); la += step) g([la, b.getWest() + dx], f(+la.toFixed(2), ' N', ' S'), 'lat');
+  for (let lo = Math.ceil(b.getWest() / step) * step; lo <= b.getEast(); lo += step) g([b.getSouth() + dy, lo], f(+lo.toFixed(2), ' E', ' W'), 'lon');
+}
+let TL; const base = () => TL = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', { maxZoom: 13 }).addTo(map);
+const cells = (list, half, c) => list.forEach(([la, lo]) => L.rectangle([[la - half, lo - half], [la + half, lo + half]], { color: c, weight: .5, opacity: .45, fill: false, interactive: false }).addTo(map));
+
+const STUDIES = {
+  async ogun() {
+    const c = '#0f766e', d = await get('ogun.geojson');
+    map.fitBounds([[6.25, 2.55], [9.1, 4.7]]); base(); grat(0.5);
+    L.geoJSON(d, { style: { color: c, weight: .8, opacity: .7, fillColor: c, fillOpacity: .06 }, interactive: false }).addTo(map);
+    const all = L.geoJSON(d); // outer outline only, thicker
+    L.geoJSON({ type: 'Feature', geometry: window.outer.ogun }, { style: { color: c, weight: 2, fill: false }, interactive: false }).addTo(map);
+    lab([8.62, 4.12], 'Ogun River catchment', 'area');
+    lab([6.56, 3.28], 'Lagoon estuary', 'area', 'left');
+    [[7.15, 3.35, 'Abeokuta'], [7.38, 3.95, 'Ibadan'], [7.85, 3.93, 'Oyo'], [8.67, 3.39, 'Shaki'], [6.45, 3.39, 'Lagos']].forEach(t => town(...t));
+  },
+  async oueme() {
+    const d = await get('oueme.geojson'), col = { upper_oueme: '#a8661b', upper_ogun: '#1f5fae' };
+    map.fitBounds([[7.55, 1.2], [10.75, 4.2]]); base(); grat(0.5);
+    L.geoJSON(d, { style: f => ({ color: col[f.properties.basin_id], weight: 2, fillColor: col[f.properties.basin_id], fillOpacity: .06 }), interactive: false }).addTo(map);
+    Object.entries(window.cellsets).forEach(([k, list]) => cells(list, .025, col[k]));
+    lab([10.3, 2.78], 'Upper Ouémé at Bétérou', 'area');
+    lab([8.95, 3.6], 'Upper Ogun', 'area');
+    L.marker([9.19867, 2.26794], { icon: L.divIcon({ className: 'gauge', html: '', iconSize: [10, 10] }), interactive: false }).addTo(map).getElement().style.setProperty('--c', '#a8661b');
+    lab([9.19867, 2.26794], 'Bétérou gauge', 'town', 'left');
+    [[9.34, 2.63, 'Parakou'], [9.71, 1.67, 'Djougou'], [7.85, 3.93, 'Oyo'], [8.67, 3.39, 'Shaki']].forEach(t => town(...t));
+  },
+  async chad() {
+    const c = '#5b6b7a', g = await get('grace_cells.json');
+    const dom = g.domains.features.find(f => f.properties.id === 'lev3');
+    map.fitBounds([[5.6, 6.8], [18.4, 25.2]]); base(); grat(5);
+    L.geoJSON(dom, { style: { color: c, weight: 2, fillColor: c, fillOpacity: .06 }, interactive: false }).addTo(map);
+    cells(g.main_cells, .5, c);
+    lab([10.6, 20.2], 'Lake Chad basin', 'area');
+    [[12.11, 15.04, "N'Djamena"], [11.85, 13.16, 'Maiduguri'], [12.0, 8.52, 'Kano'], [13.81, 8.99, 'Zinder'], [9.31, 13.39, 'Garoua']].forEach(t => town(...t));
+  },
+  async lagos() {
+    const c = '#b3361b', d = await get('lagos.geojson');
+    map.fitBounds([[6.42, 2.66], [6.78, 4.4]]); map.panBy([0, -30], { animate: false }); base(); grat(0.25);
+    L.geoJSON(d, { style: { color: c, weight: .7, opacity: .75, fillColor: c, fillOpacity: .06 }, interactive: false }).addTo(map);
+    L.geoJSON({ type: 'Feature', geometry: window.outer.lagos }, { style: { color: c, weight: 2, fill: false }, interactive: false }).addTo(map);
+    lab([6.735, 2.72], 'Lagos State · 20 local government areas', 'area');
+    [[6.60, 3.35, 'Ikeja'], [6.45, 3.40, 'Lagos Island'], [6.58, 3.98, 'Epe'], [6.42, 2.88, 'Badagry'], [6.62, 3.51, 'Ikorodu'], [6.47, 3.60, 'Lekki']].forEach(t => town(...t));
+  },
+};
+window.go = async () => { await STUDIES[S](); await new Promise(r => { if (!TL.isLoading()) return r(); TL.once('load', r); }); await new Promise(r => setTimeout(r, 800)); document.body.dataset.ready = 1; };
+</script></body></html>
