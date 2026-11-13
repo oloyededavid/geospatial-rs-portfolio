@@ -42,18 +42,6 @@
         b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .18}px, ${(e.clientY - r.top - r.height / 2) * .3}px)`; });
         b.addEventListener('pointerleave', () => { b.style.transform = ''; });
     });
-    // study images: an "Open" label follows the cursor
-    if (fine) document.querySelectorAll('.inset').forEach(row => {
-        const media = row.querySelector('.inset-media'); if (!media) return;
-        const f = document.createElement('span'); f.className = 'follow'; f.setAttribute('aria-hidden', 'true'); f.textContent = 'Open study ↗'; media.appendChild(f);
-        row.addEventListener('pointermove', e => {
-            const r = media.getBoundingClientRect(), inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
-            f.classList.toggle('show', inside);
-            if (inside) { f.style.setProperty('--fx', Math.min(e.clientX - r.left + 14, r.width - 120) + 'px'); f.style.setProperty('--fy', Math.min(e.clientY - r.top + 14, r.height - 40) + 'px'); }
-        });
-        row.addEventListener('pointerleave', () => f.classList.remove('show'));
-    });
-
     // study reels: a fast recap of each study's maps and figures, playing while the row is in view
     document.querySelectorAll('.reel').forEach(reel => {
         const srcs = JSON.parse(reel.dataset.frames || '[]'), caps = JSON.parse(reel.dataset.caps || '[]');

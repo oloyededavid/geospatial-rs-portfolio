@@ -358,16 +358,13 @@ html { scroll-padding-top: 72px; }
 .badge circle { transition: r .25s var(--ease); }
 .badge.on circle { r: 16; }
 
-/* study rows: image wipes in, a label follows the cursor */
+/* study rows: image wipes in */
 .js .inset .inset-media { clip-path: inset(0 0 100% 0); transition: clip-path 1.1s var(--ease) .1s; }
 .js .inset.in .inset-media { clip-path: inset(0 0 0 0); }
 .inset-media { position: relative; }
 .inset-media img { transition: transform 1.2s var(--ease); transform: scale(1.06); }
 .js .inset.in .inset-media img { transform: scale(1); }
 .inset:hover .inset-media img { transform: scale(1.03); }
-.follow { position: absolute; left: 0; top: 0; padding: 8px 12px; background: var(--ink); color: var(--paper); font-size: .8125rem; font-weight: 500; pointer-events: none; opacity: 0; transform: translate(var(--fx, 0), var(--fy, 0)) scale(.8); transition: opacity .2s, transform .12s linear; z-index: 2; white-space: nowrap; }
-.follow.show { opacity: 1; transform: translate(var(--fx, 0), var(--fy, 0)) scale(1); }
-@media (hover: none) { .follow { display: none; } }
 
 /* themes and facts stagger in */
 .js .theme, .js .facts div { opacity: 0; transform: translateY(12px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
@@ -416,7 +413,7 @@ html { scroll-padding-top: 72px; }
 :root { --r: 10px; --r-s: 6px; --r-xs: 4px; }
 .inset-media, .mapbox, .sheet-frame { border-radius: var(--r); }
 .inset-media { overflow: hidden; }
-.cta, .chip, .tags li, .follow, .coord, .skip { border-radius: var(--r-s); }
+.cta, .chip, .tags li, .coord, .skip { border-radius: var(--r-s); }
 .tags li { border-radius: var(--r-xs); }
 .sheet-frame { overflow: hidden; }
 
