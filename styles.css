@@ -838,3 +838,10 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 .site-nav a[aria-current="true"] { font-weight: 400; }
 .site-nav a::before { content: ""; position: absolute; left: -12px; top: 50%; width: 6px; height: 6px; margin-top: -3px; border-radius: 50%; background: var(--accent); opacity: 0; transform: scale(.3); transition: opacity .25s, transform .3s var(--ease); }
 .site-nav a[aria-current="true"]::before { opacity: 1; transform: none; }
+/* visual review: Lagos labels on small screens, legend size, skills on tablets, learning contrast */
+@media (max-width: 1100px) { .lx-legend { width: 200px; padding: 10px 12px; } }
+@media (max-width: 700px) { .lx .lx-lab, .lx .leaflet-tooltip { display: none !important; } }
+@media (max-width: 1100px) { .sk-row { grid-template-columns: 10rem minmax(0, 1fr); } }
+@media (max-width: 720px) { .sk-row { grid-template-columns: 1fr; } }
+.sk-row--next li { color: var(--ink-2); border-color: #cfcec8; }
+.sk-row--next .sk-g { stroke: #6a6963; }
