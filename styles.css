@@ -545,18 +545,21 @@ p.lx-sel { padding: 9px 10px; border: 1px solid var(--rule); border-radius: var(
 .lx-cover:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .lx-stage .leaflet-container { cursor: default; }
 
-/* ================= hero globe: photographic Earth with a study timeline ================= */
+/* ================= hero globe: Earth through time, with a tick scrubber ================= */
 .globe { text-align: center; }
-.globe canvas { display: block; width: min(100%, 420px); aspect-ratio: 1; height: auto; margin: 0 auto; cursor: default; image-rendering: auto; filter: drop-shadow(0 24px 30px rgba(20, 40, 80, .14)); }
-.globe figcaption { display: block !important; margin-top: var(--s-5); }
-.g-cap { font-weight: 700; font-size: 1rem; color: var(--ink); }
-.g-line { margin-top: 2px; font-size: .875rem; color: var(--ink-3); }
-.g-line b { font-weight: 500; color: var(--ink-2); }
+.globe canvas { display: block; width: min(100%, 440px); aspect-ratio: 1; height: auto; margin: 0 auto; }
+.globe figcaption { display: block !important; margin-top: -8px; }
+.g-cap { font-weight: 600; font-size: 1.375rem; letter-spacing: -.01em; color: var(--ink); }
+.g-line { margin-top: 6px; font-size: 1rem; color: #9a9994; }
+.g-line b { font-weight: 500; color: var(--ink); margin-right: 4px; }
 .globe.swap .g-cap, .globe.swap .g-line { animation: gin .6s var(--ease); }
-@keyframes gin { from { opacity: 0; transform: translateY(4px); } }
-.g-rule { position: relative; height: 26px; max-width: 340px; margin: var(--s-4) auto 0; }
-.g-ticks i { position: absolute; bottom: 0; width: 1px; height: 9px; background: #cfcfca; }
-.g-ticks i.k { height: 15px; background: #8f8f8a; }
-.g-thumb { position: absolute; bottom: 0; width: 2px; height: 24px; background: var(--ink); transform: translateX(-1px); transition: left .9s var(--ease); }
-.g-ends { display: flex; justify-content: space-between; max-width: 340px; margin: 4px auto 0; font-size: 11px; font-family: var(--mono); color: var(--ink-3); }
-@media (prefers-reduced-motion: reduce) { .g-thumb { transition: none; } .globe.swap .g-cap, .globe.swap .g-line { animation: none; } }
+@keyframes gin { from { opacity: 0; filter: blur(3px); } }
+.g-rule { position: relative; height: 34px; max-width: 360px; margin: var(--s-5) auto 0; cursor: ew-resize; touch-action: none; }
+.g-rule:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.g-ticks i { position: absolute; bottom: 0; width: 1px; height: 9px; background: #c9c8c3; transform: translateX(-.5px); }
+.g-ticks i.k { height: 13px; background: #b5b4ae; }
+.g-thumb { position: absolute; bottom: 0; width: 2px; height: 34px; background: var(--ink); transform: translateX(-1px); }
+.g-ends { display: flex; justify-content: space-between; max-width: 360px; margin: 10px auto 0; font-size: .8125rem; color: #9a9994; }
+.g-ends span { transition: color .3s, font-weight .3s; }
+.g-ends span.on { color: var(--ink); font-weight: 600; }
+@media (prefers-reduced-motion: reduce) { .globe.swap .g-cap, .globe.swap .g-line { animation: none; } }
