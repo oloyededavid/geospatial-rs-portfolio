@@ -410,3 +410,28 @@ html { scroll-padding-top: 72px; }
 .inset { isolation: isolate; }
 
 @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } .ticker { overflow-x: auto; } .js .globe { animation: none; opacity: 1; transform: none; } }
+
+/* ================= subtle rounding ================= */
+:root { --r: 10px; --r-s: 6px; --r-xs: 4px; }
+.inset-media, .mapbox, .sheet-frame { border-radius: var(--r); }
+.inset-media { overflow: hidden; }
+.cta, .chip, .tags li, .follow, .coord, .skip { border-radius: var(--r-s); }
+.tags li { border-radius: var(--r-xs); }
+.sheet-frame { overflow: hidden; }
+
+/* ================= study recap reels ================= */
+.reel { position: relative; background: #fff; }
+.reel .frame { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.04); transition: opacity .7s var(--ease), transform 3.6s linear; }
+.reel .frame:first-child { position: relative; }
+.reel .frame.on { opacity: 1; transform: scale(1); }
+.reel.playing .frame.on { transform: scale(1.035); }
+.reel-cap { position: absolute; left: 14px; bottom: 26px; max-width: calc(100% - 28px); padding: 5px 10px; border-radius: var(--r-s); background: rgba(20, 20, 18, .82); color: var(--paper); font-size: .8125rem; line-height: 1.35; z-index: 2; transition: opacity .3s; }
+.reel-bar { position: absolute; left: 14px; right: 14px; bottom: 12px; display: flex; gap: 6px; z-index: 2; }
+.reel-bar i { flex: 1; height: 3px; border-radius: 3px; background: rgba(20, 20, 18, .18); overflow: hidden; position: relative; }
+.reel-bar i::after { content: ''; position: absolute; inset: 0; background: var(--ink); transform: scaleX(0); transform-origin: 0 50%; }
+.reel-bar i.done::after { transform: scaleX(1); }
+.reel-bar i.now::after { animation: seg var(--dur, 2.6s) linear forwards; }
+@keyframes seg { to { transform: scaleX(1); } }
+.inset:hover .reel-bar i.now::after { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .reel .frame { transition: opacity .2s; transform: none !important; } .reel-bar i.now::after { animation: none; transform: scaleX(1); } }
+.inset h3 { font-size: clamp(1.375rem, 1.9vw, 1.75rem); line-height: 1.16; } .tags li { font-size: 10.5px; padding: 5px 7px; }

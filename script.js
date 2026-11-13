@@ -53,6 +53,29 @@
         });
         row.addEventListener('pointerleave', () => f.classList.remove('show'));
     });
+
+    // study reels: a fast recap of each study's maps and figures, playing while the row is in view
+    document.querySelectorAll('.reel').forEach(reel => {
+        const srcs = JSON.parse(reel.dataset.frames || '[]'), caps = JSON.parse(reel.dataset.caps || '[]');
+        const cap = reel.querySelector('.reel-cap'), segs = [...reel.querySelectorAll('.reel-bar i')], first = reel.querySelector('.frame');
+        let frames = [first], k = 0, timer = null, loaded = false, paused = false;
+        const DUR = 2600;
+        const load = () => { if (loaded) return; loaded = true; srcs.forEach(src => { const im = new Image(); im.className = 'frame'; im.alt = ''; im.decoding = 'async'; im.src = src; reel.insertBefore(im, cap); frames.push(im); }); };
+        const show = i => {
+            frames.forEach((f, j) => f.classList.toggle('on', j === i));
+            segs.forEach((s, j) => { s.classList.toggle('done', j < i); s.classList.remove('now'); });
+            void (segs[i] && segs[i].offsetWidth); segs[i] && segs[i].classList.add('now'); segs[i] && segs[i].style.setProperty('--dur', DUR + 'ms');
+            cap.textContent = caps[i] || ''; k = i;
+        };
+        const tick = () => { if (!paused) show((k + 1) % frames.length); timer = setTimeout(tick, DUR); };
+        const start = () => { if (reduced || timer) return; load(); reel.classList.add('playing'); show(k); timer = setTimeout(tick, DUR); };
+        const stop = () => { clearTimeout(timer); timer = null; reel.classList.remove('playing'); };
+        const row = reel.closest('.inset');
+        row.addEventListener('mouseenter', () => { paused = true; }); row.addEventListener('mouseleave', () => { paused = false; });
+        if (reduced) { load(); show(0); reel.addEventListener('click', () => show((k + 1) % frames.length)); return; }
+        if ('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? start() : stop()), { threshold: .35 }).observe(reel);
+    });
+
     // about: stagger in when it scrolls into view
     const about = document.querySelector('.about');
     if (about) { if (reduced || !('IntersectionObserver' in window)) about.classList.add('in'); else { const ao = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { about.classList.add('in'); ao.disconnect(); } }), { threshold: .12 }); ao.observe(about); } }
