@@ -1,4 +1,4 @@
-# Oloyede David · Geospatial research portfolio
+# David Oloyede · Geospatial research portfolio
 
 Source for [oloyededavid.github.io/geospatial-rs-portfolio](https://oloyededavid.github.io/geospatial-rs-portfolio/).
 
