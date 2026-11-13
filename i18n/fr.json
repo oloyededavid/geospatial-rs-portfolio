@@ -9,7 +9,7 @@
   "blocks": {
     "hello-body": "Je suis <<1:David Oloyede>>, chercheur en sciences géospatiales et de l’environnement. J’étudie l’évolution de l’eau, du climat, des villes, des territoires et des écosystèmes à l’aide de <<2:l’imagerie satellitaire>>, des <<3:SIG>> et de <<4:l’analyse spatiale>>, et je conçois les <<5:cartes et outils web>> qui rendent les résultats faciles à explorer.",
     "ab-lead": "Je suis David Oloyede, <<1:chercheur en sciences géospatiales et de l’environnement>>, et je lis une Terre en mutation vue d’en haut.",
-    "ab-body": "J’ai été formé en télédétection et en systèmes d’information géoscientifiques à la Federal University of Technology d’Akure, dont je suis sorti diplômé en 2025 avec une <<1:mention First Class Honours, parmi les 4 % les meilleurs>> de la School of Earth and Mineral Sciences, et je travaille sur <<2:l’ensemble du domaine>> plutôt que sur un seul de ses aspects : eau et risques, climat et villes, territoires, écosystèmes et biodiversité. J’ai pesé l’eau stockée dans <<3:le bassin du lac Tchad>> grâce aux satellites gravimétriques, reconstitué <<4:les crues, les sécheresses et les pluies extrêmes>> au Nigeria là où les stations de mesure font défaut, testé des estimations satellitaires de <<5:la recharge des nappes>>, suivi <<6:la rivière Ogun>> de ses sources jusqu’à la lagune et étudié <<7:la chaleur urbaine à Lagos>> ; au-delà de ces études, j’ai cartographié des inondations côtières par radar, évalué la vulnérabilité aux inondations, classifié dix ans de changements d’occupation du sol, comparé des transects de température relevés sur le terrain à des mesures satellitaires et participé à des levés RTK et par drone. Les outils varient selon la question, de l’imagerie multispectrale, thermique et radar à la gravimétrie, aux statistiques spatiales et à l’apprentissage automatique, mais l’exigence reste la même : chaque résultat est confronté à des données indépendantes lorsqu’elles existent, son incertitude est clairement indiquée, et son code et ses données sont publiés afin que <<8:chacun puisse le reproduire>>. L’eau, le climat, les villes, les forêts et les écosystèmes forment pour moi un seul système vu sous différents angles, et je souhaite continuer à travailler sur l’ensemble de ces sujets, avec <<9:l’observation de la Terre et la GeoAI>> pour moyens et des questions qui comptent pour les gens pour finalité."
+    "ab-body": "Je suis ingénieur et chercheur géospatial chez <<1:Prevalence Studio>>, où je mène des projets d’observation de la Terre et de SIG pour des clients tels que <<2:Imoyen Greenfields Ltd>> et <<3:Sustainable Solutions for Africa (SSFA)>>. J’ai été formé en télédétection et en systèmes d’information géoscientifiques à la <<4:Federal University of Technology d’Akure>>, dont je suis sorti diplômé en 2025 avec une <<5:mention First Class Honours, parmi les 4 % les meilleurs>> de la School of Earth and Mineral Sciences, en tant que boursier en géosciences de la <<6:NNPC Foundation>>. En chemin, j’ai été assistant de recherche au <<7:Centre for Space Research and Applications (CESRA)>>, où j’ai dirigé une équipe de quatre étudiants et comparé des transects de température relevés à Akure à des mesures satellitaires, analyste géospatial chez <<8:GISPlus Technologies>> et stagiaire géospatial auprès de la <<9:Federal Airports Authority of Nigeria>> à Akure. Au <<10:laboratoire de télédétection et de SIG>> de la FUTA, j’ai cartographié des inondations côtières à Lagos par radar Sentinel-1 et classifié dix ans de changements d’occupation du sol ; mon mémoire sur la chaleur urbaine à Lagos, 2015–2024, est aujourd’hui un manuscrit en cours d’évaluation. Mes propres études pèsent l’eau stockée dans <<11:le bassin du lac Tchad>> grâce aux satellites gravimétriques, reconstituent <<12:les crues, les sécheresses et les pluies extrêmes>> au Nigeria là où les stations de mesure font défaut, testent des estimations satellitaires de <<13:la recharge des nappes>>, suivent <<14:la rivière Ogun>> de ses sources jusqu’à la lagune et étudient <<15:la chaleur urbaine à Lagos>>. Chacune est confrontée à des données indépendantes lorsqu’elles existent, indique son incertitude et publie son code et ses données afin que <<16:chacun puisse la reproduire>>. En dehors de ces études, je cartographie avec <<17:YouthMappers>>, avec plus de 1 000 contributions à OpenStreetMap pour des communautés exposées aux inondations."
   },
   "text": {
     "Skip to content": "Aller au contenu",
@@ -138,13 +138,19 @@
     "Ogun catchment, sub-basins Z1–Z5": "Bassin de l’Ogun, sous-bassins Z1–Z5",
     "Upper Ouémé and Upper Ogun catchments": "Bassins du haut Ouémé et du haut Ogun",
     "Lake Chad basin and GRACE cells": "Bassin du lac Tchad et cellules GRACE",
-    "Esri Certified": "Certifié Esri",
-    "Esri Trained": "Formé par Esri",
-    "Esri YPN member": "Membre du YPN Esri",
     "© 2026 David Oloyede": "© 2026 David Oloyede",
     "Top ↑": "Haut ↑",
     "Index map: Natural Earth · Globe imagery and study basemaps © Esri": "Carte de situation : Natural Earth · Imagerie du globe et fonds de carte des études © Esri",
-    "Email me": "Écrivez-moi"
+    "Email me": "Écrivez-moi",
+    "Esri Training: ArcGIS Pro, Imagery, Cartography": "Formation Esri : ArcGIS Pro, imagerie, cartographie",
+    "Esri Young Professional Network": "Esri Young Professional Network",
+    "NASA ARSET": "NASA ARSET",
+    "UNESCO Flood Hazard and Exposure Mapping": "UNESCO : cartographie de l’aléa et de l’exposition aux inondations",
+    "NNPC Foundation Scholar": "Boursier de la NNPC Foundation",
+    "Dean’s List, 7 of 10 semesters": "Tableau d’honneur du doyen, 7 semestres sur 10",
+    "ISPRS member": "Membre de l’ISPRS",
+    "WASCAL capacity-building trainee": "Renforcement des capacités WASCAL",
+    "YouthMappers": "YouthMappers"
   },
   "attr": {
     "David Oloyede · Geospatial and Environmental Researcher": "David Oloyede · Chercheur en sciences géospatiales et de l’environnement",
@@ -168,7 +174,7 @@
     "Footer": "Pied de page",
     "Map of the Ogun River catchment from its headwaters to the Lagos lagoon, divided into sub-basins Z1 to Z5 and shaded by mean annual rainfall, 2019–2024.": "Carte du bassin versant de l’Ogun, des sources à la lagune de Lagos, divisé en sous-bassins Z1 à Z5 et coloré selon les précipitations annuelles moyennes, 2019–2024.",
     "Open the Lagos explorer": "Ouvrir l’explorateur de Lagos",
-    "Esri credentials": "Qualifications Esri"
+    "Credentials": "Qualifications"
   },
   "js": {
     "13.8 billion years ago": "Il y a 13,8 milliards d’années",

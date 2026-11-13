@@ -25,7 +25,7 @@ LANGS = ['fr', 'de']
 BLOCKS = {
     'hello-body': r'(<p class="hello-body">)(.*?)(</p>)',
     'ab-lead': r'(<p class="ab-lead">)(.*?)(</p>)',
-    'ab-body': r'(<div class="ab-intro">.*?</div>\s*<p>)(.*?)(</p>)',
+    'ab-body': r'(<p class="ab-body">)(.*?)(</p>)',
 }
 INLINE = re.compile(r'<b\b[^>]*>.*?</b>|<span class="chip[^"]*">.*?</span>|<a class="ab-chip"[^>]*>.*?</a>', re.S)
 

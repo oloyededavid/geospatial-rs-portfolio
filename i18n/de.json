@@ -9,7 +9,7 @@
   "blocks": {
     "hello-body": "Ich bin <<1:David Oloyede>>, Forscher in Geoinformatik und Umweltwissenschaften. Ich verfolge mit <<2:Satellitenbildern>>, <<3:GIS>> und <<4:räumlicher Analyse>>, wie sich Wasser, Klima, Städte, Landflächen und Ökosysteme verändern, und entwickle die <<5:Karten und Web-Tools>>, mit denen sich die Ergebnisse leicht erkunden lassen.",
     "ab-lead": "Ich bin David Oloyede, <<1:Forscher in Geoinformatik und Umweltwissenschaften>>, und ich lese eine sich wandelnde Erde von oben.",
-    "ab-body": "Ich habe Fernerkundung und Geoinformationssysteme an der Federal University of Technology in Akure studiert und 2025 mit <<1:First Class Honours unter den besten 4 %>> der School of Earth and Mineral Sciences abgeschlossen, und ich arbeite im <<2:gesamten Fachgebiet>> statt nur in einem Teilbereich: Wasser und Naturgefahren, Klima und Städte, Landflächen, Ökosysteme und Biodiversität. Ich habe das im <<3:Tschadsee-Becken>> gespeicherte Wasser mit Schwerefeldsatelliten gewogen, <<4:Hochwasser, Dürren und Starkniederschläge>> in Nigeria dort rekonstruiert, wo Messstationen fehlen, satellitengestützte Schätzungen der <<5:Grundwasserneubildung>> geprüft, den <<6:Fluss Ogun>> vom Quellgebiet bis zur Lagune verfolgt und die <<7:städtische Hitze in Lagos>> untersucht; darüber hinaus habe ich Küstenüberschwemmungen mit Radar kartiert, die Hochwasservulnerabilität bewertet, zehn Jahre Landbedeckungswandel klassifiziert, im Gelände gemessene Temperaturtransekte mit Satellitenmessungen verglichen und bei RTK- und Drohnenvermessungen mitgewirkt. Die Werkzeuge wechseln mit der Fragestellung, von multispektralen, thermischen und Radarbildern bis zu Gravimetrie, räumlicher Statistik und maschinellem Lernen, doch der Anspruch bleibt gleich: Jedes Ergebnis wird, wo unabhängige Daten vorliegen, mit ihnen geprüft, seine Unsicherheit wird klar benannt, und Code und Daten werden veröffentlicht, damit <<8:alle es reproduzieren können>>. Wasser, Klima, Städte, Wälder und Ökosysteme sind für mich ein einziges System, aus verschiedenen Blickwinkeln betrachtet, und ich möchte weiterhin über all diese Bereiche hinweg arbeiten, mit <<9:Erdbeobachtung und GeoAI>> als Mittel und mit Fragen, die für Menschen wichtig sind, als Ziel."
+    "ab-body": "Ich arbeite als Geospatial Engineer und Forscher bei <<1:Prevalence Studio>> an Projekten der Erdbeobachtung und GIS für Kunden wie <<2:Imoyen Greenfields Ltd>> und <<3:Sustainable Solutions for Africa (SSFA)>>. Ich habe Fernerkundung und Geoinformationssysteme an der <<4:Federal University of Technology in Akure>> studiert und 2025 mit <<5:First Class Honours unter den besten 4 %>> der School of Earth and Mineral Sciences abgeschlossen, als Geowissenschafts-Stipendiat der <<6:NNPC Foundation>>. Auf diesem Weg war ich wissenschaftliche Hilfskraft am <<7:Centre for Space Research and Applications (CESRA)>>, wo ich ein vierköpfiges Studierendenteam leitete und in Akure gemessene Temperaturtransekte mit Satellitenmessungen verglich, Geodatenanalyst bei <<8:GISPlus Technologies>> und Praktikant bei der <<9:Federal Airports Authority of Nigeria>> in Akure. Im <<10:Labor für Fernerkundung und GIS>> der FUTA habe ich Küstenüberschwemmungen in Lagos mit Sentinel-1-Radar kartiert und zehn Jahre Landbedeckungswandel klassifiziert; meine Abschlussarbeit zur städtischen Hitze in Lagos, 2015–2024, ist inzwischen ein Manuskript in Begutachtung. Meine eigenen Studien wiegen das im <<11:Tschadsee-Becken>> gespeicherte Wasser mit Schwerefeldsatelliten, rekonstruieren <<12:Hochwasser, Dürren und Starkniederschläge>> in Nigeria dort, wo Messstationen fehlen, prüfen satellitengestützte Schätzungen der <<13:Grundwasserneubildung>>, verfolgen den <<14:Fluss Ogun>> vom Quellgebiet bis zur Lagune und untersuchen die <<15:städtische Hitze in Lagos>>. Jede wird, wo unabhängige Daten vorliegen, mit ihnen geprüft, benennt ihre Unsicherheit und veröffentlicht Code und Daten, damit <<16:alle sie reproduzieren können>>. Außerhalb der Studien kartiere ich mit <<17:YouthMappers>> und habe mehr als 1.000 OpenStreetMap-Beiträge für hochwassergefährdete Gemeinden geleistet."
   },
   "text": {
     "Skip to content": "Zum Inhalt springen",
@@ -138,13 +138,19 @@
     "Ogun catchment, sub-basins Z1–Z5": "Ogun-Einzugsgebiet, Teileinzugsgebiete Z1–Z5",
     "Upper Ouémé and Upper Ogun catchments": "Einzugsgebiete des oberen Ouémé und des oberen Ogun",
     "Lake Chad basin and GRACE cells": "Tschadsee-Becken und GRACE-Zellen",
-    "Esri Certified": "Esri-zertifiziert",
-    "Esri Trained": "Esri-geschult",
-    "Esri YPN member": "Mitglied im Esri YPN",
     "© 2026 David Oloyede": "© 2026 David Oloyede",
     "Top ↑": "Nach oben ↑",
     "Index map: Natural Earth · Globe imagery and study basemaps © Esri": "Übersichtskarte: Natural Earth · Globusbilder und Grundkarten der Studien © Esri",
-    "Email me": "Schreiben Sie mir"
+    "Email me": "Schreiben Sie mir",
+    "Esri Training: ArcGIS Pro, Imagery, Cartography": "Esri-Schulungen: ArcGIS Pro, Bilddaten, Kartographie",
+    "Esri Young Professional Network": "Esri Young Professional Network",
+    "NASA ARSET": "NASA ARSET",
+    "UNESCO Flood Hazard and Exposure Mapping": "UNESCO: Kartierung von Hochwassergefahr und Exposition",
+    "NNPC Foundation Scholar": "Stipendiat der NNPC Foundation",
+    "Dean’s List, 7 of 10 semesters": "Dean’s List, 7 von 10 Semestern",
+    "ISPRS member": "Mitglied der ISPRS",
+    "WASCAL capacity-building trainee": "WASCAL-Kapazitätsaufbau",
+    "YouthMappers": "YouthMappers"
   },
   "attr": {
     "David Oloyede · Geospatial and Environmental Researcher": "David Oloyede · Forscher in Geoinformatik und Umweltwissenschaften",
@@ -168,7 +174,7 @@
     "Footer": "Fußzeile",
     "Map of the Ogun River catchment from its headwaters to the Lagos lagoon, divided into sub-basins Z1 to Z5 and shaded by mean annual rainfall, 2019–2024.": "Karte des Ogun-Einzugsgebiets vom Quellgebiet bis zur Lagune von Lagos, unterteilt in die Teileinzugsgebiete Z1 bis Z5 und eingefärbt nach mittlerem Jahresniederschlag, 2019–2024.",
     "Open the Lagos explorer": "Lagos-Explorer öffnen",
-    "Esri credentials": "Esri-Qualifikationen"
+    "Credentials": "Qualifikationen"
   },
   "js": {
     "13.8 billion years ago": "Vor 13,8 Milliarden Jahren",
