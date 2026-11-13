@@ -809,3 +809,15 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 @media (max-width: 1100px) { .lx-tabs { right: 10px; max-width: none; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; } .lx-tabs > * { flex: none; white-space: nowrap; } }
 .inset .tags { -webkit-mask-image: none; mask-image: none; }
 .inset .tags li.off { display: none; }
+/* header: name left, nav right */
+.hd { display: flex !important; justify-content: space-between; align-items: center !important; grid-template-areas: none !important; }
+.site-nav { display: flex !important; justify-self: auto; overflow: visible; }
+@media (max-width: 860px) { .site-nav { justify-content: flex-end; } .site-nav a { flex: none; padding: 0 12px !important; } }
+@media (max-width: 420px) { .site-nav a { padding: 0 10px !important; font-size: .8125rem; } }
+/* card buttons: squared, white arrow */
+.cta { border-radius: 6px; }
+.cta .arrow { color: #fff; }
+/* titles: full width, no balancing */
+.inset h3 { max-width: none; text-wrap: wrap; }
+.inset .inset-text { max-width: none !important; }
+.sh { gap: 0; }
