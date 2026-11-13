@@ -200,18 +200,18 @@ h1, h2, h3 { margin: 0; font-weight: 500; }
 
 /* ================= insets: one study per row ================= */
 .inset-list { border-bottom: 1px solid var(--rule); }
-.inset { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-8); align-items: center; padding-block: var(--s-7); border-top: 1px solid var(--rule); }
+.inset { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-8); align-items: center; padding-block: var(--s-6); border-top: 1px solid var(--rule); }
 .inset:first-child { border-top: 0; padding-top: var(--s-4); }
 .inset-text { min-width: 0; max-width: 30rem; }
 .tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s-2); }
-.tags li { font-size: .8125rem; line-height: 1; color: var(--ink-2); padding: 6px 10px; border: 1px solid var(--rule); border-radius: 999px; background: #fbfaf7; }
+.tags li { font-family: var(--mono); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; line-height: 1; color: var(--ink-2); padding: 6px 8px; border: 1px solid var(--rule); }
 .inset h3 { font-family: var(--display); font-size: clamp(1.5rem, 2.3vw, 2rem); line-height: 1.12; letter-spacing: -.01em; margin-top: var(--s-4); text-wrap: balance; }
 .inset-link::after { content: ''; position: absolute; inset: 0; z-index: 1; }
 .inset-link:focus-visible { outline: none; }
 .inset:has(.inset-link:focus-visible) { outline: 2px solid var(--accent); outline-offset: 4px; }
 .inset-desc { margin-top: var(--s-3); color: var(--ink-2); font-size: var(--fs-small); line-height: 1.65; }
 .inset-actions { display: flex; align-items: center; gap: var(--s-4); margin-top: var(--s-5); }
-.cta { display: inline-flex; align-items: center; gap: .4em; font-size: var(--fs-small); font-weight: 500; color: var(--paper); background: var(--ink); padding: 10px 16px; border-radius: 999px; transition: background .25s ease; }
+.cta { display: inline-flex; align-items: center; gap: .4em; font-size: var(--fs-small); font-weight: 500; color: var(--paper); background: var(--ink); padding: 11px 18px; transition: background .25s ease; }
 .cta .arrow { display: inline-block; transition: transform .3s var(--ease); }
 .inset:hover .cta { background: #2b2b28; }
 .inset:hover .cta .arrow { transform: translate(2px, -2px); }
