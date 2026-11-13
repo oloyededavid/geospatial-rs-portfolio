@@ -845,3 +845,4 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 @media (max-width: 720px) { .sk-row { grid-template-columns: 1fr; } }
 .sk-row--next li { color: var(--ink-2); border-color: #cfcec8; }
 .sk-row--next .sk-g { stroke: #6a6963; }
+.sk-row--next .sk-h { color: var(--ink); }
