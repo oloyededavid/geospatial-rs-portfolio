@@ -185,9 +185,8 @@
         for (let ch = 0; ch < 3; ch++) c[ch] = lerp(c[ch] * light + s, L.haze[ch], hz);
     }
     function render(kA, kB, m, lon0) {
-        const tA = texture(kA), tB = m > 0 ? texture(kB) : null;
+        const tA = texture(kA) || texture('pangaea'), tB = m > 0 ? (texture(kB) || tA) : null;
         out.fill(0);
-        if (!tA) return false;
         for (let i = 0; i < px.length; i += 7) {
             const o = px[i], v = px[i + 1], lon = lon0 + px[i + 2];
             sample(tA, v, lon, cA); shade(cA, kA, px[i + 3], px[i + 4], px[i + 5]);

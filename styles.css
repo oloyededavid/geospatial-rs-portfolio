@@ -272,9 +272,6 @@ html { scroll-padding-top: 72px; }
 
 /* ================= footer ================= */
 .site-footer .wrap { display: grid; gap: var(--s-5); }
-.f-contact { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-2) var(--s-6); }
-.f-mail { font-family: var(--display); font-weight: 700; font-size: clamp(1.25rem, 2.6vw, 1.75rem); color: var(--ink); border-bottom: 1px solid var(--rule); user-select: all; }
-.f-mail:hover { border-bottom-color: var(--ink); }
 .f-credits { font-size: .8125rem; color: var(--ink-3); }
 
 /* touch: comfortable targets */
@@ -443,7 +440,7 @@ html { scroll-padding-top: 72px; }
 .js .legend.in .leg:nth-child(2) { transition-delay: .06s; } .js .legend.in .leg:nth-child(3) { transition-delay: .12s; } .js .legend.in .leg:nth-child(4) { transition-delay: .18s; } .js .legend.in .leg:nth-child(5) { transition-delay: .24s; }
 .js .badge { opacity: 0; transition: opacity .5s var(--ease) 1.3s; }
 .js .sheet.drawn .badge { opacity: 1; }
-.cta .arrow, .f-mail { transition: transform .3s var(--ease), border-color .2s; }
+.cta .arrow { transition: transform .3s var(--ease), border-color .2s; }
 .leg { transition: background .2s; } .leg:hover { background: #fafafa; }
 @media (prefers-reduced-motion: reduce) {
   .js .inset .tags li, .js .leg, .js .badge { opacity: 1 !important; transform: none !important; transition: none !important; }
@@ -602,7 +599,6 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 .about .ab { padding-inline: var(--s-6); }
 .ab-text { margin-top: var(--s-4); max-width: 50rem; }
 .ab-text p { font-size: clamp(1.0625rem, 1.35vw, 1.1875rem); line-height: 1.85; color: var(--ink-2); }
-.ab-first { color: var(--ink); font-weight: 500; }
 .ab-text a { color: var(--ink); text-decoration: underline; text-decoration-color: rgba(31, 95, 174, .45); text-decoration-thickness: 1.5px; text-underline-offset: 4px; transition: text-decoration-color .2s; }
 .ab-text a:hover { text-decoration-color: var(--accent); }
 .sk { margin-top: var(--s-8); }
