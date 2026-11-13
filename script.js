@@ -81,10 +81,15 @@
         const r = ul.getBoundingClientRect().right; li.forEach(x => { if (x.getBoundingClientRect().right > r + 1) x.classList.add('off'); });
     });
     fitTags(); document.fonts && document.fonts.ready.then(fitTags); addEventListener('resize', () => requestAnimationFrame(fitTags));
+    // language switcher: remember the choice and keep the current section
+    document.querySelectorAll('.lang a[data-lang]').forEach(a => a.addEventListener('click', () => {
+        try { localStorage.setItem('lang', a.dataset.lang); } catch (e) {}
+        a.href = a.href.split('#')[0] + location.hash;
+    }));
     // about: copy the email address, and say so
     document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', async () => {
         const label = b.querySelector('span'); if (!label) return; const was = b.dataset.label || (b.dataset.label = label.textContent); clearTimeout(b._t);
-        try { await navigator.clipboard.writeText(b.dataset.copy); label.textContent = 'Copied'; }
+        try { await navigator.clipboard.writeText(b.dataset.copy); label.textContent = (window.I18N && window.I18N['Copied']) || 'Copied'; }
         catch (e) { location.href = 'mailto:' + b.dataset.copy; return; }
         b._t = setTimeout(() => { label.textContent = was; }, 1800);
     }));

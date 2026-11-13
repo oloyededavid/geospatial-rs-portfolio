@@ -28,3 +28,13 @@ A two-section personal site: an introduction, and selected research shown as car
 Add a study by copying one `<article class="card">` block in `index.html` and adding its image (4:3) at two widths in `assets/projects/`. The first card uses `card--feature` for the wide layout. Check every link before publishing.
 
 Fonts load from Fontshare (Satoshi, Zodiak) and Google Fonts (Geist Mono).
+
+## Languages
+
+The site is in English (`/`), French (`/fr/`) and German (`/de/`). `index.html` is the English source. French and German text lives in `i18n/fr.json` and `i18n/de.json`. After any change to `index.html` or the dictionaries, rebuild the translated pages:
+
+```bash
+python3 tools/build_i18n.py
+```
+
+The build stops if a dictionary entry no longer matches the page or if English text is left untranslated. Text inside the study map images is part of the images and stays in English.

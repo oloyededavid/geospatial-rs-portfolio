@@ -2,25 +2,28 @@
    real explorer data. Not interactive here; the whole figure links to the study. Leaflet loads only near the screen. */
 (() => {
     const fig = document.querySelector('.lx'); if (!fig) return;
+    const T = s => (window.I18N && window.I18N[s]) || s, ROOT = window.SITE_ROOT || '';
+    const LANG = document.documentElement.lang || 'en', LOC = LANG === 'en' ? 'en-GB' : LANG;
+    const N = (v, d) => { const t = v.toFixed(d); return LANG === 'en' ? t : t.replace('.', ','); };
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const css = h => new Promise(r => { const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = h; l.onload = r; document.head.append(l); });
     const js = s => new Promise((r, x) => { const e = document.createElement('script'); e.src = s; e.onload = r; e.onerror = x; document.head.append(e); });
     const HEAT = ['#fde8d3', '#f8b77a', '#ec7b37', '#c2470f', '#6b2406'], GREEN = ['#eef5e6', '#bfdcaa', '#7fb86a', '#3f8a3a', '#14532d'], PURP = ['#f1ecf7', '#cdbde3', '#9e86c8', '#6c4fa6', '#3d2470'], DIV = ['#2f6fd6', '#a9c4ee', '#f4f4f2', '#f1a37a', '#c2410c'];
     const L_ = [
-        { k: 'lst', tab: 'Temperature', title: 'Land surface temperature (°C)', sub: 'Landsat, dry-season median', pal: HEAT, fmt: v => v.toFixed(1), unit: ' °C' },
-        { k: 'z', tab: 'Hot & cold spots', title: 'Hot and cold spots (Gi* z)', sub: 'Five nearest neighbours; none significant after correction', pal: DIV, fmt: v => (v > 0 ? '+' : '') + v.toFixed(2), unit: '', div: true },
-        { k: 'hpi', tab: 'Heat × population', title: 'Heat × population index (0–1)', sub: 'Surface temperature × population density, each scaled 0–1', pal: HEAT, fmt: v => v.toFixed(2), unit: '' },
-        { k: 'ndvi', tab: 'Vegetation', title: 'Vegetation (NDVI)', sub: 'Dry-season median', pal: GREEN, fmt: v => v.toFixed(2), unit: '' },
-        { k: 'dens', tab: 'Population', title: 'Population density (people per km²)', sub: 'WorldPop 2020, a modelled estimate', pal: PURP, fmt: v => v >= 1000 ? (v / 1000).toFixed(1) + 'k' : String(v), unit: '' },
+        { k: 'lst', tab: T('Temperature'), title: T('Land surface temperature (°C)'), sub: T('Landsat, dry-season median'), pal: HEAT, fmt: v => N(v, 1), unit: ' °C' },
+        { k: 'z', tab: T('Hot & cold spots'), title: T('Hot and cold spots (Gi* z)'), sub: T('Five nearest neighbours; none significant after correction'), pal: DIV, fmt: v => (v > 0 ? '+' : '') + N(v, 2), unit: '', div: true },
+        { k: 'hpi', tab: T('Heat × population'), title: T('Heat × population index (0–1)'), sub: T('Surface temperature × population density, each scaled 0–1'), pal: HEAT, fmt: v => N(v, 2), unit: '' },
+        { k: 'ndvi', tab: T('Vegetation'), title: T('Vegetation (NDVI)'), sub: T('Dry-season median'), pal: GREEN, fmt: v => N(v, 2), unit: '' },
+        { k: 'dens', tab: T('Population'), title: T('Population density (people per km²)'), sub: T('WorldPop 2020, a modelled estimate'), pal: PURP, fmt: v => v >= 1000 ? N(v / 1000, 1) + 'k' : String(v), unit: '' },
     ];
     const col = (pal, t) => { t = Math.max(0, Math.min(1, t)); const x = t * (pal.length - 1), i = Math.min(pal.length - 2, Math.floor(x)), f = x - i, h = c => [1, 3, 5].map(j => parseInt(c.slice(j, j + 2), 16)), a = h(pal[i]), b = h(pal[i + 1]); return `rgb(${a.map((v, j) => Math.round(v + (b[j] - v) * f)).join(',')})`; };
     const wait = ms => new Promise(r => setTimeout(r, ms));
     async function boot() {
-        await Promise.all([css('assets/vendor/leaflet-1.9.4/leaflet.css'), js('assets/vendor/leaflet-1.9.4/leaflet.js')]);
-        const G = await (await fetch('assets/lagos-lga.json')).json();
+        await Promise.all([css(ROOT + 'assets/vendor/leaflet-1.9.4/leaflet.css'), js(ROOT + 'assets/vendor/leaflet-1.9.4/leaflet.js')]);
+        const G = await (await fetch(ROOT + 'assets/lagos-lga.json')).json();
         const box = fig.querySelector('.lx-map');
         const map = L.map(box, { zoomControl: false, attributionControl: true, dragging: false, scrollWheelZoom: false, touchZoom: false, doubleClickZoom: false, boxZoom: false, keyboard: false, zoomSnap: 1, fadeAnimation: false });
-        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', { maxZoom: 13, attribution: 'Basemap © Esri' }).addTo(map);
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', { maxZoom: 13, attribution: T('Basemap © Esri') }).addTo(map);
         map.attributionControl.setPrefix(false);
         const layer = L.geoJSON(G, { style: () => ({ color: '#fff', weight: 1, fillOpacity: .9 }), interactive: false }).addTo(map);
         const fit = () => map.fitBounds(layer.getBounds(), { paddingTopLeft: [10, 60], paddingBottomRight: [10, 10] }); fit();
@@ -45,15 +48,15 @@
             const l = sel || feats.reduce((a, c) => c.feature.properties.hpi > a.feature.properties.hpi ? c : a), p = l.feature.properties;
             fig.querySelector('.lx-sel').textContent = p.n;
             fig.querySelector('.lx-name').textContent = p.n;
-            fig.querySelector('.lx-sub').textContent = `${p.area.toLocaleString('en-GB')} km² of land · ${p.pop.toLocaleString('en-GB')} people (WorldPop 2020)`;
+            fig.querySelector('.lx-sub').textContent = `${p.area.toLocaleString(LOC)} ${T('km² of land')} · ${p.pop.toLocaleString(LOC)} ${T('people (WorldPop 2020)')}`;
             const card = (t, v, u, s, on) => `<div class="lx-c${on ? ' on' : ''}"><p>${t}</p><b>${v}<small>${u}</small></b><span>${s}</span></div>`;
             fig.querySelector('.lx-cards').innerHTML =
-                card('Surface temperature', p.lst.toFixed(1), ' °C', `${rank('lst', p.lst)} of 20 · MODIS ${p.modis.toFixed(1)} °C`, cur === 0) +
-                card('Heat × population', p.hpi.toFixed(2), '', `${rank('hpi', p.hpi)} of 20`, cur === 2) +
-                card('Hot / cold spot', (p.z > 0 ? '+' : '−') + Math.abs(p.z).toFixed(2), ' z', p.cat, cur === 1) +
-                card('Population density', p.dens.toLocaleString('en-GB'), '', 'people per km² of land', cur === 4) +
-                card('Vegetation', p.ndvi.toFixed(2), '', 'NDVI, dry-season median', cur === 3) +
-                card('Elevation', p.elev, ' m', `mean slope ${p.slope}°`, false);
+                card(T('Surface temperature'), N(p.lst, 1), ' °C', `${rank('lst', p.lst)} ${T('of 20')} · MODIS ${N(p.modis, 1)} °C`, cur === 0) +
+                card(T('Heat × population'), N(p.hpi, 2), '', `${rank('hpi', p.hpi)} ${T('of 20')}`, cur === 2) +
+                card(T('Hot / cold spot'), (p.z > 0 ? '+' : '−') + N(Math.abs(p.z), 2), ' z', T(p.cat), cur === 1) +
+                card(T('Population density'), p.dens.toLocaleString(LOC), '', T('people per km² of land'), cur === 4) +
+                card(T('Vegetation'), N(p.ndvi, 2), '', T('NDVI, dry-season median'), cur === 3) +
+                card(T('Elevation'), p.elev, ' m', `${T('mean slope')} ${LANG === 'en' ? p.slope : String(p.slope).replace('.', ',')}°`, false);
         }
         paint(2);
         fig.classList.add('ready'); setTimeout(() => { map.invalidateSize(); fit(); }, 60);

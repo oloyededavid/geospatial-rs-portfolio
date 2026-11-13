@@ -3,23 +3,24 @@
    Plays on its own until the visitor drags or uses the arrow keys. Reduced motion: no spin, no autoplay. */
 (() => {
     const fig = document.querySelector('.globe'), cv = fig && fig.querySelector('canvas'); if (!cv) return;
+    const T = s => (window.I18N && window.I18N[s]) || s, ROOT = window.SITE_ROOT || '';
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches, D = Math.PI / 180;
 
     const ST = [
-        { t: '13.8 billion years ago', h: 'Big Bang', s: 'The universe begins', k: 'sun', lon: 0 },
-        { t: '4.6 billion years ago', h: 'Protoplanet', s: 'Dust and rock collide', k: 'proto', lon: 0 },
-        { t: '4.5 billion years ago', h: 'Magma ocean', s: 'The surface is molten', k: 'magma', lon: 0 },
-        { t: '4.4 billion years ago', h: 'First oceans', s: 'Steam falls as rain', k: 'oceans', lon: 0 },
-        { t: '3.5 billion years ago', h: 'First life', s: 'Microbes under a hazy sky', k: 'life', lon: 0 },
-        { t: '2.4 billion years ago', h: 'Great Oxidation', s: 'Oxygen fills the air', k: 'oxid', lon: 0 },
-        { t: '1 billion years ago', h: 'Rodinia', s: 'No plants yet on land', k: 'rodinia', lon: -20 },
-        { t: '650 million years ago', h: 'Snowball Earth', s: 'Ice reaches the equator', k: 'snow', lon: 0 },
-        { t: '540 million years ago', h: 'Cambrian explosion', s: 'Animals fill the seas', k: 'cambrian', lon: 30 },
-        { t: '385 million years ago', h: 'First forests', s: 'Plants spread over land', k: 'forest', lon: -10 },
-        { t: '250 million years ago', h: 'Pangaea', s: 'One supercontinent', k: 'pangaea', lon: 10 },
-        { t: '66 million years ago', h: 'Chicxulub', s: 'An asteroid ends the age of dinosaurs', k: 'chix', lon: -80 },
-        { t: '20,000 years ago', h: 'Last Ice Age', s: 'Ice sheets cover the north', k: 'iceage', lon: -45 },
-        { t: 'Today', h: 'Earth', s: '8 billion people', k: 'today', lon: 15 },
+        { t: T('13.8 billion years ago'), h: T('Big Bang'), s: T('The universe begins'), k: 'sun', lon: 0 },
+        { t: T('4.6 billion years ago'), h: T('Protoplanet'), s: T('Dust and rock collide'), k: 'proto', lon: 0 },
+        { t: T('4.5 billion years ago'), h: T('Magma ocean'), s: T('The surface is molten'), k: 'magma', lon: 0 },
+        { t: T('4.4 billion years ago'), h: T('First oceans'), s: T('Steam falls as rain'), k: 'oceans', lon: 0 },
+        { t: T('3.5 billion years ago'), h: T('First life'), s: T('Microbes under a hazy sky'), k: 'life', lon: 0 },
+        { t: T('2.4 billion years ago'), h: T('Great Oxidation'), s: T('Oxygen fills the air'), k: 'oxid', lon: 0 },
+        { t: T('1 billion years ago'), h: T('Rodinia'), s: T('No plants yet on land'), k: 'rodinia', lon: -20 },
+        { t: T('650 million years ago'), h: T('Snowball Earth'), s: T('Ice reaches the equator'), k: 'snow', lon: 0 },
+        { t: T('540 million years ago'), h: T('Cambrian explosion'), s: T('Animals fill the seas'), k: 'cambrian', lon: 30 },
+        { t: T('385 million years ago'), h: T('First forests'), s: T('Plants spread over land'), k: 'forest', lon: -10 },
+        { t: T('250 million years ago'), h: T('Pangaea'), s: T('One supercontinent'), k: 'pangaea', lon: 10 },
+        { t: T('66 million years ago'), h: T('Chicxulub'), s: T('An asteroid ends the age of dinosaurs'), k: 'chix', lon: -80 },
+        { t: T('20,000 years ago'), h: T('Last Ice Age'), s: T('Ice sheets cover the north'), k: 'iceage', lon: -45 },
+        { t: T('Today'), h: T('Earth'), s: T('8 billion people'), k: 'today', lon: 15 },
     ];
     const N = ST.length, LAST = N - 1;
 
@@ -158,7 +159,7 @@
         return (tex[k] = p.t);
     }
     let failed = false;
-    const im = new Image(); im.onerror = () => { failed = true; dirty = true; kick(); }; im.src = 'assets/earth.jpg';
+    const im = new Image(); im.onerror = () => { failed = true; dirty = true; kick(); }; im.src = ROOT + 'assets/earth.jpg';
     im.onload = () => {
         const c = document.createElement('canvas'); c.width = TW; c.height = TH; const g = c.getContext('2d');
         g.drawImage(im, 0, 0, TW, TH); const d = g.getImageData(0, 0, TW, TH).data;
@@ -259,7 +260,7 @@
     function kick() { if (!raf && visible && !document.hidden) raf = requestAnimationFrame(frame); }
 
     // ---------- input ----------
-    rule.removeAttribute('aria-hidden'); rule.setAttribute('role', 'slider'); rule.tabIndex = 0; rule.setAttribute('aria-label', 'Time');
+    rule.removeAttribute('aria-hidden'); rule.setAttribute('role', 'slider'); rule.tabIndex = 0; rule.setAttribute('aria-label', T('Time'));
     rule.setAttribute('aria-valuemin', 0); rule.setAttribute('aria-valuemax', LAST);
     const at = e => { const b = rule.getBoundingClientRect(); return Math.max(0, Math.min(1, (e.clientX - b.left) / b.width)); };
     rule.addEventListener('pointerdown', e => { if (e.button) return; dragging = true; auto = false; lastInput = performance.now(); rule.setPointerCapture(e.pointerId); move(e); });
