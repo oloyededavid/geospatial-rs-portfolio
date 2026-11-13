@@ -142,14 +142,20 @@
     const ICE = [[-180, 62], [-150, 58], [-125, 47], [-95, 39], [-75, 41], [-60, 46], [-40, 60], [-20, 60], [-8, 53], [10, 51], [30, 53], [60, 62], [120, 66], [180, 62]];
     function iceEdge(lon) { for (let i = 1; i < ICE.length; i++) if (lon <= ICE[i][0]) { const [x0, y0] = ICE[i - 1], [x1, y1] = ICE[i]; return y0 + (y1 - y0) * (lon - x0) / (x1 - x0); } return 62; }
     const tex = {};
-    function texture(k) {
-        if (tex[k]) return tex[k];
-        if ((k === 'today' || k === 'chix' || k === 'iceage') && !earth) return failed ? texture('pangaea') : null;
-        const t = new Uint8ClampedArray(TW * TH * 3), f = SURF[k];
-        for (let v = 0; v < TH; v++) { const lat = 90 - (v + 0.5) / TH * 180, cl = Math.cos(lat * D), y = Math.sin(lat * D);
+    const part = {};                           // textures being built a few rows at a time in idle time
+    function rows(k, t, v0, v1) {
+        const f = SURF[k];
+        for (let v = v0; v < v1; v++) { const lat = 90 - (v + 0.5) / TH * 180, cl = Math.cos(lat * D), y = Math.sin(lat * D);
             for (let u = 0; u < TW; u++) { const lon = (u + 0.5) / TW * 360 - 180, c = f(cl * Math.cos(lon * D), y, cl * Math.sin(lon * D), lat, lon, u, v), i = (v * TW + u) * 3;
                 t[i] = c[0]; t[i + 1] = c[1]; t[i + 2] = c[2]; } }
-        return (tex[k] = t);
+    }
+    const needsEarth = k => k === 'today' || k === 'chix' || k === 'iceage';
+    function texture(k) {
+        if (tex[k]) return tex[k];
+        if (needsEarth(k) && !earth) return failed ? texture('pangaea') : null;
+        const p = part[k] || { t: new Uint8ClampedArray(TW * TH * 3), v: 0 };
+        rows(k, p.t, p.v, TH); delete part[k];
+        return (tex[k] = p.t);
     }
     let failed = false;
     const im = new Image(); im.onerror = () => { failed = true; dirty = true; kick(); }; im.src = 'assets/earth.jpg';
@@ -271,6 +277,19 @@
     caption(cur); scrub(thumbP); kick();
     // build the other surfaces in idle time so the first transitions do not stall
     const idle = window.requestIdleCallback || (f => setTimeout(f, 200));
-    let q = ST.map(s => s.k); const warm = () => { const k = q.shift(); if (!k) return; if (!texture(k) && !failed && (k === 'today' || k === 'chix' || k === 'iceage')) q.push(k); if (q.length) idle(warm); };
+    let q = [...new Set(ST.map(s => s.k))];
+    const warm = dl => {
+        const until = performance.now() + (dl && dl.timeRemaining ? Math.max(4, dl.timeRemaining() - 1) : 8);
+        while (q.length && performance.now() < until) {
+            const k = q[0];
+            if (tex[k]) { q.shift(); continue; }
+            if (needsEarth(k) && !earth) { if (failed) { q.shift(); continue; } q.push(q.shift()); if (q.every(x => tex[x] || needsEarth(x))) break; continue; }
+            const p = part[k] || (part[k] = { t: new Uint8ClampedArray(TW * TH * 3), v: 0 });
+            const v1 = Math.min(TH, p.v + 8); rows(k, p.t, p.v, v1); p.v = v1;
+            if (p.v >= TH) { tex[k] = p.t; delete part[k]; q.shift(); }
+        }
+        if (q.some(k => !tex[k] && (!needsEarth(k) || earth))) idle(warm);
+        else if (q.length && !earth && !failed) setTimeout(() => idle(warm), 300);
+    };
     idle(warm);
 })();
