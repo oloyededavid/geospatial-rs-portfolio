@@ -718,3 +718,25 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 @media (prefers-reduced-motion: reduce) { .inset:hover { transform: none; } }
 .inset .inset-text { display: flex; flex-direction: column; flex: 1; }
 .inset .inset-actions { margin-top: auto; padding-top: var(--s-5); }
+
+/* ================= no rule above Projects, wider cards, one-line tags, clean pill buttons ================= */
+#studies .sec-head { border-top: 0; padding-top: 0; }
+#studies .sec-head::before { display: none; }
+@media (min-width: 1100px) { #studies .inset-list { margin-inline: calc(-1 * var(--s-6)); } }
+.inset-list { gap: 28px; }
+.inset .tags { flex-wrap: nowrap; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); }
+.inset .tags li { flex: none; white-space: nowrap; }
+.cta, .pill { display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 26px; border-radius: 999px; font-family: var(--mono); font-size: .8125rem; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: background .25s, border-color .25s, transform .3s var(--ease); }
+.cta, .pill--dark { background: #1b1c1f; color: #fff; border: 1px solid #1b1c1f; }
+.inset:hover .cta, .pill--dark:hover { background: #2c2d31; }
+.pill { background: #fff; color: var(--ink); border: 1px solid #cfcec9; }
+.pill:hover { border-color: #9a9994; }
+.pill svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linejoin: round; }
+.pill-arrow, .cta .arrow { color: #6f8fd6; }
+.pill:focus-visible, .cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.ab-btns { gap: 12px; }
+@media (max-width: 560px) { .ab-btns { display: flex; flex-wrap: wrap; } .cta, .pill { height: 44px; padding: 0 20px; } }
+.pill.pill--dark { background: #1b1c1f; color: #fff; border-color: #1b1c1f; }
+.pill.pill--dark:hover { background: #2c2d31; }
+.inset, .inset .inset-text { min-width: 0; }
+@media (max-width: 860px) { .inset-list { grid-template-columns: minmax(0, 1fr); } }
