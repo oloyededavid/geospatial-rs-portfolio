@@ -144,14 +144,15 @@
     const tex = {};
     function texture(k) {
         if (tex[k]) return tex[k];
-        if ((k === 'today' || k === 'chix' || k === 'iceage') && !earth) return null;
+        if ((k === 'today' || k === 'chix' || k === 'iceage') && !earth) return failed ? texture('pangaea') : null;
         const t = new Uint8ClampedArray(TW * TH * 3), f = SURF[k];
         for (let v = 0; v < TH; v++) { const lat = 90 - (v + 0.5) / TH * 180, cl = Math.cos(lat * D), y = Math.sin(lat * D);
             for (let u = 0; u < TW; u++) { const lon = (u + 0.5) / TW * 360 - 180, c = f(cl * Math.cos(lon * D), y, cl * Math.sin(lon * D), lat, lon, u, v), i = (v * TW + u) * 3;
                 t[i] = c[0]; t[i + 1] = c[1]; t[i + 2] = c[2]; } }
         return (tex[k] = t);
     }
-    const im = new Image(); im.src = 'assets/earth.jpg';
+    let failed = false;
+    const im = new Image(); im.onerror = () => { failed = true; dirty = true; kick(); }; im.src = 'assets/earth.jpg';
     im.onload = () => {
         const c = document.createElement('canvas'); c.width = TW; c.height = TH; const g = c.getContext('2d');
         g.drawImage(im, 0, 0, TW, TH); const d = g.getImageData(0, 0, TW, TH).data;
@@ -225,14 +226,15 @@
 
     // ---------- state and animation ----------
     let cur = LAST, from = LAST, m = 0, tStart = 0, lon = ST[LAST].lon, lonFrom = lon, lonTo = lon;
-    let thumbP = pos(LAST), thumbFrom = thumbP, dragging = false, auto = !reduced, hold = 0, visible = true, dirty = true, raf = 0, last = 0;
+    let thumbP = pos(LAST), thumbFrom = thumbP, thumbT = 0, dragging = false, auto = !reduced, hold = 0, visible = true, dirty = true, raf = 0, last = 0;
     const TR = 900, HOLD = 2300, HOLD_TODAY = 3600, SPIN = 7;
     function go(i, now) {
         if (i === cur && m === 0) return;
         from = m > 0.5 ? cur : (m > 0 ? from : cur); cur = i; m = reduced ? 1 : 0; tStart = now; lonFrom = lon;
         let d = ((ST[i].lon - lon) % 360 + 360) % 360 - 360; if (d > -60) d -= 360;
         lonTo = lon + (ST[i].k === ST[from].k ? 0 : d);
-        if (!dragging) thumbFrom = thumbP;
+        if (!dragging) { thumbFrom = thumbP; thumbT = now; }
+        if (reduced) { lon = lonTo = ST[i].lon; thumbP = pos(i); scrub(thumbP); }
         caption(i); hold = 0; dirty = true; kick();
     }
     const ease = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
@@ -241,24 +243,23 @@
         if (m < 1) {
             const t = reduced ? 1 : Math.min(1, (now - tStart) / TR), e = ease(t);
             m = t; lon = lerp(lonFrom, lonTo, e);
-            if (!dragging) { thumbP = lerp(thumbFrom, pos(cur), e); scrub(thumbP); }
             dirty = true;
         } else if (!reduced) { lon -= SPIN * dt / 1000; dirty = true; }
+        if (!dragging && thumbP !== pos(cur)) { const tt = reduced ? 1 : Math.min(1, (now - thumbT) / TR); thumbP = tt >= 1 ? pos(cur) : lerp(thumbFrom, pos(cur), ease(tt)); scrub(thumbP); }
         if (auto && m >= 1 && !dragging) { hold += dt; if (hold > (cur === LAST ? HOLD_TODAY : HOLD)) go((cur + 1) % N, now); }
-        if (dirty) { const ok = m >= 1 ? render(ST[cur].k, ST[cur].k, 0, lon) : render(ST[from].k, ST[cur].k, m, lon); dirty = !ok && false; }
+        if (dirty) { const ok = m >= 1 ? render(ST[cur].k, ST[cur].k, 0, lon) : render(ST[from].k, ST[cur].k, m, lon); dirty = false; }
         if (visible && !document.hidden && (!reduced || m < 1)) raf = requestAnimationFrame(frame); else last = 0;
     }
-    function kick() { if (!raf && visible && !document.hidden) raf = requestAnimationFrame(frame); else if (reduced && !raf) frame(performance.now()); }
+    function kick() { if (!raf && visible && !document.hidden) raf = requestAnimationFrame(frame); }
 
     // ---------- input ----------
-    rule.setAttribute('role', 'slider'); rule.tabIndex = 0; rule.setAttribute('aria-label', 'Time');
+    rule.removeAttribute('aria-hidden'); rule.setAttribute('role', 'slider'); rule.tabIndex = 0; rule.setAttribute('aria-label', 'Time');
     rule.setAttribute('aria-valuemin', 0); rule.setAttribute('aria-valuemax', LAST);
     const at = e => { const b = rule.getBoundingClientRect(); return Math.max(0, Math.min(1, (e.clientX - b.left) / b.width)); };
-    rule.addEventListener('pointerdown', e => { dragging = true; auto = false; rule.setPointerCapture(e.pointerId); move(e); });
+    rule.addEventListener('pointerdown', e => { if (e.button) return; dragging = true; auto = false; rule.setPointerCapture(e.pointerId); move(e); });
     rule.addEventListener('pointermove', e => { if (dragging) move(e); });
-    const up = () => { if (!dragging) return; dragging = false; thumbFrom = thumbP; tStart = performance.now() - (m < 1 ? (m * TR) : 0);
-        if (m >= 1) { m = 0.999; lonFrom = lonTo = lon; tStart = performance.now(); } kick(); };
-    rule.addEventListener('pointerup', up); rule.addEventListener('pointercancel', up);
+    const up = () => { if (!dragging) return; dragging = false; thumbFrom = thumbP; thumbT = performance.now(); kick(); };
+    rule.addEventListener('pointerup', up); rule.addEventListener('pointercancel', up); rule.addEventListener('lostpointercapture', up);
     function move(e) { thumbP = at(e); scrub(thumbP); const i = Math.round(thumbP * LAST); if (i !== cur) go(i, performance.now()); }
     rule.addEventListener('keydown', e => {
         const k = e.key, i = k === 'ArrowRight' || k === 'ArrowUp' ? cur + 1 : k === 'ArrowLeft' || k === 'ArrowDown' ? cur - 1 : k === 'Home' ? 0 : k === 'End' ? LAST : null;
@@ -270,6 +271,6 @@
     caption(cur); scrub(thumbP); kick();
     // build the other surfaces in idle time so the first transitions do not stall
     const idle = window.requestIdleCallback || (f => setTimeout(f, 200));
-    let q = ST.map(s => s.k); const warm = () => { const k = q.shift(); if (!k) return; if (!texture(k) && (k === 'today' || k === 'chix' || k === 'iceage')) q.push(k); if (q.length) idle(warm); };
+    let q = ST.map(s => s.k); const warm = () => { const k = q.shift(); if (!k) return; if (!texture(k) && !failed && (k === 'today' || k === 'chix' || k === 'iceage')) q.push(k); if (q.length) idle(warm); };
     idle(warm);
 })();
