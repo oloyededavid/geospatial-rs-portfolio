@@ -15,7 +15,9 @@
     addEventListener('scroll', onScroll, { passive: true }); onScroll();
     if ('IntersectionObserver' in window) {
         const links = [...document.querySelectorAll('.site-nav a[href^="#"]')];
-        const so = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) links.forEach(a => a.setAttribute('aria-current', a.hash === '#' + e.target.id ? 'true' : 'false')); }), { rootMargin: '-45% 0px -50% 0px' });
+        const live = new Set();
+        const mark = () => { const id = [...live].pop(); links.forEach(a => { if (id && a.hash === '#' + id) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); }); };
+        const so = new IntersectionObserver(es => { es.forEach(e => e.isIntersecting ? live.add(e.target.id) : live.delete(e.target.id)); mark(); }, { rootMargin: '-45% 0px -50% 0px' });
         links.forEach(a => { const t = document.querySelector(a.hash); t && so.observe(t); });
     }
 
@@ -78,13 +80,13 @@
         const li = [...ul.children]; li.forEach(x => x.classList.remove('off'));
         const r = ul.getBoundingClientRect().right; li.forEach(x => { if (x.getBoundingClientRect().right > r + 1) x.classList.add('off'); });
     });
-    fitTags(); addEventListener('resize', () => requestAnimationFrame(fitTags));
+    fitTags(); document.fonts && document.fonts.ready.then(fitTags); addEventListener('resize', () => requestAnimationFrame(fitTags));
     // about: copy the email address, and say so
     document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', async () => {
-        const label = b.querySelector('span'), was = label.textContent;
+        const label = b.querySelector('span'); if (!label) return; const was = b.dataset.label || (b.dataset.label = label.textContent); clearTimeout(b._t);
         try { await navigator.clipboard.writeText(b.dataset.copy); label.textContent = 'Copied'; }
         catch (e) { location.href = 'mailto:' + b.dataset.copy; return; }
-        setTimeout(() => { label.textContent = was; }, 1800);
+        b._t = setTimeout(() => { label.textContent = was; }, 1800);
     }));
     // about: stagger in when it scrolls into view
     const about = document.querySelector('.about');

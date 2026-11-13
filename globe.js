@@ -249,7 +249,7 @@
             const t = reduced ? 1 : Math.min(1, (now - tStart) / TR), e = ease(t);
             m = t; lon = lerp(lonFrom, lonTo, e);
             dirty = true;
-        } else if (!reduced) { lon -= SPIN * dt / 1000; dirty = true; }
+        } else if (!reduced && !spinning) { lon -= SPIN * dt / 1000; dirty = true; }
         if (!dragging && thumbP !== pos(cur)) { const tt = reduced ? 1 : Math.min(1, (now - thumbT) / TR); thumbP = tt >= 1 ? pos(cur) : lerp(thumbFrom, pos(cur), ease(tt)); scrub(thumbP); }
         if (!auto && !reduced && !dragging && !spinning && lastInput && now - lastInput > 7000) { auto = true; hold = 0; lastInput = 0; }
         if (auto && m >= 1 && !dragging) { hold += dt; if (hold > (cur === LAST ? HOLD_TODAY : HOLD)) go((cur + 1) % N, now); }
@@ -264,7 +264,7 @@
     const at = e => { const b = rule.getBoundingClientRect(); return Math.max(0, Math.min(1, (e.clientX - b.left) / b.width)); };
     rule.addEventListener('pointerdown', e => { if (e.button) return; dragging = true; auto = false; lastInput = performance.now(); rule.setPointerCapture(e.pointerId); move(e); });
     rule.addEventListener('pointermove', e => { if (dragging) move(e); });
-    const up = () => { if (!dragging) return; dragging = false; thumbFrom = thumbP; thumbT = performance.now(); kick(); };
+    const up = () => { if (!dragging) return; dragging = false; lastInput = performance.now(); thumbFrom = thumbP; thumbT = performance.now(); kick(); };
     rule.addEventListener('pointerup', up); rule.addEventListener('pointercancel', up); rule.addEventListener('lostpointercapture', up);
     function move(e) { thumbP = at(e); scrub(thumbP); const i = Math.round(thumbP * LAST); if (i !== cur) go(i, performance.now()); }
     rule.addEventListener('keydown', e => {
