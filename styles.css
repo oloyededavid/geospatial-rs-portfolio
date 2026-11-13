@@ -675,3 +675,11 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 .ab-text .ab-lead { hyphens: manual; -webkit-hyphens: manual; margin: 0; }
 .ab-intro + p { margin-top: var(--s-5); }
 @media (max-width: 560px) { .ab-text .ab-lead { font-size: 1.1875rem; } }
+/* pre-push review: keep pills whole, plain left text on phones, even contact buttons */
+@media (min-width: 561px) { .ab-text a.ab-chip { white-space: nowrap; display: inline-block; line-height: 1.5; } }
+@media (max-width: 560px) {
+  .ab-text p { text-align: left; hyphens: manual; -webkit-hyphens: manual; }
+  .ab-btns { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 4px; }
+  .ab-btn { padding-inline: 10px; }
+}
+.hello-body { text-wrap: pretty; }
