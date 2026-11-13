@@ -874,3 +874,10 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 .ab-text .rw { color: #c9c8c2; transition: color .35s ease; }
 .ab-text .rw.on { color: inherit; }
 @media (prefers-reduced-motion: reduce) { .ab-text .rw { color: inherit; transition: none; } }
+/* card titles: balanced breaks, up to three lines */
+.inset h3 { text-wrap: balance; max-width: 34ch; }
+.inset--wide h3 { max-width: 34ch; }
+.inset h3 { max-width: none; font-size: clamp(1.4rem, 1.95vw, 1.875rem); line-height: 1.15; }
+@media (max-width: 1100px) { .inset h3 { font-size: 1.375rem; } }
+@media (max-width: 560px) { .inset h3 { font-size: 1.25rem; } }
+.inset--wide h3 { max-width: 30ch; }

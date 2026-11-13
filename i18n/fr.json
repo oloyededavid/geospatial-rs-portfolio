@@ -141,10 +141,10 @@
     "Can satellite rainfall and evapotranspiration estimate recharge where wells are scarce? Tested on the Upper Ouémé, described for the Upper Ogun.": "Pluie et évapotranspiration satellitaires peuvent-elles estimer la recharge là où les puits manquent ? Testé sur le haut Ouémé, décrit pour le haut Ogun.",
     "Water gained or lost by the Lake Chad basin since 2002, from changes in Earth’s gravity, and what remains after soil water is removed.": "L’eau gagnée ou perdue par le bassin du lac Tchad depuis 2002, d’après les variations de gravité, et ce qui reste sans l’eau du sol.",
     "Do residents far from vegetation face more surface heat? Landsat land surface temperature set against where people live.": "Les habitants éloignés de la végétation subissent-ils plus de chaleur de surface ? Température de surface Landsat comparée aux lieux de résidence.",
-    "Study areas: Sokoto–Rima basin and Lower Niger–Benue reach": "Zones d’étude : bassin Sokoto–Rima et tronçon du bas Niger–Bénoué",
-    "Study area: Ogun catchment, sub-basins Z1–Z5": "Zone d’étude : bassin de l’Ogun, sous-bassins Z1–Z5",
-    "Study areas: Upper Ouémé and Upper Ogun catchments": "Zones d’étude : bassins du haut Ouémé et du haut Ogun",
-    "Study area: Lake Chad basin and GRACE cells": "Zone d’étude : bassin du lac Tchad et cellules GRACE"
+    "Sokoto–Rima basin and Lower Niger–Benue reach": "Bassin Sokoto–Rima et tronçon du bas Niger–Bénoué",
+    "Ogun catchment, sub-basins Z1–Z5": "Bassin de l’Ogun, sous-bassins Z1–Z5",
+    "Upper Ouémé and Upper Ogun catchments": "Bassins du haut Ouémé et du haut Ogun",
+    "Lake Chad basin and GRACE cells": "Bassin du lac Tchad et cellules GRACE"
   },
   "attr": {
     "David Oloyede · Geospatial and Environmental Researcher": "David Oloyede · Chercheur en sciences géospatiales et de l’environnement",
