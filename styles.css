@@ -936,3 +936,10 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 @media (prefers-reduced-motion: reduce) { .js .about .creds li { opacity: 1; transform: none; transition: none; } }
 .creds { margin-bottom: var(--s-6); }
 .sh h3 { font-family: 'Newsreader', var(--display); font-weight: 500; font-size: clamp(2rem, 3.6vw, 2.875rem); letter-spacing: -.02em; line-height: 1; }
+/* About: three left-aligned paragraphs; words start at a readable grey (about 4.6:1) and darken as read */
+.ab-text p, .ab-text .ab-lead { text-align: left; hyphens: manual; -webkit-hyphens: manual; }
+.ab-text p + p { margin-top: var(--s-5); }
+.ab-text .rw { color: #6f6e68; }
+.ab-text .rw.on { color: var(--ink); }
+.ab-text .ab-p1, .ab-text .ab-p2, .ab-text .ab-p3 { max-width: 70ch; }
+.ab-text .rw { white-space: nowrap; }

@@ -82,7 +82,7 @@
     });
     fitTags(); document.fonts && document.fonts.ready.then(fitTags); addEventListener('resize', () => requestAnimationFrame(fitTags));
     // About: the paragraph darkens word by word as it scrolls through the screen
-    const abP = document.querySelector('.ab-text > p:not(.ab-lead)');
+    const abPs = [...document.querySelectorAll('.ab-text > p:not(.ab-lead)')], abP = abPs[0] && abPs[0].parentElement;
     if (abP && !reduced) {
         const walk = n => { [...n.childNodes].forEach(c => {
             if (c.nodeType === 3 && c.textContent.trim()) {
@@ -91,11 +91,11 @@
                 c.replaceWith(f);
             } else if (c.nodeType === 1 && c.tagName !== 'svg') walk(c);
         }); };
-        walk(abP);
+        abPs.forEach(walk);
         const words = [...abP.querySelectorAll('.rw')];
         let lastK = -1;
         const read = () => {
-            const r = abP.getBoundingClientRect(), vh = innerHeight;
+            const r0 = abPs[0].getBoundingClientRect(), r1 = abPs[abPs.length - 1].getBoundingClientRect(), r = { top: r0.top, height: r1.bottom - r0.top }, vh = innerHeight;
             const p = Math.max(0, Math.min(1, (vh * 0.8 - r.top) / (r.height + vh * 0.15)));
             const k = Math.round(p * words.length);
             if (k === lastK) return; lastK = k;
