@@ -73,6 +73,12 @@
 
 
 
+    // card tags stay on one line: drop whole tags that do not fit rather than cutting them
+    const fitTags = () => document.querySelectorAll('.inset .tags').forEach(ul => {
+        const li = [...ul.children]; li.forEach(x => x.classList.remove('off'));
+        const r = ul.getBoundingClientRect().right; li.forEach(x => { if (x.getBoundingClientRect().right > r + 1) x.classList.add('off'); });
+    });
+    fitTags(); addEventListener('resize', () => requestAnimationFrame(fitTags));
     // about: copy the email address, and say so
     document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', async () => {
         const label = b.querySelector('span'), was = label.textContent;
