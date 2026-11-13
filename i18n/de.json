@@ -129,7 +129,6 @@
     "PostGIS and SQL": "PostGIS und SQL",
     "STAC and cloud-native data": "STAC und Cloud-native Daten",
     "Deep learning basics": "Grundlagen des Deep Learning",
-    "Copy email": "E-Mail kopieren",
     "Satellite radar, long rainfall records and climate models fill the gaps left by missing gauges, each checked against independent data.": "Satellitenradar, lange Niederschlagsreihen und Klimamodelle schließen die Lücken fehlender Messstationen, jeweils mit unabhängigen Daten geprüft.",
     "Rainfall, soil moisture, flooding and water clarity along one river, tracked monthly with radar and optical satellites.": "Niederschlag, Bodenfeuchte, Überschwemmungen und Wasserklarheit entlang eines Flusses, monatlich mit Radar- und optischen Satelliten verfolgt.",
     "Can satellite rainfall and evapotranspiration estimate recharge where wells are scarce? Tested on the Upper Ouémé, described for the Upper Ogun.": "Neubildung aus Satellitendaten zu Niederschlag und Evapotranspiration, wo Brunnen fehlen? Am oberen Ouémé getestet, am oberen Ogun beschrieben.",
@@ -142,10 +141,11 @@
     "Esri Certified": "Esri-zertifiziert",
     "Esri Trained": "Esri-geschult",
     "Esri YPN member": "Mitglied im Esri YPN",
-    "Say hello.": "Schreiben Sie mir.",
     "© 2026 David Oloyede": "© 2026 David Oloyede",
     "Top ↑": "Nach oben ↑",
-    "Index map: Natural Earth · Globe imagery and study basemaps © Esri": "Übersichtskarte: Natural Earth · Globusbilder und Grundkarten der Studien © Esri"
+    "Index map: Natural Earth · Globe imagery and study basemaps © Esri": "Übersichtskarte: Natural Earth · Globusbilder und Grundkarten der Studien © Esri",
+    "Copy": "Kopieren",
+    "oloyededavid10@gmail.com": "oloyededavid10@gmail.com"
   },
   "attr": {
     "David Oloyede · Geospatial and Environmental Researcher": "David Oloyede · Forscher in Geoinformatik und Umweltwissenschaften",
@@ -169,7 +169,8 @@
     "Footer": "Fußzeile",
     "Map of the Ogun River catchment from its headwaters to the Lagos lagoon, divided into sub-basins Z1 to Z5 and shaded by mean annual rainfall, 2019–2024.": "Karte des Ogun-Einzugsgebiets vom Quellgebiet bis zur Lagune von Lagos, unterteilt in die Teileinzugsgebiete Z1 bis Z5 und eingefärbt nach mittlerem Jahresniederschlag, 2019–2024.",
     "Open the Lagos explorer": "Lagos-Explorer öffnen",
-    "Esri credentials": "Esri-Qualifikationen"
+    "Esri credentials": "Esri-Qualifikationen",
+    "Copy email": "E-Mail kopieren"
   },
   "js": {
     "13.8 billion years ago": "Vor 13,8 Milliarden Jahren",

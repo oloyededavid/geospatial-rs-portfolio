@@ -932,3 +932,14 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 @media (max-width: 1100px) { .site-footer .ft { grid-template-columns: 1fr; justify-items: center; text-align: center; } .site-footer .ft .f-credits { white-space: normal; justify-self: center; text-align: center; } }
 .site-footer .ft-nav { gap: 0 !important; }
 @media (max-width: 560px) { .site-footer .ft-nav a { padding: 4px 9px; font-size: .6875rem; } .site-footer .ft-nav { flex-wrap: nowrap; } }
+/* About heading row: email on the right */
+.sh--row { justify-content: space-between; align-items: baseline; flex-wrap: wrap; row-gap: 10px; }
+.sh-mail { display: inline-flex; align-items: center; gap: 10px; margin: 0; font-size: .9375rem; }
+.sh-mail a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; transition: border-color .2s; }
+.sh-mail a:hover { border-color: var(--ink); }
+.sh-copy { display: inline-flex; align-items: center; gap: 5px; height: 28px; padding: 0 9px; border: 1px solid var(--rule); border-radius: 6px; background: #fff; color: var(--ink-2); font: inherit; font-size: .75rem; cursor: pointer; transition: border-color .2s, color .2s; }
+.sh-copy:hover { color: var(--ink); border-color: #b9b8b2; }
+.sh-copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.sh-copy svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linejoin: round; }
+.about { padding-bottom: var(--s-8); }
+@media (max-width: 560px) { .sh--row { flex-direction: column; align-items: flex-start; } .sh-mail { font-size: .875rem; } }
