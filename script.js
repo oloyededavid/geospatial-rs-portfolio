@@ -73,6 +73,13 @@
 
 
 
+    // about: copy the email address, and say so
+    document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', async () => {
+        const label = b.querySelector('span'), was = label.textContent;
+        try { await navigator.clipboard.writeText(b.dataset.copy); label.textContent = 'Copied'; }
+        catch (e) { location.href = 'mailto:' + b.dataset.copy; return; }
+        setTimeout(() => { label.textContent = was; }, 1800);
+    }));
     // about: stagger in when it scrolls into view
     const about = document.querySelector('.about');
     if (about) { if (reduced || !('IntersectionObserver' in window)) about.classList.add('in'); else { const ao = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { about.classList.add('in'); ao.disconnect(); } }), { threshold: .12 }); ao.observe(about); } }
