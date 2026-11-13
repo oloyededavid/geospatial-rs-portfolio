@@ -833,3 +833,8 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 .site-nav a[aria-current="true"] { color: var(--ink); font-weight: 500; }
 .site-nav a[aria-current="true"]::after { transform: scaleX(1); }
 @media (prefers-reduced-motion: reduce) { .site-nav a::after { transition: none; } }
+/* current section: a small dot instead of an underline */
+.site-nav a::after { display: none; }
+.site-nav a[aria-current="true"] { font-weight: 400; }
+.site-nav a::before { content: ""; position: absolute; left: -12px; top: 50%; width: 6px; height: 6px; margin-top: -3px; border-radius: 50%; background: var(--accent); opacity: 0; transform: scale(.3); transition: opacity .25s, transform .3s var(--ease); }
+.site-nav a[aria-current="true"]::before { opacity: 1; transform: none; }
