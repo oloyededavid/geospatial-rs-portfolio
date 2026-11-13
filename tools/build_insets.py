@@ -29,10 +29,10 @@ S = [
 ]
 
 REEL = {
-    '01': ['Study areas', 'Sentinel-1 radar: low flow and flood pulse, 2022', 'Sokoto–Rima drainage and terrain', 'Explorer: future extreme rainfall'],
-    '02': ['Sub-basins', 'Explorer: floodplain inundation', 'Monthly rainfall, soil moisture, radar and turbidity', 'Rain and inundation, tested month by month'],
-    '03': ['Basins on the 5 km rainfall grid', 'Rainfall minus evapotranspiration, 2018–2024', 'Explorer: the water balance by basin'],
-    '04': ['Basin and GRACE cells', 'Storage trend, 2002–2026', 'Monthly storage anomaly', 'Annual storage anomaly'],
+    '01': ['Study areas', 'Sentinel-1 radar: low flow and flood pulse, 2022', 'Sokoto–Rima drainage and terrain'],
+    '02': ['Sub-basins', 'Mean annual rainfall, 2019–2024', 'Riparian vegetation (NDVI)'],
+    '03': ['Basins on the 5 km rainfall grid', 'Rainfall minus evapotranspiration, 2018–2024'],
+    '04': ['Basin and GRACE cells', 'Storage trend, 2002–2026'],
     '05': ['Twenty local government areas', 'Land cover', 'Population density'],
 }
 import json, html as _h

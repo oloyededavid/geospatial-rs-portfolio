@@ -19,7 +19,7 @@
         const l0 = lam + (reduced ? 0 : Math.sin(t * .12) * 28) + extra;
         ctx.clearRect(0, 0, W, H);
         // sphere and rim
-        ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fillStyle = '#efede7'; ctx.fill();
+        ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fillStyle = '#f5f5f3'; ctx.fill();
         ctx.lineWidth = Math.max(1, W / 600); ctx.strokeStyle = '#c9c6bd'; ctx.stroke();
         // graticule every 30°
         ctx.fillStyle = '#c9c6bd';
@@ -36,7 +36,7 @@
         // study sites: a dot and a slow pulse
         SITES.forEach(([lo, la, col], i) => { const [x, y, c] = proj(lo, la, l0); if (c <= 0) return; const ph = ((t * .6 + i * .17) % 1);
             ctx.globalAlpha = reduced ? 0 : (1 - ph) * .6; ctx.strokeStyle = col; ctx.lineWidth = W / 500; ctx.beginPath(); ctx.arc(x, y, dr * (2.5 + ph * 9), 0, 7); ctx.stroke();
-            ctx.globalAlpha = 1; ctx.fillStyle = col; ctx.beginPath(); ctx.arc(x, y, dr * 2.3, 0, 7); ctx.fill(); ctx.strokeStyle = '#f6f5f1'; ctx.lineWidth = W / 700; ctx.stroke(); });
+            ctx.globalAlpha = 1; ctx.fillStyle = col; ctx.beginPath(); ctx.arc(x, y, dr * 2.3, 0, 7); ctx.fill(); ctx.strokeStyle = '#ffffff'; ctx.lineWidth = W / 700; ctx.stroke(); });
         if (!reduced && visible) requestAnimationFrame(frame);
     }
     size(); addEventListener('resize', () => { size(); if (reduced) frame(performance.now()); });

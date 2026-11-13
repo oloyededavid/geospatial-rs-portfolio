@@ -11,8 +11,8 @@
 /* ---------- tokens ---------- */
 :root {
     /* colour */
-    --paper: #f6f5f1;
-    --paper-2: #efede7;
+    --paper: #ffffff;
+    --paper-2: #f4f4f2;
     --ink: #141412;
     --ink-2: #55544e;      /* 8.0:1 on paper */
     --ink-3: #6a6963;      /* 4.9:1 on paper */
@@ -118,8 +118,8 @@ h1, h2, h3 { margin: 0; font-weight: 500; }
 .mapbox figcaption { margin-top: var(--s-3); }
 
 /* map content */
-.sea { fill: #e7e6df; }
-.land { fill: #f8f7f3; stroke: #8f8d86; stroke-width: .6; }
+.sea { fill: #eceeef; }
+.land { fill: #ffffff; stroke: #8f8d86; stroke-width: .6; }
 .borders { fill: none; stroke: #c3c1b9; stroke-width: .55; }
 .grat { stroke: #cfcdc5; stroke-width: .5; stroke-dasharray: 2 4; }
 .country { font-family: var(--mono); font-size: 7.4px; letter-spacing: .22em; fill: #9a988f; }
@@ -254,7 +254,7 @@ html { scroll-padding-top: 72px; }
 .hello-role em { font-style: normal; color: var(--accent); }
 .hello-body { margin-top: var(--s-6); max-width: 40rem; font-size: clamp(1.0625rem, 1.5vw, 1.1875rem); line-height: 1.9; color: var(--ink-2); }
 .hello-body strong { color: var(--ink); font-weight: 500; }
-.chip { display: inline-flex; align-items: center; gap: 6px; padding: 1px 8px 1px 6px; border: 1px solid var(--rule); background: #fbfaf7; color: var(--ink); font-weight: 500; line-height: 1.6; white-space: nowrap; vertical-align: baseline; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 1px 8px 1px 6px; border: 1px solid var(--rule); background: #fff; color: var(--ink); font-weight: 500; line-height: 1.6; white-space: nowrap; vertical-align: baseline; }
 .chip svg { width: 15px; height: 15px; fill: none; stroke: var(--c); stroke-width: 1.5; stroke-linecap: square; }
 .chip svg circle[r="1.2"] { fill: var(--c); stroke: none; }
 .chip-01 { --c: #1f5fae; } .chip-02 { --c: #0f766e; } .chip-03 { --c: #a8661b; } .chip-04 { --c: #5b6b7a; } .chip-05 { --c: #b3361b; }
@@ -438,3 +438,9 @@ html { scroll-padding-top: 72px; }
 /* no decorative numbers on rows or themes */
 .inset-text::before { content: none !important; }
 .theme h3::before { content: none !important; }
+
+/* pure white, simpler hero */
+.hello-role { font-size: clamp(1.25rem, 2.1vw, 1.5rem); color: var(--ink); }
+.hello-body { margin-top: var(--s-4); max-width: 34rem; font-size: clamp(1.0625rem, 1.5vw, 1.1875rem); line-height: 1.7; }
+.hello-body em { font-style: normal; color: var(--accent); background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; animation: underline 1s 1.2s var(--ease) forwards; }
+.f-open { font-size: var(--fs-small); color: var(--ink-2); }
