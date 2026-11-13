@@ -19,7 +19,7 @@
         await Promise.all([css('assets/vendor/leaflet-1.9.4/leaflet.css'), js('assets/vendor/leaflet-1.9.4/leaflet.js')]);
         const G = await (await fetch('assets/lagos-lga.json')).json();
         const box = fig.querySelector('.lx-map');
-        const map = L.map(box, { zoomControl: false, attributionControl: true, dragging: false, scrollWheelZoom: false, touchZoom: false, doubleClickZoom: false, boxZoom: false, keyboard: false, zoomSnap: .25 });
+        const map = L.map(box, { zoomControl: false, attributionControl: true, dragging: false, scrollWheelZoom: false, touchZoom: false, doubleClickZoom: false, boxZoom: false, keyboard: false, zoomSnap: 1, fadeAnimation: false });
         L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', { maxZoom: 13, attribution: 'Basemap © Esri' }).addTo(map);
         map.attributionControl.setPrefix(false);
         const layer = L.geoJSON(G, { style: () => ({ color: '#fff', weight: 1, fillOpacity: .9 }), interactive: false }).addTo(map);

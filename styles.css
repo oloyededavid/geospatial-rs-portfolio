@@ -607,3 +607,22 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 }
 @media (max-width: 520px) { .lx-stage { min-height: 340px; } .lx-tabs button { padding: 8px 10px; font-size: .75rem; } }
 @media (max-width: 959px) { .lx-tabs > * { flex: none; white-space: nowrap; } }
+
+/* ================= round 4: one shared column for About, Skills and contact ================= */
+.about .wrap > .ab, .about .wrap > .sk { max-width: 76rem; margin-inline: auto; }
+.about .ab { padding-inline: var(--s-6); }
+.ab-text { margin-top: var(--s-4); max-width: 50rem; }
+.ab-text p { font-size: clamp(1.0625rem, 1.35vw, 1.1875rem); line-height: 1.85; color: var(--ink-2); }
+.ab-first { color: var(--ink); font-weight: 500; }
+.ab-text a { color: var(--ink); text-decoration: underline; text-decoration-color: rgba(31, 95, 174, .45); text-decoration-thickness: 1.5px; text-underline-offset: 4px; transition: text-decoration-color .2s; }
+.ab-text a:hover { text-decoration-color: var(--accent); }
+.sk { margin-top: var(--s-8); }
+.sk-row { grid-template-columns: 11rem minmax(0, 1fr); }
+.sk-list { gap: 6px; }
+.sk-list li { height: 30px; font-size: .8125rem; padding: 0 10px 0 8px; gap: 6px; }
+.ab-contact { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--s-4) var(--s-6); margin-top: var(--s-8); }
+.ab-contact .ab-big { margin: 0; }
+.ab-contact .ab-btns { margin: 0; }
+@media (max-width: 720px) { .about .ab { padding-inline: 0; } .sk-row { grid-template-columns: 1fr; } .ab-contact { flex-direction: column; align-items: flex-start; } }
+/* Lagos: hide hairline seams between basemap tiles at fractional zoom */
+.lx .leaflet-container { background: #e8e8e6; }
