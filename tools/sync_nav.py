@@ -31,21 +31,23 @@ CSS = '''<style>
 .sn-bar a{color:#141412;text-decoration:none}.sn-bar a:hover{text-decoration:underline;text-underline-offset:4px}
 .sn-home{font-weight:700}.sn-pos{color:#6a6963;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:12px;letter-spacing:.04em}
 .sn-pn{display:flex;gap:18px}.sn-pn a{color:#55544e}
-.sn-next{font:400 16px/1.6 'Satoshi',system-ui,-apple-system,'Segoe UI',sans-serif;color:#141412;background:#fff;border-top:1px solid #e5e5e1;margin-top:64px}
-.sn-next .sn-in{max-width:1240px;margin:0 auto;padding:48px 24px 56px}
-.sn-k{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#6a6963;margin:0 0 16px}
-.sn-card{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:32px;align-items:center;text-decoration:none;color:inherit;border:1px solid #e5e5e1;border-radius:10px;padding:20px;transition:border-color .25s}
-.sn-card:hover{border-color:#141412}.sn-card img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:8px;display:block;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
-.sn-media{overflow:hidden;border-radius:8px}.sn-card:hover img{transform:scale(1.03)}
-.sn-tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px;padding:0;list-style:none}
-.sn-tags li{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:#55544e;border:1px solid #e5e5e1;border-radius:4px;padding:4px 7px}
-.sn-card h2{font-family:'Zodiak',Georgia,serif;font-weight:700;font-size:clamp(20px,2.2vw,28px);line-height:1.16;margin:0;letter-spacing:-.01em}
-.sn-card p{color:#55544e;margin:10px 0 18px;font-size:15px}
-.sn-go{display:inline-flex;gap:6px;background:#141412;color:#fff;border-radius:6px;padding:10px 16px;font-size:15px;font-weight:500}
-.sn-more{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:20px;font-size:14px}.sn-more a{color:#55544e;text-decoration:none;border-bottom:1px solid #e5e5e1}
-.sn-more a:hover{color:#141412;border-bottom-color:#141412}
-@media (max-width:760px){.sn-card{grid-template-columns:1fr;gap:18px}.sn-pos{display:none}}
-@media (prefers-reduced-motion:reduce){.sn-card img{transition:none}}
+.sn-next{font:400 16px/1.5 'Satoshi',system-ui,-apple-system,'Segoe UI',sans-serif;color:#141412;background:#fff;border-top:1px solid #ececea;margin-top:64px}
+.sn-next .sn-in{max-width:1080px;margin:0 auto;padding:40px 24px 48px}
+.sn-k{font-size:15px;color:#6a6963;margin:0 0 14px}
+.sn-card{display:flex;align-items:center;gap:20px;text-decoration:none;color:inherit;background:#fafafa;border:1px solid #ececea;border-radius:22px;padding:14px 18px 14px 14px;transition:border-color .25s,background .25s}
+.sn-card:hover{border-color:#d5d5d1;background:#f6f6f5}
+.sn-media{flex:none;width:112px;height:84px;border-radius:14px;overflow:hidden;background:#eee}
+.sn-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.sn-card:hover .sn-media img{transform:scale(1.05)}
+.sn-t{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.sn-t b{font-weight:500;font-size:clamp(17px,1.8vw,21px);line-height:1.25;letter-spacing:-.005em}
+.sn-t span{font-size:15px;color:#62625d}
+.sn-arrow{flex:none;width:46px;height:46px;border-radius:50%;border:1px solid #e4e4e0;background:#fff;display:grid;place-items:center;font-size:20px;color:#3a3a37;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.sn-card:hover .sn-arrow{transform:translateX(3px)}
+.sn-back{display:flex;justify-content:center;gap:10px;margin-top:28px;font-size:15px;color:#62625d;text-decoration:none}
+.sn-back:hover{color:#141412}
+@media (max-width:620px){.sn-media{width:72px;height:72px}.sn-t span{display:none}.sn-pos{display:none}}
+@media (prefers-reduced-motion:reduce){.sn-media img,.sn-arrow{transition:none}}
 </style>'''
 
 def bar(i):
@@ -57,13 +59,12 @@ def bar(i):
 
 def nav(i):
     n = S[(i + 1) % N]
-    tags = ''.join(f'<li>{t}</li>' for t in n[6])
-    others = ''.join(f'<a href="{B}{s[2]}/">{s[3].split(":")[0].split(",")[0]}</a>' for j, s in enumerate(S) if j not in (i, (i + 1) % N))
+    short = n[3].split(':')[0].split(', 20')[0]
     return (f'<!-- study-nav:start --><section class="sn-next" aria-label="Next study"><div class="sn-in">'
             f'<p class="sn-k">Next study</p>'
-            f'<a class="sn-card" href="{B}{n[2]}/"><div class="sn-media"><img src="assets/next-study.webp" width="720" height="540" loading="lazy" decoding="async" alt=""></div>'
-            f'<div><ul class="sn-tags">{tags}</ul><h2>{n[3]}</h2><p>{n[4]}</p><span class="sn-go">Read the next study <span aria-hidden="true">↗</span></span></div></a>'
-            f'<div class="sn-more"><a href="{HOME}#studies">All studies</a>{others}</div>'
+            f'<a class="sn-card" href="{B}{n[2]}/"><span class="sn-media"><img src="assets/next-study.webp" width="720" height="540" loading="lazy" decoding="async" alt=""></span>'
+            f'<span class="sn-t"><b>{short}</b><span>{n[4]}</span></span><span class="sn-arrow" aria-hidden="true">→</span></a>'
+            f'<a class="sn-back" href="{HOME}#studies"><span aria-hidden="true">←</span> Back to all studies</a>'
             f'</div></section><!-- study-nav:end -->')
 
 def put(html, key, block, where):
