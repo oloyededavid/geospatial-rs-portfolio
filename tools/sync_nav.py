@@ -53,7 +53,7 @@ CSS = '''<style>
 def bar(i):
     p, n = S[(i - 1) % N], S[(i + 1) % N]
     return (f'<!-- study-bar:start -->{CSS}<nav class="sn-bar" aria-label="Portfolio"><div class="sn-in">'
-            f'<a class="sn-home" href="{HOME}">← Oloyede David</a><span class="sn-pos">Study {S[i][0]} of {N:02d}</span>'
+            f'<a class="sn-home" href="{HOME}">← David Oloyede</a><span class="sn-pos">Study {S[i][0]} of {N:02d}</span>'
             f'<span class="sn-pn"><a href="{B}{p[2]}/" title="{p[3]}">Previous</a><a href="{B}{n[2]}/" title="{n[3]}">Next study →</a></span>'
             f'</div></nav><!-- study-bar:end -->')
 
