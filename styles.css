@@ -661,3 +661,21 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 .ab-text a.ab-chip { display: inline; white-space: normal; padding: 2px 7px 3px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 .ab-text a.ab-chip svg { display: inline-block; vertical-align: -2px; margin-right: 5px; }
 .ab-text .nw { white-space: normal; }
+
+/* ================= portrait beside the opening line ================= */
+.ab-intro { display: flex; align-items: center; gap: var(--s-5); }
+.ab-pic { position: relative; flex: none; width: 76px; height: 76px; margin: 0; transform: rotate(-3deg); transition: transform .5s var(--ease); }
+.ab-pic img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 14px; background: #fff; box-shadow: 0 0 0 3px #fff, 0 10px 24px rgba(20, 20, 18, .14); }
+.ab-pic svg { position: absolute; inset: -6px; width: calc(100% + 12px); height: calc(100% + 12px); overflow: visible; pointer-events: none; }
+.ab-pic rect { fill: none; stroke: #c9c8c2; stroke-width: 1; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: .7; }
+.ab-pic:hover { transform: rotate(0deg) scale(1.04); }
+.js .about .ab-pic { opacity: 0; transform: rotate(-9deg) scale(.85); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.js .about.in .ab-pic { opacity: 1; transform: rotate(-3deg); }
+.js .about.in .ab-pic:hover { transform: rotate(0deg) scale(1.04); }
+.about.in .ab-pic rect, .no-js .ab-pic rect { animation: abDraw 1.4s .35s var(--ease) forwards; }
+@keyframes abDraw { to { stroke-dashoffset: 0; } }
+@media (max-width: 560px) { .ab-intro { gap: var(--s-4); } .ab-pic { width: 60px; height: 60px; } }
+@media (prefers-reduced-motion: reduce) { .js .about .ab-pic, .js .about.in .ab-pic { opacity: 1; transform: rotate(-3deg); transition: none; } .ab-pic rect { animation: none !important; stroke-dashoffset: 0; } }
+.ab-text .ab-lead { hyphens: manual; -webkit-hyphens: manual; margin: 0; }
+.ab-intro + p { margin-top: var(--s-5); }
+@media (max-width: 560px) { .ab-text .ab-lead { font-size: 1.1875rem; } }
