@@ -231,7 +231,7 @@
 
     // ---------- state and animation ----------
     let cur = LAST, from = LAST, m = 0, tStart = 0, lon = ST[LAST].lon, lonFrom = lon, lonTo = lon;
-    let thumbP = pos(LAST), thumbFrom = thumbP, thumbT = 0, dragging = false, auto = !reduced, hold = 0, visible = true, dirty = true, raf = 0, last = 0;
+    let lastInput = 0, spinning = false, spinX = 0, thumbP = pos(LAST), thumbFrom = thumbP, thumbT = 0, dragging = false, auto = !reduced, hold = 0, visible = true, dirty = true, raf = 0, last = 0;
     const TR = 900, HOLD = 2300, HOLD_TODAY = 3600, SPIN = 7;
     function go(i, now) {
         if (i === cur && m === 0) return;
@@ -251,6 +251,7 @@
             dirty = true;
         } else if (!reduced) { lon -= SPIN * dt / 1000; dirty = true; }
         if (!dragging && thumbP !== pos(cur)) { const tt = reduced ? 1 : Math.min(1, (now - thumbT) / TR); thumbP = tt >= 1 ? pos(cur) : lerp(thumbFrom, pos(cur), ease(tt)); scrub(thumbP); }
+        if (!auto && !reduced && !dragging && !spinning && lastInput && now - lastInput > 7000) { auto = true; hold = 0; lastInput = 0; }
         if (auto && m >= 1 && !dragging) { hold += dt; if (hold > (cur === LAST ? HOLD_TODAY : HOLD)) go((cur + 1) % N, now); }
         if (dirty) { const ok = m >= 1 ? render(ST[cur].k, ST[cur].k, 0, lon) : render(ST[from].k, ST[cur].k, m, lon); dirty = false; }
         if (visible && !document.hidden && (!reduced || m < 1)) raf = requestAnimationFrame(frame); else last = 0;
@@ -261,15 +262,21 @@
     rule.removeAttribute('aria-hidden'); rule.setAttribute('role', 'slider'); rule.tabIndex = 0; rule.setAttribute('aria-label', 'Time');
     rule.setAttribute('aria-valuemin', 0); rule.setAttribute('aria-valuemax', LAST);
     const at = e => { const b = rule.getBoundingClientRect(); return Math.max(0, Math.min(1, (e.clientX - b.left) / b.width)); };
-    rule.addEventListener('pointerdown', e => { if (e.button) return; dragging = true; auto = false; rule.setPointerCapture(e.pointerId); move(e); });
+    rule.addEventListener('pointerdown', e => { if (e.button) return; dragging = true; auto = false; lastInput = performance.now(); rule.setPointerCapture(e.pointerId); move(e); });
     rule.addEventListener('pointermove', e => { if (dragging) move(e); });
     const up = () => { if (!dragging) return; dragging = false; thumbFrom = thumbP; thumbT = performance.now(); kick(); };
     rule.addEventListener('pointerup', up); rule.addEventListener('pointercancel', up); rule.addEventListener('lostpointercapture', up);
     function move(e) { thumbP = at(e); scrub(thumbP); const i = Math.round(thumbP * LAST); if (i !== cur) go(i, performance.now()); }
     rule.addEventListener('keydown', e => {
         const k = e.key, i = k === 'ArrowRight' || k === 'ArrowUp' ? cur + 1 : k === 'ArrowLeft' || k === 'ArrowDown' ? cur - 1 : k === 'Home' ? 0 : k === 'End' ? LAST : null;
-        if (i === null) return; e.preventDefault(); auto = false; go(Math.max(0, Math.min(LAST, i)), performance.now());
+        if (i === null) return; e.preventDefault(); auto = false; lastInput = performance.now(); go(Math.max(0, Math.min(LAST, i)), performance.now());
     });
+    // drag the globe itself to turn it
+    cv.style.cursor = 'grab'; cv.style.touchAction = 'pan-y';
+    cv.addEventListener('pointerdown', e => { if (e.button) return; spinning = true; spinX = e.clientX; auto = false; lastInput = performance.now(); cv.setPointerCapture(e.pointerId); cv.style.cursor = 'grabbing'; });
+    cv.addEventListener('pointermove', e => { if (!spinning) return; const s = cv.getBoundingClientRect().width / S; lon -= (e.clientX - spinX) / s * 0.45; lonFrom = lonTo = lon; spinX = e.clientX; lastInput = performance.now(); dirty = true; kick(); });
+    const stop = () => { if (!spinning) return; spinning = false; cv.style.cursor = 'grab'; lastInput = performance.now(); kick(); };
+    cv.addEventListener('pointerup', stop); cv.addEventListener('pointercancel', stop); cv.addEventListener('lostpointercapture', stop);
     if ('IntersectionObserver' in window) new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) kick(); }).observe(cv);
     document.addEventListener('visibilitychange', () => { if (!document.hidden) kick(); });
 
