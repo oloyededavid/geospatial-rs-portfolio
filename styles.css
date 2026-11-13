@@ -575,3 +575,35 @@ p.lx-sel { padding: 9px 10px; border: 1px solid var(--rule); border-radius: var(
 .ab-status a { color: var(--accent); font-weight: 500; text-decoration: none; border-bottom: 1px solid currentColor; }
 @media (max-width: 720px) { .sk-row { grid-template-columns: 1fr; gap: 8px; } .sk-h { padding-top: 0; } .sk-t, .sk-body { padding-inline: var(--s-4); } .sk { margin-inline: calc(-1 * var(--s-2)); } }
 @media (prefers-reduced-motion: reduce) { .sk-list li { transition: none; } .sk-list li:hover { transform: none; } }
+
+/* ================= round 3: skills, projects heading, hero name, Lagos ================= */
+.sk-list { align-items: flex-start; align-content: flex-start; }
+.sk-list li { height: 32px; padding: 0 11px 0 9px; line-height: 1; white-space: nowrap; }
+.sk-top { display: flex; justify-content: space-between; align-items: end; gap: var(--s-5); padding: var(--s-5) var(--s-6); border-bottom: 1px dashed #d4d3cd; }
+.sk-top .sk-t { padding: 0; border: 0; }
+.sk-note { max-width: 26rem; font-size: .8125rem; line-height: 1.5; color: var(--ink-3); text-align: right; }
+.sk-row { align-items: start; }
+.sk-h { padding-top: 10px; }
+.sk-row--next { margin-top: var(--s-3); padding-top: var(--s-4); border-top: 1px dashed #d4d3cd; }
+.sk-row--next li { background: transparent; border-style: dashed; color: var(--ink-2); box-shadow: none; }
+.sk-row--next .sk-g { stroke: #8a8983; }
+@media (max-width: 720px) { .sk-top { flex-direction: column; align-items: start; padding-inline: var(--s-4); } .sk-note { text-align: left; } .sk-list li { white-space: normal; } }
+
+.pj-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-4); }
+.pj-head h2 { font-family: var(--text); font-weight: 500; font-size: clamp(2rem, 3.6vw, 2.75rem); letter-spacing: -.035em; line-height: 1; }
+.pj-head h2 sup { font-family: var(--mono); font-weight: 400; font-size: .75rem; letter-spacing: 0; color: var(--ink-3); vertical-align: top; margin-left: 6px; position: relative; top: .2em; }
+.pj-meta { font-family: var(--mono); font-size: var(--fs-meta); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+@media (max-width: 560px) { .pj-head { flex-direction: column; gap: 6px; } }
+
+.hello-me { font-weight: 500; color: var(--ink); }
+
+/* Lagos: line the card up with the text column, as in the reference */
+figure.lx { margin: var(--s-2) 0 0; width: 100%; }
+@media (max-width: 959px) {
+  .lx-stage { min-height: 380px; }
+  .lx-tabs { right: 10px; left: 10px; top: 10px; max-width: none; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .lx-tabs::-webkit-scrollbar { display: none; }
+  .lx-tabs button { flex: none; }
+}
+@media (max-width: 520px) { .lx-stage { min-height: 340px; } .lx-tabs button { padding: 8px 10px; font-size: .75rem; } }
+@media (max-width: 959px) { .lx-tabs > * { flex: none; white-space: nowrap; } }
