@@ -827,3 +827,9 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 .site-nav a:hover, .site-nav a[aria-current="true"]:hover { color: var(--ink); background: none !important; }
 .site-nav a[aria-current="true"] { color: var(--ink); }
 @media (max-width: 420px) { .site-nav { gap: 18px !important; } }
+/* current section: dark text with a short underline */
+.site-nav a { position: relative; }
+.site-nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 6px; height: 1.5px; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease); }
+.site-nav a[aria-current="true"] { color: var(--ink); font-weight: 500; }
+.site-nav a[aria-current="true"]::after { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) { .site-nav a::after { transition: none; } }
