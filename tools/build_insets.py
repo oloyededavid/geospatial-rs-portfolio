@@ -7,11 +7,11 @@ B = 'https://oloyededavid.github.io/'
 # WAVES, GroundwatCH, Copernicus Master in Digital Earth, Flood Risk Management, GEM, Applied Ecohydrology.
 S = [
     ('01', 'hydrology', 'Observational-Hydrology-Extremes', 'Hydrological extremes where the gauges are missing: floods, droughts and design rainfall in Nigeria, 1985–2070',
-     'Floods, drought and future extreme rainfall in two Nigerian basins with few rain gauges, mapped from satellite radar and climate models.',
+     'Where rain gauges are scarce, satellite radar, long rainfall records and climate models fill the gap, and each result is checked against independent data.',
      '1985–2070', ['Flood risk', 'Satellite hydrology', 'Climate change', 'Earth observation'],
      'Map of Nigeria and its neighbours showing the two study areas: the Sokoto–Rima basin in the north-west and the Lower Niger–Benue reach near Lokoja, each divided into 0.25 degree grid cells.'),
     ('02', 'ogun', 'Ogun-Catchment-Coast-Observatory', 'Surface water from headwaters to lagoon: rainfall, soil moisture and flooding, 2019–2024',
-     'Rainfall, soil moisture, flooding and estuary turbidity along the Ogun River, from its headwaters to the Lagos Lagoon.',
+     'How rain turns into soil moisture, flooding and murky water along one river, followed month by month with radar and optical satellites.',
      '2019–2024', ['Earth observation', 'Integrated water management', 'Water quality', 'Geovisualisation'],
      'Map of the Ogun River catchment from the Shaki area to Lagos, divided into its sub-basins, with the lagoon estuary zone at the coast and the towns of Shaki, Oyo, Ibadan, Abeokuta and Lagos marked.'),
     ('03', 'oueme', 'Oueme-Ogun-Groundwater-Recharge', 'Testing a satellite water balance for groundwater recharge in tropical basement catchments, 2018–2024',
@@ -50,19 +50,20 @@ for n, img, repo, title, desc, years, tags, alt in S:
         text = text.replace('<span class="cta" aria-hidden="true">Open the study <span class="arrow">↗</span></span>', f'<a class="cta" href="{B}{repo}/" rel="noopener" aria-label="Open the study: {title}">Open the study <span class="arrow" aria-hidden="true">↗</span></a>')
         rows.append(f'''      <article class="inset inset--wide reveal" id="study-{n}" data-n="{n}" aria-labelledby="t{n}">
         {text}
-        <figure class="lx" aria-label="Interactive map of Lagos State’s twenty local government areas">
-          <div class="lx-stage">
-            <div class="lx-map" role="application" aria-label="Map of Lagos State local government areas"></div>
-            <div class="lx-tabs" role="tablist" aria-label="Map layer"></div>
-            <div class="lx-legend" aria-hidden="true"><p class="lx-lt"></p><span class="lx-ramp"></span><p class="lx-lr"><span class="lx-lo"></span><span class="lx-mid"></span><span class="lx-hi"></span></p></div>
+        <figure class="lx" aria-label="A short recorded tour of the Lagos explorer: switching between temperature, hot and cold spots, heat and population, vegetation and population, and opening individual local government areas">
+          <div class="lx-stage" aria-hidden="true">
+            <div class="lx-map"></div>
+            <div class="lx-tabs"></div>
+            <div class="lx-legend"><p class="lx-lt"></p><span class="lx-ramp"></span><p class="lx-lr"><span class="lx-lo"></span><span class="lx-mid"></span><span class="lx-hi"></span></p></div>
           </div>
-          <aside class="lx-panel" aria-live="polite">
+          <aside class="lx-panel" aria-hidden="true">
             <p class="lx-k">Local government area</p>
-            <select class="lx-sel" aria-label="Choose a local government area"></select>
+            <p class="lx-sel"></p>
             <h4 class="lx-name"></h4><p class="lx-sub"></p>
             <div class="lx-cards"></div>
-            <p class="lx-note">Earlier LGA-level analysis, Landsat dry seasons December 2022 to April 2024. The audited study works on 60 m cells.</p>
           </aside>
+          <div class="lx-cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.6L10 19z"/></svg></div>
+          <a class="lx-cover" href="{B}{repo}/" rel="noopener"><span>Explore it yourself <span aria-hidden="true">↗</span></span></a>
         </figure>
       </article>''')
         continue
