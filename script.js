@@ -81,6 +81,28 @@
         const r = ul.getBoundingClientRect().right; li.forEach(x => { if (x.getBoundingClientRect().right > r + 1) x.classList.add('off'); });
     });
     fitTags(); document.fonts && document.fonts.ready.then(fitTags); addEventListener('resize', () => requestAnimationFrame(fitTags));
+    // About: the paragraph darkens word by word as it scrolls through the screen
+    const abP = document.querySelector('.ab-text > p:not(.ab-lead)');
+    if (abP && !reduced) {
+        const walk = n => { [...n.childNodes].forEach(c => {
+            if (c.nodeType === 3 && c.textContent.trim()) {
+                const f = document.createDocumentFragment();
+                c.textContent.split(/(\s+)/).forEach(w => { if (!w) return; if (/^\s+$/.test(w)) f.append(w); else { const s = document.createElement('span'); s.className = 'rw'; s.textContent = w; f.append(s); } });
+                c.replaceWith(f);
+            } else if (c.nodeType === 1 && c.tagName !== 'svg') walk(c);
+        }); };
+        walk(abP);
+        const words = [...abP.querySelectorAll('.rw')];
+        let lastK = -1;
+        const read = () => {
+            const r = abP.getBoundingClientRect(), vh = innerHeight;
+            const p = Math.max(0, Math.min(1, (vh * 0.8 - r.top) / (r.height + vh * 0.15)));
+            const k = Math.round(p * words.length);
+            if (k === lastK) return; lastK = k;
+            words.forEach((w, i) => w.classList.toggle('on', i < k));
+        };
+        addEventListener('scroll', () => requestAnimationFrame(read), { passive: true }); addEventListener('resize', read); read();
+    }
     // language switcher: remember the choice and keep the current section
     document.querySelectorAll('.lang a[data-lang]').forEach(a => a.addEventListener('click', () => {
         try { localStorage.setItem('lang', a.dataset.lang); } catch (e) {}

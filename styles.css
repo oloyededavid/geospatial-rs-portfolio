@@ -867,3 +867,10 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 .inset .inset-desc { font-size: 1.0625rem; line-height: 1.75; color: var(--ink-2); max-width: none; }
 @media (max-width: 560px) { .inset .inset-desc { font-size: 1rem; } }
 .inset--wide .inset-desc { max-width: 40rem; }
+/* cards: no hover shadow; one fixed map with a study-area caption */
+.inset:hover { box-shadow: 0 1px 2px rgba(20, 20, 18, .03); }
+.map-cap { position: absolute; left: 14px; bottom: 14px; max-width: calc(100% - 28px); margin: 0; padding: 6px 11px; border-radius: 6px; background: rgba(20, 20, 18, .82); color: #fff; font-size: .8125rem; line-height: 1.35; z-index: 2; }
+/* About: words darken as the paragraph is read */
+.ab-text .rw { color: #c9c8c2; transition: color .35s ease; }
+.ab-text .rw.on { color: inherit; }
+@media (prefers-reduced-motion: reduce) { .ab-text .rw { color: inherit; transition: none; } }
