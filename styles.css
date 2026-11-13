@@ -626,3 +626,5 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 @media (max-width: 720px) { .about .ab { padding-inline: 0; } .sk-row { grid-template-columns: 1fr; } .ab-contact { flex-direction: column; align-items: flex-start; } }
 /* Lagos: hide hairline seams between basemap tiles at fractional zoom */
 .lx .leaflet-container { background: #e8e8e6; }
+.sk-h { padding-top: 0; line-height: 30px; }
+@media (max-width: 720px) { .sk-h { line-height: 1.4; } }
