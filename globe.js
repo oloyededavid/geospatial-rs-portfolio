@@ -12,9 +12,13 @@
         { t: '4.4 billion years ago', h: 'First oceans', s: 'Steam falls as rain', k: 'oceans', lon: 0 },
         { t: '3.7 billion years ago', h: 'First life', s: 'Microbes under a hazy sky', k: 'life', lon: 0 },
         { t: '2.4 billion years ago', h: 'Great Oxidation', s: 'Oxygen fills the air', k: 'oxid', lon: 0 },
+        { t: '1 billion years ago', h: 'Rodinia', s: 'Bare rock, no plants yet', k: 'rodinia', lon: -20 },
         { t: '650 million years ago', h: 'Snowball Earth', s: 'Ice reaches the equator', k: 'snow', lon: 0 },
+        { t: '540 million years ago', h: 'Cambrian explosion', s: 'Animals fill the seas', k: 'cambrian', lon: 30 },
+        { t: '385 million years ago', h: 'First forests', s: 'Plants spread over land', k: 'forest', lon: -10 },
         { t: '250 million years ago', h: 'Pangaea', s: 'One supercontinent', k: 'pangaea', lon: 10 },
         { t: '66 million years ago', h: 'Chicxulub', s: 'An asteroid ends the dinosaurs', k: 'chix', lon: -80 },
+        { t: '20,000 years ago', h: 'Last Ice Age', s: 'Ice sheets cover the north', k: 'iceage', lon: -45 },
         { t: 'Today', h: 'Earth', s: '8 billion people', k: 'today', lon: 15 },
     ];
     const N = ST.length, LAST = N - 1;
@@ -96,6 +100,32 @@
             const a = angDeg(lat, lon, 21.3, -89.5);
             col = mix(col, [255, 186, 90], ss(9, 1.5, a)); return mix(col, [255, 252, 228], ss(2.6, 0.8, a));
         },
+        rodinia(x, y, z, lat, lon) {
+            const n = fbm(x * 2.6 + 11, y * 2.6, z * 2.6, 5), sp = fbm(x * 20 + 3, y * 20, z * 20, 3);
+            const d = angDeg(lat * 1.35, lon, -6, -20), r = 52 + 30 * (n - 0.5) * 2;
+            const ocean = mix([24, 66, 152], [44, 104, 196], ss(70, 0, Math.abs(lat)));
+            if (d > r) return mix(ocean, [64, 150, 190], ss(r + 8, r, d) * 0.6);
+            return mix(mix([118, 92, 74], [160, 128, 98], sp), [92, 74, 62], ss(0.55, 0.75, n) * 0.6);
+        },
+        cambrian(x, y, z, lat) {
+            const n = fbm(x * 2.2 + 21, y * 2.2, z * 2.2, 5), sp = fbm(x * 20, y * 20 + 9, z * 20, 3);
+            const ocean = mix([24, 66, 152], [44, 104, 196], ss(70, 0, Math.abs(lat)));
+            if (n < 0.56) return mix(ocean, [70, 168, 196], ss(0.5, 0.56, n) * 0.75);
+            return mix([150, 122, 94], [190, 160, 124], sp);
+        },
+        forest(x, y, z, lat) {
+            const n = fbm(x * 2.2 + 31, y * 2.2, z * 2.2, 5), sp = fbm(x * 18, y * 18, z * 18 + 5, 3);
+            const ocean = mix([24, 66, 152], [44, 104, 196], ss(70, 0, Math.abs(lat)));
+            if (n < 0.53) return mix(ocean, [64, 156, 190], ss(0.48, 0.53, n) * 0.6);
+            const bare = mix([168, 140, 100], [196, 170, 128], sp), green = mix([46, 112, 48], [78, 142, 62], sp);
+            return mix(green, bare, ss(0.6, 0.68, n));
+        },
+        iceage(x, y, z, lat, lon, u, v) {
+            const i = (v * TW + u) * 3, n = fbm(x * 8, y * 8, z * 8, 3); let c = [earth[i], earth[i + 1], earth[i + 2]];
+            const edge = iceEdge(lon), land1 = land[v * TW + u], ln = lat + (n - 0.5) * 5;
+            const ice = land1 ? ss(edge - 1.5, edge + 1.5, ln) : ss(edge + 6, edge + 10, ln) * 0.6;
+            return mix(c, mix([226, 234, 242], [246, 249, 252], n), ice);
+        },
         today(x, y, z, lat, lon, u, v) { const i = (v * TW + u) * 3; return [earth[i], earth[i + 1], earth[i + 2]]; },
     };
     // shading per surface: emissive, specular strength, haze colour and strength
@@ -104,12 +134,17 @@
         oceans: { spec: 0.35, haze: [150, 170, 185], hz: 0.35 }, life: { spec: 0.35, haze: [222, 142, 62], hz: 1 },
         oxid: { spec: 0.35, haze: [150, 190, 255], hz: 0.45 }, snow: { spec: 0.15, haze: [210, 230, 245], hz: 0.4 },
         pangaea: { spec: 0.25, haze: [150, 190, 255], hz: 0.5 }, chix: { spec: 0.3, haze: [150, 190, 255], hz: 0.5 },
+        rodinia: { spec: 0.3, haze: [150, 190, 255], hz: 0.5 }, cambrian: { spec: 0.3, haze: [150, 190, 255], hz: 0.5 },
+        forest: { spec: 0.3, haze: [150, 190, 255], hz: 0.5 }, iceage: { spec: 0.3, haze: [170, 200, 255], hz: 0.5 },
         today: { spec: 0.35, haze: [150, 190, 255], hz: 0.5 },
     };
+    // southern edge of the ice at the Last Glacial Maximum, rough, by longitude
+    const ICE = [[-180, 62], [-150, 58], [-125, 47], [-95, 39], [-75, 41], [-60, 46], [-40, 60], [-20, 60], [-8, 53], [10, 51], [30, 53], [60, 62], [120, 66], [180, 62]];
+    function iceEdge(lon) { for (let i = 1; i < ICE.length; i++) if (lon <= ICE[i][0]) { const [x0, y0] = ICE[i - 1], [x1, y1] = ICE[i]; return y0 + (y1 - y0) * (lon - x0) / (x1 - x0); } return 62; }
     const tex = {};
     function texture(k) {
         if (tex[k]) return tex[k];
-        if ((k === 'today' || k === 'chix') && !earth) return null;
+        if ((k === 'today' || k === 'chix' || k === 'iceage') && !earth) return null;
         const t = new Uint8ClampedArray(TW * TH * 3), f = SURF[k];
         for (let v = 0; v < TH; v++) { const lat = 90 - (v + 0.5) / TH * 180, cl = Math.cos(lat * D), y = Math.sin(lat * D);
             for (let u = 0; u < TW; u++) { const lon = (u + 0.5) / TW * 360 - 180, c = f(cl * Math.cos(lon * D), y, cl * Math.sin(lon * D), lat, lon, u, v), i = (v * TW + u) * 3;
@@ -235,6 +270,6 @@
     caption(cur); scrub(thumbP); kick();
     // build the other surfaces in idle time so the first transitions do not stall
     const idle = window.requestIdleCallback || (f => setTimeout(f, 200));
-    let q = ST.map(s => s.k); const warm = () => { const k = q.shift(); if (!k) return; if (!texture(k) && (k === 'today' || k === 'chix')) q.push(k); if (q.length) idle(warm); };
+    let q = ST.map(s => s.k); const warm = () => { const k = q.shift(); if (!k) return; if (!texture(k) && (k === 'today' || k === 'chix' || k === 'iceage')) q.push(k); if (q.length) idle(warm); };
     idle(warm);
 })();
