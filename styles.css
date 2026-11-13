@@ -821,3 +821,9 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 .inset h3 { max-width: none; text-wrap: wrap; }
 .inset .inset-text { max-width: none !important; }
 .sh { gap: 0; }
+/* header links: plain, hover only */
+.site-nav { padding: 0 !important; border: 0 !important; background: none !important; gap: 28px !important; }
+.site-nav a, .site-nav a[aria-current="true"] { padding: 0 !important; background: none !important; color: var(--ink-2); border-radius: 0; }
+.site-nav a:hover, .site-nav a[aria-current="true"]:hover { color: var(--ink); background: none !important; }
+.site-nav a[aria-current="true"] { color: var(--ink); }
+@media (max-width: 420px) { .site-nav { gap: 18px !important; } }
