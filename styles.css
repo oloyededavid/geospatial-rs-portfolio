@@ -683,3 +683,19 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
   .ab-btn { padding-inline: 10px; }
 }
 .hello-body { text-wrap: pretty; }
+
+/* ================= wider, larger About and Skills ================= */
+.about .wrap > .ab { max-width: 62rem; }
+.about .wrap > .sk { max-width: 80rem; }
+.ab-text p { font-size: clamp(1.0625rem, 1.45vw, 1.3125rem); line-height: 1.8; }
+.ab-text .ab-lead { font-size: clamp(1.375rem, 2.4vw, 2.125rem); line-height: 1.35; }
+.ab-pic { width: 92px; height: 92px; }
+.sk-t { font-size: 2rem; }
+.sk-row { grid-template-columns: 13rem minmax(0, 1fr); padding-block: 12px; }
+.sk-h { font-size: .75rem; }
+.sk-list { gap: 8px; }
+.sk-list li { height: 36px; font-size: .9375rem; padding: 0 13px 0 11px; gap: 8px; }
+.sk-b, .sk-g { width: 17px; height: 17px; }
+.sk-h { padding-top: 10px; }
+@media (max-width: 720px) { .sk-row { grid-template-columns: 1fr; } .sk-list li { height: 32px; font-size: .875rem; } .sk-h { padding-top: 0; } }
+@media (max-width: 560px) { .ab-pic { width: 64px; height: 64px; } }
