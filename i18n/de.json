@@ -130,12 +130,7 @@
     "PostGIS and SQL": "PostGIS und SQL",
     "STAC and cloud-native data": "STAC und Cloud-native Daten",
     "Deep learning basics": "Grundlagen des Deep Learning",
-    "Let’s keep in touch.": "Bleiben wir in Kontakt.",
     "Copy email": "E-Mail kopieren",
-    "GitHub ↗": "GitHub ↗",
-    "Email": "E-Mail",
-    "Back to top ↑": "Nach oben ↑",
-    "© 2026 David Oloyede · Index map: Natural Earth · Globe imagery and study basemaps © Esri": "© 2026 David Oloyede · Übersichtskarte: Natural Earth · Globusbilder und Grundkarten der Studien © Esri",
     "Satellite radar, long rainfall records and climate models fill the gaps left by missing gauges, each checked against independent data.": "Satellitenradar, lange Niederschlagsreihen und Klimamodelle schließen die Lücken fehlender Messstationen, jeweils mit unabhängigen Daten geprüft.",
     "Rainfall, soil moisture, flooding and water clarity along one river, tracked monthly with radar and optical satellites.": "Niederschlag, Bodenfeuchte, Überschwemmungen und Wasserklarheit entlang eines Flusses, monatlich mit Radar- und optischen Satelliten verfolgt.",
     "Can satellite rainfall and evapotranspiration estimate recharge where wells are scarce? Tested on the Upper Ouémé, described for the Upper Ogun.": "Neubildung aus Satellitendaten zu Niederschlag und Evapotranspiration, wo Brunnen fehlen? Am oberen Ouémé getestet, am oberen Ogun beschrieben.",
@@ -147,7 +142,11 @@
     "Lake Chad basin and GRACE cells": "Tschadsee-Becken und GRACE-Zellen",
     "Esri Certified": "Esri-zertifiziert",
     "Esri Trained": "Esri-geschult",
-    "Esri YPN member": "Mitglied im Esri YPN"
+    "Esri YPN member": "Mitglied im Esri YPN",
+    "Say hello.": "Schreiben Sie mir.",
+    "© 2026 David Oloyede": "© 2026 David Oloyede",
+    "Top ↑": "Nach oben ↑",
+    "Index map: Natural Earth · Globe imagery and study basemaps © Esri": "Übersichtskarte: Natural Earth · Globusbilder und Grundkarten der Studien © Esri"
   },
   "attr": {
     "David Oloyede · Geospatial and Environmental Researcher": "David Oloyede · Forscher in Geoinformatik und Umweltwissenschaften",

@@ -130,12 +130,7 @@
     "PostGIS and SQL": "PostGIS et SQL",
     "STAC and cloud-native data": "STAC et données cloud-native",
     "Deep learning basics": "Bases de l’apprentissage profond",
-    "Let’s keep in touch.": "Restons en contact.",
     "Copy email": "Copier l’e-mail",
-    "GitHub ↗": "GitHub ↗",
-    "Email": "E-mail",
-    "Back to top ↑": "Haut de page ↑",
-    "© 2026 David Oloyede · Index map: Natural Earth · Globe imagery and study basemaps © Esri": "© 2026 David Oloyede · Carte de situation : Natural Earth · Imagerie du globe et fonds de carte des études © Esri",
     "Satellite radar, long rainfall records and climate models fill the gaps left by missing gauges, each checked against independent data.": "Radar satellitaire, longues séries de pluie et modèles climatiques pallient le manque de stations, avec un contrôle par des données indépendantes.",
     "Rainfall, soil moisture, flooding and water clarity along one river, tracked monthly with radar and optical satellites.": "Pluie, humidité du sol, inondations et clarté de l’eau le long d’une rivière, suivies chaque mois par satellites radar et optiques.",
     "Can satellite rainfall and evapotranspiration estimate recharge where wells are scarce? Tested on the Upper Ouémé, described for the Upper Ogun.": "Pluie et évapotranspiration satellitaires peuvent-elles estimer la recharge là où les puits manquent ? Testé sur le haut Ouémé, décrit pour le haut Ogun.",
@@ -147,7 +142,11 @@
     "Lake Chad basin and GRACE cells": "Bassin du lac Tchad et cellules GRACE",
     "Esri Certified": "Certifié Esri",
     "Esri Trained": "Formé par Esri",
-    "Esri YPN member": "Membre du YPN Esri"
+    "Esri YPN member": "Membre du YPN Esri",
+    "Say hello.": "Écrivez-moi.",
+    "© 2026 David Oloyede": "© 2026 David Oloyede",
+    "Top ↑": "Haut ↑",
+    "Index map: Natural Earth · Globe imagery and study basemaps © Esri": "Carte de situation : Natural Earth · Imagerie du globe et fonds de carte des études © Esri"
   },
   "attr": {
     "David Oloyede · Geospatial and Environmental Researcher": "David Oloyede · Chercheur en sciences géospatiales et de l’environnement",
