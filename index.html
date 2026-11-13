@@ -37,7 +37,12 @@
     <h1 id="hello-title">Reading a changing Earth from above.</h1>
     <p class="hello-body">Water, climate, cities, land and ecosystems are connected. I study them with <span class="nw"><span class="chip chip-01"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2.5" y="2.5" width="11" height="11"/><path d="M2.5 10l3.5-3 3 2.5 2-1.5 2.5 2"/></svg>satellite imagery</span>,</span> <span class="nw"><span class="chip chip-02"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 5l4-2 4 2 4-2v8l-4 2-4-2-4 2z M6 3v8 M10 5v8"/></svg>GIS</span></span> and <span class="nw"><span class="chip chip-03"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="11" r="1.2"/><circle cx="8" cy="7" r="1.2"/><circle cx="12" cy="4" r="1.2"/><path d="M2.5 13.5h11"/></svg>spatial analysis</span>,</span> and build the <span class="nw"><span class="chip chip-04"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 4L2 8l4 4M10 4l4 4-4 4"/></svg>maps and web tools</span></span> that make the results easy to explore.</p>
     </div>
-    <figure class="globe"><canvas role="img" aria-label="A turning globe of dots showing the land, centred on West Africa, with the five study sites marked and a satellite crossing on a polar orbit."></canvas></figure>
+    <figure class="globe" aria-label="A photographic globe that turns to each study in time order, from rainfall records in 1985 to rainfall projected for 2041–2070.">
+      <canvas aria-hidden="true"></canvas>
+      <figcaption><p class="g-cap" aria-hidden="true"></p><p class="g-line"><b class="g-h"></b> <span class="g-s"></span></p>
+        <div class="g-rule" aria-hidden="true"><div class="g-ticks"></div><span class="g-thumb"></span></div>
+        <p class="g-ends" aria-hidden="true"><span>1980</span><span>2075</span></p></figcaption>
+    </figure>
   </div></section>
 
 
@@ -198,10 +203,9 @@
 <footer class="site-footer"><div class="wrap">
   <p class="f-open">Open to interdisciplinary research, graduate study and building geospatial tools.</p>
   <div class="f-contact"><p class="meta">Contact</p><a class="f-mail" href="mailto:oloyededavid10@gmail.com">oloyededavid10@gmail.com</a><nav aria-label="Elsewhere"><a href="https://github.com/oloyededavid" rel="noopener">GitHub ↗</a></nav></div>
-  <p class="f-credits">© 2026 Oloyede David · Index map: Natural Earth · Study maps: basemaps © Esri</p>
+  <p class="f-credits">© 2026 Oloyede David · Index map: Natural Earth · Globe imagery and study basemaps © Esri</p>
 </div></footer>
 <script src="script.js" defer></script>
-<script src="globe-data.js" defer></script>
 <script src="globe.js" defer></script>
 <script src="lagos.js" defer></script>
 </body>

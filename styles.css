@@ -544,3 +544,19 @@ p.lx-sel { padding: 9px 10px; border: 1px solid var(--rule); border-radius: var(
 .lx-cover:hover span, .lx-cover:focus-visible span { opacity: 1; transform: none; }
 .lx-cover:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .lx-stage .leaflet-container { cursor: default; }
+
+/* ================= hero globe: photographic Earth with a study timeline ================= */
+.globe { text-align: center; }
+.globe canvas { display: block; width: min(100%, 420px); aspect-ratio: 1; height: auto; margin: 0 auto; cursor: default; image-rendering: auto; filter: drop-shadow(0 24px 30px rgba(20, 40, 80, .14)); }
+.globe figcaption { display: block !important; margin-top: var(--s-5); }
+.g-cap { font-weight: 700; font-size: 1rem; color: var(--ink); }
+.g-line { margin-top: 2px; font-size: .875rem; color: var(--ink-3); }
+.g-line b { font-weight: 500; color: var(--ink-2); }
+.globe.swap .g-cap, .globe.swap .g-line { animation: gin .6s var(--ease); }
+@keyframes gin { from { opacity: 0; transform: translateY(4px); } }
+.g-rule { position: relative; height: 26px; max-width: 340px; margin: var(--s-4) auto 0; }
+.g-ticks i { position: absolute; bottom: 0; width: 1px; height: 9px; background: #cfcfca; }
+.g-ticks i.k { height: 15px; background: #8f8f8a; }
+.g-thumb { position: absolute; bottom: 0; width: 2px; height: 24px; background: var(--ink); transform: translateX(-1px); transition: left .9s var(--ease); }
+.g-ends { display: flex; justify-content: space-between; max-width: 340px; margin: 4px auto 0; font-size: 11px; font-family: var(--mono); color: var(--ink-3); }
+@media (prefers-reduced-motion: reduce) { .g-thumb { transition: none; } .globe.swap .g-cap, .globe.swap .g-line { animation: none; } }
