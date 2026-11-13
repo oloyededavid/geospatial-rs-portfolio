@@ -144,7 +144,10 @@
     "Sokoto–Rima basin and Lower Niger–Benue reach": "Sokoto–Rima-Becken und Abschnitt des unteren Niger–Benue",
     "Ogun catchment, sub-basins Z1–Z5": "Ogun-Einzugsgebiet, Teileinzugsgebiete Z1–Z5",
     "Upper Ouémé and Upper Ogun catchments": "Einzugsgebiete des oberen Ouémé und des oberen Ogun",
-    "Lake Chad basin and GRACE cells": "Tschadsee-Becken und GRACE-Zellen"
+    "Lake Chad basin and GRACE cells": "Tschadsee-Becken und GRACE-Zellen",
+    "Esri Certified": "Esri-zertifiziert",
+    "Esri Trained": "Esri-geschult",
+    "Esri YPN member": "Mitglied im Esri YPN"
   },
   "attr": {
     "David Oloyede · Geospatial and Environmental Researcher": "David Oloyede · Forscher in Geoinformatik und Umweltwissenschaften",
@@ -167,7 +170,8 @@
     "Portrait of David Oloyede": "Porträt von David Oloyede",
     "Footer": "Fußzeile",
     "Map of the Ogun River catchment from its headwaters to the Lagos lagoon, divided into sub-basins Z1 to Z5 and shaded by mean annual rainfall, 2019–2024.": "Karte des Ogun-Einzugsgebiets vom Quellgebiet bis zur Lagune von Lagos, unterteilt in die Teileinzugsgebiete Z1 bis Z5 und eingefärbt nach mittlerem Jahresniederschlag, 2019–2024.",
-    "Open the Lagos explorer": "Lagos-Explorer öffnen"
+    "Open the Lagos explorer": "Lagos-Explorer öffnen",
+    "Esri credentials": "Esri-Qualifikationen"
   },
   "js": {
     "13.8 billion years ago": "Vor 13,8 Milliarden Jahren",
