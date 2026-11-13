@@ -954,3 +954,29 @@ html:not(.js) .globe canvas, html:not(.js) .g-rule, html:not(.js) .g-ends, html:
 .lx-still { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 html:not(.js) .lx-tabs, html:not(.js) .lx-legend, html:not(.js) .lx-panel { display: none; }
 html:not(.js) .lx { grid-template-columns: 1fr; }
+
+/* ================= one design language: 6 px buttons, 14 px cards, solid hairlines ================= */
+:root { --line-soft: #e6e5e0; }
+/* buttons: same shape and type */
+.cta, .sh-cta, .pill { border-radius: 6px; height: 40px; padding: 0 18px; font-family: var(--mono); font-size: .8125rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; }
+/* language switch: same corner as the buttons */
+.lang { border-radius: 8px; } .lang a { border-radius: 6px; }
+/* cards: subtle corners */
+.inset, .inset:first-child { border-radius: 14px; border-color: var(--line-soft); }
+.inset .inset-media, .inset--wide figure.lx { border-radius: 10px; }
+/* skills: solid hairline frame, no crosshairs */
+.sk { border: 1px solid var(--line-soft) !important; border-radius: 14px; }
+.sk::before, .sk::after, .sk-x { display: none !important; }
+.sh--in { border-bottom: 1px solid var(--line-soft) !important; }
+.sk-row--next { border-top: 1px solid var(--line-soft) !important; }
+.sk-row--next li { border-style: solid; }
+/* Lagos card: text in two columns under the map on wide screens */
+@media (min-width: 1100px) {
+  .inset--wide .inset-text { display: grid !important; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); column-gap: var(--s-8); max-width: none !important; }
+  .inset--wide .tags, .inset--wide h3 { grid-column: 1; }
+  .inset--wide .inset-desc { grid-column: 2; grid-row: 1 / span 2; align-self: end; margin: 0; }
+  .inset--wide .inset-actions { grid-column: 2; grid-row: 3; padding-top: var(--s-4); }
+}
+/* globe about 20% larger */
+.globe canvas, .globe-still { width: min(100%, 400px); }
+@media (max-width: 899px) { .globe { max-width: 400px; } }
