@@ -19,6 +19,56 @@
         links.forEach(a => { const t = document.querySelector(a.hash); t && so.observe(t); });
     }
 
+
+    // ---------- life ----------
+    // headline words rise in one by one
+    const h1 = document.querySelector('.hello h1');
+    if (h1 && !reduced) {
+        const words = h1.textContent.trim().split(/\s+/);
+        h1.setAttribute('aria-label', h1.textContent.trim());
+        h1.innerHTML = words.map((w, i) => `<span class="w" aria-hidden="true"><span style="--i:${i}">${w}</span></span>`).join(' ');
+    }
+    // scroll progress
+    const bar = document.querySelector('.progress');
+    const prog = () => { const h = document.documentElement.scrollHeight - innerHeight; bar && bar.style.setProperty('--p', h > 0 ? scrollY / h : 0); };
+    addEventListener('scroll', prog, { passive: true }); prog();
+    const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+    // hero light follows the cursor
+    const hello = document.querySelector('.hello'), bg = document.querySelector('.hello-bg');
+    if (hello && bg && fine && !reduced) hello.addEventListener('pointermove', e => { const r = hello.getBoundingClientRect(); bg.style.setProperty('--mx', (e.clientX - r.left) + 'px'); bg.style.setProperty('--my', (e.clientY - r.top) + 'px'); });
+    // buttons lean toward the cursor
+    if (fine && !reduced) document.querySelectorAll('.cta').forEach(b => {
+        const host = b.closest('.hello-actions') ? b : null; if (!host) return;
+        b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .18}px, ${(e.clientY - r.top - r.height / 2) * .3}px)`; });
+        b.addEventListener('pointerleave', () => { b.style.transform = ''; });
+    });
+    // study images: an "Open" label follows the cursor
+    if (fine) document.querySelectorAll('.inset').forEach(row => {
+        const media = row.querySelector('.inset-media'); if (!media) return;
+        const f = document.createElement('span'); f.className = 'follow'; f.setAttribute('aria-hidden', 'true'); f.textContent = 'Open study ↗'; media.appendChild(f);
+        row.addEventListener('pointermove', e => {
+            const r = media.getBoundingClientRect(), inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+            f.classList.toggle('show', inside);
+            if (inside) { f.style.setProperty('--fx', Math.min(e.clientX - r.left + 14, r.width - 120) + 'px'); f.style.setProperty('--fy', Math.min(e.clientY - r.top + 14, r.height - 40) + 'px'); }
+        });
+        row.addEventListener('pointerleave', () => f.classList.remove('show'));
+    });
+    // about: stagger in when it scrolls into view
+    const about = document.querySelector('.about');
+    if (about) { if (reduced || !('IntersectionObserver' in window)) about.classList.add('in'); else { const ao = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { about.classList.add('in'); ao.disconnect(); } }), { threshold: .12 }); ao.observe(about); } }
+    // map: live coordinates under the cursor (equirectangular, 1°W–26°E, 3.5–18°N)
+    const mi = document.querySelector('.map-inner'), svg = mi && mi.querySelector('svg.sheet-map'), co = mi && mi.querySelector('.coord');
+    if (mi && svg && co && fine) {
+        mi.classList.add('crosshair');
+        svg.addEventListener('pointermove', e => {
+            const r = svg.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+            const lon = -1 + x * 27, lat = 18 - y * 14.5, m = mi.getBoundingClientRect();
+            co.textContent = `${Math.abs(lat).toFixed(2)}°${lat >= 0 ? 'N' : 'S'}  ${Math.abs(lon).toFixed(2)}°${lon >= 0 ? 'E' : 'W'}`;
+            co.style.setProperty('--cx', (e.clientX - m.left + 12) + 'px'); co.style.setProperty('--cy', (e.clientY - m.top + 12) + 'px'); co.classList.add('on');
+        });
+        svg.addEventListener('pointerleave', () => co.classList.remove('on'));
+    }
+
     const sheet = document.querySelector('.sheet');
     if (!sheet) return;
     // footprints draw themselves once, when the sheet first shows

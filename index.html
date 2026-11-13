@@ -24,6 +24,7 @@
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
+<div class="progress" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="collar-top"><div class="wrap">
   <a class="brand" href="#top">Oloyede David</a>
@@ -31,13 +32,17 @@
 </div></header>
 
 <main id="main">
-  <section class="hello" id="top" aria-labelledby="hello-title"><div class="wrap">
+  <section class="hello" id="top" aria-labelledby="hello-title"><div class="hello-bg" aria-hidden="true"><div class="grid"></div><div class="swath"></div><div class="glow"></div></div><div class="wrap hello-grid"><div class="hello-text">
     <h1 id="hello-title">Hi, I’m Oloyede David.</h1>
-    <p class="hello-role">A geospatial and environmental researcher.</p>
-    <p class="hello-body">I use <span class="nw"><span class="chip chip-01"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2.5" y="2.5" width="11" height="11"/><path d="M2.5 10l3.5-3 3 2.5 2-1.5 2.5 2"/></svg>satellite imagery</span>,</span> <span class="nw"><span class="chip chip-02"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 5l4-2 4 2 4-2v8l-4 2-4-2-4 2z M6 3v8 M10 5v8"/></svg>GIS</span>,</span> <span class="nw"><span class="chip chip-03"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="11" r="1.2"/><circle cx="8" cy="7" r="1.2"/><circle cx="12" cy="4" r="1.2"/><path d="M2.5 13.5h11"/></svg>spatial analysis</span></span> and <span class="nw"><span class="chip chip-04"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 4L2 8l4 4M10 4l4 4-4 4"/></svg>computational methods</span></span> to understand how <strong>environmental systems</strong> work and how they change, from water and climate to cities, land and ecosystems. I share the results as maps, visualisations and interactive applications.</p>
+    <p class="hello-role">Geospatial and environmental researcher. I study how the Earth’s surface <em>changes</em>, and why.</p>
+    <p class="hello-body">Water, climate, cities, land and ecosystems are connected. I use <span class="nw"><span class="chip chip-01"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2.5" y="2.5" width="11" height="11"/><path d="M2.5 10l3.5-3 3 2.5 2-1.5 2.5 2"/></svg>satellite imagery</span>,</span> <span class="nw"><span class="chip chip-02"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 5l4-2 4 2 4-2v8l-4 2-4-2-4 2z M6 3v8 M10 5v8"/></svg>GIS</span></span> and <span class="nw"><span class="chip chip-03"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="11" r="1.2"/><circle cx="8" cy="7" r="1.2"/><circle cx="12" cy="4" r="1.2"/><path d="M2.5 13.5h11"/></svg>spatial analysis</span></span> to see how they work together, and I share what I find as <strong>open, interactive studies</strong>.</p>
     <p class="hello-now">Open to interdisciplinary research and graduate study in geospatial and environmental science.</p>
-    <div class="hello-actions"><a class="cta" href="mailto:oloyededavid10@gmail.com">Get in touch <span class="arrow" aria-hidden="true">↗</span></a><a class="hello-link" href="#studies">See the studies <span aria-hidden="true">↓</span></a></div>
+    </div>
+    <figure class="globe"><canvas role="img" aria-label="A turning globe of dots showing the land, centred on West Africa, with the five study sites marked and a satellite crossing on a polar orbit."></canvas><figcaption class="meta">Five study sites · drag to turn</figcaption></figure>
   </div></section>
+
+
+  <div class="ticker" aria-label="Research interests"><div class="ticker-track"><div class="ticker-set"><span>Earth observation</span><i aria-hidden="true">✦</i><span>Hydrology and water resources</span><i aria-hidden="true">✦</i><span>Groundwater</span><i aria-hidden="true">✦</i><span>Flood mapping</span><i aria-hidden="true">✦</i><span>Climate and environmental change</span><i aria-hidden="true">✦</i><span>Urban heat</span><i aria-hidden="true">✦</i><span>Land cover</span><i aria-hidden="true">✦</i><span>Agriculture</span><i aria-hidden="true">✦</i><span>Forests and biodiversity</span><i aria-hidden="true">✦</i><span>Wetlands</span><i aria-hidden="true">✦</i><span>Spatial statistics</span><i aria-hidden="true">✦</i><span>Geospatial data science</span><i aria-hidden="true">✦</i></div><div class="ticker-set" aria-hidden="true"><span>Earth observation</span><i aria-hidden="true">✦</i><span>Hydrology and water resources</span><i aria-hidden="true">✦</i><span>Groundwater</span><i aria-hidden="true">✦</i><span>Flood mapping</span><i aria-hidden="true">✦</i><span>Climate and environmental change</span><i aria-hidden="true">✦</i><span>Urban heat</span><i aria-hidden="true">✦</i><span>Land cover</span><i aria-hidden="true">✦</i><span>Agriculture</span><i aria-hidden="true">✦</i><span>Forests and biodiversity</span><i aria-hidden="true">✦</i><span>Wetlands</span><i aria-hidden="true">✦</i><span>Spatial statistics</span><i aria-hidden="true">✦</i><span>Geospatial data science</span><i aria-hidden="true">✦</i></div></div></div>
 
   <section class="sheet" id="map" aria-label="Index map of the studies"><div class="wrap">
     <div class="sheet-frame">
@@ -85,6 +90,7 @@
 <line class="leader" data-n="01" x1="307.4" y1="418.8" x2="337.0" y2="432.0"/><circle class="lead-dot" cx="307.4" cy="418.8" r="2"/><g class="badge" data-n="01" tabindex="-1" focusable="false" aria-hidden="true"><circle cx="337.0" cy="432.0" r="13.5"/><text x="337.0" y="436.2" text-anchor="middle">01</text></g>
 <rect class="neat" x="0.5" y="0.5" width="999" height="546"/>
 </svg>
+          <div class="coord" aria-hidden="true"></div>
           <div class="north" aria-hidden="true"><svg viewBox="0 0 20 30" width="16" height="24"><path d="M10 2 L16 26 L10 21 L4 26 Z"/></svg><span>N</span></div>
           <div class="scale" aria-hidden="true" style="--w:16.95%"><div class="scale-bar"><i></i><i></i></div><span>0</span><span class="mid">250</span><span class="end">500 km</span></div>
         </div>
@@ -190,5 +196,7 @@
   <p class="f-credits">Sheet compiled November 2026 · © Oloyede David · Index map: Natural Earth · Study maps: basemaps © Esri</p>
 </div></footer>
 <script src="script.js" defer></script>
+<script src="globe-data.js" defer></script>
+<script src="globe.js" defer></script>
 </body>
 </html>
