@@ -32,7 +32,7 @@ rows = []
 for n, img, repo, title, desc, years, tags, alt in S:
     tg = ''.join(f'<li>{t}</li>' for t in tags)
     srcset = (f'assets/projects/{img}-1600.webp 1600w, ' if img != 'hydrology' else '') + f'assets/projects/{img}-1200.webp 1200w, assets/projects/{img}-720.webp 720w'
-    rows.append(f'''      <article class="inset reveal" data-n="{n}" aria-labelledby="t{n}">
+    rows.append(f'''      <article class="inset reveal" id="study-{n}" data-n="{n}" aria-labelledby="t{n}">
         <div class="inset-text">
           <ul class="tags" aria-label="Topics">{tg}</ul>
           <h3 id="t{n}"><a class="inset-link" href="{B}{repo}/" rel="noopener">{title}</a></h3>

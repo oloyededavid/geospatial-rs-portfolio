@@ -1,5 +1,12 @@
 /* Oloyede David: geospatial research portfolio.
-   One stylesheet, built on tokens. Two sections: Introduction and Selected research. */
+   One stylesheet, built on tokens. Introduction, index map, studies. */
+
+/* fonts: self-hosted, Latin subset (Satoshi and Zodiak: Fontshare, ITF Free Font License; Geist Mono: OFL) */
+@font-face { font-family: 'Satoshi'; src: url(assets/fonts/Satoshi-400.woff2) format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Satoshi'; src: url(assets/fonts/Satoshi-500.woff2) format('woff2'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Satoshi'; src: url(assets/fonts/Satoshi-700.woff2) format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Zodiak'; src: url(assets/fonts/Zodiak-700.woff2) format('woff2'); font-weight: 400 800; font-display: swap; }
+@font-face { font-family: 'Geist Mono'; src: url(assets/fonts/GeistMono-400.woff2) format('woff2'); font-weight: 400; font-display: swap; }
 
 /* ---------- tokens ---------- */
 :root {
@@ -233,3 +240,51 @@ h1, h2, h3 { margin: 0; font-weight: 500; }
     .inset-media { order: -1; }
 }
 @media (max-width: 700px) { .insets-head { flex-direction: column; gap: var(--s-2); } }
+
+/* ================= header: sticky, a rule appears once the page scrolls ================= */
+.collar-top { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 92%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid transparent; transition: border-color .2s ease; }
+.collar-top.scrolled { border-bottom-color: var(--rule); }
+.site-nav a[aria-current="true"] { color: var(--ink); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+html { scroll-padding-top: 72px; }
+
+/* ================= introduction ================= */
+.hello { padding-block: clamp(3.5rem, 9vw, 7rem) clamp(2.5rem, 6vw, 4.5rem); }
+.hello h1 { font-family: var(--display); font-weight: 700; font-size: clamp(2.5rem, 6.2vw, 4.75rem); line-height: 1.02; letter-spacing: -.025em; }
+.hello-role { margin-top: var(--s-4); font-size: clamp(1.25rem, 2.2vw, 1.625rem); line-height: 1.35; color: var(--ink); }
+.hello-role em { font-style: normal; color: var(--accent); }
+.hello-body { margin-top: var(--s-6); max-width: 40rem; font-size: clamp(1.0625rem, 1.5vw, 1.1875rem); line-height: 1.9; color: var(--ink-2); }
+.hello-body strong { color: var(--ink); font-weight: 500; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 1px 8px 1px 6px; border: 1px solid var(--rule); background: #fbfaf7; color: var(--ink); font-weight: 500; line-height: 1.6; white-space: nowrap; vertical-align: baseline; }
+.chip svg { width: 15px; height: 15px; fill: none; stroke: var(--c); stroke-width: 1.5; stroke-linecap: square; }
+.chip svg circle[r="1.2"] { fill: var(--c); stroke: none; }
+.chip-01 { --c: #1f5fae; } .chip-02 { --c: #0f766e; } .chip-03 { --c: #a8661b; } .chip-04 { --c: #5b6b7a; } .chip-05 { --c: #b3361b; }
+.hello-now { margin-top: var(--s-5); font-size: var(--fs-small); color: var(--ink-3); display: flex; align-items: center; gap: var(--s-2); }
+.hello-now::before { content: ''; width: 7px; height: 7px; background: #3a8a4f; flex: none; }
+.hello-actions { margin-top: var(--s-6); display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-4) var(--s-6); }
+.hello .cta:hover { background: #2b2b28; }
+.hello .cta:hover .arrow { transform: translate(2px, -2px); }
+.hello-link { font-size: var(--fs-small); color: var(--ink-2); border-bottom: 1px solid var(--rule); padding-block: 6px 2px; }
+.hello-link:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+/* title block on the sheet, now secondary to the introduction */
+.tb-name { font-family: var(--display); font-weight: 700; font-size: 1.6rem; line-height: 1.1; letter-spacing: -.015em; margin: var(--s-2) 0; }
+
+/* ================= footer ================= */
+.site-footer .wrap { display: grid; gap: var(--s-5); }
+.f-contact { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-2) var(--s-6); }
+.f-mail { font-family: var(--display); font-weight: 700; font-size: clamp(1.25rem, 2.6vw, 1.75rem); color: var(--ink); border-bottom: 1px solid var(--rule); user-select: all; }
+.f-mail:hover { border-bottom-color: var(--ink); }
+.f-credits { font-size: .8125rem; color: var(--ink-3); }
+
+/* touch: comfortable targets */
+@media (pointer: coarse) { .leg-src, .site-nav a, .inset .source, .hello-link { min-height: 44px; display: inline-flex; align-items: center; } }
+
+/* print: a clean sheet */
+@media print {
+    .collar-top, .skip, .hello-actions, .inset-actions, .hint { display: none !important; }
+    body { background: #fff; } .inset { break-inside: avoid; } .inset-media img { transform: none !important; }
+    a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #555; word-break: break-all; }
+}
+.nw { white-space: nowrap; }
+.brand, .site-nav a { white-space: nowrap; }
+@media (max-width: 520px) { .site-nav a[href="#map"] { display: none; } .collar-top .site-nav { gap: var(--s-4); } }
