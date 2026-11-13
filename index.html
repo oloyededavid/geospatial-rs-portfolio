@@ -29,6 +29,7 @@
 <link rel="preload" href="assets/fonts/Satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/Newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "David Oloyede", "jobTitle": "Geospatial Engineer and Researcher", "worksFor": {"@type": "Organization", "name": "Prevalence Studio"}, "alumniOf": {"@type": "CollegeOrUniversity", "name": "Federal University of Technology, Akure"}, "url": "https://oloyededavid.github.io/geospatial-rs-portfolio/", "sameAs": ["https://github.com/oloyededavid"], "knowsAbout": ["Remote sensing", "Earth observation", "Geographic information systems", "Hydrology", "Urban heat", "Spatial analysis"]}</script>
 <script>document.documentElement.classList.add('js');</script>
 <script data-i18n-redirect>try{var l=localStorage.getItem('lang'),r=document.referrer;if((l==='fr'||l==='de')&&!(r&&new URL(r).origin===location.origin))location.replace(l+'/'+location.hash)}catch(e){}</script>
 </head>
@@ -47,7 +48,7 @@
     <p class="hello-body">I’m <b class="hello-me">David Oloyede</b>, a geospatial and environmental researcher. I&nbsp;follow how water, climate, cities, land and ecosystems change, using <span class="nw"><span class="chip chip-01"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2.5" y="2.5" width="11" height="11"/><path d="M2.5 10l3.5-3 3 2.5 2-1.5 2.5 2"/></svg>satellite imagery</span>,</span> <span class="nw"><span class="chip chip-02"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 5l4-2 4 2 4-2v8l-4 2-4-2-4 2z M6 3v8 M10 5v8"/></svg>GIS</span></span> and <span class="nw"><span class="chip chip-03"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="4" cy="11" r="1.2"/><circle cx="8" cy="7" r="1.2"/><circle cx="12" cy="4" r="1.2"/><path d="M2.5 13.5h11"/></svg>spatial analysis</span>,</span> and I build the <span class="nw"><span class="chip chip-04"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 4L2 8l4 4M10 4l4 4-4 4"/></svg>maps and web tools</span></span> that make the results easy to explore.</p>
     </div>
     <figure class="globe" aria-label="Earth through time, from the Big Bang 13.8 billion years ago to today. Drag the timeline or use the arrow keys.">
-      <canvas aria-hidden="true"></canvas>
+      <canvas aria-hidden="true"></canvas><noscript><img class="globe-still" src="assets/globe-still.webp" width="480" height="480" alt="The Earth today, seen from space over Africa"></noscript>
       <figcaption><p class="g-cap" aria-hidden="true"></p><p class="g-line"><b class="g-h"></b> <span class="g-s"></span></p>
         <div class="g-rule" aria-hidden="true"><div class="g-ticks"></div><span class="g-thumb"></span></div>
         <p class="g-ends" aria-hidden="true"><span>13.8B years ago</span><span>Today</span></p></figcaption>
@@ -110,12 +111,12 @@
         </div>
       </figure>
 
-      <aside class="margin">
+      <div class="margin">
         <div class="legend" id="legend" aria-labelledby="legend-title">
           <p class="meta" id="legend-title">Five projects, West and Central Africa</p>
           <ol class="leg-list"><li class="leg" data-n="01"><svg class="sw" viewBox="0 0 22 16" aria-hidden="true"><rect x="1" y="1" width="20" height="14" fill="url(#h01)" class="sw-fill"/><rect x="1" y="1" width="20" height="14" class="sw-line sw-01"/></svg><span class="leg-n">01</span><span class="leg-t"><a href="#study-01">Hydrological extremes where the gauges are missing</a><small>Sokoto–Rima basin and Lower Niger–Benue, Nigeria</small></span><a class="leg-src" href="https://github.com/oloyededavid/Observational-Hydrology-Extremes" rel="noopener" aria-label="Source code for Hydrological extremes where the gauges are missing">Source</a></li><li class="leg" data-n="02"><svg class="sw" viewBox="0 0 22 16" aria-hidden="true"><rect x="1" y="1" width="20" height="14" fill="url(#h02)" class="sw-fill"/><rect x="1" y="1" width="20" height="14" class="sw-line sw-02"/></svg><span class="leg-n">02</span><span class="leg-t"><a href="#study-02">Surface water from headwaters to lagoon</a><small>Ogun River, from headwaters to the Lagos Lagoon</small></span><a class="leg-src" href="https://github.com/oloyededavid/Ogun-Catchment-Coast-Observatory" rel="noopener" aria-label="Source code for Surface water from headwaters to lagoon">Source</a></li><li class="leg" data-n="03"><svg class="sw" viewBox="0 0 22 16" aria-hidden="true"><rect x="1" y="1" width="20" height="14" fill="url(#h03)" class="sw-fill"/><rect x="1" y="1" width="20" height="14" class="sw-line sw-03"/></svg><span class="leg-n">03</span><span class="leg-t"><a href="#study-03">Testing a satellite water balance for groundwater recharge</a><small>Upper Ouémé, Benin, and Upper Ogun, Nigeria</small></span><a class="leg-src" href="https://github.com/oloyededavid/Oueme-Ogun-Groundwater-Recharge" rel="noopener" aria-label="Source code for Testing a satellite water balance for groundwater recharge">Source</a></li><li class="leg" data-n="04"><svg class="sw" viewBox="0 0 22 16" aria-hidden="true"><rect x="1" y="1" width="20" height="14" fill="url(#h04)" class="sw-fill"/><rect x="1" y="1" width="20" height="14" class="sw-line sw-04"/></svg><span class="leg-n">04</span><span class="leg-t"><a href="#study-04">Water storage in the Lake Chad basin from GRACE and GRACE-FO</a><small>Lake Chad basin, Central Africa</small></span><a class="leg-src" href="https://github.com/oloyededavid/Groundwater-Storage-Gravimetry" rel="noopener" aria-label="Source code for Water storage in the Lake Chad basin from GRACE and GRACE-FO">Source</a></li><li class="leg" data-n="05"><svg class="sw" viewBox="0 0 22 16" aria-hidden="true"><rect x="1" y="1" width="20" height="14" fill="url(#h05)" class="sw-fill"/><rect x="1" y="1" width="20" height="14" class="sw-line sw-05"/></svg><span class="leg-n">05</span><span class="leg-t"><a href="#study-05">Urban heat island and distance to vegetation in Lagos State</a><small>Lagos State, Nigeria</small></span><a class="leg-src" href="https://github.com/oloyededavid/Lagos-Urban-Heat-Analytics" rel="noopener" aria-label="Source code for Urban heat island and distance to vegetation in Lagos State">Source</a></li></ol>
         </div>
-      </aside>
+      </div>
     </div>
   </div></section>
 
@@ -167,17 +168,17 @@
         </div>
         <figure class="lx" aria-label="A short recorded tour of the Lagos explorer: switching between temperature, hot and cold spots, heat and population, vegetation and population, and opening individual local government areas">
           <div class="lx-stage" aria-hidden="true">
-            <div class="lx-map"></div>
+            <div class="lx-map"></div><noscript><img class="lx-still" src="assets/projects/lagos-1200.webp" alt="Map of the 20 local government areas of Lagos State"></noscript>
             <div class="lx-tabs"></div>
             <div class="lx-legend"><p class="lx-lt"></p><span class="lx-ramp"></span><p class="lx-lr"><span class="lx-lo"></span><span class="lx-mid"></span><span class="lx-hi"></span></p></div>
           </div>
-          <aside class="lx-panel" aria-hidden="true">
+          <div class="lx-panel" aria-hidden="true">
             <p class="lx-k">Local government area</p>
             <p class="lx-sel"></p>
             <h4 class="lx-name"></h4><p class="lx-sub"></p>
             <div class="lx-cards"></div>
             <p class="lx-note">From the audited 2020–2024 study. Cross-sectional associations, not causes.</p>
-          </aside>
+          </div>
           <div class="lx-cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.6L10 19z"/></svg></div>
           <a class="lx-cover" href="https://oloyededavid.github.io/Lagos-Urban-Heat-Analytics/" rel="noopener" aria-label="Open the Lagos explorer"></a>
         </figure>

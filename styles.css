@@ -943,3 +943,14 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 .ab-text .rw.on { color: var(--ink); }
 .ab-text .ab-p1, .ab-text .ab-p2, .ab-text .ab-p3 { max-width: 70ch; }
 .ab-text .rw { white-space: nowrap; }
+/* visible focus on project title links */
+.inset .inset-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+/* skills: fall back to wrapping whenever the even grid would not fit (also at large text sizes) */
+@media (max-width: 87em) { .sk-list { display: flex !important; flex-wrap: wrap; } }
+@media (max-width: 87em) { .about .wrap > .sk { margin-inline: 0 !important; } }
+/* without JavaScript: still images instead of the globe and the Lagos tour */
+html:not(.js) .globe canvas, html:not(.js) .g-rule, html:not(.js) .g-ends, html:not(.js) .g-cap, html:not(.js) .g-line { display: none; }
+.globe-still { display: block; width: min(100%, 330px); height: auto; margin: 0 auto; }
+.lx-still { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+html:not(.js) .lx-tabs, html:not(.js) .lx-legend, html:not(.js) .lx-panel { display: none; }
+html:not(.js) .lx { grid-template-columns: 1fr; }
