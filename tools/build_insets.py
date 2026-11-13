@@ -6,15 +6,15 @@ B = 'https://oloyededavid.github.io/'
 # Tags use the wording of the Erasmus Mundus programmes in water and Earth observation
 # WAVES, GroundwatCH, Copernicus Master in Digital Earth, Flood Risk Management, GEM, Applied Ecohydrology.
 S = [
-    ('01', 'hydrology', 'Observational-Hydrology-Extremes', 'Hydrological extremes where the gauges are missing: floods, droughts and design rainfall in Nigeria',
+    ('01', 'hydrology', 'Observational-Hydrology-Extremes', 'Hydrological extremes where the gauges are missing: floods, droughts and design rainfall in Nigeria, 1985–2070',
      'Floods, drought and future extreme rainfall in two Nigerian basins with few rain gauges, mapped from satellite radar and climate models.',
      '1985–2070', ['Flood risk', 'Satellite hydrology', 'Climate change', 'Earth observation'],
      'Map of Nigeria and its neighbours showing the two study areas: the Sokoto–Rima basin in the north-west and the Lower Niger–Benue reach near Lokoja, each divided into 0.25 degree grid cells.'),
-    ('02', 'ogun', 'Ogun-Catchment-Coast-Observatory', 'Surface water from headwaters to lagoon: rainfall, soil moisture and flooding',
+    ('02', 'ogun', 'Ogun-Catchment-Coast-Observatory', 'Surface water from headwaters to lagoon: rainfall, soil moisture and flooding, 2019–2024',
      'Rainfall, soil moisture, flooding and estuary turbidity along the Ogun River, from its headwaters to the Lagos Lagoon.',
      '2019–2024', ['Earth observation', 'Integrated water management', 'Water quality', 'Geovisualisation'],
      'Map of the Ogun River catchment from the Shaki area to Lagos, divided into its sub-basins, with the lagoon estuary zone at the coast and the towns of Shaki, Oyo, Ibadan, Abeokuta and Lagos marked.'),
-    ('03', 'oueme', 'Oueme-Ogun-Groundwater-Recharge', 'Testing a satellite water balance for groundwater recharge in tropical basement catchments',
+    ('03', 'oueme', 'Oueme-Ogun-Groundwater-Recharge', 'Testing a satellite water balance for groundwater recharge in tropical basement catchments, 2018–2024',
      'Can satellite rainfall and evapotranspiration estimate groundwater recharge where wells are scarce? Tested on two basins in Benin and Nigeria.',
      '2018–2024', ['Groundwater', 'Hydrological modelling', 'Water balance', 'Satellite hydrology'],
      'Map of the Upper Ouémé catchment in Benin and the Upper Ogun catchment in Nigeria, each divided into 5 km rainfall grid cells, with the Bétérou river gauge marked.'),
@@ -38,20 +38,41 @@ REEL = {
 import json, html as _h
 rows = []
 for n, img, repo, title, desc, years, tags, alt in S:
-    tg = ''.join(f'<li>{t}</li>' for t in tags)
+    tg = ''.join(f'<li style="--k:{i}">{t}</li>' for i, t in enumerate(tags))
     srcset = (f'assets/projects/{img}-1600.webp 1600w, ' if img != 'hydrology' else '') + f'assets/projects/{img}-1200.webp 1200w, assets/projects/{img}-720.webp 720w'
-    rows.append(f'''      <article class="inset reveal" id="study-{n}" data-n="{n}" aria-labelledby="t{n}">
-        <div class="inset-text">
+    text = f'''<div class="inset-text">
           <ul class="tags" aria-label="Topics">{tg}</ul>
           <h3 id="t{n}"><a class="inset-link" href="{B}{repo}/" rel="noopener">{title}</a></h3>
           <p class="inset-desc">{desc}</p>
-          <p class="inset-actions"><span class="cta" aria-hidden="true">Open the study <span class="arrow">↗</span></span><span class="years">{years}</span></p>
-        </div>
+          <p class="inset-actions"><span class="cta" aria-hidden="true">Open the study <span class="arrow">↗</span></span></p>
+        </div>'''
+    if n == '05':
+        text = text.replace('<span class="cta" aria-hidden="true">Open the study <span class="arrow">↗</span></span>', f'<a class="cta" href="{B}{repo}/" rel="noopener" aria-label="Open the study: {title}">Open the study <span class="arrow" aria-hidden="true">↗</span></a>')
+        rows.append(f'''      <article class="inset inset--wide reveal" id="study-{n}" data-n="{n}" aria-labelledby="t{n}">
+        {text}
+        <figure class="lx" aria-label="Interactive map of Lagos State’s twenty local government areas">
+          <div class="lx-stage">
+            <div class="lx-map" role="application" aria-label="Map of Lagos State local government areas"></div>
+            <div class="lx-tabs" role="tablist" aria-label="Map layer"></div>
+            <div class="lx-legend" aria-hidden="true"><p class="lx-lt"></p><span class="lx-ramp"></span><p class="lx-lr"><span class="lx-lo"></span><span class="lx-mid"></span><span class="lx-hi"></span></p></div>
+          </div>
+          <aside class="lx-panel" aria-live="polite">
+            <p class="lx-k">Local government area</p>
+            <select class="lx-sel" aria-label="Choose a local government area"></select>
+            <h4 class="lx-name"></h4><p class="lx-sub"></p>
+            <div class="lx-cards"></div>
+            <p class="lx-note">Earlier LGA-level analysis, Landsat dry seasons December 2022 to April 2024. The audited study works on 60 m cells.</p>
+          </aside>
+        </figure>
+      </article>''')
+        continue
+    rows.append(f'''      <article class="inset reveal" id="study-{n}" data-n="{n}" aria-labelledby="t{n}">
+        {text}
         <div class="inset-media reel" data-frames="{_h.escape(json.dumps([f'assets/reels/{n}-{k}.webp' for k in range(1, len(REEL[n]))]))}" data-caps="{_h.escape(json.dumps(REEL[n]))}"><img class="frame on" src="assets/projects/{img}-1200.webp" srcset="{srcset}" sizes="(min-width: 960px) 56vw, 92vw" width="1200" height="900" loading="lazy" decoding="async" alt="{alt}"><p class="reel-cap" aria-hidden="true">{REEL[n][0]}</p><div class="reel-bar" aria-hidden="true">{''.join('<i></i>' for _ in REEL[n])}</div></div>
       </article>''')
 
-section = f'''<section class="insets" aria-labelledby="insets-title"><div class="wrap">
-    <div class="insets-head"><h2 id="insets-title">Insets</h2><p class="meta">Five studies · each opens as a live application</p></div>
+section = f'''<section class="insets" id="studies" aria-labelledby="insets-title"><div class="wrap">
+    <div class="sec-head"><h2 id="insets-title">Studies</h2></div>
     <div class="inset-list">
 {chr(10).join(rows)}
     </div>

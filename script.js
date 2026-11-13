@@ -76,6 +76,15 @@
         if ('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? start() : stop()), { threshold: .35 }).observe(reel);
     });
 
+
+    // reveal: section rules and the legend
+    if ('IntersectionObserver' in window && !reduced) {
+        const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } }), { threshold: .2 });
+        document.querySelectorAll('.sec-head, .legend').forEach(el => ro.observe(el));
+    } else document.querySelectorAll('.sec-head, .legend').forEach(el => el.classList.add('in'));
+
+
+
     // about: stagger in when it scrolls into view
     const about = document.querySelector('.about');
     if (about) { if (reduced || !('IntersectionObserver' in window)) about.classList.add('in'); else { const ao = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { about.classList.add('in'); ao.disconnect(); } }), { threshold: .12 }); ao.observe(about); } }
