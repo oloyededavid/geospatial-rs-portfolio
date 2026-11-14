@@ -29,6 +29,10 @@
         const layer = L.geoJSON(G, { style: () => ({ color: '#fff', weight: 1, fillOpacity: .9 }), interactive: false }).addTo(map);
         const fit = () => map.fitBounds(layer.getBounds(), { paddingTopLeft: [10, 60], paddingBottomRight: [10, 10] }); fit();
         const feats = []; layer.eachLayer(l => feats.push(l));
+        // hide place labels that would overlap an earlier label or the open tooltip
+        function cull() { const kept = tip && tip.getElement() ? [tip.getElement().getBoundingClientRect()] : [];
+            labels.forEach(m => { const el = m.getElement(); if (!el) return; el.style.visibility = ''; const r = el.getBoundingClientRect();
+                if (kept.some(k => r.left < k.right + 4 && r.right > k.left - 4 && r.top < k.bottom + 2 && r.bottom > k.top - 2)) el.style.visibility = 'hidden'; else kept.push(r); }); }
         let cur = 2, sel = null, labels = [], tip = null;
         const range = m => { const v = feats.map(l => l.feature.properties[m.k]); return m.div ? (() => { const a = Math.max(...v.map(Math.abs)); return [-a, a]; })() : [Math.min(...v), Math.max(...v)]; };
         const tabs = fig.querySelector('.lx-tabs');
@@ -40,6 +44,7 @@
             feats.forEach(l => { const v = l.feature.properties[m.k]; l.setStyle({ fillColor: col(m.pal, (v - a) / (z - a || 1)), color: l === sel ? '#3a3a37' : '#fff', weight: l === sel ? 2.4 : 1 }); });
             tb.forEach((b, j) => b.classList.toggle('on', j === i));
             labels.forEach(x => x.remove()); labels = feats.filter(l => BIG.includes(l.feature.properties.n)).map(l => L.marker(l.getBounds().getCenter(), { interactive: false, keyboard: false, icon: L.divIcon({ className: 'lx-lab', html: `<b>${l.feature.properties.n}</b> ${m.fmt(l.feature.properties[m.k])}`, iconSize: null }) }).addTo(map));
+            requestAnimationFrame(cull);
             fig.querySelector('.lx-lt').textContent = m.title;
             fig.querySelector('.lx-ramp').style.background = `linear-gradient(90deg, ${m.pal.join(',')})`;
             fig.querySelector('.lx-lo').textContent = m.fmt(a); fig.querySelector('.lx-mid').textContent = m.fmt((a + z) / 2); fig.querySelector('.lx-hi').textContent = m.fmt(z);
@@ -66,7 +71,7 @@
         const at = (x, y) => { cur_.style.transform = `translate(${x}px, ${y}px)`; };
         const rel = el => { const r = el.getBoundingClientRect(), f = fig.getBoundingClientRect(); return [r.left - f.left + r.width * .5, r.top - f.top + r.height * .6]; };
         const click = async () => { cur_.classList.add('down'); await wait(160); cur_.classList.remove('down'); };
-        const hover = l => { if (tip) tip.remove(); const m = L_[cur], c = l.getBounds().getCenter(); tip = L.tooltip({ className: 'lx-tip', direction: 'top', offset: [0, -10] }).setLatLng(c).setContent(`<b>${l.feature.properties.n}</b><br>${m.title.replace(/ \(.*/, '')}: ${m.fmt(l.feature.properties[m.k])}${m.unit}`).addTo(map); };
+        const hover = l => { if (tip) tip.remove(); const m = L_[cur], c = l.getBounds().getCenter(); tip = L.tooltip({ className: 'lx-tip', direction: 'top', offset: [0, -10] }).setLatLng(c).setContent(`<b>${l.feature.properties.n}</b><br>${m.title.replace(/ \(.*/, '')}: ${m.fmt(l.feature.properties[m.k])}${m.unit}`).addTo(map); requestAnimationFrame(cull); };
         const pt = l => { const p = map.latLngToContainerPoint(l.getBounds().getCenter()), b = box.getBoundingClientRect(), f = fig.getBoundingClientRect(); return [p.x + b.left - f.left, p.y + b.top - f.top]; };
         const byName = n => feats.find(l => l.feature.properties.n === n);
         const PLAN = [[0, ['Ajeromi/Ifelodun', 'Epe']], [1, ['Agege', 'Ibeju Lekki']], [2, ['Mushin', 'Ikorodu']], [3, ['Eti-Osa', 'Alimosho']], [4, ['Alimosho', 'Lagos Island']]];
