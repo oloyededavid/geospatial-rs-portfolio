@@ -106,7 +106,12 @@
     // language switcher: remember the choice and keep the current section
     document.querySelectorAll('.lang a[data-lang]').forEach(a => a.addEventListener('click', () => {
         try { localStorage.setItem('lang', a.dataset.lang); } catch (e) {}
-        a.href = a.href.split('#')[0] + location.hash;
+        // keep the reader's place: the hash if there is one, otherwise the section now on screen
+        let h = location.hash;
+        if (!h) { const ids = ['top', 'map', 'studies', 'about', 'skills']; let best = null;
+            ids.forEach(id => { const e = document.getElementById(id); if (e && e.getBoundingClientRect().top <= innerHeight * .35) best = id; });
+            h = best && best !== 'top' ? '#' + best : ''; }
+        a.href = a.href.split('#')[0] + h;
     }));
     // about: copy the email address, and say so
     document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', async () => {
