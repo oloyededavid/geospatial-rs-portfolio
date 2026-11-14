@@ -130,7 +130,6 @@
     "Water gained or lost by the Lake Chad basin since 2002, from changes in Earth’s gravity, and what remains after soil water is removed.": "L’eau gagnée ou perdue par le bassin du lac Tchad depuis 2002, d’après les variations de gravité, et ce qui reste sans l’eau du sol.",
     "Do residents far from vegetation face more surface heat? Landsat land surface temperature set against where people live.": "Les habitants éloignés de la végétation subissent-ils plus de chaleur de surface ? Température de surface Landsat comparée aux lieux de résidence.",
     "Sokoto–Rima basin and Lower Niger–Benue reach": "Bassin Sokoto–Rima et tronçon du bas Niger–Bénoué",
-    "Ogun catchment, sub-basins Z1–Z5": "Bassin de l’Ogun, sous-bassins Z1–Z5",
     "Upper Ouémé and Upper Ogun catchments": "Bassins du haut Ouémé et du haut Ogun",
     "Lake Chad basin and GRACE cells": "Bassin du lac Tchad et cellules GRACE",
     "© 2026 David Oloyede": "© 2026 David Oloyede",
@@ -154,7 +153,8 @@
     "From the audited 2020–2024 study. Cross-sectional associations, not causes.": "Issu de l’étude auditée 2020–2024. Associations transversales, pas des causes.",
     "Water storage": "Stock d’eau",
     "Turbidity": "Turbidité",
-    "Heat exposure": "Exposition à la chaleur"
+    "Heat exposure": "Exposition à la chaleur",
+    "Ogun catchment: sub-basins Z1–Z4 and lagoon zone Z5": "Ogun : sous-bassins Z1–Z4, lagune Z5"
   },
   "attr": {
     "David Oloyede · Geospatial and Environmental Researcher": "David Oloyede · Chercheur en sciences géospatiales et de l’environnement",
@@ -174,13 +174,13 @@
     "A short recorded tour of the Lagos explorer: switching between temperature, hot and cold spots, heat and population, vegetation and population, and opening individual local government areas": "Courte visite enregistrée de l’explorateur de Lagos : passage entre température, points chauds et froids, chaleur et population, végétation et population, et ouverture de zones de gouvernement local",
     "Portrait of David Oloyede": "Portrait de David Oloyede",
     "Footer": "Pied de page",
-    "Map of the Ogun River catchment from its headwaters to the Lagos lagoon, divided into sub-basins Z1 to Z5 and shaded by mean annual rainfall, 2019–2024.": "Carte du bassin versant de l’Ogun, des sources à la lagune de Lagos, divisé en sous-bassins Z1 à Z5 et coloré selon les précipitations annuelles moyennes, 2019–2024.",
     "Open the Lagos explorer": "Ouvrir l’explorateur de Lagos",
     "Credentials": "Qualifications",
     "Open the project: Urban Heat Island and Distance to Vegetation in Lagos State, Nigeria, 2020–2024": "Ouvrir le projet : Îlot de chaleur urbain et distance à la végétation dans l’État de Lagos, Nigeria, 2020–2024",
     "Index map of five geospatial projects in West and Central Africa": "Carte de situation de cinq projets géospatiales en Afrique de l’Ouest et centrale",
     "The Earth today, seen from space over Africa": "La Terre aujourd’hui, vue de l’espace au-dessus de l’Afrique",
-    "Map of the 20 local government areas of Lagos State": "Carte des 20 zones de gouvernement local de l’État de Lagos"
+    "Map of the 20 local government areas of Lagos State": "Carte des 20 zones de gouvernement local de l’État de Lagos",
+    "Map of the Ogun River catchment from its headwaters to the Lagos lagoon, divided into sub-basins Z1 to Z4 and the lagoon zone Z5, shaded by mean annual rainfall, 2019–2024.": "Carte du bassin versant de l’Ogun, des sources à la lagune de Lagos, divisé en sous-bassins Z1 à Z4 et zone lagunaire Z5, coloré selon les précipitations annuelles moyennes, 2019–2024."
   },
   "js": {
     "13.8 billion years ago": "Il y a 13,8 milliards d’années",
