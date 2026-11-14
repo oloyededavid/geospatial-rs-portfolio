@@ -988,3 +988,6 @@ html:not(.js) .lx { grid-template-columns: 1fr; }
   .leg .leg-n { display: none; }
   .leg .leg-src { grid-column: 2; justify-self: start; }
 }
+/* hero tool tags: inline so line spacing stays even and commas sit right after them */
+.hello-body .chip { display: inline; padding: 3px 8px 3px 6px; line-height: inherit; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.hello-body .chip svg { display: inline-block; vertical-align: -2px; margin-right: 6px; }
