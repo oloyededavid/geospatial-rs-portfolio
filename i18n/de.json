@@ -63,7 +63,6 @@
     "Climate change": "Klimawandel",
     "Hydrological Extremes Where the Gauges Are Missing: Floods, Droughts and Design Rainfall in Nigeria,": "Hydrologische Extreme dort, wo Messstationen fehlen: Hochwasser, Dürren und Bemessungsniederschläge in Nigeria,",
     "Integrated water management": "Integriertes Wassermanagement",
-    "Water quality": "Wasserqualität",
     "Geovisualisation": "Geovisualisierung",
     "Surface Water from Headwaters to Lagoon: Rainfall, Soil Moisture and Flooding,": "Oberflächenwasser vom Quellgebiet bis zur Lagune: Niederschlag, Bodenfeuchte und Überschwemmungen,",
     "Groundwater": "Grundwasser",
@@ -75,7 +74,6 @@
     "Water Storage in the Lake Chad Basin from GRACE and GRACE-FO,": "Wasserspeicherung im Tschadsee-Becken aus GRACE und GRACE-FO,",
     "Urban heat": "Städtische Hitze",
     "Geodata science": "Geodatenwissenschaft",
-    "Vulnerability": "Vulnerabilität",
     "Urban Heat Island and Distance to Vegetation in Lagos State, Nigeria,": "Städtische Wärmeinsel und Entfernung zur Vegetation im Bundesstaat Lagos, Nigeria,",
     "Local government area": "Verwaltungsbezirk (LGA)",
     "Skills": "Kompetenzen",
@@ -153,7 +151,10 @@
     "Five projects, West and Central Africa": "Fünf Projekte, West- und Zentralafrika",
     "Index map of the five projects": "Übersichtskarte der fünf Projekte",
     "Project areas": "Projektgebiete",
-    "From the audited 2020–2024 study. Cross-sectional associations, not causes.": "Aus der geprüften Studie 2020–2024. Querschnittliche Zusammenhänge, keine Ursachen."
+    "From the audited 2020–2024 study. Cross-sectional associations, not causes.": "Aus der geprüften Studie 2020–2024. Querschnittliche Zusammenhänge, keine Ursachen.",
+    "Water storage": "Wasserspeicherung",
+    "Turbidity": "Trübung",
+    "Heat exposure": "Hitzeexposition"
   },
   "attr": {
     "David Oloyede · Geospatial and Environmental Researcher": "David Oloyede · Forscher in Geoinformatik und Umweltwissenschaften",

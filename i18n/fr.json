@@ -63,7 +63,6 @@
     "Climate change": "Changement climatique",
     "Hydrological Extremes Where the Gauges Are Missing: Floods, Droughts and Design Rainfall in Nigeria,": "Extrêmes hydrologiques là où les stations de mesure font défaut : crues, sécheresses et pluies de projet au Nigeria,",
     "Integrated water management": "Gestion intégrée de l’eau",
-    "Water quality": "Qualité de l’eau",
     "Geovisualisation": "Géovisualisation",
     "Surface Water from Headwaters to Lagoon: Rainfall, Soil Moisture and Flooding,": "Eaux de surface, des sources à la lagune : précipitations, humidité du sol et inondations,",
     "Groundwater": "Eaux souterraines",
@@ -75,7 +74,6 @@
     "Water Storage in the Lake Chad Basin from GRACE and GRACE-FO,": "Stock d’eau du bassin du lac Tchad d’après GRACE et GRACE-FO,",
     "Urban heat": "Chaleur urbaine",
     "Geodata science": "Science des géodonnées",
-    "Vulnerability": "Vulnérabilité",
     "Urban Heat Island and Distance to Vegetation in Lagos State, Nigeria,": "Îlot de chaleur urbain et distance à la végétation dans l’État de Lagos, Nigeria,",
     "Local government area": "Zone de gouvernement local",
     "Skills": "Compétences",
@@ -153,7 +151,10 @@
     "Five projects, West and Central Africa": "Cinq projets, Afrique de l’Ouest et centrale",
     "Index map of the five projects": "Carte de situation des cinq projets",
     "Project areas": "Zones des projets",
-    "From the audited 2020–2024 study. Cross-sectional associations, not causes.": "Issu de l’étude auditée 2020–2024. Associations transversales, pas des causes."
+    "From the audited 2020–2024 study. Cross-sectional associations, not causes.": "Issu de l’étude auditée 2020–2024. Associations transversales, pas des causes.",
+    "Water storage": "Stock d’eau",
+    "Turbidity": "Turbidité",
+    "Heat exposure": "Exposition à la chaleur"
   },
   "attr": {
     "David Oloyede · Geospatial and Environmental Researcher": "David Oloyede · Chercheur en sciences géospatiales et de l’environnement",
