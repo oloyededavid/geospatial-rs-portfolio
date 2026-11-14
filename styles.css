@@ -980,3 +980,11 @@ html:not(.js) .lx { grid-template-columns: 1fr; }
 /* globe about 20% larger */
 .globe canvas, .globe-still { width: min(100%, 400px); }
 @media (max-width: 899px) { .globe { max-width: 400px; } }
+/* small phones: legend rows stack (swatch, title, then source) and use the full width */
+@media (max-width: 480px) {
+  .sheet-frame .margin { grid-template-columns: 1fr !important; padding-inline: 0 !important; }
+  .legend { width: 100%; margin-left: 0 !important; }
+  .leg { grid-template-columns: 22px minmax(0, 1fr) !important; row-gap: 4px; }
+  .leg .leg-n { display: none; }
+  .leg .leg-src { grid-column: 2; justify-self: start; }
+}
