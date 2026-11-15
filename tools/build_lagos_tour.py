@@ -19,7 +19,7 @@ lga = json.loads(src.read_text())['lga']
 land = {r['lga_name']: float(r['land_km2']) for r in csv.DictReader((repo / 'docs/data/lagos_ghsl.csv').open())}
 out = ROOT / 'assets/lagos-lga.json'
 g = json.loads(out.read_text())
-g['period'] = '2020-01-01/2024-12-31'
+g.pop('period', None)
 g['source'] = 'Lagos-Urban-Heat-Analytics, docs/data/extra_analysis.json and docs/data/lagos_ghsl.csv'
 for f in g['features']:
     p = f['properties']
