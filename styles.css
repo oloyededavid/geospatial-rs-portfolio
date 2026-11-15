@@ -905,3 +905,6 @@ html:not(.js) .lx { grid-template-columns: 1fr; }
 /* Lagos tabs wrap on small phones instead of being cut off */
 @media (max-width: 480px) { .lx-tabs { flex-wrap: wrap !important; overflow: visible !important; } .lx-stage { min-height: 380px; } }
 @media (max-width: 400px) { .scale span:first-of-type { display: none; } }
+
+/* Leaflet's plus-lighter blend leaves light seams between map tiles at fractional zoom on a light basemap */
+.leaflet-container img.leaflet-tile { mix-blend-mode: normal; }
