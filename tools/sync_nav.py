@@ -17,7 +17,7 @@ S = [  # number, local clone, repo, title, one line, cover, tags
     ('02', 'ogun-catchment-coast-observatory', 'Ogun-Catchment-Coast-Observatory', 'Surface water from headwaters to lagoon: rainfall, soil moisture and flooding, 2019–2024',
      'Rainfall, soil moisture, flooding and estuary turbidity along the Ogun River.', 'ogun', ['Earth observation', 'Integrated water management', 'Turbidity', 'Geovisualisation']),
     ('03', 'oueme-ogun-groundwater-recharge', 'Oueme-Ogun-Groundwater-Recharge', 'Testing a satellite water balance for groundwater recharge in tropical basement catchments, 2018–2024',
-     'Can satellite rainfall and evapotranspiration estimate groundwater recharge where wells are scarce?', 'oueme', ['Groundwater', 'Recharge estimation', 'Water balance', 'Satellite hydrology']),
+     'Can satellite rainfall and evapotranspiration estimate groundwater recharge where wells are scarce?', 'oueme', ['Groundwater', 'Recharge testing', 'Water balance', 'Satellite hydrology']),
     ('04', 'groundwater-storage-gravimetry', 'Groundwater-Storage-Gravimetry', 'Water storage in the Lake Chad basin from GRACE and GRACE-FO, 2002–2026',
      'How much water the Lake Chad basin has gained or lost since 2002, estimated from changes in Earth’s gravity.', 'gravimetry', ['Water storage', 'Global change', 'Earth observation', 'Transboundary water']),
     ('05', 'lagos-urban-heat-analytics', 'Lagos-Urban-Heat-Analytics', 'Urban heat island and distance to vegetation in Lagos State, Nigeria, 2020–2024',
