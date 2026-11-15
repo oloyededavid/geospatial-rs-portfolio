@@ -13,15 +13,15 @@ B = 'https://oloyededavid.github.io/'
 ROOT = pathlib.Path('/home/user')
 S = [  # number, local clone, repo, title, one line, cover, tags
     ('01', 'observational-hydrology-extremes', 'Observational-Hydrology-Extremes', 'Hydrological extremes where the gauges are missing: floods, droughts and design rainfall in Nigeria, 1950–2070',
-     'Floods, drought and future extreme rainfall in two Nigerian basins with few rain gauges.', 'hydrology', ['Flood risk', 'Satellite hydrology', 'Climate change']),
+     'Floods, drought and future extreme rainfall in two Nigerian basins with few rain gauges.', 'hydrology', ['Floods and drought', 'Satellite hydrology', 'Climate change', 'Earth observation']),
     ('02', 'ogun-catchment-coast-observatory', 'Ogun-Catchment-Coast-Observatory', 'Surface water from headwaters to lagoon: rainfall, soil moisture and flooding, 2019–2024',
-     'Rainfall, soil moisture, flooding and estuary turbidity along the Ogun River.', 'ogun', ['Earth observation', 'Water management', 'Turbidity']),
+     'Rainfall, soil moisture, flooding and estuary turbidity along the Ogun River.', 'ogun', ['Earth observation', 'Integrated water management', 'Turbidity', 'Geovisualisation']),
     ('03', 'oueme-ogun-groundwater-recharge', 'Oueme-Ogun-Groundwater-Recharge', 'Testing a satellite water balance for groundwater recharge in tropical basement catchments, 2018–2024',
-     'Can satellite rainfall and evapotranspiration estimate groundwater recharge where wells are scarce?', 'oueme', ['Groundwater', 'Water balance', 'Satellite hydrology']),
+     'Can satellite rainfall and evapotranspiration estimate groundwater recharge where wells are scarce?', 'oueme', ['Groundwater', 'Recharge estimation', 'Water balance', 'Satellite hydrology']),
     ('04', 'groundwater-storage-gravimetry', 'Groundwater-Storage-Gravimetry', 'Water storage in the Lake Chad basin from GRACE and GRACE-FO, 2002–2026',
-     'How much water the Lake Chad basin has gained or lost since 2002, measured from Earth’s gravity.', 'gravimetry', ['Water storage', 'Global change', 'Earth observation']),
+     'How much water the Lake Chad basin has gained or lost since 2002, estimated from changes in Earth’s gravity.', 'gravimetry', ['Water storage', 'Global change', 'Earth observation', 'Transboundary water']),
     ('05', 'lagos-urban-heat-analytics', 'Lagos-Urban-Heat-Analytics', 'Urban heat island and distance to vegetation in Lagos State, Nigeria, 2020–2024',
-     'Do residents who live far from vegetation face more surface heat?', 'lagos', ['Urban heat', 'Earth observation', 'Heat exposure']),
+     'Do residents who live far from vegetation face more surface heat?', 'lagos', ['Earth observation', 'Urban heat', 'Geodata science', 'Heat exposure']),
 ]
 N = len(S)
 
