@@ -138,12 +138,7 @@
     "Email me": "Schreiben Sie mir",
     "Esri Training: ArcGIS Pro, Imagery, Cartography": "Esri-Schulungen: ArcGIS Pro, Bilddaten, Kartographie",
     "Esri Young Professional Network member": "Mitglied im Esri Young Professional Network",
-    "NASA ARSET training": "NASA-ARSET-Schulung",
-    "UNESCO Open Learning: Flood Hazard and Exposure Mapping": "UNESCO Open Learning: Kartierung von Hochwassergefahr und Exposition",
-    "NNPC Foundation Scholar": "Stipendiat der NNPC Foundation",
-    "Dean’s List, 7 of 10 semesters": "Dean’s List, 7 von 10 Semestern",
     "ISPRS member": "Mitglied der ISPRS",
-    "WASCAL capacity-building trainee": "Teilnehmer am WASCAL-Kapazitätsaufbau",
     "YouthMappers": "YouthMappers",
     "West and Central Africa with the footprint of each project: the Lake Chad basin, the Sokoto–Rima basin and the Lower Niger–Benue reach, the Ouémé and Upper Ogun catchments, the Ogun catchment, and Lagos State.": "West- und Zentralafrika mit dem Gebiet jedes Projekts: das Tschadsee-Becken, das Sokoto–Rima-Becken und der Abschnitt des unteren Niger–Benue, die Einzugsgebiete des Ouémé und des oberen Ogun, das Einzugsgebiet des Ogun und der Bundesstaat Lagos.",
     "View project": "Projekt ansehen",
@@ -154,7 +149,10 @@
     "Water storage": "Wasserspeicherung",
     "Turbidity": "Trübung",
     "Heat exposure": "Hitzeexposition",
-    "Ogun catchment: sub-basins Z1–Z4 and lagoon zone Z5": "Ogun: Teilgebiete Z1–Z4, Lagune Z5"
+    "Ogun catchment: sub-basins Z1–Z4 and lagoon zone Z5": "Ogun: Teilgebiete Z1–Z4, Lagune Z5",
+    "Vanguard Cabinet, Geospatial Professional Network": "Vanguard Cabinet, Geospatial Professional Network",
+    "Nigerian National Petroleum Company Foundation Scholar": "Stipendiat der Nigerian National Petroleum Company Foundation",
+    "West African Science Service Centre on Climate Change and Adapted Land Use trainee": "Teilnehmer am West African Science Service Centre on Climate Change and Adapted Land Use"
   },
   "attr": {
     "David Oloyede · Geospatial and Environmental Researcher": "David Oloyede · Forscher in Geoinformatik und Umweltwissenschaften",
