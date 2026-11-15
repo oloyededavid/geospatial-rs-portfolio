@@ -7,9 +7,12 @@
 <meta name="robots" content="noindex">
 <link rel="icon" href="/geospatial-rs-portfolio/favicon.svg" type="image/svg+xml">
 <style>
+/* en dash only, from DejaVu Sans (Bitstream Vera licence): Satoshi's en dash is nearly as wide as an em dash */
+@font-face { font-family: 'Range Dash'; src: url(/geospatial-rs-portfolio/assets/fonts/range-dash.woff) format('woff'); unicode-range: U+2013; font-weight: 100 599; font-display: swap; }
+@font-face { font-family: 'Range Dash'; src: url(/geospatial-rs-portfolio/assets/fonts/range-dash-bold.woff) format('woff'); unicode-range: U+2013; font-weight: 600 900; font-display: swap; }
 @font-face { font-family: 'Newsreader'; src: url(/geospatial-rs-portfolio/assets/fonts/Newsreader-var.woff2) format('woff2'); font-weight: 200 800; }
 @font-face { font-family: 'Satoshi'; src: url(/geospatial-rs-portfolio/assets/fonts/Satoshi-400.woff2) format('woff2'); }
-body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #fff; color: #141412; font: 400 1.0625rem/1.6 'Satoshi', system-ui, sans-serif; }
+body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #fff; color: #141412; font: 400 1.0625rem/1.6 'Range Dash', 'Satoshi', system-ui, sans-serif; }
 main { padding: 24px; max-width: 34rem; }
 p.k { font: .75rem ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; color: #6a6963; margin: 0 0 12px; }
 h1 { font: 500 clamp(2rem, 5vw, 2.75rem)/1.05 'Newsreader', Georgia, serif; letter-spacing: -.02em; margin: 0 0 14px; }

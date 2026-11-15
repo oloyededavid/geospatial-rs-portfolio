@@ -2,6 +2,9 @@
    One stylesheet, built on tokens. Introduction, index map, studies. */
 
 /* fonts: self-hosted, Latin subset (Satoshi and Zodiak: Fontshare, ITF Free Font License; Geist Mono: OFL) */
+/* en dash only, from DejaVu Sans (Bitstream Vera licence): Satoshi's en dash is nearly as wide as an em dash */
+@font-face { font-family: 'Range Dash'; src: url(assets/fonts/range-dash.woff) format('woff'); unicode-range: U+2013; font-weight: 100 599; font-display: swap; }
+@font-face { font-family: 'Range Dash'; src: url(assets/fonts/range-dash-bold.woff) format('woff'); unicode-range: U+2013; font-weight: 600 900; font-display: swap; }
 @font-face { font-family: 'Satoshi'; src: url(assets/fonts/Satoshi-400.woff2) format('woff2'); font-weight: 400; font-display: swap; }
 @font-face { font-family: 'Satoshi'; src: url(assets/fonts/Satoshi-500.woff2) format('woff2'); font-weight: 500; font-display: swap; }
 @font-face { font-family: 'Satoshi'; src: url(assets/fonts/Satoshi-700.woff2) format('woff2'); font-weight: 700; font-display: swap; }
@@ -22,7 +25,7 @@
 
     /* type */
     --display: 'Zodiak', 'Iowan Old Style', Georgia, serif;
-    --text: 'Satoshi', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --text: 'Range Dash', 'Satoshi', system-ui, -apple-system, 'Segoe UI', sans-serif;
     --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
     --fs-meta: .75rem;
     --fs-small: .9375rem;

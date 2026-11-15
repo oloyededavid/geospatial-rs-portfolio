@@ -26,12 +26,12 @@ S = [  # number, local clone, repo, title, one line, cover, tags
 N = len(S)
 
 CSS = '''<style>
-.sn-bar{font:400 14px/1.4 'Satoshi',system-ui,-apple-system,'Segoe UI',sans-serif;background:#fff;border-bottom:1px solid #e5e5e1;color:#141412;position:relative;z-index:1000}
+.sn-bar{font:400 14px/1.4 'Range Dash','Satoshi',system-ui,-apple-system,'Segoe UI',sans-serif;background:#fff;border-bottom:1px solid #e5e5e1;color:#141412;position:relative;z-index:1000}
 .sn-bar .sn-in{max-width:1240px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .sn-bar a{color:#141412;text-decoration:none}.sn-bar a:hover{text-decoration:underline;text-underline-offset:4px}
 .sn-home{font-weight:700}.sn-pos{color:#6a6963;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:12px;letter-spacing:.04em}
 .sn-pn{display:flex;gap:18px}.sn-pn a{color:#55544e}
-.sn-next{font:400 16px/1.5 'Satoshi',system-ui,-apple-system,'Segoe UI',sans-serif;color:#141412;background:#fff;border-top:1px solid #ececea;margin-top:64px}
+.sn-next{font:400 16px/1.5 'Range Dash','Satoshi',system-ui,-apple-system,'Segoe UI',sans-serif;color:#141412;background:#fff;border-top:1px solid #ececea;margin-top:64px}
 .sn-next .sn-in{max-width:1080px;margin:0 auto;padding:40px 24px 48px}
 .sn-k{font-size:15px;color:#6a6963;margin:0 0 14px}
 .sn-card{display:flex;align-items:center;gap:20px;text-decoration:none;color:inherit;background:#fafafa;border:1px solid #ececea;border-radius:22px;padding:14px 18px 14px 14px;transition:border-color .25s,background .25s}
