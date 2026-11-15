@@ -27,8 +27,8 @@ N = len(S)
 
 CSS = '''<style>
 .sn-bar{font:400 14px/1.4 'Range Dash','Satoshi',system-ui,-apple-system,'Segoe UI',sans-serif;background:#fff;border-bottom:1px solid #e5e5e1;color:#141412;position:relative;z-index:1000}
-.sn-bar .sn-in{max-width:1240px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.sn-bar a{color:#141412;text-decoration:none}.sn-bar a:hover{text-decoration:underline;text-underline-offset:4px}
+.sn-bar .sn-in{max-width:1240px;margin:0 auto;padding:4px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.sn-bar a{color:#141412;text-decoration:none;display:inline-flex;align-items:center;min-height:32px}.sn-bar a:hover{text-decoration:underline;text-underline-offset:4px}
 .sn-home{font-weight:700}.sn-pos{color:#6a6963;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:12px;letter-spacing:.04em}
 .sn-pn{display:flex;gap:18px}.sn-pn a{color:#55544e}
 .sn-next{font:400 16px/1.5 'Range Dash','Satoshi',system-ui,-apple-system,'Segoe UI',sans-serif;color:#141412;background:#fff;border-top:1px solid #ececea;margin-top:64px}
