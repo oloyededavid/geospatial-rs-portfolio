@@ -2,39 +2,47 @@
 
 Source for [oloyededavid.github.io/geospatial-rs-portfolio](https://oloyededavid.github.io/geospatial-rs-portfolio/).
 
-A two-section personal site: an introduction, and selected research shown as cards. Each card opens a live study and links to its source code.
+A one-page site in English, French and German: an introduction with a globe and timeline, an index map of the five projects, a card for each project that opens its study site, a tour of the Lagos results, and an About section with skills. Static files only, served by GitHub Pages from `main`.
 
-## Structure
+## Files
 
-- `index.html`: the page. No build step.
-- `styles.css`: one stylesheet built on design tokens (colour, type scale, spacing, grid) at the top of the file.
-- `script.js`: small enhancements only (reveal on scroll, current section in the header). The page is complete without it.
-- `assets/projects/`: optimised WebP images of the studies. Each is a real output: a screenshot of the live application, or the study's own figure. Sources are listed below.
-- `legacy/v1/`: the previous version of the site, kept unchanged, including the full Credentials section.
-- `Lagos_UHI_Analysis_2015_2024.pdf`, `Ogbaru_Flood_Impact_Vulnerability.pdf`: the two earlier study PDFs, kept in place.
+- `index.html`: the English page and the source for the translations.
+- `fr/index.html`, `de/index.html`: generated from `index.html` and `i18n/*.json`. Do not edit them by hand.
+- `styles.css`: one stylesheet, with design tokens (colour, type, spacing) at the top.
+- `script.js`: reveal on scroll, the current section in the header and the language switch. The page reads correctly without it.
+- `globe.js`: the globe and timeline in the introduction.
+- `lagos.js`: the Lagos map tour, drawn from `assets/lagos-lga.json`.
+- `assets/projects/`: WebP images of each project at several widths. Each one is a real output of the study (see below).
+- `assets/fonts/`: self-hosted fonts (Satoshi, Zodiak, Newsreader, Geist Mono) and `range-dash*.woff`, an en dash taken from DejaVu Sans, because Satoshi's en dash is almost as wide as an em dash.
+- `assets/vendor/leaflet-1.9.4/`: Leaflet, used by the Lagos map.
+- `assets/earth.jpg`, `assets/globe-still.webp`: the globe texture and its still image when scripts are off.
+- `assets/og.png`: the image shown in link previews.
+- `404.html`, `robots.txt`, `sitemap.xml`, `favicon.svg`.
+
+## Tools
+
+Run from the repository root.
+
+```bash
+python3 tools/build_i18n.py        # rebuild fr/ and de/ after any change to index.html or i18n/*.json
+python3 tools/build_lagos_tour.py  # rebuild assets/lagos-lga.json from the Lagos study's data files
+python3 tools/sync_nav.py          # rewrite the study bar and next-study card on the five study sites
+```
+
+- `build_i18n.py` stops if a dictionary entry no longer matches the page, or if any English text is left untranslated. Text inside the map images is part of the images and stays in English.
+- `build_lagos_tour.py` reads `docs/data/extra_analysis.json` and `docs/data/lagos_ghsl.csv` from a local clone of [Lagos-Urban-Heat-Analytics](https://github.com/oloyededavid/Lagos-Urban-Heat-Analytics) next to this repository. Every value on the map comes from those files.
+- `sync_nav.py` expects local clones of the five study repositories next to this one. It also copies each next study's `-720` image into the previous site as `next-study.webp`.
 
 ## Image sources
 
 | File | Source |
 |---|---|
-| `hydrology-*` | The study-areas map from the hydrology study (Plate 2) |
-| `ogun-*` | The Ogun Catchment-to-Coast Observatory explorer |
+| `hydrology-*` | The study-areas map of the hydrology study |
+| `ogun-area-*`, `ogun-720` | The Ogun surface water explorer |
 | `oueme-*` | The Ouémé–Ogun explorer, rainfall minus evapotranspiration |
-| `gravimetry-960` | Figure 1 of the Lake Chad GRACE study |
-| `lagos-*` | The Lagos study’s explorer: heat by local government area |
+| `gravimetry-area-*`, `gravimetry-720` | The Lake Chad water storage study |
+| `lagos-*` | The Lagos explorer: heat by local government area |
 
 ## Editing
 
-Add a study by copying one `<article class="card">` block in `index.html` and adding its image (4:3) at two widths in `assets/projects/`. The first card uses `card--feature` for the wide layout. Check every link before publishing.
-
-Fonts load from Fontshare (Satoshi, Zodiak) and Google Fonts (Geist Mono).
-
-## Languages
-
-The site is in English (`/`), French (`/fr/`) and German (`/de/`). `index.html` is the English source. French and German text lives in `i18n/fr.json` and `i18n/de.json`. After any change to `index.html` or the dictionaries, rebuild the translated pages:
-
-```bash
-python3 tools/build_i18n.py
-```
-
-The build stops if a dictionary entry no longer matches the page or if English text is left untranslated. Text inside the study map images is part of the images and stays in English.
+To add a project, copy one `<article class="inset">` block in `index.html`, add its image at 720, 1200 and 1600 px wide in `assets/projects/`, add its translations to `i18n/fr.json` and `i18n/de.json`, then run `tools/build_i18n.py`. Check every link before publishing.
