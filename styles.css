@@ -126,8 +126,8 @@ h1, h2, h3 { margin: 0; font-weight: 500; }
 .sea-label { font-family: var(--display); font-style: italic; font-size: 10px; fill: #8a887f; }
 .neat { fill: none; stroke: var(--line); stroke-width: 1; }
 .hatch { stroke-width: 1; }
-.hatch-01, .sw-01 { stroke: #1f5fae; } .hatch-02, .sw-02 { stroke: #0f766e; } .hatch-03, .sw-03 { stroke: #a8661b; } .hatch-04, .sw-04 { stroke: #5b6b7a; } .hatch-05, .sw-05 { stroke: #b3361b; }
-.fp-01 .fp-line { stroke: #1f5fae; } .fp-02 .fp-line { stroke: #0f766e; } .fp-03 .fp-line { stroke: #a8661b; } .fp-04 .fp-line { stroke: #5b6b7a; } .fp-05 .fp-line { stroke: #b3361b; }
+.hatch-01, .sw-01 { stroke: #1f5fae; } .hatch-02, .sw-02 { stroke: #0f766e; } .hatch-03, .sw-03 { stroke: #a8661b; } .hatch-04, .sw-04 { stroke: #5b6b7a; } .hatch-05, .sw-05 { stroke: #b3361b; } .hatch-06, .sw-06 { stroke: #6b4c9a; }
+.fp-01 .fp-line { stroke: #1f5fae; } .fp-02 .fp-line { stroke: #0f766e; } .fp-03 .fp-line { stroke: #a8661b; } .fp-04 .fp-line { stroke: #5b6b7a; } .fp-05 .fp-line { stroke: #b3361b; } .fp-06 .fp-line { stroke: #6b4c9a; stroke-width: 1.6; }
 .fp-line { fill: none; stroke-width: 1.1; transition: stroke-width .25s ease; }
 .fp-fill { opacity: .55; transition: opacity .25s ease; }
 .fp, .badge, .leader, .lead-dot { transition: opacity .3s ease; }
@@ -222,7 +222,7 @@ h1, h2, h3 { margin: 0; font-weight: 500; }
 .js .fp-line { stroke-dasharray: 1; stroke-dashoffset: 0; }
 .js .sheet.drawn .fp-line { animation: draw 1.6s var(--ease) both; }
 .js .sheet.drawn .fp-02 .fp-line { animation-delay: .15s; } .js .sheet.drawn .fp-03 .fp-line { animation-delay: .3s; }
-.js .sheet.drawn .fp-04 .fp-line { animation-delay: .45s; } .js .sheet.drawn .fp-05 .fp-line { animation-delay: .6s; }
+.js .sheet.drawn .fp-04 .fp-line { animation-delay: .45s; } .js .sheet.drawn .fp-05 .fp-line { animation-delay: .6s; } .js .sheet.drawn .fp-06 .fp-line { animation-delay: .75s; }
 
 @media (max-width: 959px) {
     .inset { grid-template-columns: 1fr; gap: var(--s-5); padding-block: var(--s-6); }
@@ -397,7 +397,7 @@ html { scroll-padding-top: 72px; }
 .sec-head.in::before { transform: scaleX(1); }
 .js .leg { opacity: 0; transform: translateY(8px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
 .js .legend.in .leg { opacity: 1; transform: none; }
-.js .legend.in .leg:nth-child(2) { transition-delay: .06s; } .js .legend.in .leg:nth-child(3) { transition-delay: .12s; } .js .legend.in .leg:nth-child(4) { transition-delay: .18s; } .js .legend.in .leg:nth-child(5) { transition-delay: .24s; }
+.js .legend.in .leg:nth-child(2) { transition-delay: .06s; } .js .legend.in .leg:nth-child(3) { transition-delay: .12s; } .js .legend.in .leg:nth-child(4) { transition-delay: .18s; } .js .legend.in .leg:nth-child(5) { transition-delay: .24s; } .js .legend.in .leg:nth-child(6) { transition-delay: .3s; }
 .js .badge { opacity: 0; transition: opacity .5s var(--ease) 1.3s; }
 .js .sheet.drawn .badge { opacity: 1; }
 .cta .arrow { transition: transform .3s var(--ease), border-color .2s; }
