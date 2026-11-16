@@ -1,7 +1,7 @@
 """Write the same cross-site navigation into every study site.
 
 Each study page gets, between marker comments:
-  <!-- study-bar:start --> ... <!-- study-bar:end -->   a slim bar at the top: back to the portfolio, study n of 5, previous and next
+  <!-- study-bar:start --> ... <!-- study-bar:end -->   a slim bar at the top: back to the portfolio, study n of N, previous and next
   <!-- study-nav:start --> ... <!-- study-nav:end -->   at the end of the page: a card for the next study and links to the others
 Explorer pages get the bar only. Static HTML and scoped CSS (.sn-), so it works without scripts and cannot clash.
 Run from anywhere:  python tools/sync_nav.py
@@ -22,6 +22,8 @@ S = [  # number, local clone, repo, title, one line, cover, tags
      'How much water the Lake Chad basin has gained or lost since 2002, estimated from changes in Earth’s gravity.', 'gravimetry', ['Water storage', 'Global change', 'Earth observation', 'Transboundary water']),
     ('05', 'lagos-urban-heat-analytics', 'Lagos-Urban-Heat-Analytics', 'Urban heat island and distance to vegetation in Lagos State, Nigeria, 2020–2024',
      'Do residents who live far from vegetation face more surface heat?', 'lagos', ['Earth observation', 'Urban heat', 'Geodata science', 'Heat exposure']),
+    ('06', 'coastal-hydrogeology-modeling', 'Coastal-Hydrogeology-Modeling', 'Urban sealing and the shallow water table of the Lekki–Epe barrier, Lagos, 1986–2024',
+     'How much of the barrier has been sealed since the 1980s, and what that could do to the water table beneath it.', 'coastal', ['Groundwater', 'Urban change', 'Coastal aquifer', 'Scenario modelling']),
 ]
 N = len(S)
 
@@ -59,7 +61,7 @@ def bar(i):
 
 def nav(i):
     n = S[(i + 1) % N]
-    short = n[3].split(':')[0].split(', 20')[0]
+    short = re.split(r', (?:19|20)\d\d', n[3].split(':')[0])[0]
     return (f'<!-- study-nav:start --><section class="sn-next" aria-label="Next study"><div class="sn-in">'
             f'<p class="sn-k">Next study</p>'
             f'<a class="sn-card" href="{B}{n[2]}/"><span class="sn-media"><img src="assets/next-study.webp" width="720" height="540" loading="lazy" decoding="async" alt=""></span>'
