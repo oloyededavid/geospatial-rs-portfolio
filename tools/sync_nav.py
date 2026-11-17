@@ -3,6 +3,7 @@
 Each study page gets, between marker comments:
   <!-- study-bar:start --> ... <!-- study-bar:end -->   a slim bar at the top: back to the portfolio, study n of N, previous and next
   <!-- study-nav:start --> ... <!-- study-nav:end -->   at the end of the page: a card for the next study and links to the others
+  <!-- study-others:start --> ... <!-- study-others:end -->   the "Other studies" line in the footer, where the page has the markers
 Explorer pages get the bar only. Static HTML and scoped CSS (.sn-), so it works without scripts and cannot clash.
 Run from anywhere:  python tools/sync_nav.py
 """
@@ -26,6 +27,9 @@ S = [  # number, local clone, repo, title, one line, cover, tags
      'How much of the barrier has been sealed since the 1980s, and what that could do to the water table beneath it.', 'coastal', ['Groundwater', 'Urban change', 'Coastal aquifer', 'Scenario modelling']),
 ]
 N = len(S)
+# the name each study site shows in its own header, used for the "Other studies" line in every footer
+SHORT = {'01': 'Nigeria floods, drought and design rainfall', '02': 'Ogun surface water', '03': 'Ouémé–Ogun recharge',
+         '04': 'Lake Chad water storage', '05': 'Lagos urban heat', '06': 'Lekki–Epe groundwater'}
 
 CSS = '''<style>
 .sn-bar{font:400 14px/1.4 'Range Dash','Satoshi',system-ui,-apple-system,'Segoe UI',sans-serif;background:#fff;border-bottom:1px solid #e5e5e1;color:#141412;position:relative;z-index:1000}
@@ -69,6 +73,10 @@ def nav(i):
             f'<a class="sn-back" href="{HOME}#studies"><span aria-hidden="true">←</span> Back to all studies</a>'
             f'</div></section><!-- study-nav:end -->')
 
+def others(i):
+    links = ' · '.join(f'<a href="{B}{s[2]}/">{SHORT[s[0]]}</a>' for j, s in enumerate(S) if j != i)
+    return f'<!-- study-others:start --><p class="others">Other studies: {links}</p><!-- study-others:end -->'
+
 def put(html, key, block, where):
     pat = re.compile(rf'<!-- {key}:start -->.*?<!-- {key}:end -->', re.S)
     if pat.search(html): return pat.sub(lambda m: block, html, count=1)
@@ -85,11 +93,13 @@ for i, s in enumerate(S):
         if page.name == 'index.html':
             h = put(h, 'study-bar', bar(i), 'top')
             h = put(h, 'study-nav', nav(i), 'end')
+            h = put(h, 'study-others', others(i), 'marker')
             # copies the study's own page generator re-inserts after a rebuild
             import shutil
             shutil.copyfile(pathlib.Path(__file__).resolve().parent.parent / 'assets' / 'projects' / f'{S[(i + 1) % N][5]}-720.webp', docs / 'assets' / 'next-study.webp')
             (docs / 'assets' / 'study-bar.html').write_text(bar(i) + '\n', encoding='utf-8')
             (docs / 'assets' / 'study-nav.html').write_text(nav(i) + '\n', encoding='utf-8')
+            (docs / 'assets' / 'study-others.html').write_text(others(i) + '\n', encoding='utf-8')
         elif page.name in ('explore.html', 'explorer.html'):
             h = put(h, 'study-bar', bar(i), 'top')
         else:
