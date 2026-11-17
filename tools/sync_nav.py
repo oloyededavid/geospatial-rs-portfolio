@@ -72,6 +72,8 @@ def nav(i):
 def put(html, key, block, where):
     pat = re.compile(rf'<!-- {key}:start -->.*?<!-- {key}:end -->', re.S)
     if pat.search(html): return pat.sub(lambda m: block, html, count=1)
+    if where == 'marker':  # only where the page has the markers
+        return html
     if where == 'top':
         return re.sub(r'(<body[^>]*>)', lambda m: m.group(1) + '\n' + block, html, count=1)
     return html.replace('</body>', block + '\n</body>', 1)
