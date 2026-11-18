@@ -122,8 +122,8 @@ h1, h2, h3 { margin: 0; font-weight: 500; }
 .land { fill: #ffffff; stroke: #8f8d86; stroke-width: .6; }
 .borders { fill: none; stroke: #c3c1b9; stroke-width: .55; }
 .grat { stroke: #cfcdc5; stroke-width: .5; stroke-dasharray: 2 4; }
-.country { font-family: var(--mono); font-size: 7.4px; letter-spacing: .22em; fill: #9a988f; }
-.sea-label { font-family: var(--display); font-style: italic; font-size: 10px; fill: #8a887f; }
+.country { font-family: var(--mono); font-size: 7.4px; letter-spacing: .22em; fill: #6b6a63; }
+.sea-label { font-family: var(--display); font-style: italic; font-size: 10px; fill: #67655d; }
 .neat { fill: none; stroke: var(--line); stroke-width: 1; }
 .hatch { stroke-width: 1; }
 .hatch-01, .sw-01 { stroke: #1f5fae; } .hatch-02, .sw-02 { stroke: #0f766e; } .hatch-03, .sw-03 { stroke: #a8661b; } .hatch-04, .sw-04 { stroke: #5b6b7a; } .hatch-05, .sw-05 { stroke: #b3361b; } .hatch-06, .sw-06 { stroke: #6b4c9a; }
