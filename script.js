@@ -97,6 +97,18 @@
         catch (e) { location.href = 'mailto:' + b.dataset.copy; return; }
         b._t = setTimeout(() => { label.textContent = was; }, 1800);
     }));
+    // projects: filter by theme; every project stays reachable through "All"
+    const pf = document.querySelector('.pf-filter');
+    if (pf) pf.addEventListener('click', e => {
+        const b = e.target.closest('.pf-btn'); if (!b) return;
+        const c = b.dataset.cat;
+        pf.querySelectorAll('.pf-btn').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+        document.querySelectorAll('#studies .inset').forEach(a => {
+            const hide = c !== 'all' && !(a.dataset.cat || '').split(' ').includes(c);
+            a.classList.toggle('pf-hide', hide);
+            if (!hide) a.classList.add('in');
+        });
+    });
     // about: stagger in when it scrolls into view
     const about = document.querySelector('.about');
     if (about) { if (reduced || !('IntersectionObserver' in window)) about.classList.add('in'); else { const ao = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { about.classList.add('in'); ao.disconnect(); } }), { threshold: .12 }); ao.observe(about); } }
