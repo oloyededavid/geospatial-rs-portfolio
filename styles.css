@@ -929,30 +929,19 @@ html:not(.js) .lx { grid-template-columns: 1fr; }
 @media (max-width: 560px) { .atlas { grid-template-columns: 1fr; } }
 .at-map.at-local { background: #f7f7f4; }
 
-/* ---------- Projects: wider section, search and grid/list view ---------- */
+/* ---------- Projects: wider section and grid/list view ---------- */
 #studies .wrap { max-width: calc(1440px + 2 * var(--margin)); }
 @media (min-width: 1100px) { #studies .inset-list { margin-inline: 0; } }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .pf-head { align-items: center; flex-wrap: wrap; gap: 14px 24px; }
 .pf-tools { display: none; align-items: center; gap: 10px; margin-left: auto; }
 .js .pf-tools { display: flex; }
-.pf-search { position: relative; display: flex; align-items: center; }
-.pf-search svg { position: absolute; left: 14px; width: 15px; height: 15px; fill: none; stroke: var(--ink-3); stroke-width: 1.6; stroke-linecap: round; pointer-events: none; }
-.pf-search input { font: inherit; font-size: .9375rem; color: var(--ink); width: 260px; height: 40px; padding: 0 16px 0 38px; border: 1px solid transparent; border-radius: 999px; background: #f2f2ef; outline: none; transition: background .2s, border-color .2s, width .3s var(--ease); -webkit-appearance: none; appearance: none; }
-.pf-search input::placeholder { color: var(--ink-3); }
-.pf-search input:hover { background: #ebebe7; }
-.pf-search input:focus { background: #fff; border-color: #cfcec8; width: 300px; }
-.pf-search input::-webkit-search-cancel-button { -webkit-appearance: none; }
 .pf-view { display: flex; padding: 3px; border-radius: 999px; background: #f2f2ef; }
 .pf-v { display: grid; place-items: center; width: 36px; height: 34px; border: 0; border-radius: 999px; background: none; color: var(--ink-3); cursor: pointer; transition: background .2s, color .2s, box-shadow .2s; }
 .pf-v svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
 .pf-v:hover { color: var(--ink); }
 .pf-v[aria-pressed="true"] { background: #fff; color: var(--ink); box-shadow: 0 1px 2px rgba(0, 0, 0, .08); }
 .pf-v:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.pf-search input:focus, .pf-search input:focus-visible { outline: none; border-color: #8f8d86; box-shadow: 0 0 0 3px rgba(20, 20, 18, .06); }
-.pf-status { margin: -8px 0 18px; min-height: 1.2em; font-size: .875rem; color: var(--ink-3); }
-.pf-status:empty { margin: 0; min-height: 0; }
-.inset.pf-hide { display: none; }
 /* list view: one quiet row per project */
 .inset-list.is-list { grid-template-columns: minmax(0, 1fr); gap: 0; border-top: 1px solid var(--rule); }
 .is-list .inset { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 20px; align-items: center; padding: 20px 4px; border: 0; border-bottom: 1px solid var(--rule); border-radius: 0; background: none; box-shadow: none; }
@@ -967,7 +956,6 @@ html:not(.js) .lx { grid-template-columns: 1fr; }
 .is-list .inset:hover { background: #fafaf8; }
 @media (max-width: 760px) {
   .pf-tools { width: 100%; margin-left: 0; }
-  .pf-search { flex: 1; } .pf-search input, .pf-search input:focus { width: 100%; }
-  .is-list .inset { grid-template-columns: minmax(0, 1fr) auto; gap: 0 12px; }
+    .is-list .inset { grid-template-columns: minmax(0, 1fr) auto; gap: 0 12px; }
   .is-list .inset h3 { font-size: 1.0625rem; }
 }

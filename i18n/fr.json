@@ -167,8 +167,7 @@
     "OpenStreetMap": "OpenStreetMap",
     "Deep learning for Earth observation": "Apprentissage profond pour l’observation de la Terre",
     "Cloud computing at scale": "Calcul dans le cloud à grande échelle",
-    "Globe imagery and study basemaps © Esri": "Imagerie du globe et fonds de carte des études © Esri",
-    "Search projects": "Rechercher un projet"
+    "Globe imagery and study basemaps © Esri": "Imagerie du globe et fonds de carte des études © Esri"
   },
   "attr": {
     "David Oloyede · Geospatial and Environmental Researcher": "David Oloyede · Chercheur en sciences géospatiales et de l’environnement",
@@ -193,8 +192,7 @@
     "Map of Africa with the footprints of the catalogue’s 32 items in seven collections: study areas across Nigeria and Benin, the Lake Chad basin and Mozambique.": "Carte de l’Afrique avec l’emprise des 32 éléments du catalogue, répartis en sept collections : zones d’étude au Nigeria et au Bénin, bassin du lac Tchad et Mozambique.",
     "Project layout": "Affichage des projets",
     "Grid": "Grille",
-    "List": "Liste",
-    "Search projects": "Rechercher un projet"
+    "List": "Liste"
   },
   "js": {
     "13.8 billion years ago": "Il y a 13,8 milliards d’années",
@@ -263,10 +261,6 @@
     "Beyond 300 m of green": "À plus de 300 m de la végétation",
     "of residents": "des habitants",
     "On hot cells": "Sur mailles chaudes",
-    "Below 10 m": "Sous 10 m",
-    "1 project matches": "1 projet correspond",
-    "{n} projects match": "{n} projets correspondent",
-    "No exact match. The closest projects:": "Aucun résultat exact. Les projets les plus proches :",
-    "No project matches. All projects are shown.": "Aucun projet ne correspond. Tous les projets sont affichés."
+    "Below 10 m": "Sous 10 m"
   }
 }
