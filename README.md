@@ -2,7 +2,7 @@
 
 Source for [oloyededavid.github.io/geospatial-rs-portfolio](https://oloyededavid.github.io/geospatial-rs-portfolio/).
 
-A one-page site in English, French and German: an introduction with a globe and timeline, an index map of the six projects in West and Central Africa, a card for each of the nine projects that opens its study site, and an About section with skills. Static files only, served by GitHub Pages from `main`.
+A one-page site in English, French and German: an introduction with a globe and timeline, a searchable card for each of the nine projects that opens its study site, and an About section with skills. Static files only, served by GitHub Pages from `main`.
 
 ## Files
 
