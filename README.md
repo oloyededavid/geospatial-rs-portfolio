@@ -25,6 +25,7 @@ Run from the repository root.
 
 ```bash
 python3 tools/build_i18n.py        # rebuild fr/ and de/ after any change to index.html or i18n/*.json
+python3 tools/build_search.py       # rebuild assets/search-index.json (full text of each study page, for the project search)
 python3 tools/build_lagos_tour.py  # rebuild assets/lagos-lga.json from the Lagos study's data files
 python3 tools/sync_nav.py          # rewrite the study bar, next-study card and Other studies line on the nine study sites
 ```

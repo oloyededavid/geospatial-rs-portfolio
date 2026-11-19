@@ -105,8 +105,13 @@
         const cards = [...list.querySelectorAll('.inset')];
         const docs = cards.map((c, i) => {
             const words = new Set(norm(c.textContent + ' ' + (c.dataset.k || '')).split(' ').filter(w => w.length > 1));
-            return { c, i, words: [...words], text: ' ' + [...words].join(' ') + ' ' };
+            return { c, i, words: [...words], page: [], text: ' ' + [...words].join(' ') + ' ' };
         });
+        // full text of each study page (assets/search-index.json, built by tools/build_search.py)
+        fetch((window.SITE_ROOT || '') + 'assets/search-index.json').then(r => r.ok ? r.json() : {}).then(ix => {
+            docs.forEach(d => { const w = ix[d.c.dataset.n]; if (w) d.page = w.split(' '); });
+            if (q.value.trim()) run();
+        }).catch(() => {});
         const lev = (a, b) => {   // edit distance, stopped early when it cannot be small
             if (Math.abs(a.length - b.length) > 2) return 9;
             let p = Array.from({ length: b.length + 1 }, (_, j) => j);
@@ -119,33 +124,43 @@
         };
         const grams = w => { const g = new Set(), s = `  ${w} `; for (let i = 0; i < s.length - 2; i++) g.add(s.slice(i, i + 3)); return g; };
         const sim = (a, b) => { const A = grams(a), B = grams(b); let n = 0; A.forEach(g => B.has(g) && n++); return 2 * n / (A.size + B.size); };
-        const best = (d, t) => {
+        const fit = (ws, t) => {
             let b = 0;
-            for (const w of d.words) {
-                if (w === t) { b = 3; break; }
+            for (const w of ws) {
+                if (w === t) return 3;
                 if (w.startsWith(t)) b = Math.max(b, 2.2);
                 else if (t.length > 3 && w.includes(t)) b = Math.max(b, 1.6);
-                else if (t.length > 3) { const e = lev(t, w); if (e <= (t.length > 6 ? 2 : 1)) b = Math.max(b, 1.4 - e * .2); }
+                else if (t.length > 4) { const e = lev(t, w); if (e <= (t.length > 8 ? 2 : 1)) b = Math.max(b, 1.4 - e * .2); }
             }
+            return b;
+        };
+        // the card counts fully; a word found only in the study's own page counts a little less
+        const best = (d, t) => {
+            let b = Math.max(fit(d.words, t), .7 * fit(d.page, t));
             if (b && d.text.includes(' ' + toks_all + ' ')) b += .5;
             return b;
         };
         // every word must match when some project matches them all; otherwise the best partial matches
         const score = (d, toks) => { const b = toks.map(t => best(d, t)); return { s: b.reduce((a, x) => a + x, 0), all: b.every(x => x > 0) }; };
         let toks_all = '';
-        const near = (d, toks) => toks.reduce((s, t) => s + Math.max(0, ...d.words.map(w => sim(t, w))), 0);
+        const near = (d, toks) => toks.reduce((s, t) => s + Math.max(0, ...d.words.map(w => sim(t, w)), ...d.page.map(w => .8 * sim(t, w))), 0);
         const show = order => { cards.forEach(c => c.classList.add('pf-hide')); order.forEach(d => { d.c.classList.remove('pf-hide'); d.c.classList.add('in'); list.appendChild(d.c); }); };
         const reset = () => { docs.forEach(d => { d.c.classList.remove('pf-hide'); list.appendChild(d.c); }); st.textContent = ''; };
         const run = () => {
             const raw = q.value.trim(), toks = norm(raw).split(' ').filter(Boolean);
-            if (!toks.length) return reset();
+            if (!toks.length || raw.length < 2) return reset();
             toks_all = toks.join(' ');
             let hits = docs.map(d => ({ ...d, ...score(d, toks) })).filter(d => d.s > 0);
             if (hits.some(d => d.all)) hits = hits.filter(d => d.all);
             hits.sort((a, b) => b.s - a.s || a.i - b.i);
-            if (hits.length) {
-                show(hits);
-                st.textContent = hits.length === 1 ? T('1 project matches') : T('{n} projects match').replace('{n}', hits.length);
+            // a hit counts as a match only if some word matched exactly or by its start; spelling tolerance alone gives "closest"
+            const strong = hits.filter(d => d.s >= 1.5 * toks.length * .7);
+            if (strong.length) {
+                show(strong);
+                st.textContent = strong.length === 1 ? T('1 project matches') : T('{n} projects match').replace('{n}', strong.length);
+            } else if (hits.length) {
+                show(hits.slice(0, 3));
+                st.textContent = T('No exact match. The closest projects:');
             } else {
                 const closest = docs.map(d => ({ ...d, s: near(d, toks) })).sort((a, b) => b.s - a.s || a.i - b.i).slice(0, 3);
                 show(closest);
