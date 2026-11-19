@@ -180,7 +180,7 @@
     "PostGIS": "PostGIS",
     "Serving Open Research Outputs as a STAC Catalogue and through OGC API Features": "Offene Forschungsergebnisse als STAC-Katalog und über OGC API Features bereitstellen",
     "The spatial layers behind the studies in one catalogue, with checksums and an API you can run locally.": "Die räumlichen Ebenen hinter den Studien in einem Katalog, mit Prüfsummen und einer API, die sich lokal ausführen lässt.",
-    "Collections page of the catalogue": "Sammlungsseite des Katalogs"
+    "Footprints of the catalogue’s items": "Ausdehnung der Katalog-Items"
   },
   "attr": {
     "David Oloyede · Geospatial and Environmental Researcher": "David Oloyede · Forscher in Geoinformatik und Umweltwissenschaften",
@@ -206,9 +206,9 @@
     "Map of Lagos State between Benin and Ogun State and the Atlantic, divided into its 20 local government areas, with Badagry, Ikeja, Ikorodu, Lagos Island, Lekki and Epe marked.": "Karte des Bundesstaats Lagos zwischen Benin, dem Bundesstaat Ogun und dem Atlantik, gegliedert in seine 20 Local Government Areas, mit Badagry, Ikeja, Ikorodu, Lagos Island, Lekki und Epe.",
     "Map of the Lekki–Epe barrier between the lagoons and the Atlantic, from Lagos Island and Lekki in the west to Epe in the east, with the western part used in the comparisons shaded.": "Karte der Nehrung von Lekki–Epe zwischen den Lagunen und dem Atlantik, von Lagos Island und Lekki im Westen bis Epe im Osten; der für die Vergleiche genutzte westliche Teil ist schattiert.",
     "Source code for Urban sealing and the shallow water table of the Lekki–Epe barrier": "Quellcode: Versiegelung und flacher Grundwasserspiegel der Nehrung von Lekki–Epe",
-    "Land-cover map of the Mau Forest Complex study box in Kenya on a grey basemap: forest in dark green, cropland and grassland in pale yellow, built-up areas in red and a lake on the eastern edge in blue.": "Landbedeckungskarte des Untersuchungsgebiets Mau-Waldkomplex in Kenia auf grauer Grundkarte: Wald dunkelgrün, Acker- und Grasland blassgelb, bebaute Flächen rot und ein See am Ostrand blau.",
-    "Map of Mozambique divided into its 159 districts, on a grey basemap of southeast Africa with Malawi, Zambia, Zimbabwe and Madagascar.": "Karte von Mosambik mit seinen 159 Distrikten auf grauer Grundkarte des südöstlichen Afrikas mit Malawi, Sambia, Simbabwe und Madagaskar.",
-    "Part of the catalogue’s collections page: one card per study with a small extent map, a description, the item count, period and data licence, and links to the study page, repository and STAC collection.": "Ausschnitt der Sammlungsseite des Katalogs: eine Karte je Studie mit kleiner Übersichtskarte, Beschreibung, Anzahl der Items, Zeitraum und Datenlizenz sowie Links zur Studienseite, zum Repository und zur STAC-Sammlung."
+    "Map of the Mau Forest Complex study box in Kenya, with the forest mapped in 2025 shaded green and Kericho, Molo, Njoro, Nakuru, Bomet and Narok marked.": "Karte des Untersuchungsgebiets Mau-Waldkomplex in Kenia, mit dem 2025 kartierten Wald grün schattiert und Kericho, Molo, Njoro, Nakuru, Bomet und Narok markiert.",
+    "Map of Mozambique divided into its 159 districts, with Lichinga, Pemba, Tete, Nampula, Quelimane, Beira and Maputo marked.": "Karte von Mosambik mit seinen 159 Distrikten, mit Lichinga, Pemba, Tete, Nampula, Quelimane, Beira und Maputo markiert.",
+    "Map of Africa with the footprints of the catalogue’s items: the Nigerian and Beninese study areas around Lagos, the Lake Chad basin and Mozambique.": "Karte Afrikas mit den Ausdehnungen der Katalog-Items: die Untersuchungsgebiete in Nigeria und Benin um Lagos, das Tschadseebecken und Mosambik."
   },
   "js": {
     "13.8 billion years ago": "Vor 13,8 Milliarden Jahren",
