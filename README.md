@@ -2,7 +2,7 @@
 
 Source for [oloyededavid.github.io/geospatial-rs-portfolio](https://oloyededavid.github.io/geospatial-rs-portfolio/).
 
-A one-page site in English, French and German: an introduction with a globe and timeline, an index map of the six projects, a card for each project that opens its study site, and an About section with skills. Static files only, served by GitHub Pages from `main`.
+A one-page site in English, French and German: an introduction with a globe and timeline, an index map of the six projects in West and Central Africa, a card for each of the nine projects that opens its study site, and an About section with skills. Static files only, served by GitHub Pages from `main`.
 
 ## Files
 
@@ -26,12 +26,12 @@ Run from the repository root.
 ```bash
 python3 tools/build_i18n.py        # rebuild fr/ and de/ after any change to index.html or i18n/*.json
 python3 tools/build_lagos_tour.py  # rebuild assets/lagos-lga.json from the Lagos study's data files
-python3 tools/sync_nav.py          # rewrite the study bar and next-study card on the six study sites
+python3 tools/sync_nav.py          # rewrite the study bar and next-study card on the nine study sites
 ```
 
 - `build_i18n.py` stops if a dictionary entry no longer matches the page, or if any English text is left untranslated. Text inside the map images is part of the images and stays in English.
 - `build_lagos_tour.py` reads `docs/data/extra_analysis.json` and `docs/data/lagos_ghsl.csv` from a local clone of [Lagos-Urban-Heat-Analytics](https://github.com/oloyededavid/Lagos-Urban-Heat-Analytics) next to this repository. Every value on the map comes from those files.
-- `sync_nav.py` expects local clones of the six study repositories next to this one. It also copies each next study's `-720` image into the previous site as `next-study.webp`.
+- `sync_nav.py` expects local clones of the nine study repositories next to this one. It also copies each next study's `-720` image into the previous site as `next-study.webp`.
 
 ## Image sources
 

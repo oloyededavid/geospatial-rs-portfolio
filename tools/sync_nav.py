@@ -25,11 +25,18 @@ S = [  # number, local clone, repo, title, one line, cover, tags
      'Do residents who live far from vegetation face more surface heat?', 'lagos', ['Earth observation', 'Urban heat', 'Geodata science', 'Heat exposure']),
     ('06', 'coastal-hydrogeology-modeling', 'Coastal-Hydrogeology-Modeling', 'Urban sealing and the shallow water table of the Lekki–Epe barrier, Lagos, 1986–2024',
      'How much of the barrier has been sealed since the 1980s, and what that could do to the water table beneath it.', 'coastal', ['Groundwater', 'Urban change', 'Coastal aquifer', 'Scenario modelling']),
+    ('07', 'mau-forest-land-cover', 'Mau-Forest-Land-Cover', 'Mapping land cover in the Mau Forest Complex, Kenya, with Sentinel-2, 2025',
+     'A Sentinel-2 land-cover map tested with spatially blocked cross-validation; accuracy awaits a labelled reference sample.', 'mau', ['Land cover', 'Machine learning', 'Sentinel-2', 'Spatial validation']),
+    ('08', 'mozambique-health-access', 'Mozambique-Health-Access', 'Travel time to health facilities in Mozambique',
+     'How district access estimates change with the facility list, mode of travel and facility functionality.', 'mozambique', ['Accessibility', 'Health access', 'Sensitivity analysis', 'Population weighting']),
+    ('09', 'open-geodata-catalogue', 'Open-Geodata-Catalogue', 'Serving open research outputs as a STAC catalogue and through OGC API Features',
+     'The spatial layers behind the studies in one catalogue, with checksums and an API you can run locally.', 'catalogue', ['Open data', 'STAC', 'OGC API Features', 'PostGIS']),
 ]
 N = len(S)
 # the name each study site shows in its own header, used for the "Other studies" line in every footer
 SHORT = {'01': 'Nigeria floods, drought and design rainfall', '02': 'Ogun surface water', '03': 'Ouémé–Ogun recharge',
-         '04': 'Lake Chad water storage', '05': 'Lagos urban heat', '06': 'Lekki–Epe groundwater'}
+         '04': 'Lake Chad water storage', '05': 'Lagos urban heat', '06': 'Lekki–Epe groundwater',
+         '07': 'Mau Forest land cover', '08': 'Mozambique health access', '09': 'Open geodata catalogue'}
 
 CSS = '''<style>
 .sn-bar{font:400 14px/1.4 'Range Dash','Satoshi',system-ui,-apple-system,'Segoe UI',sans-serif;background:#fff;border-bottom:1px solid #e5e5e1;color:#141412;position:relative;z-index:1000}
