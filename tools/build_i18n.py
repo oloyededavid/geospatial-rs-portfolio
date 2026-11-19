@@ -92,7 +92,7 @@ def build(lang):
     # 3. attributes, then text nodes
     for k, v in d['attr'].items():
         n = 0
-        for a in ('content', 'aria-label', 'alt', 'title'):
+        for a in ('content', 'aria-label', 'alt', 'title', 'placeholder'):
             needle = f'{a}="{k}"'
             n += s.count(needle)
             s = s.replace(needle, f'{a}="{v}"')

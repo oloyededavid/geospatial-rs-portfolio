@@ -169,11 +169,7 @@
     "Deep learning for Earth observation": "Deep Learning für die Erdbeobachtung",
     "Cloud computing at scale": "Cloud-Computing im großen Maßstab",
     "Globe imagery and study basemaps © Esri": "Globusbilder und Grundkarten der Studien © Esri",
-    "All": "Alle",
-    "SDG 6 Water": "SDG 6 Wasser",
-    "SDG 11 Cities": "SDG 11 Städte",
-    "SDG 13 Climate": "SDG 13 Klima",
-    "SDG 15 Land": "SDG 15 Landökosysteme"
+    "Search projects": "Projekte durchsuchen"
   },
   "attr": {
     "David Oloyede · Geospatial and Environmental Researcher": "David Oloyede · Forscher in Geoinformatik und Umweltwissenschaften",
@@ -196,7 +192,10 @@
     "Map of the Mau Forest Complex study box in Kenya, with the forest mapped in 2025 shaded green and Kericho, Molo, Njoro, Nakuru, Bomet and Narok marked.": "Karte des Untersuchungsgebiets Mau-Waldkomplex in Kenia; der 2025 kartierte Wald ist grün schattiert, markiert sind Kericho, Molo, Njoro, Nakuru, Bomet und Narok.",
     "Map of Mozambique divided into its 159 districts, with Lichinga, Pemba, Tete, Nampula, Quelimane, Beira and Maputo marked.": "Karte von Mosambik, gegliedert in seine 159 Distrikte; markiert sind Lichinga, Pemba, Tete, Nampula, Quelimane, Beira und Maputo.",
     "Map of Africa with the footprints of the catalogue’s 32 items in seven collections: study areas across Nigeria and Benin, the Lake Chad basin and Mozambique.": "Karte Afrikas mit den Ausdehnungen der 32 Katalogeinträge in sieben Sammlungen: Untersuchungsgebiete in Nigeria und Benin, das Tschadseebecken und Mosambik.",
-    "Filter projects by Sustainable Development Goal": "Projekte nach Zielen für nachhaltige Entwicklung filtern"
+    "Project layout": "Projektansicht",
+    "Grid": "Raster",
+    "List": "Liste",
+    "Search projects": "Projekte durchsuchen"
   },
   "js": {
     "13.8 billion years ago": "Vor 13,8 Milliarden Jahren",
@@ -265,6 +264,9 @@
     "Beyond 300 m of green": "Über 300 m von Grün",
     "of residents": "der Einwohner",
     "On hot cells": "Auf heißen Zellen",
-    "Below 10 m": "Unter 10 m"
+    "Below 10 m": "Unter 10 m",
+    "1 project matches": "1 Projekt passt",
+    "{n} projects match": "{n} Projekte passen",
+    "No exact match. The closest projects:": "Kein genauer Treffer. Die nächstliegenden Projekte:"
   }
 }
