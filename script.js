@@ -100,13 +100,13 @@
     // about: stagger in when it scrolls into view
     const about = document.querySelector('.about');
     if (about) { if (reduced || !('IntersectionObserver' in window)) about.classList.add('in'); else { const ao = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { about.classList.add('in'); ao.disconnect(); } }), { threshold: .12 }); ao.observe(about); } }
-    // map: live coordinates under the cursor (equirectangular, 1°W–26°E, 3.5–18°N)
+    // map: live coordinates under the cursor (plate carrée; the extent is on .coord as data-extent)
     const mi = document.querySelector('.map-inner'), svg = mi && mi.querySelector('svg.sheet-map'), co = mi && mi.querySelector('.coord');
     if (mi && svg && co && fine) {
         mi.classList.add('crosshair');
         svg.addEventListener('pointermove', e => {
             const r = svg.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-            const lon = -1 + x * 27, lat = 18 - y * 14.5, m = mi.getBoundingClientRect();
+            const [l0, l1, b0, b1] = (co.dataset.extent || '-1 26 3.5 18').split(' ').map(Number), lon = l0 + x * (l1 - l0), lat = b1 - y * (b1 - b0), m = mi.getBoundingClientRect();
             co.textContent = `${Math.abs(lat).toFixed(2)}°${lat >= 0 ? 'N' : 'S'}  ${Math.abs(lon).toFixed(2)}°${lon >= 0 ? 'E' : 'W'}`;
             co.style.setProperty('--cx', (e.clientX - m.left + 12) + 'px'); co.style.setProperty('--cy', (e.clientY - m.top + 12) + 'px'); co.classList.add('on');
         });
