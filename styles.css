@@ -474,7 +474,7 @@ p.lx-sel { padding: 9px 10px; border: 1px solid var(--rule); border-radius: var(
 .globe canvas { display: block; width: min(100%, 330px); aspect-ratio: 1; height: auto; margin: 0 auto; }
 .globe figcaption { display: block !important; margin-top: -8px; }
 .g-cap { font-weight: 600; font-size: 1.1875rem; letter-spacing: -.01em; color: var(--ink); }
-.g-line { margin-top: 4px; font-size: .9375rem; color: #9a9994; }
+.g-line { margin-top: 4px; font-size: .9375rem; color: #6a6963; }
 .g-line b { font-weight: 500; color: var(--ink); margin-right: 4px; }
 .globe.swap .g-cap, .globe.swap .g-line { animation: gin .6s var(--ease); }
 @keyframes gin { from { opacity: 0; filter: blur(3px); } }
