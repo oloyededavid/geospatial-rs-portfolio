@@ -915,3 +915,20 @@ html:not(.js) .lx { grid-template-columns: 1fr; }
 .inset .cta { background: none; color: var(--ink); border: 0; border-bottom: 1px solid #c9c8c2; border-radius: 0; height: auto; padding: 0 0 5px; }
 .inset .cta .arrow { color: var(--ink); }
 .inset:hover .cta { background: none; border-bottom-color: var(--ink); }
+
+/* ---------- Project areas: one equal panel per project, each at its own scale ---------- */
+.at-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.atlas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.at-cell { border: 1px solid var(--rule); border-radius: var(--r); background: #fff; overflow: hidden; }
+.at-map { display: block; width: 100%; height: auto; background: #eef0f1; border-bottom: 1px solid var(--rule); }
+.at-land { fill: #f7f7f4; stroke: #c9c8c2; stroke-width: .8; stroke-linejoin: round; }
+.at-fill { stroke: none; }
+.at-line { fill: none; stroke-width: 1.6; stroke-linejoin: round; }
+.at-scale path { stroke: #55554f; stroke-width: 2; }
+.at-scale text { font-family: var(--mono); font-size: 11px; fill: #55554f; }
+.at-text { display: grid; grid-template-columns: 1.8rem minmax(0, 1fr) auto; gap: 8px; align-items: start; padding: 12px 14px 14px; }
+.at-n { font-family: var(--mono); font-size: var(--fs-meta); color: var(--ink); padding-top: 2px; }
+.at-note { margin-top: var(--s-3); font-family: var(--mono); font-size: 11px; color: var(--ink-3); }
+@media (max-width: 960px) { .atlas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .atlas { grid-template-columns: 1fr; } }
+.at-map.at-local { background: #f7f7f4; }

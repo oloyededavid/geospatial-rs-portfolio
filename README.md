@@ -25,12 +25,14 @@ Run from the repository root.
 
 ```bash
 python3 tools/build_i18n.py        # rebuild fr/ and de/ after any change to index.html or i18n/*.json
+python3 tools/build_atlas.py        # redraw the Project areas panels (one per project, each at its own scale)
 python3 tools/build_lagos_tour.py  # rebuild assets/lagos-lga.json from the Lagos study's data files
 python3 tools/sync_nav.py          # rewrite the study bar, next-study card and Other studies line on the nine study sites
 ```
 
 - `build_i18n.py` stops if a dictionary entry no longer matches the page, or if any English text is left untranslated. Text inside the map images is part of the images and stays in English.
 - `build_lagos_tour.py` reads `docs/data/extra_analysis.json` and `docs/data/lagos_ghsl.csv` from a local clone of [Lagos-Urban-Heat-Analytics](https://github.com/oloyededavid/Lagos-Urban-Heat-Analytics) next to this repository. Every value on the map comes from those files.
+- `build_atlas.py` reads the catalogue's footprints and Natural Earth outlines from a local clone of Open-Geodata-Catalogue, plus `assets/atlas-06.json` (Lekki–Epe barrier) and `assets/atlas-08.json` (Mozambique outline, dissolved from the study's districts). Panels follow the order of the project cards.
 - `sync_nav.py` expects local clones of the nine study repositories next to this one. It also copies each next study's `-720` image into the previous site as `next-study.webp`.
 
 ## Image sources
