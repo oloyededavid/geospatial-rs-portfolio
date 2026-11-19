@@ -908,3 +908,10 @@ html:not(.js) .lx { grid-template-columns: 1fr; }
 
 /* Leaflet's plus-lighter blend leaves light seams between map tiles at fractional zoom on a light basemap */
 .leaflet-container img.leaflet-tile { mix-blend-mode: normal; }
+
+/* ---------- Cleaner project cards: two topics, one label on the map, a quiet link ---------- */
+.inset .tags li:nth-child(n+3) { display: none; }
+.inset .inset-media .map-cap { display: none; }
+.inset .cta { background: none; color: var(--ink); border: 0; border-bottom: 1px solid #c9c8c2; border-radius: 0; height: auto; padding: 0 0 5px; }
+.inset .cta .arrow { color: var(--ink); }
+.inset:hover .cta { background: none; border-bottom-color: var(--ink); }

@@ -11,7 +11,7 @@
     "ab-lead": "<<1:Ingénieur et chercheur géospatial>>, formé en télédétection, je travaille sur l’eau, le climat, les villes et les territoires.",
     "ab-p1": "Chez <<1:Prevalence Studio>>, je travaille sur des projets d’observation de la Terre et de SIG pour des clients tels que <<2:Imoyen Greenfields Ltd>> et <<3:Sustainable Solutions for Africa>>. Je suis titulaire d’un Bachelor of Technology en télédétection et systèmes d’information géoscientifiques de la <<4:Federal University of Technology d’Akure>>, obtenu en 2025 avec une <<5:mention First Class Honours, parmi les 4 % les meilleurs>> de la School of Earth and Mineral Sciences, en tant que boursier en géosciences de la <<6:Nigerian National Petroleum Company Foundation>>.",
     "ab-p2": "Auparavant, j’ai été assistant de recherche au <<1:Centre for Space Research and Applications>>, où j’ai dirigé quatre étudiants qui comparaient des transects de température relevés à Akure à des estimations satellitaires ; assistant de recherche de premier cycle au <<2:laboratoire de télédétection et de SIG>> ; analyste géospatial chez <<3:GISPlus Technologies>> ; et stagiaire géospatial auprès de la <<4:Federal Airports Authority of Nigeria>>.",
-    "ab-p3": "Mes propres projets pèsent l’eau stockée dans <<1:le bassin du lac Tchad>> grâce aux satellites gravimétriques, reconstituent <<2:les crues, les sécheresses et les pluies extrêmes>> au Nigeria là où les stations de mesure font défaut, testent des estimations satellitaires de <<3:la recharge des nappes>>, suivent <<4:la rivière Ogun>> jusqu’à la lagune et étudient <<5:la chaleur urbaine à Lagos>>. Chacun est confronté à des données indépendantes lorsqu’elles existent, indique son incertitude et publie son code et ses données afin que <<6:chacun puisse le reproduire>>."
+    "ab-p3": "Mes propres projets pèsent l’eau stockée dans <<1:le bassin du lac Tchad>> grâce aux satellites gravimétriques, reconstituent <<2:les crues, les sécheresses et les pluies extrêmes>> au Nigeria là où les stations de mesure font défaut, testent des estimations satellitaires de <<3:la recharge des nappes>>, suivent <<4:la rivière Ogun>> jusqu’à la lagune, étudient <<5:la chaleur urbaine à Lagos>>, cartographient <<6:la couverture forestière du Mau, au Kenya>>, mesurent <<7:l’accès aux soins au Mozambique>> et diffusent leurs résultats dans <<8:un catalogue de données ouvert>>. Chacun est confronté à des données indépendantes lorsqu’elles existent, indique son incertitude et publie son code et ses données afin que <<9:chacun puisse le reproduire>>."
   },
   "text": {
     "Skip to content": "Aller au contenu",
@@ -140,7 +140,7 @@
     "ISPRS member": "Membre de l’ISPRS",
     "YouthMappers": "YouthMappers",
     "View project": "Voir le projet",
-    "Project areas": "Zones des projets",
+    "Project areas in West and Central Africa": "Zones des projets en Afrique de l’Ouest et centrale",
     "Water storage": "Stock d’eau",
     "Turbidity": "Turbidité",
     "Heat exposure": "Exposition à la chaleur",
@@ -148,8 +148,8 @@
     "Vanguard Cabinet, Geospatial Professional Network": "Vanguard Cabinet, Geospatial Professional Network",
     "Nigerian National Petroleum Company Foundation Scholar": "Boursier de la Nigerian National Petroleum Company Foundation",
     "West African Science Service Centre on Climate Change and Adapted Land Use trainee": "Stagiaire du West African Science Service Centre on Climate Change and Adapted Land Use",
-    "Six projects, West and Central Africa": "Six projets, Afrique de l’Ouest et centrale",
-    "Index map of the six projects": "Carte de situation des six projets",
+    "Projects 01–06, West and Central Africa": "Projets 01–06, Afrique de l’Ouest et centrale",
+    "Index map of projects 01 to 06": "Carte d’ensemble des projets 01 à 06",
     "Lagos State and its 20 local government areas": "L’État de Lagos et ses 20 zones de gouvernement local",
     "Urban change": "Changement urbain",
     "Coastal aquifer": "Aquifère côtier",
@@ -165,7 +165,7 @@
     "Sentinel-2": "Sentinel-2",
     "Spatial validation": "Validation spatiale",
     "Mapping Land Cover in the Mau Forest Complex, Kenya, with Sentinel-2,": "Cartographie de l’occupation du sol dans le complexe forestier de Mau, Kenya, avec Sentinel-2,",
-    "A Sentinel-2 land-cover map tested with spatially blocked cross-validation; accuracy awaits a labelled reference sample.": "Une carte d’occupation du sol Sentinel-2 testée par validation croisée en blocs spatiaux ; la précision attend un échantillon de référence étiqueté.",
+    "A land-cover map tested with spatially blocked cross-validation; accuracy awaits a labelled reference sample.": "Une carte d’occupation du sol testée par validation croisée en blocs spatiaux ; sa précision reste à évaluer sur un échantillon de référence étiqueté.",
     "Mau Forest Complex study box, Kenya": "Zone d’étude du complexe forestier de Mau, Kenya",
     "Accessibility": "Accessibilité",
     "Health access": "Accès aux soins",
@@ -179,8 +179,10 @@
     "OGC API Features": "OGC API Features",
     "PostGIS": "PostGIS",
     "Serving Open Research Outputs as a STAC Catalogue and through OGC API Features": "Diffuser des résultats de recherche ouverts sous forme de catalogue STAC et via OGC API Features",
-    "The spatial layers behind the studies in one catalogue, with checksums and an API you can run locally.": "Les couches spatiales des études réunies dans un catalogue, avec sommes de contrôle et une API à lancer en local.",
-    "Footprints of the catalogue’s items": "Emprise des items du catalogue"
+    "The spatial layers behind seven of the studies in one catalogue, with checksums and an API you can run locally.": "Les couches spatiales de sept des études réunies dans un catalogue, avec sommes de contrôle et une API à lancer en local.",
+    "Where the catalogue’s layers lie": "Emprise des couches du catalogue",
+    "Projects 07–09, in Kenya, Mozambique and across Africa, are": "Les projets 07 à 09, au Kenya, au Mozambique et à l’échelle de l’Afrique, sont",
+    "below the map": "présentés sous la carte"
   },
   "attr": {
     "David Oloyede · Geospatial and Environmental Researcher": "David Oloyede · Chercheur en sciences géospatiales et de l’environnement",
@@ -208,7 +210,7 @@
     "Source code for Urban sealing and the shallow water table of the Lekki–Epe barrier": "Code source : Imperméabilisation urbaine et nappe peu profonde du cordon de Lekki–Epe",
     "Map of the Mau Forest Complex study box in Kenya, with the forest mapped in 2025 shaded green and Kericho, Molo, Njoro, Nakuru, Bomet and Narok marked.": "Carte de la zone d’étude du complexe forestier de Mau, au Kenya, avec la forêt cartographiée en 2025 en vert et Kericho, Molo, Njoro, Nakuru, Bomet et Narok indiqués.",
     "Map of Mozambique divided into its 159 districts, with Lichinga, Pemba, Tete, Nampula, Quelimane, Beira and Maputo marked.": "Carte du Mozambique divisé en ses 159 districts, avec Lichinga, Pemba, Tete, Nampula, Quelimane, Beira et Maputo indiqués.",
-    "Map of Africa with the footprints of the catalogue’s items: the Nigerian and Beninese study areas around Lagos, the Lake Chad basin and Mozambique.": "Carte de l’Afrique avec l’emprise des items du catalogue : les zones d’étude au Nigeria et au Bénin autour de Lagos, le bassin du lac Tchad et le Mozambique."
+    "Map of Africa with the footprints of the catalogue’s 32 items in seven collections: study areas across Nigeria and Benin, the Lake Chad basin and Mozambique.": "Carte de l’Afrique avec l’emprise des 32 éléments du catalogue, répartis en sept collections : zones d’étude au Nigeria et au Bénin, bassin du lac Tchad et Mozambique."
   },
   "js": {
     "13.8 billion years ago": "Il y a 13,8 milliards d’années",

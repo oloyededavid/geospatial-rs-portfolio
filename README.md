@@ -26,7 +26,7 @@ Run from the repository root.
 ```bash
 python3 tools/build_i18n.py        # rebuild fr/ and de/ after any change to index.html or i18n/*.json
 python3 tools/build_lagos_tour.py  # rebuild assets/lagos-lga.json from the Lagos study's data files
-python3 tools/sync_nav.py          # rewrite the study bar and next-study card on the nine study sites
+python3 tools/sync_nav.py          # rewrite the study bar, next-study card and Other studies line on the nine study sites
 ```
 
 - `build_i18n.py` stops if a dictionary entry no longer matches the page, or if any English text is left untranslated. Text inside the map images is part of the images and stays in English.
@@ -43,6 +43,9 @@ python3 tools/sync_nav.py          # rewrite the study bar and next-study card o
 | `gravimetry-area-*`, `gravimetry-720` | The Lake Chad water storage study |
 | `lagos-*` | The Lagos explorer: heat by local government area |
 | `coastal-area-*`, `coastal-720` | The Lekki–Epe barrier outline from the coastal study's land mask (`outputs/index_arrays.npz`), on the Esri light grey basemap |
+| `mau-*` | The study box and the forest class of the 2025 land-cover map from the Mau Forest study, on the Esri light grey basemap |
+| `mozambique-*` | The 159 district outlines (geoBoundaries ADM2) used by the Mozambique health-access study, on the Esri light grey basemap |
+| `catalogue-*` | The item footprints of the open geodata catalogue (`docs/data/footprints.geojson`), on the Esri light grey basemap |
 
 ## Editing
 
