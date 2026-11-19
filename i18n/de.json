@@ -4,14 +4,14 @@
   "meta": {
     "title": "David Oloyede · Forscher in Geoinformatik und Umweltwissenschaften",
     "description": "David Oloyede ist Forscher in Geoinformatik und Umweltwissenschaften. Er untersucht mit Satellitenbildern, GIS und räumlicher Analyse, wie sich die Erdoberfläche verändert, und entwickelt die Karten und Web-Tools, mit denen sich die Ergebnisse leicht erkunden lassen.",
-    "og_description": "Erdbeobachtung, GIS und räumliche Analyse für Wasser, Klima, Städte, Landflächen und Ökosysteme, veröffentlicht als offene interaktive Studien."
+    "og_description": "Erdbeobachtung, GIS und räumliche Analyse für Wasser, Klima, Städte, Landflächen und Ökosysteme, geteilt als offene interaktive Studien (ohne Peer-Review)."
   },
   "blocks": {
     "hello-body": "Ich bin <<1:David Oloyede>>, Forscher in Geoinformatik und Umweltwissenschaften. Ich verfolge mit <<2:Satellitenbildern>>, <<3:GIS>> und <<4:räumlicher Analyse>>, wie sich Wasser, Klima, Städte, Landflächen und Ökosysteme verändern, und entwickle die <<5:Karten und Web-Tools>>, mit denen sich die Ergebnisse leicht erkunden lassen.",
     "ab-lead": "<<1:Geospatial Engineer und Forscher>>, ausgebildet in Fernerkundung, mit Arbeiten zu Wasser, Klima, Städten und Landflächen.",
     "ab-p1": "Bei <<1:Prevalence Studio>> arbeite ich an Projekten der Erdbeobachtung und GIS für Kunden wie <<2:Imoyen Greenfields Ltd>> und <<3:Sustainable Solutions for Africa>>. Ich habe einen Bachelor of Technology in Fernerkundung und Geoinformationssystemen der <<4:Federal University of Technology in Akure>>, 2025 abgeschlossen mit <<5:First Class Honours unter den besten 4 %>> der School of Earth and Mineral Sciences, als Geowissenschafts-Stipendiat der <<6:Nigerian National Petroleum Company Foundation>>.",
-    "ab-p2": "Davor war ich wissenschaftliche Hilfskraft am <<1:Centre for Space Research and Applications>> und leitete vier Studierende, die in Akure gemessene Temperaturtransekte mit Satellitenschätzungen verglichen; studentische Hilfskraft im <<2:Labor für Fernerkundung und GIS>>; Geodatenanalyst bei <<3:GISPlus Technologies>>; und Praktikant bei der <<4:Federal Airports Authority of Nigeria>>.",
-    "ab-p3": "Meine eigenen Projekte wiegen das im <<1:Tschadsee-Becken>> gespeicherte Wasser mit Schwerefeldsatelliten, rekonstruieren <<2:Hochwasser, Dürren und Starkniederschläge>> in Nigeria dort, wo Messstationen fehlen, prüfen satellitengestützte Schätzungen der <<3:Grundwasserneubildung>>, verfolgen den <<4:Fluss Ogun>> bis zur Lagune, untersuchen die <<5:städtische Hitze in Lagos>>, kartieren die <<6:Landbedeckung im Mau, Kenia>>, prüfen den <<7:Zugang zu Gesundheitsversorgung in Mosambik>> und stellen ihre Ergebnisse in einem <<8:offenen Datenkatalog>> bereit. Jedes benennt seine Unsicherheit und was geprüft wurde und was nicht, und veröffentlicht Code und Daten, damit <<9:alle es reproduzieren können>>."
+    "ab-p2": "Davor war ich studentische Hilfskraft und Leiter eines studentischen Teams am <<1:Centre for Space Research and Applications>>, wo ich vier Studierende anleitete und in Akure gemessene Temperaturtransekte mit Satellitenschätzungen verglich; wissenschaftliche Hilfskraft im <<2:Labor für Fernerkundung und GIS>>; Geodatenanalyst bei <<3:GISPlus Technologies>>; und Geodaten-Praktikant bei der <<4:Federal Airports Authority of Nigeria>>.",
+    "ab-p3": "Meine eigenen Projekte wiegen das im <<1:Tschadsee-Becken>> gespeicherte Wasser mit Schwerefeldsatelliten, bewerten <<2:Hochwasser, Dürren und Bemessungsniederschläge>> in zwei nigerianischen Flusssystemen dort, wo Messstationen fehlen, prüfen satellitengestützte Schätzungen der <<3:Grundwasserneubildung>>, verfolgen den <<4:Fluss Ogun>> bis zur Lagune, untersuchen die <<5:städtische Hitze in Lagos>>, kartieren die <<6:Landbedeckung im Mau, Kenia>>, prüfen den <<7:Zugang zu Gesundheitsversorgung in Mosambik>> und stellen ihre Ergebnisse in einem <<8:offenen Datenkatalog>> bereit. Jedes benennt seine Unsicherheit und was geprüft wurde und was nicht, und veröffentlicht Code und Daten, damit <<9:andere sie prüfen können>>."
   },
   "text": {
     "Skip to content": "Zum Inhalt springen",
@@ -53,7 +53,7 @@
     "Water Storage in the Lake Chad Basin from GRACE and GRACE-FO,": "Wasserspeicherung im Tschadsee-Becken aus GRACE und GRACE-FO,",
     "Urban heat": "Städtische Hitze",
     "Geodata science": "Geodatenwissenschaft",
-    "Urban Heat Island and Distance to Vegetation in Lagos State, Nigeria,": "Städtische Wärmeinsel und Entfernung zur Vegetation im Bundesstaat Lagos, Nigeria,",
+    "Surface Urban Heat Island and Distance to Vegetation in Lagos State, Nigeria,": "Städtische Oberflächen-Wärmeinsel und Entfernung zur Vegetation im Bundesstaat Lagos, Nigeria,",
     "Skills": "Kompetenzen",
     "Programming and platforms": "Programmierung und Plattformen",
     "Python": "Python",
@@ -101,7 +101,7 @@
     "scikit-learn": "scikit-learn",
     "PostGIS and SQL": "PostGIS und SQL",
     "Satellite radar, long rainfall records and climate models, tested for how far they can stand in for missing gauges.": "Satellitenradar, lange Niederschlagsreihen und Klimamodelle, geprüft darauf, wie weit sie fehlende Messstationen ersetzen können.",
-    "Rainfall, soil moisture, flooding and water clarity along one river, tracked monthly with radar and optical satellites.": "Niederschlag, Bodenfeuchte, Überschwemmungen und Wasserklarheit entlang eines Flusses, monatlich mit Radar- und optischen Satelliten verfolgt.",
+    "Rainfall, soil moisture, a radar flood index and water clarity along one river, tracked monthly with radar and optical satellites. The radar index has not been shown to measure flooding.": "Niederschlag, Bodenfeuchte, ein Radar-Überflutungsindex und Wasserklarheit entlang eines Flusses, monatlich mit Radar- und optischen Satelliten verfolgt. Dass der Radarindex Überflutungen misst, ist nicht belegt.",
     "Can satellite rainfall and evapotranspiration estimate recharge where wells are scarce? Tested on the Upper Ouémé, described for the Upper Ogun.": "Neubildung aus Satellitendaten zu Niederschlag und Evapotranspiration, wo Brunnen fehlen? Am oberen Ouémé getestet, am oberen Ogun beschrieben.",
     "Water gained or lost by the Lake Chad basin since 2002, from changes in Earth’s gravity, and what remains after soil water is removed.": "Wasser, das das Tschadsee-Becken seit 2002 gewonnen oder verloren hat, aus Schwerefeldänderungen, und was ohne Bodenwasser übrig bleibt.",
     "Do residents far from vegetation face more surface heat? Landsat land surface temperature set against where people live.": "Erleben Menschen fern von Vegetation mehr Oberflächenhitze? Landsat-Landoberflächentemperatur im Vergleich zu den Wohnorten.",
@@ -118,22 +118,22 @@
     "View project": "Projekt ansehen",
     "Water storage": "Wasserspeicherung",
     "Turbidity": "Trübung",
-    "Heat exposure": "Hitzeexposition",
+    
     "Ogun catchment: sub-basins Z1–Z4 and lagoon zone Z5": "Ogun: Teilgebiete Z1–Z4, Lagune Z5",
-    "Vanguard Cabinet, Geospatial Professional Network": "Vanguard Cabinet, Geospatial Professional Network",
+    "Vanguard Cabinet mentee, Geospatial Professionals Network": "Mentee im Vanguard Cabinet, Geospatial Professionals Network",
     "Nigerian National Petroleum Company Foundation Scholar": "Stipendiat der Nigerian National Petroleum Company Foundation",
     "West African Science Service Centre on Climate Change and Adapted Land Use trainee": "Teilnehmer am West African Science Service Centre on Climate Change and Adapted Land Use",
     "Lagos State and its 20 local government areas": "Der Bundesstaat Lagos und seine 20 Local Government Areas",
     "Urban change": "Städtischer Wandel",
     "Coastal aquifer": "Küstengrundwasserleiter",
     "Scenario modelling": "Szenariomodellierung",
-    "How much of the barrier has been sealed since the 1980s, and what that could do to the water table beneath it, in an uncalibrated groundwater model.": "Wie viel der Nehrung seit den 1980er-Jahren versiegelt wurde und was das für den Grundwasserspiegel darunter bedeuten könnte, in einem nicht kalibrierten Grundwassermodell.",
+    "How the built-up surface of the barrier has changed since the 1980s, and what sealing could do to the water table beneath it, in an uncalibrated groundwater model.": "Wie sich die bebaute Fläche der Nehrung seit den 1980er-Jahren verändert hat und was Versiegelung für den Grundwasserspiegel darunter bedeuten könnte, in einem nicht kalibrierten Grundwassermodell.",
     "Lekki–Epe barrier between the lagoons and the sea": "Nehrung Lekki–Epe zwischen Lagunen und Meer",
     "Urban Sealing and the Shallow Water Table of the Lekki⁠–⁠Epe Barrier, Lagos,": "Versiegelung und flacher Grundwasserspiegel der Nehrung von Lekki⁠–⁠Epe, Lagos,",
     "Land cover": "Landbedeckung",
     "Machine learning": "Maschinelles Lernen",
     "Sentinel-2": "Sentinel-2",
-    "Spatial validation": "Räumliche Validierung",
+    
     "Mapping Land Cover in the Mau Forest Complex, Kenya, with Sentinel-2,": "Kartierung der Landbedeckung im Mau-Waldkomplex, Kenia, mit Sentinel-2,",
     "A land-cover map tested with spatially blocked cross-validation; accuracy awaits a labelled reference sample.": "Eine Landbedeckungskarte, geprüft mit räumlich geblockter Kreuzvalidierung; die Genauigkeitsprüfung steht noch aus, bis eine gelabelte Referenzstichprobe vorliegt.",
     "Mau Forest Complex study box, Kenya": "Untersuchungsgebiet Mau-Waldkomplex, Kenia",
@@ -148,7 +148,7 @@
     "STAC": "STAC",
     "OGC API Features": "OGC API Features",
     "PostGIS": "PostGIS",
-    "Serving Open Research Outputs as a STAC Catalogue and through OGC API Features": "Offene Forschungsergebnisse als STAC-Katalog und über OGC API Features bereitstellen",
+    "Serving Open Geospatial Research Outputs as a Static STAC Catalogue and through OGC API Features": "Offene Geodaten-Forschungsergebnisse als statischen STAC-Katalog und über OGC API Features bereitstellen",
     "The spatial layers behind seven of the studies in one catalogue, with checksums and an API you can run locally.": "Die Geodaten-Layer von sieben der Studien in einem Katalog, mit Prüfsummen und einer API, die sich lokal ausführen lässt.",
     "Where the catalogue’s layers lie": "Lage der Katalog-Layer",
     "Data services": "Datendienste",
@@ -156,7 +156,6 @@
     "OGC API Features (pygeoapi)": "OGC API Features (pygeoapi)",
     "GeoParquet": "GeoParquet",
     "Cloud-Optimised GeoTIFF": "Cloud-optimiertes GeoTIFF",
-    "Docker": "Docker",
     "Public health and access to care": "Öffentliche Gesundheit und Zugang zur Versorgung",
     "Forests and land cover": "Wälder und Landbedeckung",
     "Open geospatial data": "Offene Geodaten",
@@ -186,7 +185,7 @@
     "Credentials": "Qualifikationen",
     "The Earth today, seen from space over Africa": "Die Erde heute, aus dem All über Afrika gesehen",
     "Map of the Ogun River catchment from its headwaters to the Lagos lagoon, divided into sub-basins Z1 to Z4 and the lagoon zone Z5, shaded by mean annual rainfall, 2019–2024.": "Karte des Ogun-Einzugsgebiets vom Quellgebiet bis zur Lagune von Lagos, unterteilt in die Teileinzugsgebiete Z1 bis Z4 und die Lagunenzone Z5, eingefärbt nach mittlerem Jahresniederschlag, 2019–2024.",
-    "Index map of nine geospatial projects in Africa": "Übersichtskarte von neun Geodatenprojekten in Afrika",
+    "Portfolio home page: “Reading a changing Earth from above”, with a globe showing Africa": "Startseite des Portfolios: „Eine sich wandelnde Erde von oben lesen“, mit einem Globus, der Afrika zeigt",
     "Map of Lagos State between Benin and Ogun State and the Atlantic, divided into its 20 local government areas, with Badagry, Ikeja, Ikorodu, Lagos Island, Lekki and Epe marked.": "Karte des Bundesstaats Lagos zwischen Benin, dem Bundesstaat Ogun und dem Atlantik, gegliedert in seine 20 Local Government Areas, mit Badagry, Ikeja, Ikorodu, Lagos Island, Lekki und Epe.",
     "Map of the Lekki–Epe barrier between the lagoons and the Atlantic, from Lagos Island and Lekki in the west to Epe in the east, with the western part used in the comparisons shaded.": "Karte der Nehrung von Lekki–Epe zwischen den Lagunen und dem Atlantik, von Lagos Island und Lekki im Westen bis Epe im Osten; der für die Vergleiche genutzte westliche Teil ist schattiert.",
     "Map of the Mau Forest Complex study box in Kenya, with the forest mapped in 2025 shaded green and Kericho, Molo, Njoro, Nakuru, Bomet and Narok marked.": "Karte des Untersuchungsgebiets Mau-Waldkomplex in Kenia; der 2025 kartierte Wald ist grün schattiert, markiert sind Kericho, Molo, Njoro, Nakuru, Bomet und Narok.",
@@ -267,6 +266,7 @@
     "Below 10 m": "Unter 10 m",
     "1 project matches": "1 Projekt passt",
     "{n} projects match": "{n} Projekte passen",
-    "No exact match. The closest projects:": "Kein genauer Treffer. Die nächstliegenden Projekte:"
+    "No exact match. The closest projects:": "Kein genauer Treffer. Die nächstliegenden Projekte:",
+    "No project matches. All projects are shown.": "Kein Projekt passt. Alle Projekte werden angezeigt."
   }
 }

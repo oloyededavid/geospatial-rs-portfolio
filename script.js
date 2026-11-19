@@ -163,6 +163,8 @@
                 st.textContent = T('No exact match. The closest projects:');
             } else {
                 const closest = docs.map(d => ({ ...d, s: near(d, toks) })).sort((a, b) => b.s - a.s || a.i - b.i).slice(0, 3);
+                // spelling tolerance only counts when it is close; below this, nothing is related, so say so and show all
+                if (!closest.length || closest[0].s < .5 * toks.length) { reset(); st.textContent = T('No project matches. All projects are shown.'); return; }
                 show(closest);
                 st.textContent = T('No exact match. The closest projects:');
             }
