@@ -145,6 +145,33 @@
     </div>
   </div></section>
 
+  <section class="twin" id="twin" aria-labelledby="twin-title"><div class="wrap">
+    <div class="sh"><h2 id="twin-title">City twins</h2></div>
+    <div class="tp reveal">
+      <div class="tp-text">
+        <p class="tp-lead">Every city has a twin somewhere. Search yours.</p>
+        <form class="tw-find" id="twin-find" role="search" autocomplete="off">
+          <label class="sr-only" for="twin-q">Your city</label>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
+          <input id="twin-q" type="text" spellcheck="false" placeholder="Search your city" role="combobox" aria-expanded="false" aria-controls="twin-sugg" aria-autocomplete="list">
+          <ul class="tw-sugg" id="twin-sugg" role="listbox" aria-label="Cities" hidden></ul>
+        </form>
+        <div class="tw-actions">
+          <button class="cta" id="twin-save" type="button"><svg class="tw-ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v7.5M4.75 6.75L8 10l3.25-3.25M2.75 11.5v1.75h10.5V11.5"/></svg><span class="tw-l">Save card</span></button>
+          <button class="tw-btn" id="twin-share" type="button"><svg class="tw-ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 10V2.75M5 5.5L8 2.5l3 3M3.5 8.5v4.75h9V8.5"/></svg><span class="tw-l">Share</span></button>
+        </div>
+        <p class="sr-only" id="twin-rank" aria-live="polite"></p>
+        <table class="tw-facts" id="twin-facts" aria-label="The two cities compared"></table>
+        <details class="tw-how">
+          <summary>How it works</summary>
+          <p>The 11,406 cities are the urban centres of 50,000 people or more in the European Commission’s Urban Centre Database, each described by seven numbers: temperature, rainfall and seasonal spread of temperature (2010s, from climate reanalysis), greenness (NDVI) and population (2025), building height (2020) and crowding. The twin is the city in another country with the smallest total difference; the card shows the trait, other than size, where both stand out most. A statistical likeness, not a claim that two places are the same.</p>
+          <p>Data: GHS Urban Centre Database R2024A V1.2, European Commission, Joint Research Centre, <a href="https://doi.org/10.2905/1a338be6-7eaf-480c-9664-3a8ade88cbcd" rel="noopener">doi:10.2905/1a338be6</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>; 16 centres with missing values removed, density computed from population and area. Satellite views: <a href="https://s2maps.eu" rel="noopener">Sentinel-2 cloudless</a> by EOX IT Services GmbH (contains modified Copernicus Sentinel data 2024), <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener">CC BY-NC-SA 4.0</a>.</p>
+        </details>
+      </div>
+      <div class="tw-stage loading" id="twin-stage"><canvas id="twin-card" width="2160" height="2700" role="img" aria-label="City twins card"></canvas></div>
+    </div>
+  </div></section>
+
   <section class="about" id="about" aria-labelledby="about-title"><div class="wrap"><div class="ab">
     <div class="sh sh--row"><h2 id="about-title">About</h2><a class="sh-cta" href="mailto:oloyededavid10@gmail.com"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="1.5"/><path d="M2 4l6 5 6-5"/></svg>Email me</a></div>
     <div class="ab-text">
@@ -180,5 +207,6 @@
 </div></footer>
 <script src="script.js" defer></script>
 <script src="globe.js" defer></script>
+<script src="twin/twin.js" defer></script>
 </body>
 </html>
