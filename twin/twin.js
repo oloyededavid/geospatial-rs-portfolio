@@ -1,4 +1,5 @@
-/* City twins: type a city, find the city in another country most like it, and draw a card.
+/* City twins: type a city, find a city in another country with the same climate and a similar size,
+   and draw a card that contrasts how the two have grown and built.
    Data: twin/cities.json, built by tools/build_twin_data.py from the GHSL Urban Centre Database R2024A.
    Satellite views: Sentinel-2 cloudless 2024 tiles by EOX. Everything runs in the browser. */
 (() => {
@@ -11,66 +12,52 @@
   const SERIF = 'Newsreader', SANS = 'Satoshi', MONO = '"Geist Mono"';
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // the seven measures a twin is matched on (same order as the data builder's standardisation)
-  const feats = r => [r[6], Math.log(r[7] + 1), r[8], r[9], r[10], Math.log(r[5]), Math.log(r[4])];
-  // the six that can be shown as the shared trait: value, format, trait at the high end, trait at the low end
-  const MEAS = [
-    [r => r[6], v => v.toFixed(1), 'sun', 'snow'],
-    [r => r[7], v => nf.format(v), 'rain', 'dunes'],
-    [r => r[8], v => v.toFixed(1), 'seasons', 'even'],
-    [r => r[9], v => v.toFixed(2), 'trees', 'stone'],
-    [r => r[10], v => v.toFixed(1), 'towers', 'low'],
-    [r => r[5], v => nf.format(v), 'crowd', 'sparse'],
-  ];
-  // colour, headline when both are in the most extreme 15 %, softer headline otherwise, the line with the numbers, scale ends
-  const T = {
-    sun:     ['#e8552b', 'Two of the world’s hottest cities.', 'Two cities hotter than most.', (A, B, x, y, p) => `${A} and ${B} average ${x} and ${y} °C over the year, hotter than ${p}% of the world’s large cities.`, ['COOL', 'HOT']],
-    snow:    ['#2f6db5', 'Two of the world’s coolest cities.', 'Two cities cooler than most.', (A, B, x, y, p) => `${A} and ${B} average ${x} and ${y} °C over the year, cooler than ${p}% of the world’s large cities.`, ['COOL', 'HOT']],
-    rain:    ['#0f8b8d', 'Two of the world’s wettest cities.', 'Two cities wetter than most.', (A, B, x, y, p) => `${A} and ${B} get ${x} and ${y} mm of rain a year, more than ${p}% of the world’s large cities.`, ['DRY', 'WET']],
-    dunes:   ['#d9661a', 'Two of the world’s driest cities.', 'Two cities drier than most.', (A, B, x, y, p) => `${A} and ${B} get just ${x} and ${y} mm of rain a year, less than ${p}% of the world’s large cities.`, ['DRY', 'WET']],
-    seasons: ['#c2366b', 'Two cities with fierce seasons.', 'Two cities with stronger seasons than most.', (A, B, x, y, p) => `Monthly mean temperatures in ${A} and ${B} spread by ${x} and ${y} °C (standard deviation), more than in ${p}% of the world’s large cities.`, ['STEADY', 'SEASONAL']],
-    even:    ['#d97f0c', 'Two cities where every month feels alike.', 'Two cities with steadier temperatures than most.', (A, B, x, y, p) => `Monthly mean temperatures in ${A} and ${B} spread by just ${x} and ${y} °C (standard deviation), steadier than in ${p}% of the world’s large cities.`, ['STEADY', 'SEASONAL']],
-    trees:   ['#3f8f29', 'Two cities with the world’s lushest greenery.', 'Two cities with lusher greenery than most.', (A, B, x, y, p) => `The greener ground in and around ${A} and ${B} averages ${x} and ${y} on the satellite vegetation index (NDVI), higher than in ${p}% of the world’s large cities.`, ['GREY', 'GREEN']],
-    stone:   ['#9a5f34', 'Two cities with the world’s least lush greenery.', 'Two cities with less lush greenery than most.', (A, B, x, y, p) => `The greener ground in and around ${A} and ${B} averages just ${x} and ${y} on the satellite vegetation index (NDVI), lower than in ${p}% of the world’s large cities.`, ['GREY', 'GREEN']],
-    towers:  ['#5b3df5', 'Two of the world’s tallest-built cities.', 'Two cities built taller than most.', (A, B, x, y, p) => `Buildings in ${A} and ${B} average ${x} and ${y} m tall, taller than in ${p}% of the world’s large cities.`, ['LOW', 'TALL']],
-    low:     ['#c8434f', 'Two cities that stay close to the ground.', 'Two cities built lower than most.', (A, B, x, y, p) => `Buildings in ${A} and ${B} average just ${x} and ${y} m tall, lower than in ${p}% of the world’s large cities.`, ['LOW', 'TALL']],
-    crowd:   ['#e23d64', 'Two of the world’s most crowded cities.', 'Two cities more crowded than most.', (A, B, x, y, p) => `${A} and ${B} pack ${x} and ${y} people into every km², more than ${p}% of the world’s large cities.`, ['SPARSE', 'CROWDED']],
-    sparse:  ['#2a9d8f', 'Two of the world’s most spread-out cities.', 'Two cities more spread out than most.', (A, B, x, y, p) => `${A} and ${B} hold just ${x} and ${y} people per km², a lower density than in ${p}% of the world’s large cities.`, ['SPARSE', 'CROWDED']],
-  };
+  // fields in cities.json: 0 name, 1 country, 2 lon, 3 lat, 4 population 2025, 5 mean temperature (C, 2010s),
+  // 6 seasonality (SD of monthly means, C), 7 greenness (NDVI 2025), 8 building height (m, 2020), 9 Koppen class,
+  // 10 GHSL id, 11 population 1975..2025 every 5 years
+  // a twin: same Koppen climate class, another country, closest in temperature, seasonality and size
+  const feats = r => [r[5], r[6], Math.log(r[4])];
+  const KOP = ['', 'tropical rainforest', 'tropical monsoon', 'tropical savanna', 'hot desert', 'cold desert', 'hot semi-arid', 'cold semi-arid', 'hot-summer Mediterranean', 'warm-summer Mediterranean', 'cold-summer Mediterranean', 'humid subtropical, dry winter', 'subtropical highland', 'cold subtropical highland', 'humid subtropical', 'oceanic', 'subpolar oceanic', 'hot-summer continental, dry summer', 'warm-summer continental, dry summer', 'subarctic, dry summer', 'very cold subarctic, dry summer', 'hot-summer continental, dry winter', 'warm-summer continental, dry winter', 'subarctic, dry winter', 'very cold subarctic, dry winter', 'hot-summer continental', 'warm-summer continental', 'subarctic', 'very cold subarctic', 'tundra', 'ice cap'];
+  const ZONE = k => k <= 3 ? '#d9485f' : k <= 7 ? '#c96a1b' : k <= 16 ? '#3d8b3a' : k <= 28 ? '#2f6db5' : '#5b4fd6';
+  // growth since 1975 only where the 1975 population was at least 10,000; below that the modelled ratio is not meaningful
+  // and only where the ratio is not an implausible collapse (below 0.25 the modelled 1975 figure is not credible)
+  const growth = r => { if (r[11][0] < 1e4) return null; const g = r[11][r[11].length - 1] / r[11][0]; return g >= .25 ? g : null; };
+  const fx = v => new Intl.NumberFormat('en', { maximumFractionDigits: v >= 9.95 ? 0 : v >= 1 ? 1 : 2, minimumFractionDigits: v >= 9.95 ? 0 : v >= 1 ? 1 : 2 }).format(v) + '×';
+  const pop = v => v >= 1e6 ? (v / 1e6).toFixed(1) + '\u00a0M' : v >= 1e3 ? nf.format(Math.round(v / 1e3)) + '\u00a0K' : nf.format(Math.round(v));
+  // the table follows the page language for numbers; the card stays English
+  const nl = new Intl.NumberFormat(document.documentElement.lang || 'en');
+  const num = (v, d, lang) => new Intl.NumberFormat(lang || document.documentElement.lang || 'en', { minimumFractionDigits: d, maximumFractionDigits: d }).format(Object.is(v, -0) || Math.abs(v) < Math.pow(10, -d) / 2 ? 0 : v);
+  const en = (v, d) => num(v, d, 'en');
 
-  let R, M, Z, PCT, cur = 0, order = [], k = 0, drawId = 0, frame = 0, last = null;
+  let R, M, Z, cur = 0, order = [], k = 0, drawId = 0, frame = 0, last = null;
 
   function km(a, b) {
     const t = Math.PI / 180, dla = (b[3] - a[3]) * t, dlo = (b[2] - a[2]) * t;
     const h = Math.sin(dla / 2) ** 2 + Math.cos(a[3] * t) * Math.cos(b[3] * t) * Math.sin(dlo / 2) ** 2;
     return 6371 * 2 * Math.asin(Math.sqrt(h));
   }
-  // nearest cities in other countries, by distance across the seven standardised measures
+  // nearest cities in other countries with the same climate class; any class if a city's class is unique
   function twinsOf(i) {
-    const zi = Z[i], cn = R[i][1], d = [];
-    for (let j = 0; j < R.length; j++) {
-      if (R[j][1] === cn) continue;
-      let s = 0; for (let f = 0; f < 7; f++) { const e = Z[j][f] - zi[f]; s += e * e; }
-      d.push([Math.sqrt(s), j]);
-    }
-    return d.sort((a, b) => a[0] - b[0]).slice(0, 10);
+    const zi = Z[i], cn = R[i][1], kc = R[i][9];
+    const near = same => { const d = []; for (let j = 0; j < R.length; j++) {
+      if (R[j][1] === cn || (same && R[j][9] !== kc) || km(R[i], R[j]) < 50) continue;
+      let s = 0; for (let f = 0; f < 3; f++) { const e = Z[j][f] - zi[f]; s += e * e; } d.push([Math.sqrt(s), j]); }
+      return d.sort((a, b) => a[0] - b[0]).slice(0, 10); };
+    const o = near(true); return o.length ? o : near(false);
   }
-  // the shared trait: both on the same side of the middle, chosen where the less extreme of the two is furthest out
-  function shared(i, j) {
-    let best = null;
-    for (let f = 0; f < MEAS.length; f++) {
-      const a = PCT[f][i], b = PCT[f][j];
-      if ((a - 50) * (b - 50) <= 0) continue;
-      const hi = a > 50, edge = hi ? Math.min(a, b) : Math.max(a, b), strength = Math.abs(edge - 50);
-      if (!best || strength > best.strength) best = { f, hi, strength, key: MEAS[f][hi ? 2 : 3] };
-    }
-    if (best) {
-      // share of all cities strictly beyond the less extreme of the two, rounded down so it never overclaims
-      const get = MEAS[best.f][0], va = get(R[i]), vb = get(R[j]), v = best.hi ? Math.min(va, vb) : Math.max(va, vb);
-      let n = 0; for (const r of R) { const x = get(r); if (best.hi ? x < v : x > v) n++; }
-      best.p = Math.floor(100 * n / R.length); best.top = 100 - best.p;
-    }
-    return best;
+  // the clearest difference between the two, reported with both values: growth since 1975, building height or greenness
+  // only differences large enough to stand above the uncertainty of these satellite estimates count:
+  // growth at least 1.5 times, building height at least 30 % and 2 m apart, greenness at least 0.08 NDVI apart
+  // values are compared as integers (tenths of a metre, thousandths of NDVI) so the cut-offs are exact;
+  // 2.5 m is the floor of the height data, so a city at the floor never makes a height story
+  function contrast(a, b) {
+    const ga = growth(a), gb = growth(b), c = [];
+    if (ga && gb && Math.max(ga, gb) > 1 && Math.max(ga, gb) / Math.min(ga, gb) >= 1.5) c.push(['growth', Math.log(Math.max(ga, gb) / Math.min(ga, gb))]);
+    const ha = Math.round(a[8] * 10), hb = Math.round(b[8] * 10);
+    if (ha > 25 && hb > 25 && Math.max(ha, hb) * 10 >= Math.min(ha, hb) * 13 && Math.abs(ha - hb) >= 20) c.push(['height', Math.log(Math.max(ha, hb) / Math.min(ha, hb))]);
+    const na = Math.round(a[7] * 1000), nb = Math.round(b[7] * 1000);
+    if (Math.abs(na - nb) >= 80) c.push(['green', Math.abs(na - nb) / 250]);
+    return c.length ? c.sort((p, q) => q[1] - p[1])[0][0] : 'alike';
   }
 
   // ---------- satellite views ----------
@@ -116,21 +103,20 @@
     for (const ch of str) { g.fillText(ch, cx, y); cx += g.measureText(ch).width + sp; }
     g.textAlign = ta; return w;
   }
-  function fitFont(g, str, tpl, size, maxW, min = 24) { do { g.font = tpl.replace('{s}', size); size -= 2; } while (g.measureText(str).width > maxW && size > min); }
+  function fitFont(g, str, tpl, size, maxW, min = 24) { g.font = tpl.replace('{s}', size); while (g.measureText(str).width > maxW && size > min) { size = Math.max(min, size - 2); g.font = tpl.replace('{s}', size); } }
   function wrap(g, str, maxW) { const out = []; let line = ''; for (const w of str.split(' ')) { const t = line ? line + ' ' + w : w; if (g.measureText(t).width > maxW && line) { out.push(line); line = w; } else line = t; } out.push(line); return out; }
   const ease = t => 1 - Math.pow(1 - t, 3);
   const seg = (t, a, b) => ease(Math.max(0, Math.min(1, (t - a) / (b - a))));
 
   // ---------- the card ----------
   function render(F, t) {
-    const { a, b, s, va, vb, ci, bj } = F;
-    const W = 1080, H = 1350, cv = $('twin-card'), g = cv.getContext('2d');
-    const [C, strong, weak, explain, ends] = s ? T[s.key] : ['#141412', 'Two close matches.', '', () => '', null];
+    const { a, b, va, vb } = F;
+    const W = 1080, H = 1350, cv = $('twin-card'), g = cv.getContext('2d'), C = ZONE(a[9]);
     g.setTransform(2, 0, 0, 2, 0, 0); g.clearRect(0, 0, W, H); g.textAlign = 'left'; g.globalAlpha = 1;
     g.fillStyle = '#fff'; g.fillRect(0, 0, W, H);
     // dot grid, faded out behind the words
     g.fillStyle = '#e4e3dd'; for (let y = 27; y < H; y += 27) for (let x = 27; x < W; x += 27) { g.beginPath(); g.arc(x, y, 1.6, 0, Math.PI * 2); g.fill(); }
-    g.save(); g.translate(W / 2, 1010); g.scale(1.3, .62); const fade = g.createRadialGradient(0, 0, 0, 0, 0, 430);
+    g.save(); g.translate(W / 2, 960); g.scale(1.3, .62); const fade = g.createRadialGradient(0, 0, 0, 0, 0, 430);
     fade.addColorStop(0, '#fff'); fade.addColorStop(.7, '#fff'); fade.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = fade; g.fillRect(-430, -430, 860, 860); g.restore();
 
     g.fillStyle = GREY; g.font = `400 20px ${MONO}`; spaced(g, 'CITY TWINS', W / 2, 92, 6, 'center');
@@ -156,8 +142,14 @@
       g.globalAlpha = open; g.strokeStyle = 'rgba(255,255,255,.85)'; g.lineWidth = 2; g.beginPath(); g.moveTo(x - 12, cy); g.lineTo(x + 12, cy); g.moveTo(x, cy - 12); g.lineTo(x, cy + 12); g.stroke();
       // name and position
       const fade = seg(t, d + .2, d + .6); g.globalAlpha = fade; const lift = (1 - fade) * 10;
-      g.textAlign = 'center'; g.fillStyle = INK; fitFont(g, r[0], `500 {s}px ${SERIF}`, 50, 2 * R0 + 40); g.fillText(r[0], x, cy + R0 + 92 + lift);
-      g.fillStyle = GREY; const cl = (r[1] + '  ·  ' + coord(r)).toUpperCase(); let cs = 22; do { g.font = `400 ${cs}px ${MONO}`; cs -= 1; } while ([...cl].reduce((n, ch) => n + g.measureText(ch).width + 2, 0) > 2 * R0 + 60 && cs > 15); spaced(g, cl, x, cy + R0 + 132 + lift, 2, 'center');
+      g.textAlign = 'center'; g.fillStyle = INK; let nm = r[0]; fitFont(g, nm, `500 {s}px ${SERIF}`, 50, 2 * R0 + 20, 28);
+      while (g.measureText(nm).width > 2 * R0 + 20 && nm.length > 4) nm = nm.slice(0, -2).trimEnd() + '…';
+      g.fillText(nm, x, cy + R0 + 92 + lift);
+      g.fillStyle = GREY; let cl = r[1].toUpperCase(), cs = 21; const sw = () => [...cl].reduce((n, ch) => n + g.measureText(ch).width + 2, 0);
+      do { g.font = `400 ${cs}px ${MONO}`; cs -= 1; } while (sw() > 2 * R0 + 30 && cs > 16);
+      while (sw() > 2 * R0 + 30 && cl.length > 4) cl = cl.slice(0, -2).trimEnd() + '…';
+      spaced(g, cl, x, cy + R0 + 130 + lift, 2, 'center');
+      g.font = `400 19px ${MONO}`; spaced(g, coord(r), x, cy + R0 + 160 + lift, 2, 'center');
       g.textAlign = 'left'; g.globalAlpha = 1;
     });
     // distance label
@@ -165,38 +157,76 @@
     const dw = [...dl].reduce((n, ch) => n + g.measureText(ch).width + 3, 0) + 20;
     g.fillStyle = '#fff'; g.fillRect(W / 2 - dw / 2, cy - 19, dw, 38); g.fillStyle = INK2; spaced(g, dl, W / 2, cy + 7, 3, 'center'); g.globalAlpha = 1;
 
-    // headline and the line that explains it
-    const head = s ? (s.top <= 15 ? strong : weak) : strong;
-    const sub = s ? explain(a[0], b[0], MEAS[s.f][1](MEAS[s.f][0](a)), MEAS[s.f][1](MEAS[s.f][0](b)), s.p) : 'Close on heat, rain, seasons, greenery, building height, crowding and size.';
-    let y = 880; const tf = seg(t, .45, .85); g.globalAlpha = tf; const lift = (1 - tf) * 14;
-    g.textAlign = 'center'; g.fillStyle = INK; let hs = 62, lines;
-    do { g.font = `500 ${hs}px ${SERIF}`; lines = wrap(g, head, W - 200); hs -= 2; } while ((lines.length > 2 || (lines.length === 2 && !lines[1].includes(' '))) && hs > 46);
-    hs += 2; lines.slice(0, 2).forEach((l, n) => g.fillText(l, W / 2, y + lift + n * (hs + 8))); y += (Math.min(lines.length, 2) - 1) * (hs + 8) + 66;
-    g.fillStyle = INK2; g.font = `400 32px ${SANS}`; wrap(g, sub, W - 200).slice(0, 3).forEach((l, n) => g.fillText(l, W / 2, y + lift + n * 46));
+    // headline: same climate, then the clearest difference
+    const sameK = a[9] === b[9], ga = growth(a), gb = growth(b);
+    const art = w => (/^[aeiou]/i.test(w) ? 'an ' : 'a ') + w;
+    const nA = a[0] === b[0] ? `${a[0]} (${a[1]})` : a[0], nB = a[0] === b[0] ? `${b[0]} (${b[1]})` : b[0];
+    const head = (sameK ? 'Same climate' : 'Similar climate') + ({
+      growth: `. ${ga > gb ? nA : nB} grew faster.`,
+      height: `. ${a[8] > b[8] ? nA : nB} builds taller.`,
+      green: `. ${a[7] > b[7] ? nA : nB} has greener built-up areas.`,
+      alike: ', much alike.',
+    })[F.c];
+    const clim = sameK ? `Both have ${art(KOP[a[9]])} climate, averaging ${en(a[5], 1)} and ${en(b[5], 1)}\u00a0°C.` : `They average ${en(a[5], 1)} and ${en(b[5], 1)}\u00a0°C.`;
+    const gline = () => `Population change since 1975: ${nA} ${fx(ga)}, ${nB} ${fx(gb)}.`;
+    const sub = clim + ' ' + ({
+      growth: gline,
+      height: () => `Average building height: ${en(a[8], 1)}\u00a0m in ${nA}, ${en(b[8], 1)}\u00a0m in ${nB}.`,
+      green: () => `Mean NDVI of the greener built-up land: ${en(a[7], 2)} in ${nA}, ${en(b[7], 2)} in ${nB}.`,
+      alike: () => ga && gb ? gline() : `About ${pop(a[4])} and ${pop(b[4])} people live in them today.`,
+    })[F.c]();
+    // the words get the room above the chart; shrink until headline and sub fit
+    const top0 = cy + R0 + 222, limit = H - 330;
+    let hs = 58, ss = 30, lines, sl, hgt;
+    for (;;) {
+      g.font = `500 ${hs}px ${SERIF}`; lines = wrap(g, head, W - 180).slice(0, 2);
+      if (lines.length === 2 && !lines[1].includes(' ')) { const w = head.split(' '); const alt = [w.slice(0, -2).join(' '), w.slice(-2).join(' ')]; if (g.measureText(alt[0]).width <= W - 180) lines = alt; }
+      g.font = `400 ${ss}px ${SANS}`; sl = wrap(g, sub, W - 180).slice(0, 3);
+      hgt = lines.length * (hs + 8) + 18 + sl.length * (ss + 12);
+      if (top0 + hgt <= limit || (hs <= 40 && ss <= 22)) break;
+      if (hs > 40) hs -= 2; if (ss > 22) ss -= 1;
+    }
+    const tf = seg(t, .45, .85); g.globalAlpha = tf; const lift = (1 - tf) * 14; let y = top0 + hs;
+    g.textAlign = 'center'; g.fillStyle = INK; g.font = `500 ${hs}px ${SERIF}`;
+    lines.forEach((l, n) => g.fillText(l, W / 2, y + lift + n * (hs + 8))); y += (lines.length - 1) * (hs + 8) + 18 + ss + 6;
+    g.fillStyle = INK2; g.font = `400 ${ss}px ${SANS}`; sl.forEach((l, n) => g.fillText(l, W / 2, y + lift + n * (ss + 12)));
     g.textAlign = 'left'; g.globalAlpha = 1;
 
-    if (s) {
-      // where both cities sit among all cities, on the shared measure
-      const sy = H - 186, L = W / 2 - 260, Rr = W / 2 + 260, pos = q => L + 14 + (Rr - L - 28) * q / 100;
-      const sf = seg(t, .6, 1); g.globalAlpha = Math.min(1, sf * 1.5);
-      g.strokeStyle = RULE; g.lineWidth = 2; g.beginPath(); g.moveTo(L, sy); g.lineTo(Rr, sy); g.stroke();
-      for (let i = 0; i <= 10; i++) { g.beginPath(); g.moveTo(pos(i * 10), sy - (i % 5 ? 4 : 8)); g.lineTo(pos(i * 10), sy + (i % 5 ? 4 : 8)); g.stroke(); }
-      g.fillStyle = GREY; g.font = `400 19px ${MONO}`; spaced(g, ends[0], L - 22, sy + 7, 3, 'right'); spaced(g, ends[1], Rr + 22, sy + 7, 3);
-      const pa = 50 + (PCT[s.f][ci] - 50) * sf, pb = 50 + (PCT[s.f][bj] - 50) * sf;
-      g.beginPath(); g.arc(pos(pa), sy, 9, 0, Math.PI * 2); g.fillStyle = '#fff'; g.fill(); g.lineWidth = 3; g.strokeStyle = INK; g.stroke();
-      g.beginPath(); g.arc(pos(pb), sy, 8, 0, Math.PI * 2); g.fillStyle = C; g.fill();
-      // key
-      g.font = `400 20px ${MONO}`; const la = a[0].toUpperCase(), lb = b[0].toUpperCase();
-      const tw = q => [...q].reduce((n, ch) => n + g.measureText(ch).width + 3, -3);
-      let lx = W / 2 - (22 + tw(la) + 44 + 22 + tw(lb)) / 2; const ly = H - 100;
-      g.beginPath(); g.arc(lx + 7, ly - 5, 7, 0, Math.PI * 2); g.fillStyle = '#fff'; g.fill(); g.lineWidth = 2.5; g.strokeStyle = INK; g.stroke();
-      g.fillStyle = INK2; spaced(g, la, lx + 22, ly, 3); lx += 22 + tw(la) + 44;
-      g.beginPath(); g.arc(lx + 7, ly - 5, 7, 0, Math.PI * 2); g.fillStyle = C; g.fill();
-      g.fillStyle = INK2; spaced(g, lb, lx + 22, ly, 3); g.globalAlpha = 1;
+    // people since 1975 (modelled), only when both 1975 figures are credible; otherwise say so instead of drawing it
+    const cf = seg(t, .55, 1), years = M.years;
+    if (ga && gb) {
+      const cx0 = 250, cx1 = W - 250, cyB = H - 176, cyT = H - 270;
+      const all = [...a[11], ...b[11]].map(v => Math.max(v, 1e3)), lo = Math.log(Math.min(...all)), hiV = Math.log(Math.max(...all));
+      const px = i => cx0 + (cx1 - cx0) * i / (years.length - 1), py = v => cyB - (cyB - cyT) * (Math.log(Math.max(v, 1e3)) - lo) / Math.max(hiV - lo, .7);
+      g.globalAlpha = Math.min(1, cf * 1.6);
+      g.strokeStyle = RULE; g.lineWidth = 2; g.beginPath(); g.moveTo(cx0, cyB + 14); g.lineTo(cx1, cyB + 14); g.stroke();
+      g.fillStyle = GREY; g.font = `400 19px ${MONO}`; spaced(g, String(years[0]), cx0, cyB + 44, 2, 'center'); spaced(g, String(years[years.length - 1]), cx1, cyB + 44, 2, 'center');
+      spaced(g, 'PEOPLE, ' + years[0] + '–' + years[years.length - 1] + ' (MODELLED)', cx0 - 26, cyT - 22, 3);
+      const n = Math.max(1, Math.round((years.length - 1) * cf));
+      [[a[11], INK, false], [b[11], C, true]].forEach(([sr, col, fill]) => {
+        g.strokeStyle = col; g.lineWidth = 3.5; g.lineJoin = 'round'; g.beginPath(); sr.slice(0, n + 1).forEach((v, i) => i ? g.lineTo(px(i), py(v)) : g.moveTo(px(i), py(v))); g.stroke();
+        const X = px(n), Yy = py(sr[n]); g.beginPath(); g.arc(X, Yy, fill ? 8 : 9, 0, Math.PI * 2); g.fillStyle = fill ? col : '#fff'; g.fill(); if (!fill) { g.lineWidth = 3; g.strokeStyle = col; g.stroke(); }
+      });
+      if (cf >= 1) { g.font = `400 19px ${MONO}`; const la = py(a[4]), lb = py(b[4]), gap = Math.abs(la - lb) < 26 ? (la < lb ? -13 : 13) : 0;
+        g.fillStyle = INK; spaced(g, pop(a[4]).replace('\u00a0', ' '), cx1 + 22, la + 7 + gap, 2); g.fillStyle = INK2; spaced(g, pop(b[4]).replace('\u00a0', ' '), cx1 + 22, lb + 7 - gap, 2); }
+    } else {
+      g.globalAlpha = Math.min(1, cf * 1.6); g.fillStyle = GREY; g.font = `400 22px ${SANS}`; g.textAlign = 'center';
+      const odd = [!ga && a, !gb && b].filter(Boolean).map(r => r === a ? nA : nB).join(' and ');
+      wrap(g, `Population history not shown: the modelled 1975 figure for ${odd} is not reliable.`, W - 200).slice(0, 2).forEach((l, n) => g.fillText(l, W / 2, H - 226 + n * 32));
+      g.textAlign = 'left';
     }
+    // key
+    g.font = `400 19px ${MONO}`; const cut = q => q.length > 22 ? q.slice(0, 20).trimEnd() + '…' : q, ka = cut(a[0]).toUpperCase(), kb = cut(b[0]).toUpperCase();
+    const tw = q => [...q].reduce((m, ch) => m + g.measureText(ch).width + 3, -3);
+    let lx = W / 2 - (22 + tw(ka) + 44 + 22 + tw(kb)) / 2; const ly = H - 84;
+    g.beginPath(); g.arc(lx + 7, ly - 5, 7, 0, Math.PI * 2); g.fillStyle = '#fff'; g.fill(); g.lineWidth = 2.5; g.strokeStyle = INK; g.stroke();
+    g.fillStyle = INK2; spaced(g, ka, lx + 22, ly, 3); lx += 22 + tw(ka) + 44;
+    g.beginPath(); g.arc(lx + 7, ly - 5, 7, 0, Math.PI * 2); g.fillStyle = C; g.fill();
+    g.fillStyle = INK2; spaced(g, kb, lx + 22, ly, 3); g.globalAlpha = 1;
     // credit, so a saved card carries it
-    g.globalAlpha = 1; g.fillStyle = GREY; g.font = `400 15px ${SANS}`; g.textAlign = 'center';
-    g.fillText('Sentinel-2 cloudless – s2maps.eu by EOX IT Services GmbH (contains modified Copernicus Sentinel data 2024), CC BY-NC-SA 4.0 · GHS-UCDB R2024A, EC JRC, CC BY 4.0', W / 2, H - 34, W - 80);
+    g.globalAlpha = 1; g.fillStyle = GREY; g.font = `400 16px ${SANS}`; g.textAlign = 'center';
+    g.fillText('Imagery: Sentinel-2 cloudless – s2maps.eu by EOX IT Services GmbH (contains modified Copernicus Sentinel data 2024), CC BY-NC-SA 4.0', W / 2, H - 46);
+    g.fillText('Data: GHS Urban Centre Database R2024A, European Commission JRC, CC BY 4.0 · population before 2025 is modelled', W / 2, H - 22);
     g.textAlign = 'left';
     return { head, sub, dist };
   }
@@ -210,38 +240,39 @@
     g.fillStyle = '#efeeea'; [[W / 2 - 300, 860, 600, 44], [W / 2 - 220, 920, 440, 44], [W / 2 - 330, 1000, 660, 18], [W / 2 - 240, 1036, 480, 18]].forEach(([x, y, w, h]) => g.fillRect(x, y, w, h));
   }
   async function draw() {
-    const id = ++drawId, a = R[cur], [, j] = order[k], b = R[j], s = shared(cur, j);
+    const id = ++drawId, a = R[cur], [, j] = order[k], b = R[j];
     const stage = $('twin-stage'); stage.classList.add('loading'); stage.setAttribute('aria-busy', 'true'); $('twin-save').setAttribute('aria-disabled', 'true');
     if (!last) skeleton();
     const [va, vb] = await Promise.all([view(a, 400, 12), view(b, 400, 12)]);
     if (id !== drawId) return;
     stage.classList.remove('loading'); stage.removeAttribute('aria-busy'); $('twin-save').removeAttribute('aria-disabled');
     if (!reduce) { stage.classList.remove('swap', 'from-l', 'from-r'); void stage.offsetWidth; stage.classList.add('swap', dirn > 0 ? 'from-r' : dirn < 0 ? 'from-l' : 'swap'); dirn = 0; }
-    const F = last = { a, b, s, va, vb, ci: cur, bj: j };
+    const F = last = { a, b, va, vb, c: contrast(a, b) };
     cancelAnimationFrame(frame);
     const words = render(F, reduce ? 1 : 0);
     if (!reduce) { const t0 = performance.now(), dur = 1500; const step = now => { const t = Math.min(1, (now - t0) / dur); render(F, t); if (t < 1 && id === drawId) frame = requestAnimationFrame(step); }; frame = requestAnimationFrame(step); }
     $('twin-card').setAttribute('aria-label', `${a[0]}, ${a[1]} and ${b[0]}, ${b[1]}, ${words.dist} km apart. ${words.head} ${words.sub}`);
     $('twin-rank').textContent = `${a[0]} and ${b[0]}`;
-    facts(a, b, s);
-    if (touched) { const u = new URL(location.href); u.searchParams.set('city', a[0] + ', ' + a[1]); u.searchParams.set('id', a[12]); u.searchParams.delete('n'); u.hash = 'twin'; history.replaceState(null, '', u); }
+    facts(a, b, F.c);
+    if (touched) { const u = new URL(location.href); u.searchParams.set('city', a[0] + ', ' + a[1]); u.searchParams.set('id', a[10]); u.searchParams.delete('n'); u.hash = 'twin'; history.replaceState(null, '', u); }
   }
   let touched = false, dirn = 0;
-  // the left-hand table: both cities on all seven measures, the shared trait marked
+  // the left-hand table: both cities side by side, the clearest difference marked
+  const popL = v => v >= 1e6 ? num(v / 1e6, 1) + '\u00a0M' : v >= 1e3 ? nl.format(Math.round(v / 1e3)) + '\u00a0K' : nl.format(Math.round(v));
   const ROWS = [
-    ['Temperature', r => r[6].toFixed(1) + '\u00a0°C', 0],
-    ['Rainfall', r => nf.format(r[7]) + '\u00a0mm', 1],
-    ['Seasonal spread (SD)', r => r[8].toFixed(1) + '\u00a0°C', 2],
-    ['Greenness (NDVI)', r => r[9].toFixed(2), 3],
-    ['Building height', r => r[10].toFixed(1) + '\u00a0m', 4],
-    ['People per km²', r => nf.format(r[5]), 5],
-    ['Population', r => r[4] >= 1e6 ? (r[4] / 1e6).toFixed(1) + '\u00a0M' : nf.format(Math.round(r[4] / 1e3)) + '\u00a0K', 6],
+    ['Climate type', r => esc(T_(KOP[r[9]])), ''],
+    ['Temperature', r => num(r[5], 1) + '\u00a0°C', ''],
+    ['Seasonal spread (SD)', r => num(r[6], 1) + '\u00a0°C', ''],
+    ['Population 1975', r => popL(r[11][0]), ''],
+    ['Population 2025', r => popL(r[4]), ''],
+    ['Change since 1975', r => { const v = growth(r); return v ? num(v, v >= 9.95 ? 0 : v >= 1 ? 1 : 2) + '×' : '–'; }, 'growth'],
+    ['Building height', r => num(r[8], 1) + '\u00a0m', 'height'],
+    ['Greenness (NDVI)', r => num(r[7], 2), 'green'],
   ];
-  function facts(a, b, s) {
-    const t = $('twin-facts'), C = s ? T[s.key][0] : INK;
-    t.style.setProperty('--tw-c', C);
+  function facts(a, b, c) {
+    const t = $('twin-facts'); t.style.setProperty('--tw-c', ZONE(a[9]));
     t.innerHTML = `<thead><tr><th scope="col"><span class="sr-only">${esc(T_('Measure'))}</span></th><th scope="col"><i class="tw-k tw-k--a" aria-hidden="true"></i>${esc(a[0])}</th><th scope="col"><i class="tw-k" aria-hidden="true"></i>${esc(b[0])}</th></tr></thead><tbody>`
-      + ROWS.map(([label, f, m], n) => `<tr${s && s.f === m ? ' class="hit"' : ''} style="--n:${n}"><th scope="row">${esc(T_(label))}</th><td>${f(a)}</td><td>${f(b)}</td></tr>`).join('')
+      + ROWS.map(([label, f, m], n) => `<tr${m && m === c ? ' class="hit"' : ''} style="--n:${n}"><th scope="row">${esc(T_(label))}</th><td>${f(a)}</td><td>${f(b)}</td></tr>`).join('')
       + `</tbody>`;
   }
   function pick(i, kk = 0, user = true) { touched = touched || user; cur = i; order = twinsOf(i); k = Math.max(0, Math.min(Math.floor(kk) || 0, order.length - 1)); draw(); }
@@ -271,7 +302,8 @@
   q.addEventListener('input', () => {
     if (!R) return;
     const t = norm(q.value.trim()); sel = -1;
-    hits = t.length < 2 ? [] : R.map((r, i) => [r, i]).filter(([r]) => { const n = norm(r[0]); return n.startsWith(t) || n.includes(' ' + t) || n.includes('-' + t); }).slice(0, 7);
+    const rank = n => n === t ? 0 : n.startsWith(t) ? 1 : (n.includes(' ' + t) || n.includes('-' + t)) ? 2 : 9;
+    hits = t.length < 2 ? [] : R.map((r, i) => [r, i, rank(norm(r[0]))]).filter(h => h[2] < 9).sort((p, q) => p[2] - q[2] || p[1] - q[1]).slice(0, 7);
     list.innerHTML = hits.map(([r], n) => `<li role="option" id="o${n}" aria-selected="false" data-n="${n}">${esc(r[0])}<span>${esc(r[1])}${dup.has(r[0] + '|' + r[1]) ? ' · ' + popShort(r[4]) : ''}</span></li>`).join('')
       || (t.length >= 2 ? '<li class="none" role="option" aria-disabled="true">' + T_('No city by that name. Try a larger city nearby.') + '</li>' : '');
     list.hidden = t.length < 2; q.setAttribute('aria-expanded', String(!list.hidden));
@@ -307,20 +339,16 @@
     R = d.rows; M = d.meta;
     const seen = new Set(); R.forEach(r => { const key = r[0] + '|' + r[1]; if (seen.has(key)) dup.add(key); seen.add(key); });
     Z = R.map(r => feats(r).map((v, f) => (v - M.feature_mean[f]) / M.feature_sd[f]));
-    // percentile of every city on each measure: share of cities below it, ties counted half
-    PCT = MEAS.map(([get]) => { const v = R.map(get), s = [...v].sort((p, q) => p - q);
-      const bound = (x, le) => { let lo = 0, hi = s.length; while (lo < hi) { const m = (lo + hi) >> 1; (le ? s[m] <= x : s[m] < x) ? lo = m + 1 : hi = m; } return lo; };
-      return v.map(x => 100 * (bound(x, false) + bound(x, true)) / 2 / s.length); });
     const sp = new URLSearchParams(location.search), want = sp.get('city'), id = +sp.get('id');
-    let i = id ? R.findIndex(r => r[12] === id && (!want || r[0] + ', ' + r[1] === want)) : -1;
+    let i = id ? R.findIndex(r => r[10] === id && (!want || r[0] + ', ' + r[1] === want)) : -1;
     if (i < 0 && want) i = R.findIndex(r => r[0] + ', ' + r[1] === want);
-    if (id && i >= 0 && R[i][12] !== id) { const u = new URL(location.href); u.searchParams.set('id', R[i][12]); history.replaceState(null, '', u); }
+    if (id && i >= 0 && R[i][10] !== id) { const u = new URL(location.href); u.searchParams.set('id', R[i][10]); history.replaceState(null, '', u); }
     if (want && i < 0) { const u = new URL(location.href); ['city', 'id', 'n'].forEach(x => u.searchParams.delete(x)); history.replaceState(null, '', u); }
     if (i < 0) i = R.findIndex(r => r[0] === 'Lagos' && r[1] === 'Nigeria');
     pick(i, 0, false);
   }).catch(() => { $('twin-stage').classList.add('failed'); $('twin-rank').textContent = T_('The city data could not be loaded. Please reload the page.'); $('twin-rank').className = 'tw-err'; });
   }
-  function shareUrl() { const u = new URL(location.href); u.search = ''; u.searchParams.set('city', R[cur][0] + ', ' + R[cur][1]); u.searchParams.set('id', R[cur][12]); u.hash = 'twin'; return u.href; }
+  function shareUrl() { const u = new URL(location.href); u.search = ''; u.searchParams.set('city', R[cur][0] + ', ' + R[cur][1]); u.searchParams.set('id', R[cur][10]); u.hash = 'twin'; return u.href; }
   // load the data and imagery only when the section is about to be seen
   if (new URLSearchParams(location.search).get('city') || !('IntersectionObserver' in window)) start();
   else { const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); start(); } }, { rootMargin: '600px 0px' }); io.observe($('twin')); }
