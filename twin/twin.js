@@ -36,14 +36,20 @@
     const h = Math.sin(dla / 2) ** 2 + Math.cos(a[3] * t) * Math.cos(b[3] * t) * Math.sin(dlo / 2) ** 2;
     return 6371 * 2 * Math.asin(Math.sqrt(h));
   }
+  // compared in tenths of a degree so the limits are exact for the values shown on the card
+  const sameClimate = (a, b) => a[9] === b[9] && Math.abs(Math.round(a[5] * 10) - Math.round(b[5] * 10)) <= 20 && Math.abs(Math.round(a[6] * 10) - Math.round(b[6] * 10)) <= 10;
+  const similarSize = (a, b) => Math.max(a[4], b[4]) <= 1.5 * Math.min(a[4], b[4]);
   // nearest cities in other countries with the same climate class; any class if a city's class is unique
   function twinsOf(i) {
     const zi = Z[i], cn = R[i][1], kc = R[i][9];
-    const near = same => { const d = []; for (let j = 0; j < R.length; j++) {
-      if (R[j][1] === cn || (same && R[j][9] !== kc) || km(R[i], R[j]) < 50) continue;
+    // first choice: same climate type, average temperature within 2 °C, seasonal spread within 1 °C, population within 1.5 times;
+    // if no city meets all three, the closest city of the same climate type (or any type) is used and the card says so
+    const strict = j => sameClimate(R[i], R[j]) && similarSize(R[i], R[j]);
+    const near = (same, tight) => { const d = []; for (let j = 0; j < R.length; j++) {
+      if (R[j][1] === cn || (same && R[j][9] !== kc) || (tight && !strict(j)) || km(R[i], R[j]) < 50) continue;
       let s = 0; for (let f = 0; f < 3; f++) { const e = Z[j][f] - zi[f]; s += e * e; } d.push([Math.sqrt(s), j]); }
       return d.sort((a, b) => a[0] - b[0]).slice(0, 10); };
-    const o = near(true); return o.length ? o : near(false);
+    let o = near(true, true); if (!o.length) o = near(true, false); return o.length ? o : near(false, false);
   }
   // the clearest difference between the two, reported with both values: growth since 1975, building height or greenness
   // only differences large enough to stand above the uncertainty of these satellite estimates count:
@@ -161,30 +167,34 @@
     const sameK = a[9] === b[9], ga = growth(a), gb = growth(b);
     const art = w => (/^[aeiou]/i.test(w) ? 'an ' : 'a ') + w;
     const nA = a[0] === b[0] ? `${a[0]} (${a[1]})` : a[0], nB = a[0] === b[0] ? `${b[0]} (${b[1]})` : b[0];
-    const head = (sameK ? 'Same climate' : 'Similar climate') + ({
+    const close = sameClimate(a, b), similar = similarSize(a, b);
+    const opener = (close ? 'Same climate' : sameK ? 'Same climate type' : 'Similar climate') + (similar ? ', similar size' : '');
+    const head = opener + ({
       growth: `. ${ga > gb ? nA : nB} grew faster.`,
       height: `. ${a[8] > b[8] ? nA : nB} builds taller.`,
       green: `. ${a[7] > b[7] ? nA : nB} has greener built-up areas.`,
-      alike: ', much alike.',
+      alike: similar ? '. Much alike.' : ', much alike.',
     })[F.c];
-    const clim = sameK ? `Both have ${art(KOP[a[9]])} climate, averaging ${en(a[5], 1)} and ${en(b[5], 1)}\u00a0°C.` : `They average ${en(a[5], 1)} and ${en(b[5], 1)}\u00a0°C.`;
+    const clim = (sameK ? `Both have ${art(KOP[a[9]])} climate (${en(a[5], 1)} and ${en(b[5], 1)}\u00a0°C on average)` : `They average ${en(a[5], 1)} and ${en(b[5], 1)}\u00a0°C`)
+      + ` and about ${pop(a[4])} and ${pop(b[4])} people.`;
     const gline = () => `Population change since 1975: ${nA} ${fx(ga)}, ${nB} ${fx(gb)}.`;
     const sub = clim + ' ' + ({
       growth: gline,
       height: () => `Average building height: ${en(a[8], 1)}\u00a0m in ${nA}, ${en(b[8], 1)}\u00a0m in ${nB}.`,
       green: () => `Mean NDVI of the greener built-up land: ${en(a[7], 2)} in ${nA}, ${en(b[7], 2)} in ${nB}.`,
-      alike: () => ga && gb ? gline() : `About ${pop(a[4])} and ${pop(b[4])} people live in them today.`,
+      alike: () => ga && gb ? gline() : 'Growth, building height and greenness are all within the margins.',
     })[F.c]();
     // the words get the room above the chart; shrink until headline and sub fit
     const top0 = cy + R0 + 222, limit = H - 330;
     let hs = 58, ss = 30, lines, sl, hgt;
+    // never cut words: shrink until the headline fits in two lines and the sub in three, above the chart
     for (;;) {
-      g.font = `500 ${hs}px ${SERIF}`; lines = wrap(g, head, W - 180).slice(0, 2);
+      g.font = `500 ${hs}px ${SERIF}`; lines = wrap(g, head, W - 180);
       if (lines.length === 2 && !lines[1].includes(' ')) { const w = head.split(' '); const alt = [w.slice(0, -2).join(' '), w.slice(-2).join(' ')]; if (g.measureText(alt[0]).width <= W - 180) lines = alt; }
-      g.font = `400 ${ss}px ${SANS}`; sl = wrap(g, sub, W - 180).slice(0, 3);
+      g.font = `400 ${ss}px ${SANS}`; sl = wrap(g, sub, W - 180);
       hgt = lines.length * (hs + 8) + 18 + sl.length * (ss + 12);
-      if (top0 + hgt <= limit || (hs <= 40 && ss <= 22)) break;
-      if (hs > 40) hs -= 2; if (ss > 22) ss -= 1;
+      if ((top0 + hgt <= limit && lines.length <= 2 && sl.length <= 3) || (hs <= 36 && ss <= 20)) break;
+      if (hs > 36) hs -= 2; if (ss > 20) ss -= 1;
     }
     const tf = seg(t, .45, .85); g.globalAlpha = tf; const lift = (1 - tf) * 14; let y = top0 + hs;
     g.textAlign = 'center'; g.fillStyle = INK; g.font = `500 ${hs}px ${SERIF}`;
