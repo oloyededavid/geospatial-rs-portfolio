@@ -307,7 +307,8 @@
   let dup = new Set();
   const popShort = v => v >= 1e6 ? (v / 1e6).toFixed(1) + ' M' : Math.round(v / 1e3) + ' K';
   const q = $('twin-q'), list = $('twin-sugg'); let hits = [], sel = -1;
-  const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+    .replace(/[\u2010-\u2015\u2212_-]+/g, ' ').replace(/\s+/g, ' ').trim(); // hyphens and dashes match spaces: Ilara-Mokin = Ilara Mokin
   const shut = () => { list.hidden = true; q.setAttribute('aria-expanded', 'false'); q.removeAttribute('aria-activedescendant'); };
   q.addEventListener('input', () => {
     if (!R) return;
