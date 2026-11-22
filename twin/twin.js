@@ -313,7 +313,7 @@
   q.addEventListener('input', () => {
     if (!R) return;
     const t = norm(q.value.trim()); sel = -1;
-    const rank = n => n === t ? 0 : n.startsWith(t) ? 1 : (n.includes(' ' + t) || n.includes('-' + t)) ? 2 : 9;
+    const rank = n => n === t ? 0 : n.startsWith(t) ? 1 : n.includes(' ' + t) ? 2 : 9;
     hits = t.length < 2 ? [] : R.map((r, i) => [r, i, rank(norm(r[0]))]).filter(h => h[2] < 9).sort((p, q) => p[2] - q[2] || p[1] - q[1]).slice(0, 7);
     list.innerHTML = hits.map(([r], n) => `<li role="option" id="o${n}" aria-selected="false" data-n="${n}">${esc(r[0])}<span>${esc(r[1])}${dup.has(r[0] + '|' + r[1]) ? ' · ' + popShort(r[4]) : ''}</span></li>`).join('')
       || (t.length >= 2 ? '<li class="none" role="option" aria-disabled="true">' + T_('No city by that name. Try a larger city nearby.') + '</li>' : '');

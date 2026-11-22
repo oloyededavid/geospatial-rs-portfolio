@@ -107,7 +107,7 @@ for i, s in enumerate(S):
             (docs / 'assets' / 'study-bar.html').write_text(bar(i) + '\n', encoding='utf-8')
             (docs / 'assets' / 'study-nav.html').write_text(nav(i) + '\n', encoding='utf-8')
             (docs / 'assets' / 'study-others.html').write_text(others(i) + '\n', encoding='utf-8')
-        elif page.name in ('explore.html', 'explorer.html'):
+        elif page.name in ('explore.html', 'explorer.html') or '<!-- study-bar:start -->' in h:  # any other page that already has the bar, e.g. the catalogue's about.html
             h = put(h, 'study-bar', bar(i), 'top')
         else:
             continue
