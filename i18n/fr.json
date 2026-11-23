@@ -179,7 +179,27 @@
     "OpenStreetMap": "OpenStreetMap",
     "Deep learning for Earth observation": "Apprentissage profond pour l’observation de la Terre",
     "Cloud computing at scale": "Calcul dans le cloud à grande échelle",
-    "Globe imagery and study basemaps © Esri": "Imagerie du globe et fonds de carte des études © Esri"
+    "Globe imagery and study basemaps © Esri": "Imagerie du globe et fonds de carte des études © Esri",
+    "Tools": "Outils",
+    "Open-data analysis tools that run in the browser, for any place on Earth.": "Des outils d’analyse sur données ouvertes qui s’exécutent dans le navigateur, pour n’importe quel lieu sur Terre.",
+    "Flood mapping": "Cartographie des crues",
+    "Sentinel-1 radar": "Radar Sentinel-1",
+    "Exposure": "Exposition",
+    "FloodScope: Flood Extent and Exposure from Sentinel-1 Radar": "FloodScope : étendue et exposition des crues à partir du radar Sentinel-1",
+    "Pick an area and two radar images. It maps the new open water and the people and land cover inside it, then exports GeoTIFF, GeoJSON and a report.": "Choisissez une zone et deux images radar. L’outil cartographie les nouvelles eaux libres, la population et l’occupation du sol qu’elles recouvrent, puis exporte en GeoTIFF, GeoJSON et sous forme de rapport.",
+    "Open the tool": "Ouvrir l’outil",
+    "Lokoja, Nigeria, after the October 2022 flood": "Lokoja, Nigeria, après la crue d’octobre 2022",
+    "Crop condition": "État des cultures",
+    "MODIS NDVI": "NDVI MODIS",
+    "CHIRPS rainfall": "Pluies CHIRPS",
+    "Anomalies": "Anomalies",
+    "AgroSignal: Was This Growing Season Greener or Browner Than Usual?": "AgroSignal : cette saison de culture était-elle plus verte ou plus sèche que d’habitude ?",
+    "Season greenness over cropland against the same months in a baseline of years, pixel by pixel, with the season’s rainfall, for any area up to 2,500 km².": "La verdure de la saison sur les terres cultivées comparée aux mêmes mois d’une période de référence, pixel par pixel, avec les pluies de la saison, pour toute zone jusqu’à 2 500 km².",
+    "Farmland around Bagwai, Kano State, June–October 2026": "Terres agricoles autour de Bagwai, État de Kano, juin–octobre 2026",
+    "Spatial validation": "Validation spatiale",
+    "GeoValidate: Would Your Classifier Score as Well Somewhere New?": "GeoValidate : votre classificateur ferait-il aussi bien ailleurs ?",
+    "Random against spatial block cross-validation of a Random Forest on your own points, run with scikit-learn in the browser. Your data never leave your computer.": "Validation croisée aléatoire contre validation par blocs spatiaux d’une forêt aléatoire sur vos propres points, avec scikit-learn dans le navigateur. Vos données ne quittent jamais votre ordinateur.",
+    "Mau Forest sample, held out in 10 km blocks": "Échantillon de la forêt de Mau, mis de côté par blocs de 10 km"
   },
   "attr": {
     "The two cities compared": "Les deux villes comparées",
@@ -208,7 +228,10 @@
     "Map of Africa with the footprints of the catalogue’s 32 items in seven collections: study areas across Nigeria and Benin, the Lake Chad basin and Mozambique.": "Carte de l’Afrique avec l’emprise des 32 éléments du catalogue, répartis en sept collections : zones d’étude au Nigeria et au Bénin, bassin du lac Tchad et Mozambique.",
     "Project layout": "Affichage des projets",
     "Grid": "Grille",
-    "List": "Liste"
+    "List": "Liste",
+    "FloodScope dashboard showing the flood map at the Niger–Benue confluence at Lokoja, the four key figures above the map and the water-threshold histogram beside it.": "Tableau de bord de FloodScope : carte de la crue à la confluence du Niger et de la Bénoué à Lokoja, les quatre chiffres clés au-dessus de la carte et l’histogramme du seuil d’eau à côté.",
+    "AgroSignal dashboard showing a map of NDVI z-scores over farmland in Kano State, the key figures above it, and charts of season NDVI and rainfall by year.": "Tableau de bord d’AgroSignal : carte des scores z du NDVI sur les terres agricoles de l’État de Kano, les chiffres clés au-dessus, et les graphiques du NDVI de saison et des pluies par année.",
+    "GeoValidate dashboard showing points in the Mau Forest coloured by spatial fold, the accuracy of random and spatial validation above the map, and the accuracy of each fold beside it.": "Tableau de bord de GeoValidate : points de la forêt de Mau colorés par pli spatial, la précision des validations aléatoire et spatiale au-dessus de la carte, et la précision de chaque pli à côté."
   },
   "js": {
     "Change since 1975": "Évolution depuis 1975",

@@ -1078,3 +1078,10 @@ html:not(.js) .lx { grid-template-columns: 1fr; }
 .tw-facts thead th { white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.4; vertical-align: bottom; padding-right: 10px; }
 .tw-facts thead th .tw-k { margin-right: 6px; }
 @media (min-width: 861px) and (max-width: 1120px) { .tw-facts tbody th { font-size: .875rem; } .tw-facts td { font-size: .8125rem; } }
+
+/* ================= Tools: the same cards as Projects, two per row ================= */
+.tools { padding-block: var(--s-6) var(--s-9); }
+#tools .wrap { max-width: calc(1440px + 2 * var(--margin)); }
+#tools .sh { flex-wrap: wrap; align-items: baseline; gap: 6px 18px; }
+#tools .sh-lead { margin: 0; color: var(--ink-2); font-size: var(--fs-small); max-width: 40rem; }
+#tools .inset .cta .arrow { color: #8fb4f0; }

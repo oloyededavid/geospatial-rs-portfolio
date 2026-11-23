@@ -179,7 +179,27 @@
     "OpenStreetMap": "OpenStreetMap",
     "Deep learning for Earth observation": "Deep Learning für die Erdbeobachtung",
     "Cloud computing at scale": "Cloud-Computing im großen Maßstab",
-    "Globe imagery and study basemaps © Esri": "Globusbilder und Grundkarten der Studien © Esri"
+    "Globe imagery and study basemaps © Esri": "Globusbilder und Grundkarten der Studien © Esri",
+    "Tools": "Werkzeuge",
+    "Open-data analysis tools that run in the browser, for any place on Earth.": "Analysewerkzeuge für offene Daten, die im Browser laufen, für jeden Ort der Erde.",
+    "Flood mapping": "Hochwasserkartierung",
+    "Sentinel-1 radar": "Sentinel-1-Radar",
+    "Exposure": "Exposition",
+    "FloodScope: Flood Extent and Exposure from Sentinel-1 Radar": "FloodScope: Hochwasserausdehnung und Exposition aus Sentinel-1-Radar",
+    "Pick an area and two radar images. It maps the new open water and the people and land cover inside it, then exports GeoTIFF, GeoJSON and a report.": "Wählen Sie ein Gebiet und zwei Radarbilder. Das Werkzeug kartiert das neue offene Wasser sowie die Bevölkerung und Landbedeckung darin und exportiert GeoTIFF, GeoJSON und einen Bericht.",
+    "Open the tool": "Werkzeug öffnen",
+    "Lokoja, Nigeria, after the October 2022 flood": "Lokoja, Nigeria, nach dem Hochwasser im Oktober 2022",
+    "Crop condition": "Pflanzenzustand",
+    "MODIS NDVI": "MODIS-NDVI",
+    "CHIRPS rainfall": "CHIRPS-Niederschlag",
+    "Anomalies": "Anomalien",
+    "AgroSignal: Was This Growing Season Greener or Browner Than Usual?": "AgroSignal: War diese Anbausaison grüner oder trockener als üblich?",
+    "Season greenness over cropland against the same months in a baseline of years, pixel by pixel, with the season’s rainfall, for any area up to 2,500 km².": "Das Grün der Saison auf Ackerland im Vergleich zu denselben Monaten einer Referenzperiode, Pixel für Pixel, mit dem Niederschlag der Saison, für jedes Gebiet bis 2.500 km².",
+    "Farmland around Bagwai, Kano State, June–October 2026": "Ackerland um Bagwai, Bundesstaat Kano, Juni–Oktober 2026",
+    "Spatial validation": "Räumliche Validierung",
+    "GeoValidate: Would Your Classifier Score as Well Somewhere New?": "GeoValidate: Wäre Ihr Klassifikator anderswo genauso gut?",
+    "Random against spatial block cross-validation of a Random Forest on your own points, run with scikit-learn in the browser. Your data never leave your computer.": "Zufällige gegenüber räumlicher Block-Kreuzvalidierung eines Random Forest auf Ihren eigenen Punkten, mit scikit-learn im Browser. Ihre Daten verlassen nie Ihren Computer.",
+    "Mau Forest sample, held out in 10 km blocks": "Stichprobe aus dem Mau-Wald, in 10-km-Blöcken zurückgehalten"
   },
   "attr": {
     "The two cities compared": "Die beiden Städte im Vergleich",
@@ -208,7 +228,10 @@
     "Map of Africa with the footprints of the catalogue’s 32 items in seven collections: study areas across Nigeria and Benin, the Lake Chad basin and Mozambique.": "Karte Afrikas mit den Ausdehnungen der 32 Katalogeinträge in sieben Sammlungen: Untersuchungsgebiete in Nigeria und Benin, das Tschadseebecken und Mosambik.",
     "Project layout": "Projektansicht",
     "Grid": "Raster",
-    "List": "Liste"
+    "List": "Liste",
+    "FloodScope dashboard showing the flood map at the Niger–Benue confluence at Lokoja, the four key figures above the map and the water-threshold histogram beside it.": "FloodScope-Dashboard mit der Hochwasserkarte am Zusammenfluss von Niger und Benue bei Lokoja, den vier Kennzahlen über der Karte und dem Histogramm der Wasserschwelle daneben.",
+    "AgroSignal dashboard showing a map of NDVI z-scores over farmland in Kano State, the key figures above it, and charts of season NDVI and rainfall by year.": "AgroSignal-Dashboard mit einer Karte der NDVI-z-Werte über Ackerland im Bundesstaat Kano, den Kennzahlen darüber und Diagrammen des Saison-NDVI und des Niederschlags nach Jahr.",
+    "GeoValidate dashboard showing points in the Mau Forest coloured by spatial fold, the accuracy of random and spatial validation above the map, and the accuracy of each fold beside it.": "GeoValidate-Dashboard mit Punkten im Mau-Wald, nach räumlichem Fold eingefärbt, der Genauigkeit der zufälligen und der räumlichen Validierung über der Karte und der Genauigkeit jedes Folds daneben."
   },
   "js": {
     "Change since 1975": "Veränderung seit 1975",
