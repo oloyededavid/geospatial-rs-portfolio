@@ -237,10 +237,10 @@
     "Project layout": "Projektansicht",
     "Grid": "Raster",
     "List": "Liste",
-    "City twins card pairing Lagos and Ho Chi Minh City: satellite views of both cities, 11,320 km apart, under the line “Same climate, similar size. Much alike.”": "Städtezwillinge-Karte mit Lagos und Ho-Chi-Minh-Stadt: Satellitenbilder beider Städte, 11.320 km voneinander entfernt, unter der Zeile „Gleiches Klima, ähnliche Größe. Sehr ähnlich.“",
-    "Flood map of the Niger–Benue confluence at Lokoja over satellite imagery, new flood water in blue, labelled 22.4 km² of new flood water in October 2022.": "Hochwasserkarte des Zusammenflusses von Niger und Benue bei Lokoja über Satellitenbild, neues Hochwasser in Blau, beschriftet mit 22,4 km² neuem Hochwasser im Oktober 2022.",
-    "Map of season greenness z-scores over farmland near Kano, mostly deep green, labelled +2.97: greener than every season of 2001–2020.": "Karte der z-Werte des Saisongrüns über Ackerland bei Kano, überwiegend tiefgrün, beschriftet mit +2,97: grüner als jede Saison von 2001 bis 2020.",
-    "Map of sample points in the Mau Forest grouped into coloured 10 km blocks, labelled accuracy 93.2% with random folds and 88.8% with spatial blocks.": "Karte der Stichprobenpunkte im Mau-Wald in farbigen 10-km-Blöcken, beschriftet mit der Genauigkeit: 93,2 % mit zufälligen Folds und 88,8 % mit räumlichen Blöcken."
+    "City twins card for Lagos and Ho Chi Minh City with satellite views of both cities, the line “Same climate, similar size”, and a world map with the arc between them.": "Städtezwillinge-Karte für Lagos und Ho-Chi-Minh-Stadt mit Satellitenbildern beider Städte, der Zeile „Gleiches Klima, ähnliche Größe“ und einer Weltkarte mit dem Bogen zwischen ihnen.",
+    "World map with the band from 56° S to 78° N that FloodScope covers, a pin at Lokoja, Nigeria, and an inset of the October 2022 flood there.": "Weltkarte mit dem von FloodScope abgedeckten Band von 56° S bis 78° N, einer Markierung bei Lokoja, Nigeria, und einem Ausschnitt des Hochwassers vom Oktober 2022.",
+    "World map with five farming regions and their season greenness z-scores, from −3.51 in Saskatchewan in 2021 to +2.97 near Kano in 2026, and an inset map of Kano.": "Weltkarte mit fünf Agrarregionen und ihren z-Werten des Saisongrüns, von −3,51 in Saskatchewan 2021 bis +2,97 bei Kano 2026, und einem Ausschnitt von Kano.",
+    "World map with a pin in the Mau Forest, Kenya, an inset of sample points in coloured 10 km blocks, and the accuracy falling from 93.2% to 88.8%.": "Weltkarte mit einer Markierung im Mau-Wald, Kenia, einem Ausschnitt der Stichprobenpunkte in farbigen 10-km-Blöcken und der Genauigkeit, die von 93,2 % auf 88,8 % fällt."
   },
   "js": {
     "Change since 1975": "Veränderung seit 1975",

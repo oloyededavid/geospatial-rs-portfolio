@@ -237,10 +237,10 @@
     "Project layout": "Affichage des projets",
     "Grid": "Grille",
     "List": "Liste",
-    "City twins card pairing Lagos and Ho Chi Minh City: satellite views of both cities, 11,320 km apart, under the line “Same climate, similar size. Much alike.”": "Carte Villes jumelles associant Lagos et Hô-Chi-Minh-Ville : vues satellite des deux villes, distantes de 11 320 km, sous la phrase « Même climat, taille comparable. Très semblables. »",
-    "Flood map of the Niger–Benue confluence at Lokoja over satellite imagery, new flood water in blue, labelled 22.4 km² of new flood water in October 2022.": "Carte de la crue à la confluence du Niger et de la Bénoué à Lokoja sur image satellite, nouvelles eaux en bleu, avec la mention 22,4 km² de nouvelles eaux de crue en octobre 2022.",
-    "Map of season greenness z-scores over farmland near Kano, mostly deep green, labelled +2.97: greener than every season of 2001–2020.": "Carte des scores z de verdure de la saison sur les terres agricoles près de Kano, surtout vert foncé, avec la mention +2,97 : plus verte que chaque saison de 2001 à 2020.",
-    "Map of sample points in the Mau Forest grouped into coloured 10 km blocks, labelled accuracy 93.2% with random folds and 88.8% with spatial blocks.": "Carte des points d’échantillon de la forêt de Mau regroupés en blocs colorés de 10 km, avec la précision : 93,2 % en plis aléatoires et 88,8 % en blocs spatiaux."
+    "City twins card for Lagos and Ho Chi Minh City with satellite views of both cities, the line “Same climate, similar size”, and a world map with the arc between them.": "Carte Villes jumelles pour Lagos et Hô-Chi-Minh-Ville avec des vues satellite des deux villes, la phrase « Même climat, taille comparable » et une carte du monde avec l’arc qui les relie.",
+    "World map with the band from 56° S to 78° N that FloodScope covers, a pin at Lokoja, Nigeria, and an inset of the October 2022 flood there.": "Carte du monde avec la bande de 56° S à 78° N couverte par FloodScope, un repère à Lokoja, au Nigeria, et un encart de la crue d’octobre 2022.",
+    "World map with five farming regions and their season greenness z-scores, from −3.51 in Saskatchewan in 2021 to +2.97 near Kano in 2026, and an inset map of Kano.": "Carte du monde avec cinq régions agricoles et leurs scores z de verdure de saison, de −3,51 en Saskatchewan en 2021 à +2,97 près de Kano en 2026, et un encart de Kano.",
+    "World map with a pin in the Mau Forest, Kenya, an inset of sample points in coloured 10 km blocks, and the accuracy falling from 93.2% to 88.8%.": "Carte du monde avec un repère dans la forêt de Mau, au Kenya, un encart des points d’échantillon en blocs colorés de 10 km, et la précision qui passe de 93,2 % à 88,8 %."
   },
   "js": {
     "Change since 1975": "Évolution depuis 1975",
