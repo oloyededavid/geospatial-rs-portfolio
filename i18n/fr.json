@@ -237,10 +237,10 @@
     "Project layout": "Affichage des projets",
     "Grid": "Grille",
     "List": "Liste",
-    "FloodScope dashboard showing the flood map at the Niger–Benue confluence at Lokoja, the four key figures above the map and the water-threshold histogram beside it.": "Tableau de bord de FloodScope : carte de la crue à la confluence du Niger et de la Bénoué à Lokoja, les quatre chiffres clés au-dessus de la carte et l’histogramme du seuil d’eau à côté.",
-    "AgroSignal dashboard showing a map of NDVI z-scores over farmland in Kano State, the key figures above it, and charts of season NDVI and rainfall by year.": "Tableau de bord d’AgroSignal : carte des scores z du NDVI sur les terres agricoles de l’État de Kano, les chiffres clés au-dessus, et les graphiques du NDVI de saison et des pluies par année.",
-    "GeoValidate dashboard showing points in the Mau Forest coloured by spatial fold, the accuracy of random and spatial validation above the map, and the accuracy of each fold beside it.": "Tableau de bord de GeoValidate : points de la forêt de Mau colorés par pli spatial, la précision des validations aléatoire et spatiale au-dessus de la carte, et la précision de chaque pli à côté.",
-    "City twins page showing the search box, the two cities compared in a table, and the card that pairs them with their climate and population.": "Page Villes jumelles : le champ de recherche, les deux villes comparées dans un tableau et la carte qui les associe avec leur climat et leur population."
+    "City twins card pairing Lagos and Ho Chi Minh City: satellite views of both cities, 11,320 km apart, under the line “Same climate, similar size. Much alike.”": "Carte Villes jumelles associant Lagos et Hô-Chi-Minh-Ville : vues satellite des deux villes, distantes de 11 320 km, sous la phrase « Même climat, taille comparable. Très semblables. »",
+    "Flood map of the Niger–Benue confluence at Lokoja over satellite imagery, new flood water in blue, labelled 22.4 km² of new flood water in October 2022.": "Carte de la crue à la confluence du Niger et de la Bénoué à Lokoja sur image satellite, nouvelles eaux en bleu, avec la mention 22,4 km² de nouvelles eaux de crue en octobre 2022.",
+    "Map of season greenness z-scores over farmland near Kano, mostly deep green, labelled +2.97: greener than every season of 2001–2020.": "Carte des scores z de verdure de la saison sur les terres agricoles près de Kano, surtout vert foncé, avec la mention +2,97 : plus verte que chaque saison de 2001 à 2020.",
+    "Map of sample points in the Mau Forest grouped into coloured 10 km blocks, labelled accuracy 93.2% with random folds and 88.8% with spatial blocks.": "Carte des points d’échantillon de la forêt de Mau regroupés en blocs colorés de 10 km, avec la précision : 93,2 % en plis aléatoires et 88,8 % en blocs spatiaux."
   },
   "js": {
     "Change since 1975": "Évolution depuis 1975",

@@ -237,10 +237,10 @@
     "Project layout": "Projektansicht",
     "Grid": "Raster",
     "List": "Liste",
-    "FloodScope dashboard showing the flood map at the Niger–Benue confluence at Lokoja, the four key figures above the map and the water-threshold histogram beside it.": "FloodScope-Dashboard mit der Hochwasserkarte am Zusammenfluss von Niger und Benue bei Lokoja, den vier Kennzahlen über der Karte und dem Histogramm der Wasserschwelle daneben.",
-    "AgroSignal dashboard showing a map of NDVI z-scores over farmland in Kano State, the key figures above it, and charts of season NDVI and rainfall by year.": "AgroSignal-Dashboard mit einer Karte der NDVI-z-Werte über Ackerland im Bundesstaat Kano, den Kennzahlen darüber und Diagrammen des Saison-NDVI und des Niederschlags nach Jahr.",
-    "GeoValidate dashboard showing points in the Mau Forest coloured by spatial fold, the accuracy of random and spatial validation above the map, and the accuracy of each fold beside it.": "GeoValidate-Dashboard mit Punkten im Mau-Wald, nach räumlichem Fold eingefärbt, der Genauigkeit der zufälligen und der räumlichen Validierung über der Karte und der Genauigkeit jedes Folds daneben.",
-    "City twins page showing the search box, the two cities compared in a table, and the card that pairs them with their climate and population.": "Seite Städtezwillinge: das Suchfeld, die beiden Städte im Tabellenvergleich und die Karte, die sie mit Klima und Bevölkerung gegenüberstellt."
+    "City twins card pairing Lagos and Ho Chi Minh City: satellite views of both cities, 11,320 km apart, under the line “Same climate, similar size. Much alike.”": "Städtezwillinge-Karte mit Lagos und Ho-Chi-Minh-Stadt: Satellitenbilder beider Städte, 11.320 km voneinander entfernt, unter der Zeile „Gleiches Klima, ähnliche Größe. Sehr ähnlich.“",
+    "Flood map of the Niger–Benue confluence at Lokoja over satellite imagery, new flood water in blue, labelled 22.4 km² of new flood water in October 2022.": "Hochwasserkarte des Zusammenflusses von Niger und Benue bei Lokoja über Satellitenbild, neues Hochwasser in Blau, beschriftet mit 22,4 km² neuem Hochwasser im Oktober 2022.",
+    "Map of season greenness z-scores over farmland near Kano, mostly deep green, labelled +2.97: greener than every season of 2001–2020.": "Karte der z-Werte des Saisongrüns über Ackerland bei Kano, überwiegend tiefgrün, beschriftet mit +2,97: grüner als jede Saison von 2001 bis 2020.",
+    "Map of sample points in the Mau Forest grouped into coloured 10 km blocks, labelled accuracy 93.2% with random folds and 88.8% with spatial blocks.": "Karte der Stichprobenpunkte im Mau-Wald in farbigen 10-km-Blöcken, beschriftet mit der Genauigkeit: 93,2 % mit zufälligen Folds und 88,8 % mit räumlichen Blöcken."
   },
   "js": {
     "Change since 1975": "Veränderung seit 1975",
