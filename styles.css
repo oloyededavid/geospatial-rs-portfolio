@@ -1078,6 +1078,3 @@ html:not(.js) .lx { grid-template-columns: 1fr; }
 .tw-facts thead th { white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.4; vertical-align: bottom; padding-right: 10px; }
 .tw-facts thead th .tw-k { margin-right: 6px; }
 @media (min-width: 861px) and (max-width: 1120px) { .tw-facts tbody th { font-size: .875rem; } .tw-facts td { font-size: .8125rem; } }
-
-/* four menu links: tighter spacing on the narrowest phones so the longer German labels fit at 320 px */
-@media (max-width: 360px) { .hd .site-nav { gap: 16px !important; } }

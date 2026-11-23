@@ -13,7 +13,7 @@ HOME = 'https://oloyededavid.github.io/geospatial-rs-portfolio/'
 B = 'https://oloyededavid.github.io/'
 ROOT = pathlib.Path('/home/user')
 S = [  # number, local clone, repo, title, one line, cover, tags
-    ('01', 'observational-hydrology-extremes', 'Observational-Hydrology-Extremes', 'Hydrological extremes where the gauges are missing',
+    ('01', 'observational-hydrology-extremes', 'Observational-Hydrology-Extremes', 'Hydrological extremes where the gauges are missing: floods, droughts and design rainfall in Nigeria, 1950–2070',
      'Floods, drought and future extreme rainfall in two Nigerian basins with few rain gauges.', 'hydrology', ['Floods and drought', 'Satellite hydrology', 'Climate change', 'Earth observation']),
     ('02', 'ogun-catchment-coast-observatory', 'Ogun-Catchment-Coast-Observatory', 'Surface water from headwaters to lagoon: rainfall, soil moisture and flooding, 2019–2024',
      'Rainfall, soil moisture, flooding and estuary turbidity along the Ogun River.', 'ogun', ['Earth observation', 'Integrated water management', 'Turbidity', 'Geovisualisation']),
@@ -21,7 +21,7 @@ S = [  # number, local clone, repo, title, one line, cover, tags
      'Can satellite rainfall and evapotranspiration estimate groundwater recharge where wells are scarce?', 'oueme', ['Groundwater', 'Recharge testing', 'Water balance', 'Satellite hydrology']),
     ('04', 'groundwater-storage-gravimetry', 'Groundwater-Storage-Gravimetry', 'Water storage in the Lake Chad basin from GRACE and GRACE-FO, 2002–2026',
      'How much water the Lake Chad basin has gained or lost since 2002, estimated from changes in Earth’s gravity.', 'gravimetry', ['Water storage', 'Global change', 'Earth observation', 'Transboundary water']),
-    ('05', 'lagos-urban-heat-analytics', 'Lagos-Urban-Heat-Analytics', 'Surface urban heat island and distance to vegetation in Lagos State, Nigeria, 2020–2024',
+    ('05', 'lagos-urban-heat-analytics', 'Lagos-Urban-Heat-Analytics', 'Urban heat island and distance to vegetation in Lagos State, Nigeria, 2020–2024',
      'Do residents who live far from vegetation face more surface heat?', 'lagos', ['Earth observation', 'Urban heat', 'Geodata science', 'Heat exposure']),
     ('06', 'coastal-hydrogeology-modeling', 'Coastal-Hydrogeology-Modeling', 'Urban sealing and the shallow water table of the Lekki–Epe barrier, Lagos, 1986–2024',
      'How much of the barrier has been sealed since the 1980s, and what that could do to the water table beneath it.', 'coastal', ['Groundwater', 'Urban change', 'Coastal aquifer', 'Scenario modelling']),
@@ -29,7 +29,7 @@ S = [  # number, local clone, repo, title, one line, cover, tags
      'A Sentinel-2 land-cover map tested with spatially blocked cross-validation; accuracy awaits a labelled reference sample.', 'mau', ['Land cover', 'Machine learning', 'Sentinel-2', 'Spatial validation']),
     ('08', 'mozambique-health-access', 'Mozambique-Health-Access', 'Travel time to health facilities in Mozambique',
      'How district access estimates change with the facility list, mode of travel and facility functionality.', 'mozambique', ['Accessibility', 'Health access', 'Sensitivity analysis', 'Population weighting']),
-    ('09', 'open-geodata-catalogue', 'Open-Geodata-Catalogue', 'Open geodata catalogue',
+    ('09', 'open-geodata-catalogue', 'Open-Geodata-Catalogue', 'Serving open research outputs as a STAC catalogue and through OGC API Features',
      'The spatial layers behind the studies in one catalogue, with checksums and an API you can run locally.', 'catalogue', ['Open data', 'STAC', 'OGC API Features', 'PostGIS']),
 ]
 N = len(S)
