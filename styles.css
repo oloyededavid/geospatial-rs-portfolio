@@ -1085,3 +1085,6 @@ html:not(.js) .lx { grid-template-columns: 1fr; }
 #tools .sh { flex-wrap: wrap; align-items: baseline; gap: 6px 18px; }
 #tools .sh-lead { margin: 0; color: var(--ink-2); font-size: var(--fs-small); max-width: 40rem; }
 #tools .inset .cta .arrow { color: #8fb4f0; }
+/* City twins on its own page: the heading keeps the section style */
+.twin-page .sh h1 { font-family: 'Newsreader', var(--display); font-weight: 500; font-size: clamp(2rem, 3.6vw, 2.875rem); letter-spacing: -.02em; line-height: 1; margin: 0; }
+.twin-page main { padding-top: var(--s-6); }

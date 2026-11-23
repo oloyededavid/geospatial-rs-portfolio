@@ -64,8 +64,12 @@ def translate_block(name, en_inner, template):
     return out
 
 
+TWIN = ROOT / 'twin' / 'index.html'   # City twins has its own page (English source); its words share the dictionaries
+
+
 def build(lang):
     en = (ROOT / 'index.html').read_text(encoding='utf-8')
+    twin_en = TWIN.read_text(encoding='utf-8')
     d = json.loads((ROOT / 'i18n' / f'{lang}.json').read_text(encoding='utf-8'))
     s = en
 
@@ -96,12 +100,12 @@ def build(lang):
             needle = f'{a}="{k}"'
             n += s.count(needle)
             s = s.replace(needle, f'{a}="{v}"')
-        if not n:
+        if not n and f'="{k}"' not in twin_en:
             fail(f'{lang}: attribute text not found: {k!r}')
     for k, v in sorted(d['text'].items(), key=lambda kv: -len(kv[0])):
         pat = re.compile(r'(>\s*)' + re.escape(k) + r'(\s*<)')
         s, n = pat.subn(lambda m: m.group(1) + v + m.group(2), s)
-        if not n and k not in en_caps:
+        if not n and k not in en_caps and not re.search(r'>\s*' + re.escape(k) + r'\s*<', twin_en):
             fail(f'{lang}: text not found on the page: {k!r}')
 
     # 4. head: lang, title, description, canonical, og
@@ -162,6 +166,56 @@ def build(lang):
     return out
 
 
+def build_twin(lang):
+    """The City twins page for one language, from twin/index.html and the same dictionary."""
+    en = TWIN.read_text(encoding='utf-8')
+    d = json.loads((ROOT / 'i18n' / f'{lang}.json').read_text(encoding='utf-8'))
+    s = en
+    for k, v in d['attr'].items():
+        for a in ('content', 'aria-label', 'alt', 'title', 'placeholder'):
+            s = s.replace(f'{a}="{k}"', f'{a}="{v}"')
+    for k, v in sorted(d['text'].items(), key=lambda kv: -len(kv[0])):
+        s = re.sub(r'(>\s*)' + re.escape(k) + r'(\s*<)', lambda m: m.group(1) + v + m.group(2), s)
+    name = d['text'].get('City twins', 'City twins')
+    s = s.replace('<html lang="en">', f'<html lang="{lang}">', 1)
+    s = re.sub(r'<title>City twins', '<title>' + name, s, count=1)
+    s = re.sub(r'(<meta property="og:title" content=")City twins', lambda m: m.group(1) + name, s, count=1)
+    for tag in ('name="description"', 'property="og:description"'):
+        s = re.sub(r'(<meta ' + tag + r' content=")[^"]*', lambda m: m.group(1) + d['meta']['twin_description'], s, count=1)
+    s = s.replace(f'<link rel="canonical" href="{BASE}twin/">', f'<link rel="canonical" href="{BASE}{lang}/twin/">', 1)
+    s = s.replace(f'<meta property="og:url" content="{BASE}twin/">', f'<meta property="og:url" content="{BASE}{lang}/twin/">', 1)
+    others = [x for x in ['en_GB', 'fr_FR', 'de_DE'] if x != d['locale']]
+    s = re.sub(r'<meta property="og:locale" content="[^"]*">\n<meta property="og:locale:alternate" content="[^"]*">\n<meta property="og:locale:alternate" content="[^"]*">',
+               f'<meta property="og:locale" content="{d["locale"]}">\n<meta property="og:locale:alternate" content="{others[0]}">\n<meta property="og:locale:alternate" content="{others[1]}">', s, count=1)
+    s = re.sub(r'<script data-i18n-redirect>.*?</script>\n?', '', s, flags=re.S)
+    target = {'en': '../../twin/', 'fr': '../../fr/twin/', 'de': '../../de/twin/'}
+    target[lang] = './'
+    def sw(m):
+        code = m.group(2)
+        tag = re.sub(r'href="[^"]*"', f'href="{target[code]}"', m.group(0), count=1).replace(' aria-current="true"', '')
+        return tag.replace(f'data-lang="{code}"', f'data-lang="{code}" aria-current="true"') if code == lang else tag
+    s = re.sub(r'<a href="([^"]*)" data-lang="(en|fr|de)"[^>]*>', sw, s)
+    # files one more level up; links to the home page ('../', '../#about') stay with this language's home page
+    def up(m):
+        attr, val = m.group(1), m.group(2)
+        if val.startswith('../') and not (val == '../' or val.startswith('../#')):
+            return f'{attr}="../{val}"'
+        if val == 'twin.js':
+            return f'{attr}="../../twin/twin.js"'
+        return m.group(0)
+    s = re.sub(r'\b(src|href)="([^"]*)"', up, s)
+    s = s.replace('<script>window.SITE_ROOT = "../";</script>',
+                  '<script>window.SITE_ROOT = "../../"; window.I18N = ' + json.dumps(d['js'], ensure_ascii=False) + ';</script>')
+    left = [t for t in text_nodes(s) if t in set(text_nodes(en)) and t not in set(d['text'].values()) and t not in ('EN', 'FR', 'DE', 'David Oloyede')]
+    if left:
+        fail(f'{lang}: City twins page has English text left: {left[:8]}')
+    out = ROOT / lang / 'twin' / 'index.html'
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(s, encoding='utf-8')
+    return out
+
+
 if __name__ == '__main__':
     for lang in LANGS:
         print('wrote', build(lang).relative_to(ROOT))
+        print('wrote', build_twin(lang).relative_to(ROOT))

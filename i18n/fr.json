@@ -4,7 +4,8 @@
   "meta": {
     "title": "David Oloyede · Chercheur en sciences géospatiales et de l’environnement",
     "description": "David Oloyede est chercheur en sciences géospatiales et de l’environnement. Il étudie l’évolution de la surface terrestre à l’aide de l’imagerie satellitaire, des SIG et de l’analyse spatiale, et conçoit les cartes et outils web qui rendent les résultats faciles à explorer.",
-    "og_description": "Observation de la Terre, SIG et analyse spatiale appliqués à l’eau, au climat, aux villes, aux territoires et aux écosystèmes, partagés sous forme d’études interactives ouvertes (non évaluées par des pairs)."
+    "og_description": "Observation de la Terre, SIG et analyse spatiale appliqués à l’eau, au climat, aux villes, aux territoires et aux écosystèmes, partagés sous forme d’études interactives ouvertes (non évaluées par des pairs).",
+    "twin_description": "Chaque ville a une jumelle quelque part. Cherchez parmi 11 403 villes celle d’un autre pays au climat identique et de taille comparable."
   },
   "blocks": {
     "hello-body": "Je suis <<1:David Oloyede>>, chercheur en sciences géospatiales et de l’environnement. J’étudie l’évolution de l’eau, du climat, des villes, des territoires et des écosystèmes à l’aide de <<2:l’imagerie satellitaire>>, des <<3:SIG>> et de <<4:l’analyse spatiale>>, et je conçois les <<5:cartes et outils web>> qui rendent les résultats faciles à explorer.",
@@ -199,7 +200,14 @@
     "Spatial validation": "Validation spatiale",
     "GeoValidate: Would Your Classifier Score as Well Somewhere New?": "GeoValidate : votre classificateur ferait-il aussi bien ailleurs ?",
     "Random against spatial block cross-validation of a Random Forest on your own points, run with scikit-learn in the browser. Your data never leave your computer.": "Validation croisée aléatoire contre validation par blocs spatiaux d’une forêt aléatoire sur vos propres points, avec scikit-learn dans le navigateur. Vos données ne quittent jamais votre ordinateur.",
-    "Mau Forest sample, held out in 10 km blocks": "Échantillon de la forêt de Mau, mis de côté par blocs de 10 km"
+    "Mau Forest sample, held out in 10 km blocks": "Échantillon de la forêt de Mau, mis de côté par blocs de 10 km",
+    "Cities": "Villes",
+    "Climate": "Climat",
+    "Urban Centre Database": "Urban Centre Database",
+    "Shareable card": "Carte à partager",
+    "City Twins: Every City Has a Twin Somewhere": "Villes jumelles : chaque ville a une jumelle quelque part",
+    "Search any of 11,403 cities and find a city in another country with the same climate and a similar size, then save or share the comparison card.": "Cherchez parmi 11 403 villes et trouvez une ville d’un autre pays au climat identique et de taille comparable, puis enregistrez ou partagez la carte de comparaison.",
+    "Lagos and its twin, Ho Chi Minh City": "Lagos et sa jumelle, Hô-Chi-Minh-Ville"
   },
   "attr": {
     "The two cities compared": "Les deux villes comparées",
@@ -231,7 +239,8 @@
     "List": "Liste",
     "FloodScope dashboard showing the flood map at the Niger–Benue confluence at Lokoja, the four key figures above the map and the water-threshold histogram beside it.": "Tableau de bord de FloodScope : carte de la crue à la confluence du Niger et de la Bénoué à Lokoja, les quatre chiffres clés au-dessus de la carte et l’histogramme du seuil d’eau à côté.",
     "AgroSignal dashboard showing a map of NDVI z-scores over farmland in Kano State, the key figures above it, and charts of season NDVI and rainfall by year.": "Tableau de bord d’AgroSignal : carte des scores z du NDVI sur les terres agricoles de l’État de Kano, les chiffres clés au-dessus, et les graphiques du NDVI de saison et des pluies par année.",
-    "GeoValidate dashboard showing points in the Mau Forest coloured by spatial fold, the accuracy of random and spatial validation above the map, and the accuracy of each fold beside it.": "Tableau de bord de GeoValidate : points de la forêt de Mau colorés par pli spatial, la précision des validations aléatoire et spatiale au-dessus de la carte, et la précision de chaque pli à côté."
+    "GeoValidate dashboard showing points in the Mau Forest coloured by spatial fold, the accuracy of random and spatial validation above the map, and the accuracy of each fold beside it.": "Tableau de bord de GeoValidate : points de la forêt de Mau colorés par pli spatial, la précision des validations aléatoire et spatiale au-dessus de la carte, et la précision de chaque pli à côté.",
+    "City twins page showing the search box, the two cities compared in a table, and the card that pairs them with their climate and population.": "Page Villes jumelles : le champ de recherche, les deux villes comparées dans un tableau et la carte qui les associe avec leur climat et leur population."
   },
   "js": {
     "Change since 1975": "Évolution depuis 1975",

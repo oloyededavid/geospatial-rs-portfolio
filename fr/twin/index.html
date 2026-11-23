@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Villes jumelles · David Oloyede</title>
+<meta name="description" content="Chaque ville a une jumelle quelque part. Cherchez parmi 11 403 villes celle d’un autre pays au climat identique et de taille comparable.">
+<meta name="author" content="David Oloyede">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://oloyededavid.github.io/geospatial-rs-portfolio/fr/twin/">
+<link rel="alternate" hreflang="en" href="https://oloyededavid.github.io/geospatial-rs-portfolio/twin/">
+<link rel="alternate" hreflang="fr" href="https://oloyededavid.github.io/geospatial-rs-portfolio/fr/twin/">
+<link rel="alternate" hreflang="de" href="https://oloyededavid.github.io/geospatial-rs-portfolio/de/twin/">
+<link rel="alternate" hreflang="x-default" href="https://oloyededavid.github.io/geospatial-rs-portfolio/twin/">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Villes jumelles · David Oloyede">
+<meta property="og:description" content="Chaque ville a une jumelle quelque part. Cherchez parmi 11 403 villes celle d’un autre pays au climat identique et de taille comparable.">
+<meta property="og:url" content="https://oloyededavid.github.io/geospatial-rs-portfolio/fr/twin/">
+<meta property="og:image" content="https://oloyededavid.github.io/geospatial-rs-portfolio/assets/tools/citytwins-1200.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="900">
+<meta property="og:image:alt" content="City twins: a card comparing two cities with the same climate">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../assets/fonts/Zodiak-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/Satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/Newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../styles.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="twin-page">
+<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="collar-top"><div class="wrap hd">
+  <a class="brand" href="../">David Oloyede</a>
+  <nav class="site-nav" aria-label="Sections"><a href="../#studies">Projets</a><a href="../#tools">Outils</a><a href="../#about">À propos</a><a href="https://github.com/oloyededavid" rel="noopener">GitHub</a></nav>
+  <div class="lang" role="group" aria-label="Langue"><a href="../../../twin/" data-lang="en" hreflang="en" lang="en" title="English" aria-label="English">EN</a><a href="./" data-lang="fr" aria-current="true" hreflang="fr" lang="fr" title="Français" aria-label="Français">FR</a><a href="../../../de/twin/" data-lang="de" hreflang="de" lang="de" title="Deutsch" aria-label="Deutsch">DE</a></div>
+</div></header>
+
+<main id="main">
+  <section class="twin" id="twin" aria-labelledby="twin-title"><div class="wrap">
+    <div class="sh"><h1 id="twin-title">Villes jumelles</h1></div>
+    <div class="tp reveal">
+      <div class="tp-text">
+        <p class="tp-lead">Chaque ville a une jumelle quelque part. Cherchez la vôtre.</p>
+        <form class="tw-find" id="twin-find" role="search" autocomplete="off">
+          <label class="sr-only" for="twin-q">Votre ville</label>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
+          <input id="twin-q" type="text" spellcheck="false" placeholder="Rechercher votre ville" role="combobox" aria-expanded="false" aria-controls="twin-sugg" aria-autocomplete="list">
+          <ul class="tw-sugg" id="twin-sugg" role="listbox" aria-label="Villes" hidden></ul>
+        </form>
+        <div class="tw-actions">
+          <button class="cta" id="twin-save" type="button"><svg class="tw-ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v7.5M4.75 6.75L8 10l3.25-3.25M2.75 11.5v1.75h10.5V11.5"/></svg><span class="tw-l">Enregistrer</span></button>
+          <button class="tw-btn" id="twin-share" type="button"><svg class="tw-ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 10V2.75M5 5.5L8 2.5l3 3M3.5 8.5v4.75h9V8.5"/></svg><span class="tw-l">Partager</span></button>
+        </div>
+        <p class="sr-only" id="twin-rank" aria-live="polite"></p>
+        <table class="tw-facts" id="twin-facts" aria-label="Les deux villes comparées"></table>
+        <details class="tw-how">
+          <summary>Comment ça marche</summary>
+          <p>Les 11 403 villes sont les centres urbains de 50 000 habitants ou plus de la base Urban Centre Database de la Commission européenne. Une jumelle est une ville située à au moins 50 km, dans un autre pays, ayant le même type de climat (Köppen-Geiger), la température moyenne et l’écart saisonnier de température les plus proches, et une population comparable ; si possible à moins de 2 °C de température moyenne, 1 °C d’écart saisonnier et 1,5 fois la population, et la carte n’indique « Same climate » et « similar size » que lorsque c’est le cas. La carte montre ensuite la différence la plus nette entre les deux, seulement lorsqu’elle est assez grande pour être fiable : évolution de la population depuis 1975, hauteur moyenne des bâtiments ou verdure (le NDVI moyen des zones bâties les plus vertes). La température et l’écart saisonnier ont été vérifiés avec des données climatiques indépendantes interpolées à partir de stations météorologiques (WorldClim 2.1) ; les précipitations et la densité ont été écartées car elles n’étaient pas fiables. La population avant 2025 est modélisée. Il s’agit d’une ressemblance statistique, et non de l’affirmation que deux lieux sont identiques. La carte est en anglais.</p>
+          <p>Données : GHS Urban Centre Database R2024A V1.2, Commission européenne, Centre commun de recherche, <a href="https://doi.org/10.2905/1a338be6-7eaf-480c-9664-3a8ade88cbcd" rel="noopener">doi:10.2905/1a338be6</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a> ; 19 centres écartés (14 sans nom, 5 avec des valeurs manquantes). Vues satellite : <a href="https://s2maps.eu" rel="noopener">Sentinel-2 cloudless</a> par EOX IT Services GmbH (contient des données Copernicus Sentinel 2024 modifiées), <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener">CC BY-NC-SA 4.0</a>.</p>
+        </details>
+      </div>
+      <div class="tw-stage loading" id="twin-stage"><canvas id="twin-card" lang="en" width="2160" height="2700" role="img" aria-label="Carte Villes jumelles"></canvas></div>
+    </div>
+  </div></section>
+
+</main>
+
+<footer class="site-footer"><div class="wrap ft">
+  <p class="ft-copy">© 2026 David Oloyede</p>
+  <nav class="ft-nav" aria-label="Pied de page"><a href="../#studies">Projets</a><a href="../#tools">Outils</a><a href="../#about">À propos</a><a href="#top">Haut ↑</a></nav>
+  <p class="f-credits">Imagerie du globe et fonds de carte des études © Esri</p>
+</div></footer>
+<script>window.SITE_ROOT = "../../"; window.I18N = {"Change since 1975": "Évolution depuis 1975", "Climate type": "Type de climat", "Population 1975": "Population 1975", "Population 2025": "Population 2025", "tropical rainforest": "équatorial", "tropical monsoon": "tropical de mousson", "tropical savanna": "tropical de savane", "hot desert": "désertique chaud", "cold desert": "désertique froid", "hot semi-arid": "semi-aride chaud", "cold semi-arid": "semi-aride froid", "hot-summer Mediterranean": "méditerranéen à été chaud", "warm-summer Mediterranean": "méditerranéen à été tempéré", "cold-summer Mediterranean": "méditerranéen à été frais", "humid subtropical, dry winter": "subtropical humide, hiver sec", "subtropical highland": "subtropical d’altitude", "cold subtropical highland": "subtropical d’altitude froid", "humid subtropical": "subtropical humide", "oceanic": "océanique", "subpolar oceanic": "océanique subpolaire", "hot-summer continental, dry summer": "continental à été chaud, été sec", "warm-summer continental, dry summer": "continental à été tempéré, été sec", "subarctic, dry summer": "subarctique, été sec", "very cold subarctic, dry summer": "subarctique très froid, été sec", "hot-summer continental, dry winter": "continental à été chaud, hiver sec", "warm-summer continental, dry winter": "continental à été tempéré, hiver sec", "subarctic, dry winter": "subarctique, hiver sec", "very cold subarctic, dry winter": "subarctique très froid, hiver sec", "hot-summer continental": "continental à été chaud", "warm-summer continental": "continental à été tempéré", "subarctic": "subarctique", "very cold subarctic": "subarctique très froid", "tundra": "toundra", "ice cap": "calotte glaciaire", "Try:": "Essayez :", "Seasonal spread (SD)": "Dispersion saisonnière (écart-type)", "Measure": "Mesure", "Temperature": "Température", "Greenness (NDVI)": "Verdure (NDVI)", "Building height": "Hauteur des bâtiments", "Link copied": "Lien copié", "No city by that name. Try a larger city nearby.": "Aucune ville de ce nom. Essayez une grande ville proche.", "Saved": "Enregistrée", "The city data could not be loaded. Please reload the page.": "Les données n’ont pas pu être chargées. Veuillez recharger la page.", "13.8 billion years ago": "Il y a 13,8 milliards d’années", "4.6 billion years ago": "Il y a 4,6 milliards d’années", "4.5 billion years ago": "Il y a 4,5 milliards d’années", "4.4 billion years ago": "Il y a 4,4 milliards d’années", "3.5 billion years ago": "Il y a 3,5 milliards d’années", "2.4 billion years ago": "Il y a 2,4 milliards d’années", "1 billion years ago": "Il y a 1 milliard d’années", "650 million years ago": "Il y a 650 millions d’années", "540 million years ago": "Il y a 540 millions d’années", "385 million years ago": "Il y a 385 millions d’années", "250 million years ago": "Il y a 250 millions d’années", "66 million years ago": "Il y a 66 millions d’années", "20,000 years ago": "Il y a 20 000 ans", "Today": "Aujourd’hui", "Big Bang": "Big Bang", "Protoplanet": "Protoplanète", "Magma ocean": "Océan de magma", "First oceans": "Premiers océans", "First life": "Premières formes de vie", "Great Oxidation": "Grande Oxydation", "Rodinia": "Rodinia", "Snowball Earth": "Terre boule de neige", "Cambrian explosion": "Explosion cambrienne", "First forests": "Premières forêts", "Pangaea": "Pangée", "Chicxulub": "Chicxulub", "Last Ice Age": "Dernière période glaciaire", "Earth": "Terre", "The universe begins": "Naissance de l’Univers", "Dust and rock collide": "Poussières et roches entrent en collision", "The surface is molten": "La surface est en fusion", "Steam falls as rain": "La vapeur retombe en pluie", "Microbes under a hazy sky": "Des microbes sous un ciel voilé", "Oxygen fills the air": "L’oxygène emplit l’atmosphère", "No plants yet on land": "Pas encore de plantes sur les terres", "Ice reaches the equator": "La glace atteint l’équateur", "Animals fill the seas": "Les animaux peuplent les mers", "Plants spread over land": "Les plantes colonisent les terres", "One supercontinent": "Un supercontinent unique", "An asteroid ends the age of dinosaurs": "Un astéroïde met fin à l’ère des dinosaures", "Ice sheets cover the north": "Les inlandsis recouvrent le nord", "8 billion people": "8 milliards d’habitants", "Time": "Temps", "km² of land": "km² de terres", "people (WorldPop 2020)": "habitants (WorldPop 2020)", "of 20": "sur 20", "Basemap © Esri": "Fond de carte © Esri", "Copied": "Copié", "Heat island": "Îlot de chaleur", "Surface urban heat island (°C)": "Îlot de chaleur urbain de surface (°C)", "Population-weighted, Landsat dry seasons 2020–2024": "Pondéré par la population, saisons sèches Landsat 2020–2024", "Far from green": "Loin de la végétation", "Residents beyond 300 m of vegetation (%)": "Habitants à plus de 300 m de la végétation (%)", "WorldPop 2020; vegetation is NDVI of at least 0.4": "WorldPop 2020 ; végétation : NDVI d’au moins 0,4", "On hot ground": "Sur sol chaud", "Residents on hot cells (%)": "Habitants sur des mailles chaudes (%)", "Hot means at least 4 °C above the countryside": "Chaud : au moins 4 °C au-dessus de la campagne", "Low ground": "Terres basses", "Residents on land below 10 m (%)": "Habitants sur des terres à moins de 10 m (%)", "Elevation above sea level": "Altitude au-dessus du niveau de la mer", "Residents (WorldPop 2020)": "Habitants (WorldPop 2020)", "A modelled estimate": "Estimation modélisée", "Beyond 300 m of green": "À plus de 300 m de la végétation", "of residents": "des habitants", "On hot cells": "Sur mailles chaudes", "Below 10 m": "Sous 10 m"};</script>
+<script src="../../script.js" defer></script>
+<script src="../../twin/twin.js" defer></script>
+</body>
+</html>
