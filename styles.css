@@ -655,7 +655,6 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 .inset .inset-text { display: flex; flex-direction: column; flex: 1; }
 .inset .inset-actions { margin-top: auto; padding-top: var(--s-5); }
 
-/* ================= no rule above Projects, wider cards, one-line tags, clean pill buttons ================= */
 #studies .sec-head { border-top: 0; padding-top: 0; }
 #studies .sec-head::before { display: none; }
 @media (min-width: 1100px) { #studies .inset-list { margin-inline: calc(-1 * var(--s-6)); } }
