@@ -243,10 +243,10 @@
     "Map of the Mau Forest Complex study box in Kenya, with the forest mapped in 2025 shaded green and Kericho, Molo, Njoro, Nakuru, Bomet and Narok marked.": "Karte des Untersuchungsgebiets Mau-Waldkomplex in Kenia; der 2025 kartierte Wald ist grün schattiert, markiert sind Kericho, Molo, Njoro, Nakuru, Bomet und Narok.",
     "Map of Mozambique divided into its 159 districts, with Lichinga, Pemba, Tete, Nampula, Quelimane, Beira and Maputo marked.": "Karte von Mosambik, gegliedert in seine 159 Distrikte; markiert sind Lichinga, Pemba, Tete, Nampula, Quelimane, Beira und Maputo.",
     "Map of Africa with the footprints of the catalogue’s 32 items in seven collections: study areas across Nigeria and Benin, the Lake Chad basin and Mozambique.": "Karte Afrikas mit den Ausdehnungen der 32 Katalogeinträge in sieben Sammlungen: Untersuchungsgebiete in Nigeria und Benin, das Tschadseebecken und Mosambik.",
-    "City twins card for Lagos and Ho Chi Minh City with satellite views of both cities, the line “Same climate, similar size”, and a world map with the arc between them.": "Städtezwillinge-Karte für Lagos und Ho-Chi-Minh-Stadt mit Satellitenbildern beider Städte, der Zeile „Gleiches Klima, ähnliche Größe“ und einer Weltkarte mit dem Bogen zwischen ihnen.",
-    "World map with the band from 56° S to 78° N that FloodScope covers, a pin at Lokoja, Nigeria, and an inset of the October 2022 flood there.": "Weltkarte mit dem von FloodScope abgedeckten Band von 56° S bis 78° N, einer Markierung bei Lokoja, Nigeria, und einem Ausschnitt des Hochwassers vom Oktober 2022.",
-    "World map with five farming regions and their season greenness z-scores, from −3.51 in Saskatchewan in 2021 to +2.97 near Kano in 2026, and an inset map of Kano.": "Weltkarte mit fünf Agrarregionen und ihren z-Werten des Saisongrüns, von −3,51 in Saskatchewan 2021 bis +2,97 bei Kano 2026, und einem Ausschnitt von Kano.",
-    "World map with a pin in the Mau Forest, Kenya, an inset of sample points in coloured 10 km blocks, and the accuracy falling from 93.2% to 88.8%.": "Weltkarte mit einer Markierung im Mau-Wald, Kenia, einem Ausschnitt der Stichprobenpunkte in farbigen 10-km-Blöcken und der Genauigkeit, die von 93,2 % auf 88,8 % fällt.",
+    "Satellite views of Lagos and Ho Chi Minh City side by side, 11,320 km apart, with a panel naming City Twins and the distance between the two cities.": "Satellitenansichten von Lagos und Ho-Chi-Minh-Stadt nebeneinander, 11.320 km voneinander entfernt, mit einem Feld, das City Twins und die Entfernung zwischen beiden Städten nennt.",
+    "FloodScope flood map at Lokoja, Nigeria, on satellite imagery: new flood water in blue and permanent water in dark blue along the Niger and Benue, with a panel giving 22.4 km² of new flood water.": "FloodScope-Überflutungskarte bei Lokoja, Nigeria, auf Satellitenbild: neues Hochwasser in Blau und dauerhafte Wasserflächen in Dunkelblau entlang von Niger und Benue, mit einem Feld, das 22,4 km² neues Hochwasser nennt.",
+    "AgroSignal map of farmland around Bagwai, Kano State, mostly green where the June to October 2026 season was greener than in 2001–2020, with a panel giving a regional z-score of +2.97.": "AgroSignal-Karte des Ackerlands um Bagwai im Bundesstaat Kano, überwiegend grün, wo die Saison Juni bis Oktober 2026 grüner war als 2001–2020, mit einem Feld, das einen regionalen z-Wert von +2,97 nennt.",
+    "GeoValidate map of the Mau Forest sample points in coloured 10 km blocks, one colour per spatial fold, with a panel giving accuracy falling from 93.2% with random folds to 88.8% with spatial blocks.": "GeoValidate-Karte der Stichprobenpunkte im Mau-Wald in farbigen 10-km-Blöcken, eine Farbe je räumlicher Faltung, mit einem Feld, das den Rückgang der Genauigkeit von 93,2 % bei zufälligen Faltungen auf 88,8 % bei räumlichen Blöcken nennt.",
     "Filter projects": "Projekte filtern",
     "Layout": "Ansicht"
   },
@@ -361,6 +361,7 @@
     "of residents": "der Einwohner",
     "On hot cells": "Auf heißen Zellen",
     "Below 10 m": "Unter 10 m",
-    "{n} shown": "{n} angezeigt"
+    "{n} shown": "{n} angezeigt",
+    "No exact match. Closest names:": "Kein genauer Treffer. Ähnlichste Namen:"
   }
 }
