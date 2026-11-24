@@ -1,8 +1,6 @@
 /* Oloyede David: geospatial research portfolio.
    One stylesheet, built on tokens. Introduction, index map, studies. */
 
-/* fonts: self-hosted, Latin subset (Satoshi and Zodiak: Fontshare, ITF Free Font License; Geist Mono: OFL) */
-/* en dash only, from DejaVu Sans (Bitstream Vera licence): Satoshi's en dash is nearly as wide as an em dash */
 @font-face { font-family: 'Range Dash'; src: url(assets/fonts/range-dash.woff) format('woff'); unicode-range: U+2013; font-weight: 100 599; font-display: swap; }
 @font-face { font-family: 'Range Dash'; src: url(assets/fonts/range-dash-bold.woff) format('woff'); unicode-range: U+2013; font-weight: 600 900; font-display: swap; }
 @font-face { font-family: 'Satoshi'; src: url(assets/fonts/Satoshi-400.woff2) format('woff2'); font-weight: 400; font-display: swap; }
@@ -657,7 +655,6 @@ figure.lx { margin: var(--s-2) 0 0; width: 100%; }
 .inset .inset-text { display: flex; flex-direction: column; flex: 1; }
 .inset .inset-actions { margin-top: auto; padding-top: var(--s-5); }
 
-/* ================= no rule above Projects, wider cards, one-line tags, clean pill buttons ================= */
 #studies .sec-head { border-top: 0; padding-top: 0; }
 #studies .sec-head::before { display: none; }
 @media (min-width: 1100px) { #studies .inset-list { margin-inline: calc(-1 * var(--s-6)); } }
