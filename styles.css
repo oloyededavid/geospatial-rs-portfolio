@@ -968,6 +968,57 @@ html:not(.js) .lx { grid-template-columns: 1fr; }
   .is-row .inset { grid-template-columns: minmax(0, 1fr); gap: 16px; }
 }
 
+/* ================= City twins: an interactive card on the home page ================= */
+.twin { padding-block: 0 var(--s-9); }
+.tp { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 600px); align-items: stretch; gap: clamp(32px, 5vw, 80px); position: relative; }
+.tp-text { position: relative; z-index: 2; max-width: 32rem; display: flex; flex-direction: column; }
+.tp-text .tw-how { margin-top: auto; padding-top: var(--s-5); }
+.tw-stage { align-self: start; }
+.tp-lead { font-size: var(--fs-lead); line-height: 1.5; color: var(--ink-2); margin-bottom: var(--s-5); }
+.js .tp.reveal .tp-text > * { opacity: 0; transform: translateY(10px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.js .tp.reveal.in .tp-text > * { opacity: 1; transform: none; }
+.js .tp.reveal.in .tp-text > :nth-child(2) { transition-delay: .06s; } .js .tp.reveal.in .tp-text > :nth-child(3) { transition-delay: .12s; }
+.js .tp.reveal.in .tp-text > :nth-child(4) { transition-delay: .18s; } .js .tp.reveal.in .tp-text > :nth-child(n+5) { transition-delay: .24s; }
+
+/* search */
+.tw-find { position: relative; display: flex; align-items: center; gap: 10px; height: 52px; padding: 0 18px; border: 1px solid var(--line); border-radius: 6px; background: #fff; transition: border-color .2s, box-shadow .3s var(--ease); }
+.tw-find:focus-within { border-color: var(--ink); box-shadow: 0 10px 30px -14px rgba(20, 20, 18, .25); }
+.tw-find > svg { width: 17px; height: 17px; flex: none; fill: none; stroke: var(--ink-3); stroke-width: 1.5; stroke-linecap: round; transition: stroke .2s, transform .3s var(--ease); }
+.tw-find:focus-within > svg { stroke: var(--ink); transform: scale(1.08); }
+.tw-find input { flex: 1; min-width: 0; height: 100%; border: 0; background: none; font: 500 1rem/1 var(--text); color: var(--ink); }
+.tw-find input::placeholder { color: var(--ink-3); font-weight: 400; }
+.tw-find input:focus { outline: none; }
+.tw-sugg { position: absolute; z-index: 5; left: 0; right: 0; top: calc(100% + 8px); margin: 0; padding: 6px; list-style: none; background: #fff; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 18px 40px rgba(20, 20, 18, .08); animation: twDrop .22s var(--ease); }
+.tw-sugg li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 12px; border-radius: 5px; cursor: pointer; font-weight: 500; }
+.tw-sugg li span { font-family: var(--mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); align-self: center; }
+.tw-sugg li[aria-selected="true"], .tw-sugg li[data-n]:hover { background: var(--paper-2); }
+.tw-sugg li.none { cursor: default; font-weight: 400; color: var(--ink-3); }
+@keyframes twDrop { from { opacity: 0; transform: translateY(-4px); } }
+
+/* buttons, matching the site */
+.tw-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: var(--s-4); }
+.tw-actions .cta { cursor: pointer; }
+.tw-actions .cta .arrow { transition: transform .3s var(--ease); }
+.tw-actions .cta:hover { background: #2c2d31; }
+.tw-actions .cta:hover .arrow { transform: translateY(2px); }
+.tw-actions .cta.done .arrow { transform: none; }
+.tw-btn { display: inline-flex; align-items: center; height: 40px; padding: 0 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-family: var(--mono); font-size: .8125rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: border-color .2s, transform .15s; }
+.tw-btn:hover { border-color: var(--ink); }
+.tw-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.tw-btn:active, .tw-actions .cta:active { transform: translateY(1px); }
+
+.tw-how { margin-top: var(--s-6); }
+.tw-how summary { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; list-style: none; font-family: var(--mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.tw-how summary::-webkit-details-marker { display: none; }
+.tw-how summary::after { content: '+'; font-size: 1rem; line-height: 1; transition: transform .3s var(--ease); }
+.tw-how[open] summary::after { transform: rotate(45deg); }
+.tw-how summary:hover { color: var(--ink); }
+.tw-how p { margin-top: var(--s-3); font-size: var(--fs-small); line-height: 1.65; color: var(--ink-2); animation: twDrop .3s var(--ease); }
+.tw-err { margin-top: var(--s-4); font-size: var(--fs-small); color: #a3302a; }
+
+/* the comparison table */
+.tw-facts { width: 100%; table-layout: fixed; margin-top: var(--s-6); border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.tw-facts th, .tw-facts td { padding: 13px 0; border-bottom: 1px solid #efeeea; text-align: left; font-weight: 400; vertical-align: baseline; }
 .tw-facts thead th { padding-top: 0; border-bottom-color: #e4e3dd; font-family: var(--mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;  }
 .tw-facts tbody th { font-size: var(--fs-small); color: var(--ink-2); width: 40%; padding-right: 12px; }
 .tw-facts td { font-family: var(--mono); font-size: .875rem; color: var(--ink); width: 29%; padding-right: 8px; }
