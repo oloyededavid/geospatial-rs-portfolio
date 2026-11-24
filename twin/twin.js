@@ -310,12 +310,34 @@
   const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
     .replace(/[\u2010-\u2015\u2212_-]+/g, ' ').replace(/\s+/g, ' ').trim(); // hyphens and dashes match spaces: Ilara-Mokin = Ilara Mokin
   const shut = () => { list.hidden = true; q.setAttribute('aria-expanded', 'false'); q.removeAttribute('aria-activedescendant'); };
+  // names and countries are normalised once, not on every key press (11,403 cities)
+  let NAMES = null, COUNTRIES = null;
+  const lev = (a, b, max) => {   // edit distance, stopped once it passes max
+    if (Math.abs(a.length - b.length) > max) return max + 1;
+    let p = Array.from({ length: b.length + 1 }, (_, j) => j);
+    for (let i = 1; i <= a.length; i++) {
+      const r = [i]; let lo = i;
+      for (let j = 1; j <= b.length; j++) { r[j] = Math.min(p[j] + 1, r[j - 1] + 1, p[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); lo = Math.min(lo, r[j]); }
+      if (lo > max) return max + 1; p = r;
+    }
+    return p[b.length];
+  };
   q.addEventListener('input', () => {
     if (!R) return;
-    const t = norm(q.value.trim()); sel = -1;
-    const rank = n => n === t ? 0 : n.startsWith(t) ? 1 : n.includes(' ' + t) ? 2 : 9;
-    hits = t.length < 2 ? [] : R.map((r, i) => [r, i, rank(norm(r[0]))]).filter(h => h[2] < 9).sort((p, q) => p[2] - q[2] || p[1] - q[1]).slice(0, 7);
-    list.innerHTML = hits.map(([r], n) => `<li role="option" id="o${n}" aria-selected="false" data-n="${n}">${esc(r[0])}<span>${esc(r[1])}${dup.has(r[0] + '|' + r[1]) ? ' · ' + popShort(r[4]) : ''}</span></li>`).join('')
+    if (!NAMES) { NAMES = R.map(r => norm(r[0])); COUNTRIES = R.map(r => norm(r[1])); }
+    const t = norm(q.value.trim()); sel = -1; let near = false;
+    // name matches first; then a country name, which lists that country's largest cities (rows are not sorted, so by population)
+    const rank = i => { const n = NAMES[i]; return n === t ? 0 : n.startsWith(t) ? 1 : n.includes(' ' + t) ? 2 : COUNTRIES[i] === t || (t.length >= 4 && COUNTRIES[i].startsWith(t)) ? 3 : 9; };
+    hits = t.length < 2 ? [] : R.map((r, i) => [r, i, rank(i)]).filter(h => h[2] < 9)
+      .sort((p, q) => p[2] - q[2] || (p[2] === 3 ? q[0][4] - p[0][4] : p[1] - q[1])).slice(0, 7);
+    if (!hits.length && t.length >= 3) {   // no name starts with what was typed: offer the closest spellings, largest city first on ties
+      const max = t.length <= 4 ? 1 : t.length <= 8 ? 2 : 3;
+      hits = R.map((r, i) => [r, i, lev(t, NAMES[i].slice(0, Math.max(t.length, Math.min(NAMES[i].length, t.length + 2))), max)])
+        .filter(h => h[2] <= max).sort((p, q) => p[2] - q[2] || q[0][4] - p[0][4]).slice(0, 5);
+      near = hits.length > 0;
+    }
+    list.innerHTML = (near ? '<li class="none" role="presentation">' + T_('No exact match. Closest names:') + '</li>' : '')
+      + hits.map(([r], n) => `<li role="option" id="o${n}" aria-selected="false" data-n="${n}">${esc(r[0])}<span>${esc(r[1])}${dup.has(r[0] + '|' + r[1]) ? ' · ' + popShort(r[4]) : ''}</span></li>`).join('')
       || (t.length >= 2 ? '<li class="none" role="option" aria-disabled="true">' + T_('No city by that name. Try a larger city nearby.') + '</li>' : '');
     list.hidden = t.length < 2; q.setAttribute('aria-expanded', String(!list.hidden));
   });
@@ -325,7 +347,7 @@
     if (e.key === 'Escape') { hits = []; return shut(); }
     if (!hits.length) return;
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); sel = (sel + (e.key === 'ArrowDown' ? 1 : -1) + hits.length) % hits.length;
-      [...list.children].forEach((li, n) => li.setAttribute('aria-selected', String(n === sel))); q.setAttribute('aria-activedescendant', 'o' + sel); }
+      [...list.querySelectorAll('li[data-n]')].forEach(li => li.setAttribute('aria-selected', String(+li.dataset.n === sel))); q.setAttribute('aria-activedescendant', 'o' + sel); }
     else if (e.key === 'Enter') { e.preventDefault(); choose(sel < 0 ? 0 : sel); }
   });
   q.addEventListener('blur', () => setTimeout(shut, 120));
