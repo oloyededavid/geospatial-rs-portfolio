@@ -216,7 +216,8 @@
     "Urban and land": "Stadt und Land",
     "Open data and health": "Offene Daten und Gesundheit",
     "Row": "Zeilen",
-    "Grid": "Raster"
+    "Grid": "Raster",
+    "Limits: a twin is a statistical match on climate and size, not a judgement that two cities are alike in other ways. Temperatures are averages for the 2010s over each urban centre, population before 2025 is modelled, and building height (2020) and greenness (2025) are satellite estimates. Rainfall is not used, because the database’s values did not agree with station records.": "Grenzen: Ein Zwilling ist eine statistische Übereinstimmung von Klima und Größe, kein Urteil darüber, dass sich zwei Städte auch sonst ähneln. Temperaturen sind Mittelwerte der 2010er-Jahre über jedes städtische Zentrum, die Bevölkerung vor 2025 ist modelliert, und Gebäudehöhe (2020) und Grünheit (2025) sind Satellitenschätzungen. Niederschlag wird nicht verwendet, weil die Werte der Datenbank nicht mit Stationsmessungen übereinstimmten."
   },
   "attr": {
     "The two cities compared": "Die beiden Städte im Vergleich",

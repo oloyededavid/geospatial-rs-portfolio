@@ -216,7 +216,8 @@
     "Urban and land": "Villes et terres",
     "Open data and health": "Données ouvertes et santé",
     "Row": "Lignes",
-    "Grid": "Grille"
+    "Grid": "Grille",
+    "Limits: a twin is a statistical match on climate and size, not a judgement that two cities are alike in other ways. Temperatures are averages for the 2010s over each urban centre, population before 2025 is modelled, and building height (2020) and greenness (2025) are satellite estimates. Rainfall is not used, because the database’s values did not agree with station records.": "Limites : un jumeau est une correspondance statistique de climat et de taille, pas un jugement selon lequel deux villes se ressemblent par ailleurs. Les températures sont des moyennes des années 2010 sur chaque centre urbain, la population avant 2025 est modélisée, et la hauteur des bâtiments (2020) et la verdure (2025) sont des estimations satellitaires. Les précipitations ne sont pas utilisées, car les valeurs de la base ne concordaient pas avec les relevés des stations."
   },
   "attr": {
     "The two cities compared": "Les deux villes comparées",
