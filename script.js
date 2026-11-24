@@ -97,13 +97,35 @@
         catch (e) { location.href = 'mailto:' + b.dataset.copy; return; }
         b._t = setTimeout(() => { label.textContent = was; }, 1800);
     }));
-    // projects: grid or list view, remembered on this device
+    // projects and tools: filter pills with live counts, and a grid or row view remembered on this device
     const list = document.querySelector('#studies .inset-list');
     if (list) {
-        const vs = [...document.querySelectorAll('.pf-v')];
-        const view = v => { list.classList.toggle('is-list', v === 'list'); vs.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === v))); try { localStorage.setItem('pf-view', v); } catch (e) {} };
-        vs.forEach(b => b.addEventListener('click', () => view(b.dataset.view)));
-        try { if (localStorage.getItem('pf-view') === 'list') view('list'); } catch (e) {}
+        const T = k => (window.I18N && window.I18N[k]) || k;
+        const cards = [...list.querySelectorAll('.inset')];
+        const pills = [...document.querySelectorAll('.pf-f')];
+        const views = [...document.querySelectorAll('.pf-v')];
+        const status = document.getElementById('pf-status');
+        const match = (card, f) => f === 'all' || card.dataset.cat === f;
+        pills.forEach(p => { const n = p.querySelector('.pf-n'); if (n) n.textContent = cards.filter(c => match(c, p.dataset.filter)).length; });
+        const filter = f => {
+            let shown = 0;
+            cards.forEach(c => { const on = match(c, f); c.classList.toggle('pf-hide', !on); if (on) { shown++; c.classList.add('in'); } });
+            pills.forEach(p => p.setAttribute('aria-pressed', String(p.dataset.filter === f)));
+            if (status) status.textContent = T('{n} shown').replace('{n}', shown);
+        };
+        const view = v => {
+            list.classList.toggle('is-row', v === 'row');
+            views.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === v)));
+            try { localStorage.setItem('pf-view', v); } catch (e) {}
+        };
+        pills.forEach(p => p.addEventListener('click', () => filter(p.dataset.filter)));
+        views.forEach(b => b.addEventListener('click', () => view(b.dataset.view)));
+        try { if (localStorage.getItem('pf-view') === 'row') view('row'); } catch (e) {}
+        // the "Tools" menu link opens the catalogue filtered to the tools
+        const toTools = () => filter('tool');
+        document.querySelectorAll('a[data-filter-link]').forEach(a => a.addEventListener('click', () => filter(a.dataset.filterLink)));
+        if (location.hash === '#tools') toTools();
+        addEventListener('hashchange', () => { if (location.hash === '#tools') toTools(); });
     }
     // about: stagger in when it scrolls into view
     const about = document.querySelector('.about');
