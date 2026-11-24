@@ -188,7 +188,8 @@ def build_twin(lang):
     s = re.sub(r'<meta property="og:locale" content="[^"]*">\n<meta property="og:locale:alternate" content="[^"]*">\n<meta property="og:locale:alternate" content="[^"]*">',
                f'<meta property="og:locale" content="{d["locale"]}">\n<meta property="og:locale:alternate" content="{others[0]}">\n<meta property="og:locale:alternate" content="{others[1]}">', s, count=1)
     s = re.sub(r'<script data-i18n-redirect>.*?</script>\n?', '', s, flags=re.S)
-    target = {'en': '../../twin/', 'fr': '../../fr/twin/', 'de': '../../de/twin/'}
+    # one level short on purpose: the step below moves every relative link one level up
+    target = {'en': '../twin/', 'fr': '../fr/twin/', 'de': '../de/twin/'}
     target[lang] = './'
     def sw(m):
         code = m.group(2)
