@@ -1046,7 +1046,7 @@ html:not(.js) .lx { grid-template-columns: 1fr; }
   .tp-text { display: contents; }
   .tp-text .tw-how { padding-top: 0; }
   .tp-lead, .tw-find { position: relative; z-index: 2; }
-  .tw-stage { order: 1; max-width: 520px; justify-self: center; } .tw-actions { order: 2; margin-top: 0; position: relative; z-index: 2; } .tw-facts { order: 3; margin-top: var(--s-2); } .tw-how { order: 4; margin-top: 0; position: relative; z-index: 2; }
+  .tw-stage { order: 1; max-width: 520px; justify-self: center; } .tw-actions { order: 2; margin-top: 0; position: relative; z-index: 2; } .tw-facts { order: 3; margin-top: var(--s-2); } .tw-match { order: 3; } .tw-how { order: 4; margin-top: 0; position: relative; z-index: 2; }
   .tp-lead { margin-bottom: calc(-1 * var(--s-2)); }
   #twin .tp-lead { margin-bottom: 0; }
 }
