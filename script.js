@@ -130,14 +130,12 @@
     // certificates: hover, focus, click or the arrows choose the certificate on top; the arrows follow the hovered row
     const ct = document.querySelector('.ct');
     if (ct) {
-        const top = ct.querySelector('.ct-top'), rows = [...ct.querySelectorAll('.ct-row')], now = ct.querySelector('[data-ct-now]');
-        ct.querySelectorAll('[data-ct-total]').forEach(e => { e.textContent = rows.length; });
+        const top = ct.querySelector('.ct-top'), rows = [...ct.querySelectorAll('.ct-row')];
         const base = (window.SITE_ROOT || '') + 'assets/certificates/';
         let cur = 0;
         const show = (i, animate = true) => {
             cur = (i + rows.length) % rows.length; const r = rows[cur];
             rows.forEach((x, k) => x.setAttribute('aria-pressed', String(k === cur)));
-            now.textContent = cur + 1;
             const src = base + r.dataset.slug + '.webp';
             if (top.getAttribute('src') === src) return;
             top.src = src;
