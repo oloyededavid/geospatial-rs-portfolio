@@ -232,16 +232,13 @@
     "Certificates": "Zertifikate",
     "IHE Delft": "IHE Delft",
     "With International Partnerships Austria and Flanders": "Mit International Partnerships Austria und Flandern",
-    "With the US Army Corps of Engineers and ICIWaRM; signed by the HEC-HMS lead developer": "Mit dem US Army Corps of Engineers und ICIWaRM; unterzeichnet vom leitenden Entwickler von HEC-HMS",
-    "With verification ID": "Mit Verifizierungs-ID",
     "ITC, University of Twente, and Geoversity": "ITC, Universität Twente, und Geoversity",
     "8 hours": "8 Stunden",
     "IHE Delft and Wageningen University &amp; Research": "IHE Delft und Wageningen University &amp; Research",
     "With FAO · 40 hours": "Mit der FAO · 40 Stunden",
     "FAO and IHE Delft": "FAO und IHE Delft",
-    "Funded by the Netherlands Ministry of Foreign Affairs": "Gefördert vom niederländischen Außenministerium",
-    "OpenCourseWare": "OpenCourseWare",
-    "Issued by UNESCO, FAO, IHE Delft, the University of Twente and EO College": "Ausgestellt von UNESCO, FAO, IHE Delft, der Universität Twente und EO College"
+    "Issued by UNESCO, FAO, IHE Delft, the University of Twente and EO College": "Ausgestellt von UNESCO, FAO, IHE Delft, der Universität Twente und EO College",
+    "With the US Army Corps of Engineers": "Mit dem US Army Corps of Engineers"
   },
   "attr": {
     "The two cities compared": "Die beiden Städte im Vergleich",
