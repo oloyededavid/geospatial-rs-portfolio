@@ -232,12 +232,14 @@
     "Certificates": "Zertifikate",
     "IHE Delft": "IHE Delft",
     "With International Partnerships Austria and Flanders": "Mit International Partnerships Austria und Flandern",
-    "ITC, University of Twente, and Geoversity": "ITC, Universität Twente, und Geoversity",
     "8 hours": "8 Stunden",
     "IHE Delft and Wageningen University &amp; Research": "IHE Delft und Wageningen University &amp; Research",
     "With FAO · 40 hours": "Mit der FAO · 40 Stunden",
     "FAO and IHE Delft": "FAO und IHE Delft",
-    "With the US Army Corps of Engineers": "Mit dem US Army Corps of Engineers"
+    "With the US Army Corps of Engineers and ICIWaRM": "Mit dem US Army Corps of Engineers und ICIWaRM",
+    "With TUM and DLR": "Mit der TUM und dem DLR",
+    "With ESA and Eurac Research · 30 hours": "Mit der ESA und Eurac Research · 30 Stunden",
+    "ITC (University of Twente) and Geoversity": "ITC (Universität Twente) und Geoversity"
   },
   "attr": {
     "The two cities compared": "Die beiden Städte im Vergleich",
@@ -272,7 +274,6 @@
     "Layout": "Ansicht",
     "Previous certificate": "Vorheriges Zertifikat",
     "Next certificate": "Nächstes Zertifikat",
-    "Certificates": "Zertifikate",
     "Certificate: Flood Hazard and Exposure Mapping, UNESCO": "Zertifikat: Flood Hazard and Exposure Mapping, UNESCO",
     "Browse certificates": "Zertifikate durchblättern"
   },

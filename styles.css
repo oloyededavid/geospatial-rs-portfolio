@@ -1143,4 +1143,4 @@ html:not(.js) .ct-nav { display: none; }
   .js .ct.reveal:not(.in) .ct-b1 { transform: rotate(-3deg) translate(-10px, 8px); } .js .ct.reveal:not(.in) .ct-b2 { transform: rotate(2deg) translate(10px, 6px); }
   .ct-stack:hover .ct-b1, .ct-stack:hover .ct-b2, .ct-step:hover svg { transform: none; }
 }
-@media print { .js .ct.reveal .ct-list li, .js .ct.reveal .ct-top, .js .ct.reveal .ct-b { opacity: 1 !important; transform: none !important; } .ct-nav { display: none; } }
+@media print { .js .ct.reveal .ct-list li, .js .ct.reveal .ct-top, .js .ct.reveal .ct-b { opacity: 1 !important; transform: none !important; } .ct-nav { display: none; } .ct-stack { break-inside: avoid; } }

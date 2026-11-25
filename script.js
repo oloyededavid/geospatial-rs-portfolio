@@ -142,9 +142,9 @@
             top.alt = `${(window.I18N && window.I18N['Certificate:']) || 'Certificate:'} ${r.querySelector('.ct-c').textContent}, ${r.querySelector('.ct-i').textContent}`;
             if (animate && !reduced) top.animate([{ transform: 'translateY(6px)', opacity: .25 }, { transform: 'none', opacity: 1 }], { duration: 360, easing: 'cubic-bezier(.2,.7,.2,1)' });
         };
-        rows.forEach((r, i) => { r.addEventListener('mouseenter', () => show(i)); r.addEventListener('focus', () => show(i)); r.addEventListener('click', () => show(i)); });
+        rows.forEach((r, i) => { r.addEventListener('mouseenter', () => show(i)); r.addEventListener('focus', () => show(i)); r.addEventListener('click', () => { show(i); if (matchMedia('(max-width: 860px)').matches) ct.querySelector('.ct-side').scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' }); }); });
         ct.querySelectorAll('.ct-step').forEach(b => b.addEventListener('click', () => show(cur + +b.dataset.step)));
-        ct.addEventListener('keydown', e => { if (e.target.closest('.ct-row, .ct-step') && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) { e.preventDefault(); show(cur + (e.key === 'ArrowRight' ? 1 : -1)); } });
+        ct.addEventListener('keydown', e => { if (e.target.closest('.ct-row, .ct-step') && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) { e.preventDefault(); show(cur + (e.key === 'ArrowRight' ? 1 : -1)); if (e.target.closest('.ct-row')) rows[cur].focus({ preventScroll: true }); } });
         top.addEventListener('contextmenu', e => e.preventDefault());   // a view, not a download: no save-image menu on the certificate
         rows.forEach(r => { const im = new Image(); im.src = base + r.dataset.slug + '.webp'; });   // warm the cache so the swap is instant
     }
