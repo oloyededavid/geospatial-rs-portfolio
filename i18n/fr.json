@@ -217,7 +217,34 @@
     "Open data and health": "Données ouvertes et santé",
     "Row": "Lignes",
     "Grid": "Grille",
-    "Limits: a twin is a statistical match on climate and size, not a judgement that two cities are alike in other ways. Temperatures are averages for the 2010s over each urban centre, population before 2025 is modelled, and building height (2020) and greenness (2025) are satellite estimates. Rainfall is not used, because the database’s values did not agree with station records.": "Limites : un jumeau est une correspondance statistique de climat et de taille, pas un jugement selon lequel deux villes se ressemblent par ailleurs. Les températures sont des moyennes des années 2010 sur chaque centre urbain, la population avant 2025 est modélisée, et la hauteur des bâtiments (2020) et la verdure (2025) sont des estimations satellitaires. Les précipitations ne sont pas utilisées, car les valeurs de la base ne concordaient pas avec les relevés des stations."
+    "Limits: a twin is a statistical match on climate and size, not a judgement that two cities are alike in other ways. Temperatures are averages for the 2010s over each urban centre, population before 2025 is modelled, and building height (2020) and greenness (2025) are satellite estimates. Rainfall is not used, because the database’s values did not agree with station records.": "Limites : un jumeau est une correspondance statistique de climat et de taille, pas un jugement selon lequel deux villes se ressemblent par ailleurs. Les températures sont des moyennes des années 2010 sur chaque centre urbain, la population avant 2025 est modélisée, et la hauteur des bâtiments (2020) et la verdure (2025) sont des estimations satellitaires. Les précipitations ne sont pas utilisées, car les valeurs de la base ne concordaient pas avec les relevés des stations.",
+    "Flood Hazard and Exposure Mapping": "Flood Hazard and Exposure Mapping",
+    "UNESCO": "UNESCO",
+    "Hydrologic Modeling with HEC-HMS": "Hydrologic Modeling with HEC-HMS",
+    "Introduction to Machine Learning for Earth Observation": "Introduction to Machine Learning for Earth Observation",
+    "EO College": "EO College",
+    "Cubes &amp; Clouds": "Cubes &amp; Clouds",
+    "Land in Focus: Wet Ecosystems": "Land in Focus: Wet Ecosystems",
+    "Exploration of Copernicus and Sentinel Data": "Exploration of Copernicus and Sentinel Data",
+    "Water Productivity in Practice": "Water Productivity in Practice",
+    "Python for Geospatial Analyses Using WaPOR Data": "Python for Geospatial Analyses Using WaPOR Data",
+    "Delta Planning and Management": "Delta Planning and Management",
+    "C1": "C1",
+    "C2": "C2",
+    "C3": "C3",
+    "C4": "C4",
+    "C5": "C5",
+    "C6": "C6",
+    "C7": "C7",
+    "C8": "C8",
+    "C9": "C9",
+    "9": "9",
+    "Certificates": "Certificats",
+    "open courses in water, Earth observation and GIS": "cours ouverts sur l’eau, l’observation de la Terre et les SIG",
+    "ITC, University of Twente": "ITC, Université de Twente",
+    "IHE Delft": "IHE Delft",
+    "IHE Delft and FAO": "IHE Delft et FAO",
+    "/": "/"
   },
   "attr": {
     "The two cities compared": "Les deux villes comparées",
@@ -249,7 +276,11 @@
     "AgroSignal map of farmland around Bagwai, Kano State, mostly green where the June to October 2026 season was greener than in 2001–2020, with a panel giving a regional z-score of +2.97.": "Carte AgroSignal des terres agricoles autour de Bagwai, dans l’État de Kano, surtout en vert là où la saison de juin à octobre 2026 était plus verte qu’en 2001–2020, avec un encadré indiquant un score z régional de +2,97.",
     "GeoValidate map of the Mau Forest sample points in coloured 10 km blocks, one colour per spatial fold, with a panel giving accuracy falling from 93.2% with random folds to 88.8% with spatial blocks.": "Carte GeoValidate des points d’échantillon de la forêt de Mau dans des blocs colorés de 10 km, une couleur par pli spatial, avec un encadré indiquant une précision passant de 93,2 % avec des plis aléatoires à 88,8 % avec des blocs spatiaux.",
     "Filter projects": "Filtrer les projets",
-    "Layout": "Affichage"
+    "Layout": "Affichage",
+    "Previous certificate": "Certificat précédent",
+    "Next certificate": "Certificat suivant",
+    "Certificates": "Certificats",
+    "Certificate: Flood Hazard and Exposure Mapping, UNESCO": "Certificat : Flood Hazard and Exposure Mapping, UNESCO"
   },
   "js": {
     "Change since 1975": "Évolution depuis 1975",
@@ -363,6 +394,7 @@
     "On hot cells": "Sur mailles chaudes",
     "Below 10 m": "Sous 10 m",
     "{n} shown": "{n} affichés",
-    "No exact match. Closest names:": "Aucune correspondance exacte. Noms les plus proches :"
+    "No exact match. Closest names:": "Aucune correspondance exacte. Noms les plus proches :",
+    "Certificate:": "Certificat :"
   }
 }
