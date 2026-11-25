@@ -161,7 +161,6 @@ input[type=range] { width: 100%; accent-color: var(--accent); }
 /* map credits: one line beside the controls when open, wrapping only on narrow maps; never over the legend (bottom left) */
 .maplibregl-ctrl-bottom-right .maplibregl-ctrl-attrib.maplibregl-compact-show { max-width: min(440px, calc(100vw - 280px)); }
 .maplibregl-ctrl-attrib-inner { line-height: 1.35; }
-@media (max-width: 860px) { .maplibregl-ctrl-bottom-right .maplibregl-ctrl-attrib.maplibregl-compact-show { max-width: calc(100vw - 48px); } }
 
 /* evidence panel */
 .panel { display: grid; grid-template-rows: auto minmax(0, 1fr); min-height: 0; }
@@ -222,6 +221,14 @@ table.t td.n, table.t th.n { text-align: right; }
   .tabpane { max-height: none; }
   .card { left: 8px; right: 8px; top: auto; bottom: 8px; width: auto; max-height: 46%; overflow-y: auto; }
   .legend { max-width: calc(100% - 64px); max-height: 46%; }
+  /* map overlays on phones: layer chips in one scrollable row; scale just above the collapsed legend;
+     credits start closed and, when opened, wrap beside the legend chip instead of over it */
+  .mapbar .seg { flex-wrap: nowrap; overflow-x: auto; max-width: 100%; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .mapbar .seg::-webkit-scrollbar { display: none; }
+  .mapbar .seg button, .mapbar .seg label { flex: none; white-space: nowrap; }
+  .mapwrap .maplibregl-ctrl-bottom-left { bottom: 56px; }
+  .mapwrap .maplibregl-ctrl-bottom-left .maplibregl-ctrl-scale { margin: 0 0 0 12px; }
+  .maplibregl-ctrl-bottom-right .maplibregl-ctrl-attrib.maplibregl-compact-show { max-width: calc(100% - 150px); }
   .reading { padding: 14px 16px; }
   .mapwrap { min-height: 320px; }
 }

@@ -15,7 +15,7 @@ Each cell shows the first score, then the reassessed score.
 | Dimension | FloodScope | AgroSignal | GeoValidate | City Twins |
 |---|---|---|---|---|
 | 1 First-use comprehension | 8 → 8 | 8 → 8 | 8 → 8 | 8 → 8 |
-| 2 Visual quality | 7 → 7 | 7 → 7 | 8 → 8 | 7 → 7 |
+| 2 Visual quality | 7 → 8 | 7 → 8 | 8 → 8 | 7 → 7 |
 | 3 Interaction quality | 8 → 8 | 7 → 8 | 8 → 8 | 7 → 8 |
 | 4 Scientific integrity | 8 → 8 | 7 → 8 | 6 → 7 | 6 → 7 |
 | 5 Accessibility | 8 → 8 | 8 → 8 | 8 → 8 | 8 → 8 |
@@ -96,11 +96,11 @@ No dimension reaches 9. The reasons are listed under "What keeps each tool below
 | 16 FloodScope, legend row without a checkbox (Low) | The row now reads "(shown with the row above)". |
 | Consistency: CSV rounding | FloodScope summary CSV numbers are now written to six decimal places at most, as GeoValidate's already were. |
 | AgroSignal, correlation | The rainfall correlation is described as a weak, moderate or strong association. |
+| 15 All map tools, overlays collide on phones (Low) | At 860 px and below, the layer chips stay in one row that scrolls sideways. The scale bar sits bottom-left above the Legend chip. The map credits start closed behind the i button and, when opened, wrap beside the Legend chip. The change is in the shared stylesheet plus three lines per tool. |
 | GeoValidate, heading | The result heading states the finding ("Spatial blocks score 4.4 points lower than random folds"), with the file name below it. |
 
 ## Not corrected
 
-- **15. Map overlays on phones collide** (scale bar, attribution and layer chips). This is a shared layout change across three tools and was not made in this round.
 - **17. City Twins chrome and type differ** from the three analytical tools (buttons, About pattern, the "City twins" and "City Twins" capitalisation).
 - **18.**
   - FloodScope's UNOSAT comparison sentence still uses fixed numbers. It is shown only for the stored example, for which they are correct.
@@ -128,15 +128,15 @@ No dimension reaches 9. The reasons are listed under "What keeps each tool below
 | City Twins at 390 px | caveat, headline and sentence shown as page text above the card |
 | axe | 0 violations: City Twins (EN 390 and 1440 px, FR 390 px), AgroSignal (1440 px), FloodScope (1440 px), GeoValidate (390 px) |
 | Horizontal overflow | 0 px on every page above |
+| Phone map overlays, 390 px, after each example run | no overlap between the legend, scale bar, credits, zoom buttons and layer bar in FloodScope, AgroSignal or GeoValidate (they overlapped before: legend and credits); AgroSignal layer bar 36 px tall, was 65 px |
+| axe at 390 px after the overlay change | 0 violations in all three tools |
 
 ## What keeps each tool below 9
 
 - **FloodScope:**
-  - map overlays on phones;
   - the fixed UNOSAT sentence;
   - no validated example outside Nigeria.
 - **AgroSignal:**
-  - map overlays and layer chips on phones;
   - the temperature variation has no confirmed explanation;
   - archive gaps are found only by checking at the time.
 - **GeoValidate:**
