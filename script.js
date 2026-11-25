@@ -127,26 +127,35 @@
         if (location.hash === '#tools') toTools();
         addEventListener('hashchange', () => { if (location.hash === '#tools') toTools(); });
     }
-    // certificates: hover, focus, click or the arrows choose the certificate on top; the arrows follow the hovered row
-    const ct = document.querySelector('.ct');
-    if (ct) {
-        const top = ct.querySelector('.ct-top'), rows = [...ct.querySelectorAll('.ct-row')];
-        const base = (window.SITE_ROOT || '') + 'assets/certificates/';
-        let cur = 0;
-        const show = (i, animate = true) => {
-            cur = (i + rows.length) % rows.length; const r = rows[cur];
-            rows.forEach((x, k) => x.setAttribute('aria-pressed', String(k === cur)));
-            const src = base + r.dataset.slug + '.webp';
-            if (top.getAttribute('src') === src) return;
-            top.src = src;
-            top.alt = `${(window.I18N && window.I18N['Certificate:']) || 'Certificate:'} ${r.querySelector('.ct-c').textContent}, ${r.querySelector('.ct-i').textContent}`;
-            if (animate && !reduced) top.animate([{ transform: 'translateY(6px)', opacity: .25 }, { transform: 'none', opacity: 1 }], { duration: 360, easing: 'cubic-bezier(.2,.7,.2,1)' });
+    // certificates: one card that turns to the next every five seconds (the progress line drives the timing);
+    // arrows, swipe and the arrow keys step through; it pauses on hover, focus, off screen, or with reduced motion
+    const cx = document.querySelector('.cx');
+    if (cx) {
+        const cards = [...cx.querySelectorAll('.cx-cards img')], bar = cx.querySelector('.cx-prog i'), stage = cx.querySelector('.cx-stage');
+        let cur = 0, seen = false, over = false, inside = false;
+        const restart = () => { cx.classList.remove('run'); void bar.offsetWidth; if (!reduced) cx.classList.add('run'); };
+        const hold = () => cx.classList.toggle('hold', over || inside || !seen || document.hidden);
+        const go = (n, dir) => {
+            const next = (n + cards.length) % cards.length; if (next === cur) return;
+            cx.dataset.dir = String(dir);
+            cards.forEach(c => c.classList.remove('out'));
+            const prev = cards[cur]; prev.classList.remove('on'); prev.classList.add('out'); prev.setAttribute('aria-hidden', 'true');
+            cur = next; const c = cards[cur]; c.classList.add('on'); c.removeAttribute('aria-hidden');
+            restart();
         };
-        rows.forEach((r, i) => { r.addEventListener('mouseenter', () => show(i)); r.addEventListener('focus', () => show(i)); r.addEventListener('click', () => { show(i); if (matchMedia('(max-width: 860px)').matches) ct.querySelector('.ct-side').scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' }); }); });
-        ct.querySelectorAll('.ct-step').forEach(b => b.addEventListener('click', () => show(cur + +b.dataset.step)));
-        ct.addEventListener('keydown', e => { if (e.target.closest('.ct-row, .ct-step') && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) { e.preventDefault(); show(cur + (e.key === 'ArrowRight' ? 1 : -1)); if (e.target.closest('.ct-row')) rows[cur].focus({ preventScroll: true }); } });
-        top.addEventListener('contextmenu', e => e.preventDefault());   // a view, not a download: no save-image menu on the certificate
-        rows.forEach(r => { const im = new Image(); im.src = base + r.dataset.slug + '.webp'; });   // warm the cache so the swap is instant
+        bar.addEventListener('animationend', () => go(cur + 1, 1));
+        cx.querySelectorAll('.cx-step').forEach(b => b.addEventListener('click', () => go(cur + +b.dataset.step, +b.dataset.step)));
+        cx.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); const d = e.key === 'ArrowRight' ? 1 : -1; go(cur + d, d); } });
+        let x0 = null;
+        stage.addEventListener('pointerdown', e => { x0 = e.clientX; });
+        stage.addEventListener('pointerup', e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) { const d = dx < 0 ? 1 : -1; go(cur + d, d); } });
+        stage.addEventListener('pointercancel', () => { x0 = null; });
+        stage.addEventListener('contextmenu', e => e.preventDefault());
+        cx.addEventListener('mouseenter', () => { over = true; hold(); }); cx.addEventListener('mouseleave', () => { over = false; hold(); });
+        cx.addEventListener('focusin', () => { inside = true; hold(); }); cx.addEventListener('focusout', () => { inside = cx.contains(document.activeElement); hold(); });
+        document.addEventListener('visibilitychange', hold);
+        new IntersectionObserver(es => { seen = es[0].isIntersecting; hold(); }, { threshold: .4 }).observe(cx);
+        hold(); restart();
     }
     // about: stagger in when it scrolls into view
     const about = document.querySelector('.about');

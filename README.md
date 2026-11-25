@@ -49,7 +49,7 @@ python3 tools/sync_nav.py          # rewrite the study bar, next-study card and 
 
 ## Certificates
 
-`assets/certificates/*.webp` are 900-pixel previews of the first page of each certificate, made from the PDFs the author holds. The PDFs are not in the repository and the page offers no download. The list in `index.html` (Certificates, under Skills) gives each course, its issuer, and partners or study hours only where the certificate itself states them.
+`assets/certificates/*.webp` are 900-pixel previews of the first page of each certificate, made from the PDFs the author holds. The PDFs are not in the repository and the page offers no download. They sit beside the About text as one card that turns to the next every five seconds, with arrows and swipe; each image's description names the course and its issuer.
 
 ## Editing
 

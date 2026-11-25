@@ -1088,60 +1088,35 @@ html:not(.js) .lx { grid-template-columns: 1fr; }
 .twin-page .sh h1 { font-family: 'Newsreader', var(--display); font-weight: 500; font-size: clamp(2rem, 3.6vw, 2.875rem); letter-spacing: -.02em; line-height: 1; margin: 0; }
 .twin-page main { padding-top: var(--s-6); }
 
-/* ---------- Certificates: a large certificate beside a compact index; hover, click or the arrows choose which one shows ---------- */
-.ct { position: relative; max-width: 76rem; margin: var(--s-8) auto 0; border-block: 1px dashed #d4d3cd; }
-.ct-body { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; padding: var(--s-6) var(--s-6) var(--s-6); }
-.ct-side { position: sticky; top: 96px; }
-.ct-stack { position: relative; aspect-ratio: 900 / 637; }
-.ct-b, .ct-top { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 6px; background: #fff; }
-.ct-b { border: 1px solid #dddcd6; }
-.ct-b1 { transform: rotate(-3deg) translate(-10px, 8px); background: #f6f6f3; }
-.ct-b2 { transform: rotate(2deg) translate(10px, 6px); background: #fbfbf9; }
-.ct-top { object-fit: contain; border: 1px solid #d6d5cf; box-shadow: 0 2px 4px rgba(20, 20, 18, .06), 0 28px 50px -24px rgba(20, 20, 18, .45); user-select: none; -webkit-user-drag: none; }
-.ct-nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 26px; }
-.ct-side { scroll-margin-top: 64px; }
-.ct-step { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--ink); cursor: pointer; transition: border-color .2s, background .2s; }
-.ct-step svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.ct-step:hover { border-color: var(--ink); background: #f7f7f5; }
-.ct-step:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.ct-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
-.ct-row { display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; padding: 13px 10px; border: 0; border-bottom: 1px solid var(--rule); background: none; text-align: left; font: inherit; color: inherit; cursor: pointer; transition: background .2s; }
-.ct-c { font-size: .9375rem; line-height: 1.35; }
-.ct-i { font-size: .8125rem; color: var(--ink-2); margin-top: 3px; }
-.ct-d { margin-top: 3px; font-family: var(--mono); font-size: .6875rem; letter-spacing: .04em; color: var(--ink-3); }
-.ct-row:hover, .ct-row[aria-pressed="true"] { background: #f7f7f5; }
-.ct-row { box-shadow: inset 2px 0 0 transparent; transition: background .2s, box-shadow .2s; }
-.ct-row[aria-pressed="true"] { box-shadow: inset 2px 0 0 var(--accent); }
-.ct-row[aria-pressed="true"] .ct-c { font-weight: 500; }
-.ct-row:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
-@media (max-width: 860px) {
-  .ct-body { grid-template-columns: 1fr; gap: 28px; padding-inline: var(--s-4); }
-  .ct-side { position: static; }
+/* ---------- Certificates: one card beside the About text that turns to the next every five seconds; arrows and swipe ---------- */
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.cx { --dur: 5s; width: min(100%, 26rem); margin: var(--s-7) auto 0; scroll-margin-top: 96px; }
+.cx-stage { position: relative; aspect-ratio: 900 / 637; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.cx-sheet { position: absolute; inset: 0; background: #f4f4f2; border: 1px solid #dddcd6; border-radius: 4px; transform: rotate(3deg) translate(6px, 6px); transition: transform .9s var(--ease); }
+.cx-cards { position: absolute; inset: 0; }
+.cx-cards img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; box-sizing: border-box; padding: 7px; background: #fff; border: 1px solid #d6d5cf; border-radius: 4px; box-shadow: 0 2px 4px rgba(20, 20, 18, .05), 0 16px 34px rgba(20, 20, 18, .13); opacity: 0; transform: translateX(var(--from, 28px)) rotate(var(--rot-in, 3deg)) scale(.97); transition: opacity .75s var(--ease), transform .9s cubic-bezier(.2, .75, .15, 1); pointer-events: none; }
+.cx-cards img.on { opacity: 1; transform: rotate(-2deg); pointer-events: auto; z-index: 2; }
+.cx-cards img.out { opacity: 0; transform: translateX(var(--to, -28px)) rotate(var(--rot-out, -6deg)) scale(.96); z-index: 1; }
+.cx[data-dir="-1"] { --from: -28px; --to: 28px; --rot-in: -6deg; --rot-out: 3deg; }
+.cx-stage:hover .cx-sheet { transform: rotate(4deg) translate(9px, 8px); }
+.cx-bar { display: flex; align-items: center; gap: 14px; margin-top: 22px; }
+.cx-step { flex: none; display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: #fff; color: var(--ink); cursor: pointer; transition: border-color .2s, background .2s, transform .2s var(--ease); }
+.cx-step svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: transform .25s var(--ease); }
+.cx-step:hover { border-color: var(--ink); }
+.cx-step:active { transform: scale(.94); }
+.cx-step[data-step="-1"]:hover svg { transform: translateX(-2px); }
+.cx-step[data-step="1"]:hover svg { transform: translateX(2px); }
+.cx-step:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.cx-prog { flex: 1; height: 1px; background: var(--rule); overflow: hidden; }
+.cx-prog i { display: block; height: 100%; background: var(--ink); transform-origin: left; transform: scaleX(0); }
+.cx.run .cx-prog i { animation: cxProg var(--dur) linear forwards; }
+.cx.hold .cx-prog i { animation-play-state: paused; }
+@keyframes cxProg { to { transform: scaleX(1); } }
+html:not(.js) .cx-bar { display: none; }
+@media (min-width: 980px) {
+  .ab-text { display: grid; grid-template-columns: minmax(0, 1fr) clamp(17rem, 24vw, 23rem); column-gap: clamp(40px, 4.5vw, 72px); align-items: start; }
+  .ab-text > * { grid-column: 1; }
+  .ab-text > .cx { grid-column: 2; grid-row: 1 / span 6; position: sticky; top: 120px; width: 100%; margin: 6px 0 0; }
 }
-
-/* certificates: arrows only work with the script */
-html:not(.js) .ct-nav { display: none; }
-/* certificates: subtle motion. On first view the cards fan out and the rows arrive one by one; arrows nudge on hover */
-.js .ct.reveal { opacity: 1; transform: none; }
-.js .ct.reveal .ct-b, .js .ct.reveal .ct-top { transition: transform .9s var(--ease), opacity .7s var(--ease); }
-.js .ct.reveal:not(.in) .ct-b1, .js .ct.reveal:not(.in) .ct-b2 { transform: none; opacity: 0; }
-.js .ct.reveal:not(.in) .ct-top { transform: translateY(16px); opacity: 0; }
-.js .ct.reveal .ct-list li { transition: opacity .6s var(--ease), transform .6s var(--ease); }
-.js .ct.reveal:not(.in) .ct-list li { opacity: 0; transform: translateY(8px); }
-.js .ct.reveal.in .ct-list li:nth-child(2) { transition-delay: .05s; } .js .ct.reveal.in .ct-list li:nth-child(3) { transition-delay: .1s; }
-.js .ct.reveal.in .ct-list li:nth-child(4) { transition-delay: .15s; } .js .ct.reveal.in .ct-list li:nth-child(5) { transition-delay: .2s; }
-.js .ct.reveal.in .ct-list li:nth-child(6) { transition-delay: .25s; } .js .ct.reveal.in .ct-list li:nth-child(7) { transition-delay: .3s; }
-.js .ct.reveal.in .ct-list li:nth-child(8) { transition-delay: .35s; } .js .ct.reveal.in .ct-list li:nth-child(n+9) { transition-delay: .4s; }
-.js .ct.reveal.in .ct-b1, .js .ct.reveal.in .ct-b2 { transition-delay: .15s; }
-.ct-step svg { transition: transform .25s var(--ease); }
-.ct-step[data-step="-1"]:hover svg { transform: translateX(-2px); }
-.ct-step[data-step="1"]:hover svg { transform: translateX(2px); }
-.ct-stack:hover .ct-b1 { transform: rotate(-4deg) translate(-14px, 10px); }
-.ct-stack:hover .ct-b2 { transform: rotate(3deg) translate(14px, 8px); }
-@media (prefers-reduced-motion: reduce) {
-  .js .ct.reveal .ct-b, .js .ct.reveal .ct-top, .js .ct.reveal .ct-list li, .ct-step svg { transition: none; }
-  .js .ct.reveal:not(.in) .ct-b1, .js .ct.reveal:not(.in) .ct-b2, .js .ct.reveal:not(.in) .ct-top, .js .ct.reveal:not(.in) .ct-list li { opacity: 1; transform: none; }
-  .js .ct.reveal:not(.in) .ct-b1 { transform: rotate(-3deg) translate(-10px, 8px); } .js .ct.reveal:not(.in) .ct-b2 { transform: rotate(2deg) translate(10px, 6px); }
-  .ct-stack:hover .ct-b1, .ct-stack:hover .ct-b2, .ct-step:hover svg { transform: none; }
-}
-@media print { .js .ct.reveal .ct-list li, .js .ct.reveal .ct-top, .js .ct.reveal .ct-b { opacity: 1 !important; transform: none !important; } .ct-nav { display: none; } .ct-stack { break-inside: avoid; } }
+@media (prefers-reduced-motion: reduce) { .cx-cards img, .cx-sheet { transition: opacity .2s; transform: rotate(-2deg) !important; } .cx-sheet { transform: rotate(3deg) translate(6px, 6px) !important; } .cx .cx-prog { visibility: hidden; } }
+@media print { .cx-bar { display: none; } .cx { break-inside: avoid; } }

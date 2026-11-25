@@ -218,29 +218,7 @@
     "Row": "Zeilen",
     "Grid": "Raster",
     "Limits: a twin is a statistical match on climate and size, not a judgement that two cities are alike in other ways. Temperatures are averages for the 2010s over each urban centre, population before 2025 is modelled, and building height (2020) and greenness (2025) are satellite estimates. Rainfall is not used, because the database’s values did not agree with station records.": "Grenzen: Ein Zwilling ist eine statistische Übereinstimmung von Klima und Größe, kein Urteil darüber, dass sich zwei Städte auch sonst ähneln. Temperaturen sind Mittelwerte der 2010er-Jahre über jedes städtische Zentrum, die Bevölkerung vor 2025 ist modelliert, und Gebäudehöhe (2020) und Grünheit (2025) sind Satellitenschätzungen. Niederschlag wird nicht verwendet, weil die Werte der Datenbank nicht mit Stationsmessungen übereinstimmten.",
-    "Flood Hazard and Exposure Mapping": "Flood Hazard and Exposure Mapping",
-    "UNESCO": "UNESCO",
-    "Hydrologic Modeling with HEC-HMS": "Hydrologic Modeling with HEC-HMS",
-    "Introduction to Machine Learning for Earth Observation": "Introduction to Machine Learning for Earth Observation",
-    "EO College": "EO College",
-    "Cubes &amp; Clouds": "Cubes &amp; Clouds",
-    "Land in Focus: Wet Ecosystems": "Land in Focus: Wet Ecosystems",
-    "Exploration of Copernicus and Sentinel Data": "Exploration of Copernicus and Sentinel Data",
-    "Water Productivity in Practice": "Water Productivity in Practice",
-    "Python for Geospatial Analyses Using WaPOR Data": "Python for Geospatial Analyses Using WaPOR Data",
-    "Delta Planning and Management": "Delta Planning and Management",
-    "Certificates": "Zertifikate",
-    "IHE Delft": "IHE Delft",
-    "With International Partnerships Austria and Flanders": "Mit International Partnerships Austria und Flandern",
-    "8 hours": "8 Stunden",
-    "IHE Delft and Wageningen University &amp; Research": "IHE Delft und Wageningen University &amp; Research",
-    "With FAO · 40 hours": "Mit der FAO · 40 Stunden",
-    "FAO and IHE Delft": "FAO und IHE Delft",
-    "With the US Army Corps of Engineers and ICIWaRM": "Mit dem US Army Corps of Engineers und ICIWaRM",
-    "With TUM and DLR": "Mit der TUM und dem DLR",
-    "With ESA and Eurac Research · 30 hours": "Mit der ESA und Eurac Research · 30 Stunden",
-    "ITC (University of Twente) and Geoversity": "ITC (Universität Twente) und Geoversity",
-    "Funded by the Netherlands Ministry of Foreign Affairs": "Gefördert vom niederländischen Außenministerium"
+    "Certificates": "Zertifikate"
   },
   "attr": {
     "The two cities compared": "Die beiden Städte im Vergleich",
@@ -275,8 +253,16 @@
     "Layout": "Ansicht",
     "Previous certificate": "Vorheriges Zertifikat",
     "Next certificate": "Nächstes Zertifikat",
+    "Browse certificates": "Zertifikate durchblättern",
     "Certificate: Flood Hazard and Exposure Mapping, UNESCO": "Zertifikat: Flood Hazard and Exposure Mapping, UNESCO",
-    "Browse certificates": "Zertifikate durchblättern"
+    "Certificate: Hydrologic Modeling with HEC-HMS, UNESCO": "Zertifikat: Hydrologic Modeling with HEC-HMS, UNESCO",
+    "Certificate: Introduction to Machine Learning for Earth Observation, EO College": "Zertifikat: Introduction to Machine Learning for Earth Observation, EO College",
+    "Certificate: Cubes &amp; Clouds, EO College": "Zertifikat: Cubes &amp; Clouds, EO College",
+    "Certificate: Land in Focus: Wet Ecosystems, EO College": "Zertifikat: Land in Focus: Wet Ecosystems, EO College",
+    "Certificate: Exploration of Copernicus and Sentinel Data, ITC (University of Twente) and Geoversity": "Zertifikat: Exploration of Copernicus and Sentinel Data, ITC (Universität Twente) und Geoversity",
+    "Certificate: Water Productivity in Practice, IHE Delft and Wageningen University &amp; Research": "Zertifikat: Water Productivity in Practice, IHE Delft und Wageningen University &amp; Research",
+    "Certificate: Python for Geospatial Analyses Using WaPOR Data, FAO and IHE Delft": "Zertifikat: Python for Geospatial Analyses Using WaPOR Data, FAO und IHE Delft",
+    "Certificate: Delta Planning and Management, IHE Delft": "Zertifikat: Delta Planning and Management, IHE Delft"
   },
   "js": {
     "Change since 1975": "Veränderung seit 1975",
@@ -390,7 +376,6 @@
     "On hot cells": "Auf heißen Zellen",
     "Below 10 m": "Unter 10 m",
     "{n} shown": "{n} angezeigt",
-    "No exact match. Closest names:": "Kein genauer Treffer. Ähnlichste Namen:",
-    "Certificate:": "Zertifikat:"
+    "No exact match. Closest names:": "Kein genauer Treffer. Ähnlichste Namen:"
   }
 }
