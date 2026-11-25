@@ -33,3 +33,7 @@ What was built against the audit (`AUDIT.md` and `audit/`), 25 November 2026. Ev
 | AS-1, AS-2, AS-3, AS-4, AS-7, VZ-5 | Done |
 | GV-1–GV-10 | Done except GV-7 (shortened matrix labels on screen) |
 | CT-1–CT-6, CT-8 | Done; CT-7 (City Twins styling) unchanged |
+
+## After the independent review (1.1.1, 25 November 2026)
+
+An independent review of the live sites found no blocking failures, 2 High and 7 Medium defects. Both High and all seven Medium defects are corrected, along with most of the Low ones; the scores, evidence, corrections and what remains open are in `QUALITY_SCORECARD.md`. The fixed-input tests for FloodScope and AgroSignal and the GeoValidate expected values are unchanged after the corrections.

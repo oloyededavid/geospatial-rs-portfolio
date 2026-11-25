@@ -186,8 +186,11 @@
       green: () => `Mean NDVI of the greener built-up land: ${en(a[7], 2)} in ${nA}, ${en(b[7], 2)} in ${nB}.`,
       alike: () => ga && gb ? gline() : 'Growth, building height and greenness are all within the margins.',
     })[F.c]();
+    // a weak match says so on the card itself, above the headline, so a shared card cannot overstate it
+    const weak = order.tier && order.tier !== 'close' ? (order.tier === 'class' ? 'No close match \u00b7 closest with the same climate type' : 'No close match \u00b7 no city shares this climate type') : '';
+    const cav = weak ? 56 : 0;
     // the words get the room above the chart; shrink until headline and sub fit
-    const top0 = cy + R0 + 222, limit = H - 330;
+    const top0 = cy + R0 + 222 + cav, limit = H - 330;
     let hs = 58, ss = 30, lines, sl, hgt;
     // never cut words: shrink until the headline fits in two lines and the sub in three, above the chart
     for (;;) {
@@ -199,6 +202,7 @@
       if (hs > 36) hs -= 2; if (ss > 20) ss -= 1;
     }
     const tf = seg(t, .45, .85); g.globalAlpha = tf; const lift = (1 - tf) * 14; let y = top0 + hs;
+    if (weak) { g.textAlign = 'center'; g.fillStyle = '#9a3412'; g.font = `500 22px ${MONO}`; spaced(g, weak.toUpperCase(), W / 2, top0 - 22 + lift, 2, 'center'); }
     g.textAlign = 'center'; g.fillStyle = INK; g.font = `500 ${hs}px ${SERIF}`;
     lines.forEach((l, n) => g.fillText(l, W / 2, y + lift + n * (hs + 8))); y += (lines.length - 1) * (hs + 8) + 18 + ss + 6;
     g.fillStyle = INK2; g.font = `400 ${ss}px ${SANS}`; sl.forEach((l, n) => g.fillText(l, W / 2, y + lift + n * (ss + 12)));
@@ -238,9 +242,9 @@
     // credit, so a saved card carries it
     g.globalAlpha = 1; g.fillStyle = GREY; g.font = `400 16px ${SANS}`; g.textAlign = 'center';
     g.fillText('Imagery: Sentinel-2 cloudless – s2maps.eu by EOX IT Services GmbH (contains modified Copernicus Sentinel data 2024), CC BY-NC-SA 4.0', W / 2, H - 46);
-    g.fillText('Data: GHS Urban Centre Database R2024A, European Commission JRC, CC BY 4.0 · population before 2025 is modelled', W / 2, H - 22);
+    g.fillText('Data: GHS Urban Centre Database R2024A, European Commission JRC, CC BY 4.0 · all population figures are modelled', W / 2, H - 22);
     g.textAlign = 'left';
-    return { head, sub, dist };
+    return { head: weak ? weak + '. ' + head : head, sub, dist, plainHead: head };
   }
 
   // before the first views arrive: the frame of the card, so it is never blank
@@ -263,10 +267,11 @@
     cancelAnimationFrame(frame);
     const words = render(F, reduce ? 1 : 0);
     if (!reduce) { const t0 = performance.now(), dur = 1500; const step = now => { const t = Math.min(1, (now - t0) / dur); render(F, t); if (t < 1 && id === drawId) frame = requestAnimationFrame(step); }; frame = requestAnimationFrame(step); }
+    const tw = $('twin-words'); if (tw) tw.innerHTML = `${words.head !== words.plainHead ? `<span class="tw-wk">${esc(words.head.slice(0, words.head.length - words.plainHead.length - 2))}</span>` : ''}<strong>${esc(words.plainHead)}</strong> ${esc(words.sub)}`;
     $('twin-card').setAttribute('aria-label', `${a[0]}, ${a[1]} and ${b[0]}, ${b[1]}, ${words.dist} km apart. ${words.head} ${words.sub}`);
     $('twin-rank').textContent = `${a[0]} ${T_('and')} ${b[0]}`;
     facts(a, b, F.c); match(a, b);
-    if (touched) { const u = new URL(location.href); u.searchParams.set('city', a[0] + ', ' + a[1]); u.searchParams.set('id', a[10]); u.searchParams.delete('n'); u.hash = 'twin'; history.replaceState(null, '', u); }
+    if (touched) { const u = new URL(location.href); u.searchParams.set('city', a[0] + ', ' + a[1]); u.searchParams.set('id', a[10]); u.searchParams.set('t', b[10]); u.searchParams.delete('n'); u.hash = 'twin'; history.replaceState(null, '', u); }
   }
   let touched = false, dirn = 0;
   // the left-hand table: both cities side by side, the clearest difference marked
@@ -276,7 +281,7 @@
     ['Temperature', r => num(r[5], 1) + '\u00a0°C', ''],
     ['Seasonal spread (SD)', r => num(r[6], 1) + '\u00a0°C', ''],
     ['Population 1975', r => popL(r[11][0]), '', 'modelled'],
-    ['Population 2025', r => popL(r[4]), ''],
+    ['Population 2025', r => popL(r[4]), '', 'modelled'],
     ['Change since 1975', r => { const v = growth(r); return v ? num(v, v >= 9.95 ? 0 : v >= 1 ? 1 : 2) + '×' : '–'; }, 'growth'],
     ['Building height', r => num(r[8], 1) + '\u00a0m', 'height'],
     ['Greenness (NDVI)', r => num(r[7], 2), 'green'],
@@ -397,12 +402,13 @@
     let i = id ? R.findIndex(r => r[10] === id && (!want || r[0] + ', ' + r[1] === want)) : -1;
     if (i < 0 && want) i = R.findIndex(r => r[0] + ', ' + r[1] === want);
     if (id && i >= 0 && R[i][10] !== id) { const u = new URL(location.href); u.searchParams.set('id', R[i][10]); history.replaceState(null, '', u); }
-    if (want && i < 0) { const u = new URL(location.href); ['city', 'id', 'n'].forEach(x => u.searchParams.delete(x)); history.replaceState(null, '', u); }
+    if (want && i < 0) { const u = new URL(location.href); ['city', 'id', 't', 'n'].forEach(x => u.searchParams.delete(x)); history.replaceState(null, '', u); }
     if (i < 0) i = R.findIndex(r => r[0] === 'Lagos' && r[1] === 'Nigeria');
-    pick(i, 0, false);
+    const tw = +sp.get('t'), kk = tw ? twinsOf(i).findIndex(([, j]) => R[j][10] === tw) : -1;
+    pick(i, Math.max(0, kk), false);
   }).catch(() => { $('twin-stage').classList.add('failed'); $('twin-rank').textContent = T_('The city data could not be loaded. Please reload the page.'); $('twin-rank').className = 'tw-err'; });
   }
-  function shareUrl() { const u = new URL(location.href); u.search = ''; u.searchParams.set('city', R[cur][0] + ', ' + R[cur][1]); u.searchParams.set('id', R[cur][10]); u.hash = 'twin'; return u.href; }
+  function shareUrl() { const u = new URL(location.href); u.search = ''; u.searchParams.set('city', R[cur][0] + ', ' + R[cur][1]); u.searchParams.set('id', R[cur][10]); if (order[k]) u.searchParams.set('t', R[order[k][1]][10]); u.hash = 'twin'; return u.href; }
   // load the data and imagery only when the section is about to be seen
   if (new URLSearchParams(location.search).get('city') || !('IntersectionObserver' in window)) start();
   else { const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); start(); } }, { rootMargin: '600px 0px' }); io.observe($('twin')); }
