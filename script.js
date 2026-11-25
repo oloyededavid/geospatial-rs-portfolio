@@ -132,25 +132,34 @@
     const cx = document.querySelector('.cx');
     if (cx) {
         const cards = [...cx.querySelectorAll('.cx-cards img')], bar = cx.querySelector('.cx-prog i'), stage = cx.querySelector('.cx-stage');
-        let cur = 0, seen = false, over = false, inside = false;
+        const view = cx.querySelector('.cx-view'), vimg = view && view.querySelector('img');
+        let cur = 0, seen = false, over = false, inside = false, swiped = false;
         const restart = () => { cx.classList.remove('run'); void bar.offsetWidth; if (!reduced) cx.classList.add('run'); };
-        const hold = () => cx.classList.toggle('hold', over || inside || !seen || document.hidden);
+        const hold = () => cx.classList.toggle('hold', over || inside || !seen || document.hidden || (view && view.open));
+        const sync = () => { if (vimg) { vimg.src = cards[cur].currentSrc || cards[cur].src; vimg.alt = cards[cur].alt; } };
         const go = (n, dir) => {
             const next = (n + cards.length) % cards.length; if (next === cur) return;
             cx.dataset.dir = String(dir);
             cards.forEach(c => c.classList.remove('out'));
             const prev = cards[cur]; prev.classList.remove('on'); prev.classList.add('out'); prev.setAttribute('aria-hidden', 'true');
             cur = next; const c = cards[cur]; c.classList.add('on'); c.removeAttribute('aria-hidden');
-            restart();
+            restart(); if (view && view.open) { sync(); if (!reduced) vimg.animate([{ opacity: .3, transform: `translateX(${dir * 18}px)` }, { opacity: 1, transform: 'none' }], { duration: 420, easing: 'cubic-bezier(.2,.75,.15,1)' }); }
         };
         bar.addEventListener('animationend', () => go(cur + 1, 1));
         cx.querySelectorAll('.cx-step').forEach(b => b.addEventListener('click', () => go(cur + +b.dataset.step, +b.dataset.step)));
         cx.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); const d = e.key === 'ArrowRight' ? 1 : -1; go(cur + d, d); } });
         let x0 = null;
         stage.addEventListener('pointerdown', e => { x0 = e.clientX; });
-        stage.addEventListener('pointerup', e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) { const d = dx < 0 ? 1 : -1; go(cur + d, d); } });
+        stage.addEventListener('pointerup', e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; swiped = Math.abs(dx) > 40; if (swiped) { const d = dx < 0 ? 1 : -1; go(cur + d, d); } });
         stage.addEventListener('pointercancel', () => { x0 = null; });
         stage.addEventListener('contextmenu', e => e.preventDefault());
+        if (view && view.showModal) {
+            cx.querySelector('.cx-zoom').addEventListener('click', () => { if (swiped) { swiped = false; return; } sync(); view.showModal(); hold(); });
+            view.querySelector('.cx-close').addEventListener('click', () => view.close());
+            view.addEventListener('click', e => { if (e.target === view) view.close(); });
+            view.addEventListener('close', () => { hold(); cx.querySelector('.cx-zoom').focus({ preventScroll: true }); });
+            view.addEventListener('contextmenu', e => e.preventDefault());
+        } else if (view) cx.querySelector('.cx-zoom').hidden = true;
         cx.addEventListener('mouseenter', () => { over = true; hold(); }); cx.addEventListener('mouseleave', () => { over = false; hold(); });
         cx.addEventListener('focusin', () => { inside = true; hold(); }); cx.addEventListener('focusout', () => { inside = cx.contains(document.activeElement); hold(); });
         document.addEventListener('visibilitychange', hold);

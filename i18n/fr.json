@@ -262,7 +262,10 @@
     "Certificate: Exploration of Copernicus and Sentinel Data, ITC (University of Twente) and Geoversity": "Certificat : Exploration of Copernicus and Sentinel Data, ITC (Université de Twente) et Geoversity",
     "Certificate: Water Productivity in Practice, IHE Delft and Wageningen University &amp; Research": "Certificat : Water Productivity in Practice, IHE Delft et Wageningen University &amp; Research",
     "Certificate: Python for Geospatial Analyses Using WaPOR Data, FAO and IHE Delft": "Certificat : Python for Geospatial Analyses Using WaPOR Data, FAO et IHE Delft",
-    "Certificate: Delta Planning and Management, IHE Delft": "Certificat : Delta Planning and Management, IHE Delft"
+    "Certificate: Delta Planning and Management, IHE Delft": "Certificat : Delta Planning and Management, IHE Delft",
+    "Enlarge certificate": "Agrandir le certificat",
+    "Close": "Fermer",
+    "Certificate": "Certificat"
   },
   "js": {
     "Change since 1975": "Évolution depuis 1975",

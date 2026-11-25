@@ -1112,11 +1112,26 @@ html:not(.js) .lx { grid-template-columns: 1fr; }
 .cx.run .cx-prog i { animation: cxProg var(--dur) linear forwards; }
 .cx.hold .cx-prog i { animation-play-state: paused; }
 @keyframes cxProg { to { transform: scaleX(1); } }
-html:not(.js) .cx-bar { display: none; }
+html:not(.js) .cx-bar, html:not(.js) .cx-zoom { display: none; }
 @media (min-width: 980px) {
-  .ab-text { display: grid; grid-template-columns: minmax(0, 1fr) clamp(17rem, 24vw, 23rem); column-gap: clamp(40px, 4.5vw, 72px); align-items: start; }
+  .ab-text { display: grid; grid-template-columns: minmax(0, 1fr) clamp(20rem, 34vw, 31rem); column-gap: clamp(40px, 4.5vw, 72px); align-items: start; }
   .ab-text > * { grid-column: 1; }
   .ab-text > .cx { grid-column: 2; grid-row: 1 / span 6; position: sticky; top: 120px; width: 100%; margin: 6px 0 0; }
 }
+.cx-zoom { position: absolute; inset: 0; z-index: 3; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 4px; }
+.cx-zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.cx-view { width: min(94vw, 900px); max-width: none; max-height: 94vh; padding: 0; border: 0; background: none; overflow: visible; }
+.cx-view::backdrop { background: rgba(20, 20, 18, .55); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+.cx-view img { display: block; width: 100%; height: auto; max-height: calc(94vh - 72px); object-fit: contain; box-sizing: border-box; padding: 10px; background: #fff; border-radius: 6px; box-shadow: 0 30px 80px rgba(0, 0, 0, .35); user-select: none; -webkit-user-select: none; }
+.cx-view[open] { animation: cxIn .45s cubic-bezier(.2, .75, .15, 1); }
+.cx-view[open]::backdrop { animation: cxFade .35s ease-out; }
+@keyframes cxIn { from { opacity: 0; transform: translateY(14px) scale(.96); } }
+@keyframes cxFade { from { opacity: 0; } }
+.cx-vbar { display: flex; justify-content: center; gap: 12px; margin-top: 16px; }
+.cx-vbar .cx-step, .cx-close { border-color: rgba(255, 255, 255, .6); background: rgba(255, 255, 255, .92); }
+.cx-close { flex: none; display: grid; place-items: center; width: 36px; height: 36px; padding: 0; margin-left: 12px; border: 1px solid rgba(255, 255, 255, .6); border-radius: 50%; color: var(--ink); cursor: pointer; }
+.cx-close svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
+.cx-close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .cx-view[open], .cx-view[open]::backdrop { animation: none; } }
 @media (prefers-reduced-motion: reduce) { .cx-cards img, .cx-sheet { transition: opacity .2s; transform: rotate(-2deg) !important; } .cx-sheet { transform: rotate(3deg) translate(6px, 6px) !important; } .cx .cx-prog { visibility: hidden; } }
 @media print { .cx-bar { display: none; } .cx { break-inside: avoid; } }
