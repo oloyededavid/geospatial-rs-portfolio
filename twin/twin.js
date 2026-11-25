@@ -49,7 +49,9 @@
       if (R[j][1] === cn || (same && R[j][9] !== kc) || (tight && !strict(j)) || km(R[i], R[j]) < 50) continue;
       let s = 0; for (let f = 0; f < 3; f++) { const e = Z[j][f] - zi[f]; s += e * e; } d.push([Math.sqrt(s), j]); }
       return d.sort((a, b) => a[0] - b[0]).slice(0, 10); };
-    let o = near(true, true); if (!o.length) o = near(true, false); return o.length ? o : near(false, false);
+    // the tier is kept with the list so the page can say how close the match is
+    let o = near(true, true), tier = 'close'; if (!o.length) { o = near(true, false); tier = 'class'; } if (!o.length) { o = near(false, false); tier = 'any'; }
+    o.tier = tier; return o;
   }
   // the clearest difference between the two, reported with both values: growth since 1975, building height or greenness
   // only differences large enough to stand above the uncertainty of these satellite estimates count:
@@ -168,12 +170,12 @@
     const art = w => (/^[aeiou]/i.test(w) ? 'an ' : 'a ') + w;
     const nA = a[0] === b[0] ? `${a[0]} (${a[1]})` : a[0], nB = a[0] === b[0] ? `${b[0]} (${b[1]})` : b[0];
     const close = sameClimate(a, b), similar = similarSize(a, b);
-    const opener = (close ? 'Same climate' : sameK ? 'Same climate type' : 'Similar climate') + (similar ? ', similar size' : '');
+    const opener = (close ? 'Same climate' : sameK ? 'Same climate type' : 'Nearest climate') + (similar ? ', similar size' : '');
     const head = opener + ({
       growth: `. ${ga > gb ? nA : nB} grew faster.`,
       height: `. ${a[8] > b[8] ? nA : nB} builds taller.`,
       green: `. ${a[7] > b[7] ? nA : nB} has greener built-up areas.`,
-      alike: similar ? '. Much alike.' : ', much alike.',
+      alike: similar ? '. Close on every measure compared.' : ', close on every measure compared.',
     })[F.c];
     const clim = (sameK ? `Both have ${art(KOP[a[9]])} climate (${en(a[5], 1)} and ${en(b[5], 1)}\u00a0°C on average)` : `They average ${en(a[5], 1)} and ${en(b[5], 1)}\u00a0°C`)
       + ` and about ${pop(a[4])} and ${pop(b[4])} people.`;
@@ -262,8 +264,8 @@
     const words = render(F, reduce ? 1 : 0);
     if (!reduce) { const t0 = performance.now(), dur = 1500; const step = now => { const t = Math.min(1, (now - t0) / dur); render(F, t); if (t < 1 && id === drawId) frame = requestAnimationFrame(step); }; frame = requestAnimationFrame(step); }
     $('twin-card').setAttribute('aria-label', `${a[0]}, ${a[1]} and ${b[0]}, ${b[1]}, ${words.dist} km apart. ${words.head} ${words.sub}`);
-    $('twin-rank').textContent = `${a[0]} and ${b[0]}`;
-    facts(a, b, F.c);
+    $('twin-rank').textContent = `${a[0]} ${T_('and')} ${b[0]}`;
+    facts(a, b, F.c); match(a, b);
     if (touched) { const u = new URL(location.href); u.searchParams.set('city', a[0] + ', ' + a[1]); u.searchParams.set('id', a[10]); u.searchParams.delete('n'); u.hash = 'twin'; history.replaceState(null, '', u); }
   }
   let touched = false, dirn = 0;
@@ -273,7 +275,7 @@
     ['Climate type', r => esc(T_(KOP[r[9]])), ''],
     ['Temperature', r => num(r[5], 1) + '\u00a0°C', ''],
     ['Seasonal spread (SD)', r => num(r[6], 1) + '\u00a0°C', ''],
-    ['Population 1975', r => popL(r[11][0]), ''],
+    ['Population 1975', r => popL(r[11][0]), '', 'modelled'],
     ['Population 2025', r => popL(r[4]), ''],
     ['Change since 1975', r => { const v = growth(r); return v ? num(v, v >= 9.95 ? 0 : v >= 1 ? 1 : 2) + '×' : '–'; }, 'growth'],
     ['Building height', r => num(r[8], 1) + '\u00a0m', 'height'],
@@ -282,8 +284,27 @@
   function facts(a, b, c) {
     const t = $('twin-facts'); t.style.setProperty('--tw-c', ZONE(a[9]));
     t.innerHTML = `<thead><tr><th scope="col"><span class="sr-only">${esc(T_('Measure'))}</span></th><th scope="col"><i class="tw-k tw-k--a" aria-hidden="true"></i>${esc(a[0])}</th><th scope="col"><i class="tw-k" aria-hidden="true"></i>${esc(b[0])}</th></tr></thead><tbody>`
-      + ROWS.map(([label, f, m], n) => `<tr${m && m === c ? ' class="hit"' : ''} style="--n:${n}"><th scope="row">${esc(T_(label))}</th><td>${f(a)}</td><td>${f(b)}</td></tr>`).join('')
+      + ROWS.map(([label, f, m, tag], n) => `<tr${m && m === c ? ' class="hit"' : ''} style="--n:${n}"><th scope="row">${esc(T_(label))}${tag ? ` <span class="tw-tag">${esc(T_(tag))}</span>` : ''}</th><td>${f(a)}</td><td>${f(b)}</td></tr>`).join('')
       + `</tbody>`;
+  }
+  // why this twin: the matching tests with their differences and limits, the tier, and the other candidates
+  function match(a, b) {
+    const el = $('twin-match'); if (!el) return;
+    const dT = Math.abs(Math.round(a[5] * 10) - Math.round(b[5] * 10)) / 10, dS = Math.abs(Math.round(a[6] * 10) - Math.round(b[6] * 10)) / 10;
+    const ratio = Math.max(a[4], b[4]) / Math.min(a[4], b[4]), sameK = a[9] === b[9];
+    const ok = v => `<span class="${v ? 'tw-in' : 'tw-out'}">${esc(T_(v ? 'within' : 'outside'))}</span>`;
+    const rows = [[T_('Climate type'), esc(T_(sameK ? 'same' : 'different')), esc(T_('must match')), ok(sameK)],
+      [T_('Temperature'), `${num(dT, 1)}\u00a0°C`, '2\u00a0°C', ok(dT <= 2)],
+      [T_('Seasonal spread (SD)'), `${num(dS, 1)}\u00a0°C`, '1\u00a0°C', ok(dS <= 1)],
+      [T_('Population 2025'), `${num(ratio, ratio >= 10 ? 0 : 1)}×`, '1.5×'.replace('.', num(1.5, 1).charAt(1)), ok(ratio <= 1.5)]];
+    const tier = { close: 'Close match: every limit below is met.', class: 'No close match: no city in another country meets every limit, so this is the closest city with the same climate type. Read the differences as real differences.', any: 'No city in another country shares this climate type, so this is the closest city of any type.' }[order.tier || 'close'];
+    const others = order.map(([, j], i) => [i, j]).filter(([i]) => i !== k).slice(0, 4);
+    el.innerHTML = `<h2 class="tw-mh">${esc(T_('Why this twin'))}</h2><p class="tw-tier${order.tier === 'close' ? '' : ' weak'}">${esc(T_(tier))}</p>
+      <table class="tw-mt"><thead><tr><th scope="col"><span class="sr-only">${esc(T_('Measure'))}</span></th><th scope="col">${esc(T_('Difference'))}</th><th scope="col">${esc(T_('Limit'))}</th><th scope="col"><span class="sr-only">${esc(T_('Result'))}</span></th></tr></thead><tbody>${
+        rows.map(([l, d, lim, o]) => `<tr><th scope="row">${esc(l)}</th><td>${d}</td><td>${lim}</td><td>${o}</td></tr>`).join('')}</tbody></table>
+      <p class="tw-note">${esc(T_('Ranked by temperature, seasonal spread and population, weighted equally.'))}</p>
+      ${others.length ? `<h2 class="tw-mh">${esc(T_('Other candidates'))}</h2><div class="tw-alt">${others.map(([i, j]) => `<button type="button" data-k="${i}">${esc(R[j][0])}<span>${esc(R[j][1])}</span></button>`).join('')}</div>` : ''}`;
+    el.querySelectorAll('[data-k]').forEach(btn => btn.addEventListener('click', () => { dirn = +btn.dataset.k > k ? 1 : -1; k = +btn.dataset.k; touched = true; draw(); }));
   }
   function pick(i, kk = 0, user = true) { touched = touched || user; cur = i; order = twinsOf(i); k = Math.max(0, Math.min(Math.floor(kk) || 0, order.length - 1)); draw(); }
 

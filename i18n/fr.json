@@ -379,6 +379,22 @@
     "On hot cells": "Sur mailles chaudes",
     "Below 10 m": "Sous 10 m",
     "{n} shown": "{n} affichés",
-    "No exact match. Closest names:": "Aucune correspondance exacte. Noms les plus proches :"
+    "No exact match. Closest names:": "Aucune correspondance exacte. Noms les plus proches :",
+    "and": "et",
+    "modelled": "modélisée",
+    "Why this twin": "Pourquoi cette ville jumelle",
+    "Close match: every limit below is met.": "Correspondance proche : toutes les limites ci-dessous sont respectées.",
+    "No close match: no city in another country meets every limit, so this is the closest city with the same climate type. Read the differences as real differences.": "Pas de correspondance proche : aucune ville d’un autre pays ne respecte toutes les limites ; voici donc la ville la plus proche ayant le même type de climat. Les écarts sont de vraies différences.",
+    "No city in another country shares this climate type, so this is the closest city of any type.": "Aucune ville d’un autre pays n’a ce type de climat ; voici donc la ville la plus proche, tous types confondus.",
+    "Difference": "Écart",
+    "Limit": "Limite",
+    "same": "identique",
+    "different": "différent",
+    "within": "respectée",
+    "outside": "dépassée",
+    "Ranked by temperature, seasonal spread and population, weighted equally.": "Classement selon la température, la dispersion saisonnière et la population, à poids égal.",
+    "Other candidates": "Autres candidates",
+    "must match": "identique",
+    "Result": "Résultat"
   }
 }

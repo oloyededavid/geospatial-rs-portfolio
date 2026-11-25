@@ -1135,3 +1135,23 @@ html:not(.js) .cx-bar, html:not(.js) .cx-zoom { display: none; }
 @media (prefers-reduced-motion: reduce) { .cx-view[open], .cx-view[open]::backdrop { animation: none; } }
 @media (prefers-reduced-motion: reduce) { .cx-cards img, .cx-sheet { transition: opacity .2s; transform: rotate(-2deg) !important; } .cx-sheet { transform: rotate(3deg) translate(6px, 6px) !important; } .cx .cx-prog { visibility: hidden; } }
 @media print { .cx-bar { display: none; } .cx { break-inside: avoid; } }
+
+/* City twins: why this twin, the match tier and the other candidates */
+.tw-match { margin-top: var(--s-6); }
+.tw-mh { margin: var(--s-5) 0 var(--s-2); font-family: var(--mono); font-size: .75rem; font-weight: 400; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.tw-match .tw-mh:first-child { margin-top: 0; }
+.tw-tier { margin: 0 0 var(--s-3); font-size: var(--fs-small); color: var(--ink); line-height: 1.5; }
+.tw-tier.weak { color: #7a4a00; }
+.tw-mt { width: 100%; border-collapse: collapse; font-size: .875rem; font-variant-numeric: tabular-nums; }
+.tw-mt th, .tw-mt td { padding: 8px 8px 8px 0; border-bottom: 1px solid #efeeea; text-align: left; font-weight: 400; }
+.tw-mt thead th { font-size: .75rem; color: var(--ink-3); padding-top: 0; }
+.tw-mt tbody th { color: var(--ink-2); width: 40%; }
+.tw-mt td { font-family: var(--mono); font-size: .8125rem; }
+.tw-in { color: #2f6b3a; } .tw-out { color: #a3302a; }
+.tw-note { margin: var(--s-2) 0 0; font-size: .8125rem; color: var(--ink-3); }
+.tw-tag { display: inline-block; font-size: .6875rem; color: var(--ink-3); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; line-height: 16px; vertical-align: 1px; }
+.tw-alt { display: flex; flex-wrap: wrap; gap: 8px; }
+.tw-alt button { display: grid; text-align: left; gap: 1px; padding: 8px 12px; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); font: inherit; font-size: .875rem; color: var(--ink); cursor: pointer; transition: border-color .2s; }
+.tw-alt button span { font-size: .75rem; color: var(--ink-3); }
+.tw-alt button:hover { border-color: var(--ink); }
+.tw-alt button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
