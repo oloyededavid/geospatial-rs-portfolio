@@ -1099,6 +1099,7 @@ html:not(.js) .lx { grid-template-columns: 1fr; }
 .ct-b2 { transform: rotate(2deg) translate(10px, 6px); background: #fbfbf9; }
 .ct-top { object-fit: contain; border: 1px solid #d6d5cf; box-shadow: 0 2px 4px rgba(20, 20, 18, .06), 0 28px 50px -24px rgba(20, 20, 18, .45); user-select: none; -webkit-user-drag: none; }
 .ct-nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 26px; }
+.ct-side { scroll-margin-top: 64px; }
 .ct-step { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--ink); cursor: pointer; transition: border-color .2s, background .2s; }
 .ct-step svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .ct-step:hover { border-color: var(--ink); background: #f7f7f5; }
