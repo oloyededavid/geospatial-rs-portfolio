@@ -140,7 +140,7 @@
             if (top.getAttribute('src') === src) return;
             top.src = src;
             top.alt = `${(window.I18N && window.I18N['Certificate:']) || 'Certificate:'} ${r.querySelector('.ct-c').textContent}, ${r.querySelector('.ct-i').textContent}`;
-            if (animate && !reduced) top.animate([{ transform: 'translateY(10px) rotate(-1.5deg)', opacity: .3 }, { transform: 'none', opacity: 1 }], { duration: 380, easing: 'cubic-bezier(.2,.7,.2,1)' });
+            if (animate && !reduced) top.animate([{ transform: 'translateY(6px)', opacity: .25 }, { transform: 'none', opacity: 1 }], { duration: 360, easing: 'cubic-bezier(.2,.7,.2,1)' });
         };
         rows.forEach((r, i) => { r.addEventListener('mouseenter', () => show(i)); r.addEventListener('focus', () => show(i)); r.addEventListener('click', () => show(i)); });
         ct.querySelectorAll('.ct-step').forEach(b => b.addEventListener('click', () => show(cur + +b.dataset.step)));

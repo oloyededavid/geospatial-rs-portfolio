@@ -47,6 +47,10 @@ python3 tools/sync_nav.py          # rewrite the study bar, next-study card and 
 | `mozambique-*` | The 159 district outlines (geoBoundaries ADM2) used by the Mozambique health-access study, on the Esri light grey basemap |
 | `catalogue-*` | The item footprints of the open geodata catalogue (`docs/data/footprints.geojson`), on the Esri light grey basemap |
 
+## Certificates
+
+`assets/certificates/*.webp` are 900-pixel previews of the first page of each certificate, made from the PDFs the author holds. The PDFs are not in the repository and the page offers no download. The list in `index.html` (Certificates, under Skills) gives each course, its issuer, and partners or study hours only where the certificate itself states them.
+
 ## Editing
 
 To add a project, copy one `<article class="inset">` block in `index.html`, add its image at 720, 1200 and 1600 px wide in `assets/projects/`, add its translations to `i18n/fr.json` and `i18n/de.json`, then run `tools/build_i18n.py`. Check every link before publishing.

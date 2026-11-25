@@ -237,7 +237,6 @@
     "IHE Delft and Wageningen University &amp; Research": "IHE Delft und Wageningen University &amp; Research",
     "With FAO · 40 hours": "Mit der FAO · 40 Stunden",
     "FAO and IHE Delft": "FAO und IHE Delft",
-    "Issued by UNESCO, FAO, IHE Delft, the University of Twente and EO College": "Ausgestellt von UNESCO, FAO, IHE Delft, der Universität Twente und EO College",
     "With the US Army Corps of Engineers": "Mit dem US Army Corps of Engineers"
   },
   "attr": {
@@ -274,7 +273,8 @@
     "Previous certificate": "Vorheriges Zertifikat",
     "Next certificate": "Nächstes Zertifikat",
     "Certificates": "Zertifikate",
-    "Certificate: Flood Hazard and Exposure Mapping, UNESCO": "Zertifikat: Flood Hazard and Exposure Mapping, UNESCO"
+    "Certificate: Flood Hazard and Exposure Mapping, UNESCO": "Zertifikat: Flood Hazard and Exposure Mapping, UNESCO",
+    "Browse certificates": "Zertifikate durchblättern"
   },
   "js": {
     "Change since 1975": "Veränderung seit 1975",
