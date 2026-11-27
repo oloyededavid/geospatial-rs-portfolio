@@ -292,7 +292,7 @@
       + ROWS.map(([label, f, m, tag], n) => `<tr${m && m === c ? ' class="hit"' : ''} style="--n:${n}"><th scope="row">${esc(T_(label))}${tag ? ` <span class="tw-tag">${esc(T_(tag))}</span>` : ''}</th><td>${f(a)}</td><td>${f(b)}</td></tr>`).join('')
       + `</tbody>`;
   }
-  // why this twin: the matching tests with their differences and limits, the tier, and the other candidates
+  // why this twin: the matching tests with their differences and limits, and the tier
   function match(a, b) {
     const el = $('twin-match'); if (!el) return;
     const dT = Math.abs(Math.round(a[5] * 10) - Math.round(b[5] * 10)) / 10, dS = Math.abs(Math.round(a[6] * 10) - Math.round(b[6] * 10)) / 10;
@@ -303,13 +303,10 @@
       [T_('Seasonal spread (SD)'), `${num(dS, 1)}\u00a0°C`, '1\u00a0°C', ok(dS <= 1)],
       [T_('Population 2025'), `${num(ratio, ratio >= 10 ? 0 : 1)}×`, '1.5×'.replace('.', num(1.5, 1).charAt(1)), ok(ratio <= 1.5)]];
     const tier = { close: 'Close match: every limit below is met.', class: 'No close match: no city in another country meets every limit, so this is the closest city with the same climate type. Read the differences as real differences.', any: 'No city in another country shares this climate type, so this is the closest city of any type.' }[order.tier || 'close'];
-    const others = order.map(([, j], i) => [i, j]).filter(([i]) => i !== k).slice(0, 4);
-    el.innerHTML = `${others.length ? `<h2 class="tw-mh">${esc(T_('Other candidates'))}</h2><div class="tw-alt">${others.map(([i, j]) => `<button type="button" data-k="${i}">${esc(R[j][0])}<span>${esc(R[j][1])}</span></button>`).join('')}</div>` : ''}
-      <details class="tw-why"><summary>${esc(T_('Why this twin'))}</summary><p class="tw-tier${order.tier === 'close' ? '' : ' weak'}">${esc(T_(tier))}</p>
+    el.innerHTML = `<details class="tw-why"><summary>${esc(T_('Why this twin'))}</summary><p class="tw-tier${order.tier === 'close' ? '' : ' weak'}">${esc(T_(tier))}</p>
       <table class="tw-mt"><thead><tr><th scope="col"><span class="sr-only">${esc(T_('Measure'))}</span></th><th scope="col">${esc(T_('Difference'))}</th><th scope="col">${esc(T_('Limit'))}</th><th scope="col"><span class="sr-only">${esc(T_('Result'))}</span></th></tr></thead><tbody>${
         rows.map(([l, d, lim, o]) => `<tr><th scope="row">${esc(l)}</th><td>${d}</td><td>${lim}</td><td>${o}</td></tr>`).join('')}</tbody></table>
       <p class="tw-note">${esc(T_('Ranked by temperature, seasonal spread and population, weighted equally.'))}</p></details>`;
-    el.querySelectorAll('[data-k]').forEach(btn => btn.addEventListener('click', () => { dirn = +btn.dataset.k > k ? 1 : -1; k = +btn.dataset.k; touched = true; draw(); }));
   }
   function pick(i, kk = 0, user = true) { touched = touched || user; cur = i; order = twinsOf(i); k = Math.max(0, Math.min(Math.floor(kk) || 0, order.length - 1)); draw(); }
 
