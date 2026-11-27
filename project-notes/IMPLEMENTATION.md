@@ -7,7 +7,7 @@ What was built against the audit (`AUDIT.md` and `audit/`), 25 November 2026. Ev
 | GeoValidate | 1.1.0 | 46a933f, 5d588af | `tests/check_expected.py` (random 0.9324, spatial 0.8884), `verify.py`, `regression_test.py` |
 | FloodScope | 1.1.0 | d5a69e2, a98a0c2 | `tests/fixture_lokoja.mjs` (whole pipeline offline, class-grid hash), engine and tracing tests |
 | AgroSignal | 1.1.0 | fe02021 | `tests/fixture_kano.mjs` (whole pipeline offline, z and anomaly grid hashes), engine tests |
-| Portfolio (City Twins) | — | a21c50b, 9c423bb | `tests/twins_check.cjs`; `tools/check_shared.sh` |
+| Portfolio (City Twins) | — | a21c50b, 9c423bb | `tests/twins_check.cjs` |
 
 ## Findings and their status
 
@@ -18,7 +18,7 @@ What was built against the audit (`AUDIT.md` and `audit/`), 25 November 2026. Ev
 | S-4 one Nigerian example, no random examples | **Not done.** No example outside Nigeria has an independent comparison yet; offering unvalidated ones as "validated" would be false. Candidates are listed in each tool's `docs/ux-notes.md` |
 | S-5 inconsistent examples | Done: every example button runs |
 | S-6, PI-1, PI-2 cross-tool navigation | Done: Tools menu in every tool; back link to the tools view |
-| S-7 shared stylesheet drift | Done: `shared/dash.css` source and `tools/check_shared.sh`. Token alignment with the portfolio palette not done (tools keep their cool grey) |
+| S-7 shared stylesheet drift | Superseded on 27 November 2026: AgroSignal, FloodScope and GeoValidate 1.2.0 each carry `css/app.css`, written for AgroSignal and copied with tool-specific additions at the end. `shared/dash.css` and `tools/check_shared.sh` were removed because no page used them. A change to the common design now has to be made in all three files |
 | S-8, GV-6 charts without data | Done for GeoValidate (values tables); FloodScope histogram announces its value; AgroSignal already had a table |
 | S-9 regression on live data | Done: fixed-input fixtures for FloodScope and AgroSignal, pinned figures for GeoValidate, a City Twins check |
 | S-10 disabled buttons without reasons | Done |
