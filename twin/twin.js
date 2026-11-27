@@ -304,11 +304,11 @@
       [T_('Population 2025'), `${num(ratio, ratio >= 10 ? 0 : 1)}×`, '1.5×'.replace('.', num(1.5, 1).charAt(1)), ok(ratio <= 1.5)]];
     const tier = { close: 'Close match: every limit below is met.', class: 'No close match: no city in another country meets every limit, so this is the closest city with the same climate type. Read the differences as real differences.', any: 'No city in another country shares this climate type, so this is the closest city of any type.' }[order.tier || 'close'];
     const others = order.map(([, j], i) => [i, j]).filter(([i]) => i !== k).slice(0, 4);
-    el.innerHTML = `<h2 class="tw-mh">${esc(T_('Why this twin'))}</h2><p class="tw-tier${order.tier === 'close' ? '' : ' weak'}">${esc(T_(tier))}</p>
+    el.innerHTML = `${others.length ? `<h2 class="tw-mh">${esc(T_('Other candidates'))}</h2><div class="tw-alt">${others.map(([i, j]) => `<button type="button" data-k="${i}">${esc(R[j][0])}<span>${esc(R[j][1])}</span></button>`).join('')}</div>` : ''}
+      <details class="tw-why"><summary>${esc(T_('Why this twin'))}</summary><p class="tw-tier${order.tier === 'close' ? '' : ' weak'}">${esc(T_(tier))}</p>
       <table class="tw-mt"><thead><tr><th scope="col"><span class="sr-only">${esc(T_('Measure'))}</span></th><th scope="col">${esc(T_('Difference'))}</th><th scope="col">${esc(T_('Limit'))}</th><th scope="col"><span class="sr-only">${esc(T_('Result'))}</span></th></tr></thead><tbody>${
         rows.map(([l, d, lim, o]) => `<tr><th scope="row">${esc(l)}</th><td>${d}</td><td>${lim}</td><td>${o}</td></tr>`).join('')}</tbody></table>
-      <p class="tw-note">${esc(T_('Ranked by temperature, seasonal spread and population, weighted equally.'))}</p>
-      ${others.length ? `<h2 class="tw-mh">${esc(T_('Other candidates'))}</h2><div class="tw-alt">${others.map(([i, j]) => `<button type="button" data-k="${i}">${esc(R[j][0])}<span>${esc(R[j][1])}</span></button>`).join('')}</div>` : ''}`;
+      <p class="tw-note">${esc(T_('Ranked by temperature, seasonal spread and population, weighted equally.'))}</p></details>`;
     el.querySelectorAll('[data-k]').forEach(btn => btn.addEventListener('click', () => { dirn = +btn.dataset.k > k ? 1 : -1; k = +btn.dataset.k; touched = true; draw(); }));
   }
   function pick(i, kk = 0, user = true) { touched = touched || user; cur = i; order = twinsOf(i); k = Math.max(0, Math.min(Math.floor(kk) || 0, order.length - 1)); draw(); }
@@ -319,6 +319,24 @@
     $('twin-card').toBlob(bl => { if (!bl) return; const a = document.createElement('a'); a.download = 'city-twins-' + fname.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.png';
       a.href = URL.createObjectURL(bl); a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
       const btn = $('twin-save'), was = btn.querySelector('.tw-l').textContent; btn.querySelector('.tw-l').textContent = T_('Saved'); btn.classList.add('done'); setTimeout(() => { btn.querySelector('.tw-l').textContent = was; btn.classList.remove('done'); }, 1600); }, 'image/png');
+  });
+  // the two cities' values as a small CSV, with the matching tests and the source
+  $('twin-data').addEventListener('click', () => {
+    if (!last) return;
+    const { a, b } = last, cell = v => { const t = String(v); return /[",\n]/.test(t) ? `"${t.replace(/"/g, '""')}"` : t; };
+    const rows = [['measure', a[0] + ', ' + a[1], b[0] + ', ' + b[1], 'unit', 'note'],
+      ['climate type (Koppen-Geiger)', KOP[a[9]], KOP[b[9]], '', ''],
+      ['mean temperature, 2010s', a[5], b[5], 'degC', ''], ['seasonal spread (SD of monthly means)', a[6], b[6], 'degC', ''],
+      ...M.years.map((y, n) => [`population ${y}`, Math.round(a[11][n]), Math.round(b[11][n]), 'people', 'modelled']),
+      ['change since ' + M.years[0], growth(a) ?? '', growth(b) ?? '', 'ratio', 'blank where the 1975 figure is not credible'],
+      ['average building height, 2020', a[8], b[8], 'm', 'satellite estimate'], ['greenness of built-up land, 2025', a[7], b[7], 'NDVI', 'satellite estimate'],
+      ['latitude', a[3], b[3], 'deg', ''], ['longitude', a[2], b[2], 'deg', ''], ['distance apart', Math.round(km(a, b)), '', 'km', ''],
+      ['match', order.tier || 'close', '', '', 'close: same climate type, within 2 degC, 1 degC spread and 1.5x population'],
+      ['GHSL id', a[10], b[10], '', ''],
+      ['source', 'GHS Urban Centre Database R2024A, European Commission JRC, CC BY 4.0', '', '', 'all population figures are modelled']];
+    const blob = new Blob([rows.map(r => r.map(cell).join(',')).join('\n') + '\n'], { type: 'text/csv' }), link = document.createElement('a');
+    link.download = 'city-twins-' + (a[0] + '-' + b[0]).toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.csv'; link.href = URL.createObjectURL(blob); link.click(); setTimeout(() => URL.revokeObjectURL(link.href), 4000);
+    const btn = $('twin-data').querySelector('.tw-l'), was = btn.textContent; btn.textContent = T_('Saved'); setTimeout(() => { btn.textContent = was; }, 1600);
   });
   $('twin-share').addEventListener('click', async () => {
     const btn = $('twin-share').querySelector('.tw-l'), was = btn.textContent;
@@ -406,6 +424,11 @@
     if (i < 0) i = R.findIndex(r => r[0] === 'Lagos' && r[1] === 'Nigeria');
     const tw = +sp.get('t'), kk = tw ? twinsOf(i).findIndex(([, j]) => R[j][10] === tw) : -1;
     pick(i, Math.max(0, kk), false);
+    // quick picks under the search, by GHSL id so a renamed row cannot pick the wrong city
+    const box = $('twin-try');
+    if (box) [1289, 5483, 7277, 1717, 5472].map(g => R.findIndex(r => r[10] === g)).filter(n => n >= 0).forEach(n => {
+      const btn = document.createElement('button'); btn.type = 'button'; btn.textContent = R[n][0];
+      btn.addEventListener('click', () => { dirn = 0; pick(n); }); box.append(btn); });
   }).catch(() => { $('twin-stage').classList.add('failed'); $('twin-rank').textContent = T_('The city data could not be loaded. Please reload the page.'); $('twin-rank').className = 'tw-err'; });
   }
   function shareUrl() { const u = new URL(location.href); u.search = ''; u.searchParams.set('city', R[cur][0] + ', ' + R[cur][1]); u.searchParams.set('id', R[cur][10]); if (order[k]) u.searchParams.set('t', R[order[k][1]][10]); u.hash = 'twin'; return u.href; }
