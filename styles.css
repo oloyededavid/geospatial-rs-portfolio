@@ -1052,7 +1052,7 @@ html:not(.js) .lx { grid-template-columns: 1fr; }
 }
 /* quick picks, the folded matching tests, and the card kept in view on wide screens */
 .tw-try { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: var(--s-3); font-size: var(--fs-small); color: var(--ink-3); }
-.tw-try button { height: 32px; padding: 0 12px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--ink); font: inherit; font-size: .875rem; cursor: pointer; }
+.tw-try button { height: 38px; padding: 0 12px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--ink); font: inherit; font-size: .875rem; cursor: pointer; }
 .tw-try button:hover { border-color: var(--ink); }
 .tw-try button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .tw-why { margin-top: var(--s-5); }
@@ -1060,8 +1060,8 @@ html:not(.js) .lx { grid-template-columns: 1fr; }
 .tw-why summary::-webkit-details-marker { display: none; }
 .tw-why summary::after { content: '+'; font-size: 1rem; line-height: 1; }
 .tw-why[open] summary::after { content: '−'; }
-@media (min-width: 861px) { .tw-stage { position: sticky; top: 84px; } }
-@media (max-width: 560px) { .tw-btn, .tw-actions .cta { height: 44px; } .tw-actions .tw-data { flex-basis: 100%; } .tw-actions .cta { flex: 1; justify-content: center; } .tw-actions .tw-btn { flex: 1; justify-content: center; } }
+@media (min-width: 861px) and (min-height: 860px) { .tw-stage { position: sticky; top: 84px; } }   /* only where the whole card fits */
+@media (max-width: 560px) { .tw-btn, .tw-actions .cta { height: 44px; } .tw-actions .tw-data { flex-basis: 100%; } .tw-try button { height: 44px; } .tw-actions .cta { flex: 1; justify-content: center; } .tw-actions .tw-btn { flex: 1; justify-content: center; } }
 @media (prefers-reduced-motion: reduce) {
   .js .tp.reveal .tp-text > *, .js .tp.reveal .tw-stage { opacity: 1; transform: none; transition: none; }
   .tw-sugg, .tw-how p, .tw-stage.swap canvas, .tw-stage.loading::after { animation: none; }

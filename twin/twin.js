@@ -23,7 +23,7 @@
   // and only where the ratio is not an implausible collapse (below 0.25 the modelled 1975 figure is not credible)
   const growth = r => { if (r[11][0] < 1e4) return null; const g = r[11][r[11].length - 1] / r[11][0]; return g >= .25 ? g : null; };
   const fx = v => new Intl.NumberFormat('en', { maximumFractionDigits: v >= 9.95 ? 0 : v >= 1 ? 1 : 2, minimumFractionDigits: v >= 9.95 ? 0 : v >= 1 ? 1 : 2 }).format(v) + '×';
-  const pop = v => v >= 1e6 ? (v / 1e6).toFixed(1) + '\u00a0M' : v >= 1e3 ? nf.format(Math.round(v / 1e3)) + '\u00a0K' : nf.format(Math.round(v));
+  const pop = v => v >= 999500 ? (v / 1e6).toFixed(1) + '\u00a0M' : v >= 1e3 ? nf.format(Math.round(v / 1e3)) + '\u00a0K' : nf.format(Math.round(v));
   // the table follows the page language for numbers; the card stays English
   const nl = new Intl.NumberFormat(document.documentElement.lang || 'en');
   const num = (v, d, lang) => new Intl.NumberFormat(lang || document.documentElement.lang || 'en', { minimumFractionDigits: d, maximumFractionDigits: d }).format(Object.is(v, -0) || Math.abs(v) < Math.pow(10, -d) / 2 ? 0 : v);
@@ -170,7 +170,7 @@
     const art = w => (/^[aeiou]/i.test(w) ? 'an ' : 'a ') + w;
     const nA = a[0] === b[0] ? `${a[0]} (${a[1]})` : a[0], nB = a[0] === b[0] ? `${b[0]} (${b[1]})` : b[0];
     const close = sameClimate(a, b), similar = similarSize(a, b);
-    const opener = (close ? 'Same climate' : sameK ? 'Same climate type' : 'Nearest climate') + (similar ? ', similar size' : '');
+    const opener = (close ? 'Same climate' : sameK ? 'Same climate type' : 'Nearest climate') + (similar ? ', similar size' : close ? ', different size' : '');
     const head = opener + ({
       growth: `. ${ga > gb ? nA : nB} grew faster.`,
       height: `. ${a[8] > b[8] ? nA : nB} builds taller.`,
@@ -272,10 +272,12 @@
     $('twin-rank').textContent = `${a[0]} ${T_('and')} ${b[0]}`;
     facts(a, b, F.c); match(a, b);
     if (touched) { const u = new URL(location.href); u.searchParams.set('city', a[0] + ', ' + a[1]); u.searchParams.set('id', a[10]); u.searchParams.set('t', b[10]); u.searchParams.delete('n'); u.hash = 'twin'; history.replaceState(null, '', u); }
+    // the language links carry the pair, so switching language keeps the city
+    document.querySelectorAll('.lang a[data-lang]').forEach(l => { if (!l.dataset.base) l.dataset.base = l.getAttribute('href'); l.setAttribute('href', l.dataset.base + location.search); });
   }
   let touched = false, dirn = 0;
   // the left-hand table: both cities side by side, the clearest difference marked
-  const popL = v => v >= 1e6 ? num(v / 1e6, 1) + '\u00a0M' : v >= 1e3 ? nl.format(Math.round(v / 1e3)) + '\u00a0K' : nl.format(Math.round(v));
+  const popL = v => v >= 999500 ? num(v / 1e6, 1) + '\u00a0M' : v >= 1e3 ? nl.format(Math.round(v / 1e3)) + '\u00a0K' : nl.format(Math.round(v));
   const ROWS = [
     ['Climate type', r => esc(T_(KOP[r[9]])), ''],
     ['Temperature', r => num(r[5], 1) + '\u00a0°C', ''],
@@ -325,9 +327,9 @@
       ['climate type (Koppen-Geiger)', KOP[a[9]], KOP[b[9]], '', ''],
       ['mean temperature, 2010s', a[5], b[5], 'degC', ''], ['seasonal spread (SD of monthly means)', a[6], b[6], 'degC', ''],
       ...M.years.map((y, n) => [`population ${y}`, Math.round(a[11][n]), Math.round(b[11][n]), 'people', 'modelled']),
-      ['change since ' + M.years[0], growth(a) ?? '', growth(b) ?? '', 'ratio', 'blank where the 1975 figure is not credible'],
+      ['change since ' + M.years[0], growth(a) ? +growth(a).toFixed(3) : '', growth(b) ? +growth(b).toFixed(3) : '', 'ratio', 'blank where the 1975 figure is not credible'],
       ['average building height, 2020', a[8], b[8], 'm', 'satellite estimate'], ['greenness of built-up land, 2025', a[7], b[7], 'NDVI', 'satellite estimate'],
-      ['latitude', a[3], b[3], 'deg', ''], ['longitude', a[2], b[2], 'deg', ''], ['distance apart', Math.round(km(a, b)), '', 'km', ''],
+      ['latitude', a[3], b[3], 'deg', ''], ['longitude', a[2], b[2], 'deg', ''], ['distance apart', Math.round(km(a, b) / 10) * 10, '', 'km', 'rounded to 10 km, as on the card'],
       ['match', order.tier || 'close', '', '', 'close: same climate type, within 2 degC, 1 degC spread and 1.5x population'],
       ['GHSL id', a[10], b[10], '', ''],
       ['source', 'GHS Urban Centre Database R2024A, European Commission JRC, CC BY 4.0', '', '', 'all population figures are modelled']];
@@ -338,7 +340,7 @@
   $('twin-share').addEventListener('click', async () => {
     const btn = $('twin-share').querySelector('.tw-l'), was = btn.textContent;
     try { if (navigator.share) await navigator.share({ title: 'City twins', url: shareUrl() }); else { await navigator.clipboard.writeText(shareUrl()); btn.textContent = T_('Link copied'); } }
-    catch (e) { /* closed or blocked */ }
+    catch (e) { if (e && e.name !== 'AbortError') btn.textContent = T_('Copy failed'); }   // closed by the user: say nothing
     setTimeout(() => btn.textContent = was, 1600);
   });
 
@@ -346,7 +348,7 @@
   // ---------- search ----------
   // same name and country more than once (e.g. Portland, United States): show population to tell them apart
   let dup = new Set();
-  const popShort = v => v >= 1e6 ? (v / 1e6).toFixed(1) + ' M' : Math.round(v / 1e3) + ' K';
+  const popShort = v => v >= 999500 ? (v / 1e6).toFixed(1) + ' M' : Math.round(v / 1e3) + ' K';
   const q = $('twin-q'), list = $('twin-sugg'); let hits = [], sel = -1;
   const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
     .replace(/[\u2010-\u2015\u2212_-]+/g, ' ').replace(/\s+/g, ' ').trim(); // hyphens and dashes match spaces: Ilara-Mokin = Ilara Mokin
